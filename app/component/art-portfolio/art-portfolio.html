@@ -1,0 +1,18 @@
+<section class="art-portfolio-container">
+
+  <!-- Image Gallery -->
+  <div class="portfolio-container clearfix">
+    <div class="portfolio-img-container"
+     ng-repeat="item in artPortfolioCtrl.items">
+      <div class="frame-square"><div class="crop">
+          <div class="hover-text">
+            <h3>{{item.title}}</h3>
+            <i class="fa fa-plus-circle modal-icon"
+            ng-click="artPortfolioCtrl.open(item)"></i></span>
+          </div>
+          <img src="{{item.src}}">
+        </div></div>
+    </div>
+  </div>
+
+</section>

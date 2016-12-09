@@ -1,0 +1,45 @@
+@import "theme";
+
+.modal-container{
+  // padding: 5% 5% 0 5%;
+  padding: 5%;
+  img{
+    width: 100%;
+  }
+  h2{
+    color: $app-black;
+    text-transform: uppercase;
+  }
+  .modal-icon {
+    font-size: 50px;
+    background-color: transparent;
+    transition: .2s;
+    cursor: pointer;
+    color: $app-disabled;
+  }
+
+  .modal-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: 2%;
+    padding-right: 2%;
+  }
+  .center{
+    padding: 0 30%;
+  }
+
+  .modal-arrow-container{
+    width: 50%;
+    display: inline-block;
+    text-align:center;
+    float: left;
+    .modal-arrow {
+      padding: 2%;
+    }
+  }
+
+  .modal-icon:hover{
+    color: $app-white;
+  }
+}

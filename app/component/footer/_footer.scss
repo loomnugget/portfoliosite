@@ -1,0 +1,27 @@
+@import "theme";
+
+.footer {
+  width: 100%;
+  background-color: $app-nav;
+
+  .footer-icon{
+    float:right;
+    font-size: 40px;
+    padding: 20px 27px;
+    background-color: transparent;
+    color: $app-secondary;
+    transition: .2s;
+  }
+  .footer-icon:hover{
+    color: $app-white;
+  }
+
+  .footer-text{
+    float: left;
+    font-size: 20px;
+    padding-left: 28px;
+    padding-top: 32px;
+    margin: 0;
+    color: $app-secondary;
+  }
+}

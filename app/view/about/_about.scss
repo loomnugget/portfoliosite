@@ -1,0 +1,119 @@
+@import "theme";
+
+.about{
+  margin-top: 60px;
+  background-color: $app-white;
+  p,h4 {
+    font-weight: 300;
+  }
+  .about-container{
+    z-index: 20;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .intro-container{
+      padding: 5% 2%;
+      width: 100%;
+      margin: 1% 0;
+      color: $app-black;
+      @media only screen and (min-width: 800px){
+        width: 80%;
+        margin: 1% 10%;
+      }
+      h3{
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 300%;
+      }
+      h4{
+        width: 100%;
+        text-align: center;
+        font-size: 150%;
+        @media only screen and (min-width: 600px){
+          width: 80%;
+          margin: 0 10%;
+        }
+        @media only screen and (min-width: 1000px){
+          width: 60%;
+          margin: 0 20%;
+        }
+      }
+      .span-container{
+        width: 80%;
+        margin: 0 10%;
+        text-align: center;
+      }
+      .fa-diamond{
+        width: 100%;
+        height: 100%;
+        font-size: 70px;
+        padding: 20px 24px;
+        margin: 1% 0;
+        background: -webkit-linear-gradient($app-primary, $app-secondary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        transition: .2s;
+        @media only screen and (min-width: 1000px){
+          font-size: 100px;
+        }
+      }
+    }
+
+
+    .span-container{
+      width: 100%;
+    }
+    .about-icon{
+      text-align: center;
+      float:left;
+      width: 25%;
+      height: 100%;
+      font-size: 80px;
+      padding: 20px 24px;
+      background-color: transparent;
+      color: $app-black;
+      transition: .2s;
+      @media only screen and (min-width: 900px){
+        font-size: 100px;
+      }
+    }
+
+    .skills-container {
+      padding: 2%;
+      width: 100%;
+      margin: 0;
+      background-color: $app-white;
+      color: $app-black;
+      border: 5px solid $app-black;
+      @media only screen and (min-width: 1000px){
+        width: 60%;
+        margin: 0 20% 2% 20%;
+      }
+
+      .text-container{
+        width: 100;
+        margin: 1%;
+        padding: 0 2%;
+        span{
+          font-weight: bold;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+      }
+      h3 {
+        margin-bottom: 2%;
+        text-transform: uppercase;
+        text-decoration: underline;
+        font-size: 200%;
+        @media only screen and (min-width: 600px){
+          font-size: 300%;
+        }
+      }
+      h4{
+        font-size: 150%;
+      }
+    }
+  }
+}

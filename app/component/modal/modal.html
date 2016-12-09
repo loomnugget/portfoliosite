@@ -1,0 +1,21 @@
+<div class="modal-container">
+  <div class="modal-header">
+    <h2>{{modalCtrl.modalData.title}}</h2>
+    <i class="fa fa-close modal-icon modal-close"
+    ng-click="modalCtrl.handleClose()"></i></span>
+  </div>
+
+  <div class="modal-body" id="modal-body">
+    <!-- Gallery image-->
+    <img src="{{modalCtrl.modalData.src}}">
+    <!-- Arrow Icons -->
+    <!-- <div class="row center">
+      <div class="modal-arrow-container">
+        <i class="fa fa-arrow-circle-left modal-icon modal-arrow" ng-click="modalCtrl.nextImage()"></i></span>
+      </div>
+      <div class="modal-arrow-container">
+        <i class="fa fa-arrow-circle-right modal-icon modal-arrow" ng-click="modalCtrl.previousImage()"></i></span>
+      </div>
+    </div> -->
+
+</div>

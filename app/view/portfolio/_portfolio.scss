@@ -1,0 +1,40 @@
+@import "theme";
+
+.portfolio {
+  margin-top: 60px;
+  background-color: $app-black;
+  .shape-container{
+    color:$app-white;
+    padding: 0;
+    width: 100%;
+
+    ul.navigation li {
+      margin-top: 2px;
+      width: 50%;
+      float: left;
+      display:block;
+      cursor: pointer;
+      border: 3px solid $app-black;
+
+      h2 {
+        z-index: 12;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 160%;
+        padding: 3%;
+        cursor: pointer;
+        @media only screen and (min-width: 900px){
+          font-size: 250%;
+        }
+      }
+    }
+    li.active {
+      border: 3px solid $app-white;
+    }
+    li:hover{
+      z-index: 5;
+      background: $app-tertiary;
+      opacity: .9;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<nav class="navbar">
+  <ul class="navbar-container">
+    <li ng-repeat="item in navbarCtrl.items"
+    name="item"
+    ng-class="{'active': item.id == navbarCtrl.states.activeItem}"
+    ng-click="navbarCtrl.states.activeItem = item.id">
+    <a href="{{item.url}}">{{item.title}}</a></li>
+  </ul>
+</nav>
