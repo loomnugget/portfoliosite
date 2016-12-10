@@ -5,13 +5,9 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const debug = require('debug')('portfolio:server');
-const dotenv = require('dotenv');
-
-// Load server environment variables
-dotenv.load({path: `${__dirname}/.env`});
 
 // Module constants
-const PORT = process.env.PORT;
+const PORT = 3000;
 const app = express();
 
 // app middleware
