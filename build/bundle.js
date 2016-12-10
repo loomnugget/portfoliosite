@@ -81,7 +81,7 @@
 	});
 
 	// Load components
-	context = __webpack_require__(45);
+	context = __webpack_require__(44);
 	context.keys().forEach(function (key) {
 	  var name = camelcase(path.basename(key, '.js'));
 	  var module = context(key);
@@ -53197,8 +53197,8 @@
 	var map = {
 		"./about/about-controller.js": 32,
 		"./contact/contact-controller.js": 35,
-		"./landing/landing-controller.js": 39,
-		"./portfolio/portfolio-controller.js": 42
+		"./landing/landing-controller.js": 38,
+		"./portfolio/portfolio-controller.js": 41
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53257,13 +53257,12 @@
 
 /***/ },
 /* 37 */,
-/* 38 */,
-/* 39 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(40);
+	__webpack_require__(39);
 
 	module.exports = ['$log', LandingController];
 
@@ -53272,19 +53271,19 @@
 	}
 
 /***/ },
-/* 40 */
+/* 39 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 41 */,
-/* 42 */
+/* 40 */,
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(43);
+	__webpack_require__(42);
 
 	module.exports = ['$log', PortfolioController];
 
@@ -53305,22 +53304,22 @@
 	}
 
 /***/ },
-/* 43 */
+/* 42 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 44 */,
-/* 45 */
+/* 43 */,
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./art-portfolio/art-portfolio.js": 46,
-		"./code-portfolio/code-portfolio.js": 50,
-		"./footer/footer.js": 54,
-		"./modal/modal.js": 58,
-		"./navbar/navbar.js": 62
+		"./art-portfolio/art-portfolio.js": 45,
+		"./code-portfolio/code-portfolio.js": 49,
+		"./footer/footer.js": 53,
+		"./modal/modal.js": 57,
+		"./navbar/navbar.js": 61
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53333,19 +53332,19 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 45;
+	webpackContext.id = 44;
 
 
 /***/ },
-/* 46 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(47);
+	__webpack_require__(46);
 
 	module.exports = {
-	  template: __webpack_require__(49),
+	  template: __webpack_require__(48),
 	  controller: ['$log', '$uibModal', ArtPortfolioController],
 	  controllerAs: 'artPortfolioCtrl'
 	};
@@ -53446,28 +53445,28 @@
 	}
 
 /***/ },
-/* 47 */
+/* 46 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 48 */,
-/* 49 */
+/* 47 */,
+/* 48 */
 /***/ function(module, exports) {
 
 	module.exports = "<section class=\"art-portfolio-container\">\n\n  <!-- Image Gallery -->\n  <div class=\"portfolio-container clearfix\">\n    <div class=\"portfolio-img-container\"\n     ng-repeat=\"item in artPortfolioCtrl.items\">\n      <div class=\"frame-square\"><div class=\"crop\">\n          <div class=\"hover-text\">\n            <h3>{{item.title}}</h3>\n            <i class=\"fa fa-plus-circle modal-icon\"\n            ng-click=\"artPortfolioCtrl.open(item)\"></i></span>\n          </div>\n          <img src=\"{{item.src}}\">\n        </div></div>\n    </div>\n  </div>\n\n</section>\n";
 
 /***/ },
-/* 50 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(51);
+	__webpack_require__(50);
 
 	module.exports = {
-	  template: __webpack_require__(53),
+	  template: __webpack_require__(52),
 	  controller: ['$log', '$location', '$rootScope', CodePortfolioController],
 	  controllerAs: 'codePortfolioCtrl'
 	};
@@ -53477,28 +53476,28 @@
 	}
 
 /***/ },
-/* 51 */
+/* 50 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 52 */,
-/* 53 */
+/* 51 */,
+/* 52 */
 /***/ function(module, exports) {
 
 	module.exports = "<section class=\"code-portfolio-container\">\n\n  <!-- Project Container -->\n  <div class=\"project-container\">\n    <!-- 3D Project -->\n      <div class=\"project\">\n        <h2>3d Engine</h2>\n        <h3>\n          <p><span>Summary: </span>Generates rotating 3D polyhedra models using JavaScript and HTML5 Canvas</p>\n          <p><span>Tools: </span>React.js, Vanilla Javascript, Node.js, Webpack</p>\n        <h3>\n\n        <a href=\"https://github.com/loomnugget/js-3d-experiment\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n        <a href=\"http://codepen.io/ploom/pen/LRvzOk\">\n        <span><i class=\"fa fa-codepen project-icon codepen\"></i></span></a>\n      </div>\n      <hr>\n      <!-- Art-c Project -->\n      <div class=\"project\">\n        <h2>[art-c]</h2>\n        <h3>\n          <p><span>Summary: </span>Social media platform that allows local artists to display and share their work with others in their community.</p>\n          <p><span>Tools: </span>Node.js, AngularJS, Webpack, Gulp.js, MongoDB, Bootstrap, AWS S3</p>\n        <h3>\n        <a href=\"https://github.com/loomnugget/art-c\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n      </div>\n      \n  </div>\n\n</section>\n";
 
 /***/ },
-/* 54 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(55);
+	__webpack_require__(54);
 
 	module.exports = {
-	  template: __webpack_require__(57),
+	  template: __webpack_require__(56),
 	  controller: ['$log', '$location', '$rootScope', FooterController],
 	  controllerAs: 'footerCtrl'
 	};
@@ -53508,28 +53507,28 @@
 	}
 
 /***/ },
-/* 55 */
+/* 54 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 56 */,
-/* 57 */
+/* 55 */,
+/* 56 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"footer\">\n  <p class=\"footer-text\">2016</p>\n\n  <span><a href=\"https://github.com/loomnugget\">\n  <i class=\"fa fa-github footer-icon github\"></i></a></span>\n  <span><a href=\"http://codepen.io/ploom\">\n  <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n  <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n  <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n</div>\n";
 
 /***/ },
-/* 58 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(59);
+	__webpack_require__(58);
 
 	module.exports = {
-	  template: __webpack_require__(61),
+	  template: __webpack_require__(60),
 	  controller: ['$log', ModalController],
 	  controllerAs: 'modalCtrl',
 	  bindings: {
@@ -53548,28 +53547,28 @@
 	}
 
 /***/ },
-/* 59 */
+/* 58 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 60 */,
-/* 61 */
+/* 59 */,
+/* 60 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-container\">\n  <div class=\"modal-header\">\n    <h2>{{modalCtrl.modalData.title}}</h2>\n    <i class=\"fa fa-close modal-icon modal-close\"\n    ng-click=\"modalCtrl.handleClose()\"></i></span>\n  </div>\n\n  <div class=\"modal-body\" id=\"modal-body\">\n    <!-- Gallery image-->\n    <img src=\"{{modalCtrl.modalData.src}}\">\n    <!-- Arrow Icons -->\n    <!-- <div class=\"row center\">\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-left modal-icon modal-arrow\" ng-click=\"modalCtrl.nextImage()\"></i></span>\n      </div>\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-right modal-icon modal-arrow\" ng-click=\"modalCtrl.previousImage()\"></i></span>\n      </div>\n    </div> -->\n\n</div>\n";
 
 /***/ },
-/* 62 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(63);
+	__webpack_require__(62);
 
 	module.exports = {
-	  template: __webpack_require__(70),
+	  template: __webpack_require__(69),
 	  controller: ['$log', '$location', '$rootScope', NavbarController],
 	  controllerAs: 'navbarCtrl'
 	};
@@ -53599,19 +53598,19 @@
 	}
 
 /***/ },
-/* 63 */
+/* 62 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
+/* 63 */,
 /* 64 */,
 /* 65 */,
 /* 66 */,
 /* 67 */,
 /* 68 */,
-/* 69 */,
-/* 70 */
+/* 69 */
 /***/ function(module, exports) {
 
 	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <li ng-repeat=\"item in navbarCtrl.items\"\n    name=\"item\"\n    ng-class=\"{'active': item.id == navbarCtrl.states.activeItem}\"\n    ng-click=\"navbarCtrl.states.activeItem = item.id\">\n    <a href=\"{{item.url}}\">{{item.title}}</a></li>\n  </ul>\n</nav>\n";
