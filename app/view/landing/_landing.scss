@@ -11,10 +11,15 @@
         rgba(255,255,255, .1)
       ),
       url('http://i67.tinypic.com/jsdh6w.jpg');
-      // http://i64.tinypic.com/zugww1.jpg
+      //http://i68.tinypic.com/nycl5y.jpg
     background-position: center;
     background-size: cover;
     height: 100vh;
+  }
+  .bg-text {
+    background-image: url(http://i68.tinypic.com/nycl5y.jpg);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
   }
   .intro-box {
     width: 80%;
@@ -31,10 +36,9 @@
     h1 {
       color: $app-black;
       font-size: 300%;
+      font-family: $title-font;
       letter-spacing: 3px;
-      span{
-        font-weight: bold;
-      }
+  
       @media only screen and (min-width: 600px){
         font-size: 400%;
       }

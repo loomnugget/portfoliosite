@@ -1,18 +1,22 @@
 @import "theme";
 
 .code-portfolio-container {
+  height: 100vh;
   background-color: $app-white;
   color: $app-black;
+  padding-top: 2%;
   .row, .col, .span-1-of-2{
     padding:0;
     margin:0;
   }
   h2 {
+    text-alig:center;
     text-transform: uppercase;
   }
+
   hr {
     text-align: center;
-    border: 5px solid $app-black;
+    border: 2px solid $app-black;
   }
 
   .project-container{
@@ -22,6 +26,7 @@
       width: 70%;
       margin: 0 15%;
     }
+
   }
   .project{
     padding: 2%;
