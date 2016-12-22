@@ -18,6 +18,11 @@ html, body {
 	height: 80px; /* '.push' must be the same height as 'footer' */
 }
 
+.bg-text {
+  background-image: url(http://i68.tinypic.com/nycl5y.jpg);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
 
 .btn {
   background: transparent;

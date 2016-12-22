@@ -16,11 +16,7 @@
     background-size: cover;
     height: 100vh;
   }
-  .bg-text {
-    background-image: url(http://i68.tinypic.com/nycl5y.jpg);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-  }
+
   .intro-box {
     width: 80%;
     padding-top: 40%;
@@ -38,7 +34,7 @@
       font-size: 300%;
       font-family: $title-font;
       letter-spacing: 3px;
-  
+
       @media only screen and (min-width: 600px){
         font-size: 400%;
       }
