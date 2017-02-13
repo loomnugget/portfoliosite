@@ -2,7 +2,7 @@
 
 .portfolio {
   margin-top: 60px;
-  background-color: $app-black;
+  //background-color: $app-black;
   .shape-container{
     color:$app-white;
     padding: 0;
@@ -14,7 +14,7 @@
       float: left;
       display:block;
       cursor: pointer;
-      border: 3px solid $app-black;
+      border: 3px solid $app-white;
 
       h2 {
         z-index: 12;

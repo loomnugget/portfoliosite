@@ -2,8 +2,8 @@
 @import "vendor";
 
 .navbar {
-  background-color: $app-nav;
-  border-bottom: 1px solid $app-nav;
+  background: transparent;
+  // border-bottom: 1px solid $app-nav;
   position: fixed;
   height: 60px;
   top: 0;
@@ -22,8 +22,7 @@
   ul{
     margin: 0;
     padding: 0;
-    border-bottom: 2px solid $app-black;
-
+  //  border-bottom: 2px solid $app-black;
   }
 
   li {
@@ -31,7 +30,7 @@
     display:inline-block;
     text-decoration: none;
     float: right;
-    border-left: 2px solid $app-black;
+    // border-left: 2px solid $app-black;
   }
 
  a {
@@ -51,11 +50,12 @@
     }
   }
 
-  li.active {
-    background: $nav-active;
-  }
+  // li.active {
+  //   background: $nav-active;
+  // }
   li:hover{
-    background: rgba(255, 255, 255, .5);
+    //background: rgba(255, 255, 255, .5);
+    font-weight: bold;
   }
 
 }

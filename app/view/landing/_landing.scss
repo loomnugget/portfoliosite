@@ -1,20 +1,99 @@
 @import "theme";
 
 .landing {
+  .landing-container{
+    width: 100%;
+    padding: .5%;
+
+    .img-container{
+      float: left;
+      width: 98%;
+      height: 300px;
+      margin: 1%;
+      color: $app-white;
+      background-color: $app-secondary2;
+      padding: 1%;
+      h3{
+        text-transform: uppercase;
+      }
+    }
+    // .img1{
+    //   background-image:
+    //     linear-gradient(to bottom,
+    //       #e96443,
+    //       #904e95
+    //     ),
+    //     url('http://i68.tinypic.com/dy0zd0.jpg');
+    // }
+    // .img2{
+    //   background-image:
+    //     linear-gradient(to bottom,
+    //       #FAFFD1,
+    //       #A1FFCE
+    //     ),
+    //     url('http://i68.tinypic.com/dy0zd0.jpg');
+    // }
+    // .img3{
+    //   background-image:
+    //     linear-gradient(to bottom,
+    //       rgba(255, 255, 255, 0.1),
+    //       rgba(255,255,255, .9)
+    //     ),
+    //     url('http://i68.tinypic.com/dy0zd0.jpg');
+    // }
+  }
   header {
-    padding-top: 0px;
+    padding: 5%;
     margin: 0;
     color: $app-black;
-    background-image:
-      linear-gradient(135deg,
-        rgba(255, 255, 255, .7),
-        rgba(255,255,255, .1)
-      ),
-      url('http://i67.tinypic.com/jsdh6w.jpg');
-      //http://i68.tinypic.com/nycl5y.jpg
+    background: #000;
+    // background-image:
+    //   linear-gradient(to bottom,
+    //     rgba(0,0,0, .5),
+    //     rgba(255,255,255, 1)
+    //   ),
+      // url('../scss/img/trees1.jpg');
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    height: 300px;
+  }
+
+  h2{
+    margin-top: 50px;
+    font-size: 400%;
+    text-transform: uppercase;
+    font-family: $app-font;
+    color: $app-white;
+  }
+
+  .btn{
+    border: 5px solid $app-black;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-color: $app-black;
+    background: transparent;
+    font-family: $app-font;
+    padding: 12px 15px;
+    margin-top: 10px;
+  }
+
+  .btn:hover {
+    background:rgba(255,255,255,.5);
+  }
+
+  .contact-icon{
+    float:left;
+    height: 100%;
+    font-size: 70px;
+    padding: 20px 24px;
+    margin: 1% 0;
+    background-color: transparent;
+    color: $app-black;
+    transition: .2s;
+  }
+  .contact-icon:hover{
+    color: $app-white;
   }
 
   .intro-box {
@@ -52,36 +131,6 @@
       @media only screen and (min-width: 600px){
         font-size: 200%;
       }
-    }
-    .btn{
-      border: 5px solid $app-black;
-      font-size: 20px;
-      font-weight: 300;
-      letter-spacing: 1px;
-      font-color: $app-black;
-      background: transparent;
-      font-family: $app-font;
-      padding: 20px 30px;
-      margin-top: 10px;
-      margin-left: 15px;
-    }
-
-    .btn:hover {
-      background:rgba(255,255,255,.5);
-    }
-
-    .contact-icon{
-      float:left;
-      height: 100%;
-      font-size: 70px;
-      padding: 20px 24px;
-      margin: 1% 0;
-      background-color: transparent;
-      color: $app-black;
-      transition: .2s;
-    }
-    .contact-icon:hover{
-      color: $app-white;
     }
   }
 }

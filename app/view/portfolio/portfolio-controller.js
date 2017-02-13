@@ -12,12 +12,12 @@ function PortfolioController($log) {
   this.items = [
     {
       id: 'item1',
-      title: 'Code Projects',
+      title: 'Painting',
       url: 'http://i64.tinypic.com/mjsiep.jpg',
     },
     {
       id: 'item2',
-      title: 'Art Projects',
+      title: 'Drawing',
       url: 'http://i67.tinypic.com/wve2oy.jpg',
     },
   ];
