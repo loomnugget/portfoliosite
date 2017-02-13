@@ -21,31 +21,18 @@
     }
   }
 
-  //---------------------testing
+  // Responsive squares
   .square {
     position: relative;
     border: 1px solid #fff;
     width: 100%;
+    background-position: center;
   }
 
   .square:after {
     content: "";
     display: block;
     padding-bottom: 100%;
-  }
-
-  .content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-  //---------------------testing
-
-  .frame-square {
-    display: inline-block;
-    vertical-align: top;
-    width: 100%;
-    height: 400px;
   }
 
   .hover-text {
@@ -56,7 +43,7 @@
     color: $app-black;
     border: 2px solid $app-black;
     background: rgba(255, 255, 255, .9);
-    padding: 25%;
+    padding: 10%;
     height: 100%;
     width: 100%;
     opacity: 0;
@@ -73,9 +60,7 @@
       color: $app-black;
     }
     .modal-icon {
-      height: 100%;
       font-size: 60px;
-      padding: 20px 24px;
       margin: 1% 0;
       background-color: transparent;
       color: $app-black;
@@ -86,25 +71,8 @@
       color: $app-secondary;
     }
   }
-
   .hover-text:hover{
     opacity: 1;
   }
-  .crop {
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-   //background-size: contain
-    img {
-      display: block;
-      min-width: 100%;
-      min-height: 100%;
-      margin: auto;
-      position: absolute;
-      top: -100%;
-      right: -100%;
-      bottom: -100%;
-      left: -100%;
-    }
-  }
+
 }

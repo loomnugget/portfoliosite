@@ -11,7 +11,21 @@
       </div>
   </div>
 
-   <art-portfolio></art-portfolio>
+  <section class="art-portfolio-container">
+    <!-- Image Gallery -->
+    <div class="portfolio-container clearfix">
+      <div class="portfolio-img-container"
+       ng-repeat="item in portfolioCtrl.items">
+        <div class="square" ng-style="{'background-image': 'url({{item.url}})'}">
+            <div class="hover-text">
+              <h3>{{item.title}}</h3>
+              <h4>{{item.category}}</h4>
+              <span class="icon modal-icon">
+                <i class="icon-basic-magnifier-plus" ng-click="portfolioCtrl.open(item)"></i>
+              </span>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
 </main>
-
-<!-- ng-style="{'background-image': 'url({{item.url}})'}" -->

@@ -53191,7 +53191,7 @@
 /* 37 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"portfolio\">\n    <div class=\"navigation clearfix\">\n      <div class=\"menu-item\">\n        <h2>All</h2>\n      </div>\n      <div class=\"menu-item\">\n        <h2>Drawing</h2>\n      </div>\n      <div class=\"menu-item\">\n        <h2>Painting</h2>\n      </div>\n  </div>\n\n   <art-portfolio></art-portfolio>\n</main>\n\n<!-- ng-style=\"{'background-image': 'url({{item.url}})'}\" -->\n";
+	module.exports = "<main class=\"portfolio\">\n    <div class=\"navigation clearfix\">\n      <div class=\"menu-item\">\n        <h2>All</h2>\n      </div>\n      <div class=\"menu-item\">\n        <h2>Drawing</h2>\n      </div>\n      <div class=\"menu-item\">\n        <h2>Painting</h2>\n      </div>\n  </div>\n\n  <section class=\"art-portfolio-container\">\n    <!-- Image Gallery -->\n    <div class=\"portfolio-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in portfolioCtrl.items\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n            <div class=\"hover-text\">\n              <h3>{{item.title}}</h3>\n              <h4>{{item.category}}</h4>\n              <span class=\"icon modal-icon\">\n                <i class=\"icon-basic-magnifier-plus\" ng-click=\"portfolioCtrl.open(item)\"></i>\n              </span>\n            </div>\n          </div>\n      </div>\n    </div>\n  </section>\n</main>\n";
 
 /***/ },
 /* 38 */
@@ -53308,10 +53308,121 @@
 
 	__webpack_require__(53);
 
-	module.exports = ['$log', PortfolioController];
+	module.exports = ['$log', '$uibModal', PortfolioController];
 
-	function PortfolioController($log) {
+	function PortfolioController($log, $uibModal) {
 	  $log.debug('init portfolioCtrl');
+
+	  this.open = function (item) {
+	    var modalInstance = $uibModal.open({
+	      component: 'modal',
+	      size: 'lg',
+	      resolve: {
+	        imageToggle: function imageToggle() {
+	          return item;
+	        }
+	      }
+	    });
+
+	    return modalInstance;
+	  };
+
+	  this.items = [{
+	    id: '1',
+	    title: 'Art 1',
+	    url: 'http://i65.tinypic.com/1z5kqcx.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '2',
+	    title: 'Art 2',
+	    url: 'http://i63.tinypic.com/t66vsm.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '3',
+	    title: 'Art 3',
+	    url: 'http://i64.tinypic.com/5l2jgm.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '4',
+	    title: 'Art 4',
+	    url: 'http://i64.tinypic.com/2qa45kg.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '5',
+	    title: 'Art 5',
+	    url: 'http://i64.tinypic.com/fz3spy.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '6',
+	    title: 'Art 6',
+	    url: 'http://i64.tinypic.com/2j2g9kx.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '7',
+	    title: 'Art 7',
+	    url: 'http://i66.tinypic.com/2zftwfs.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '8',
+	    title: 'Art 8',
+	    url: 'http://i65.tinypic.com/35l51yv.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '9',
+	    title: 'Art 9',
+	    url: 'http://i63.tinypic.com/14wpy6a.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '10',
+	    title: 'Art 10',
+	    url: 'http://i63.tinypic.com/zmmv86.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '11',
+	    title: 'Art 11',
+	    url: 'http://i67.tinypic.com/2q2og7t.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '12',
+	    title: 'Art 12',
+	    url: 'http://i63.tinypic.com/2zdt444.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '13',
+	    title: 'Art 13',
+	    url: 'http://i66.tinypic.com/15g5p9i.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '14',
+	    title: 'Art 14',
+	    url: 'http://i67.tinypic.com/wve2oy.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '15',
+	    title: 'Art 15',
+	    url: 'http://i67.tinypic.com/10x51fb.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '16',
+	    title: 'Art 16',
+	    url: 'http://i66.tinypic.com/qso4n7.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '17',
+	    title: 'Art 17',
+	    url: 'http://i65.tinypic.com/ww128k.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '18',
+	    title: 'Art 18',
+	    url: 'http://i65.tinypic.com/24mzzh4.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '19',
+	    title: 'Art 19',
+	    url: 'http://i64.tinypic.com/2d8ntx2.jpg',
+	    category: 'Drawing'
+	  }];
 	}
 
 /***/ },
@@ -53434,83 +53545,98 @@
 	  this.items = [{
 	    id: '1',
 	    title: 'Art 1',
-	    src: 'http://i65.tinypic.com/1z5kqcx.jpg',
-	    category: 'Acrylic'
+	    url: 'http://i65.tinypic.com/1z5kqcx.jpg',
+	    category: 'Painting'
 	  }, {
 	    id: '2',
 	    title: 'Art 2',
-	    src: 'http://i63.tinypic.com/t66vsm.jpg',
-	    category: 'Acrylic'
+	    url: 'http://i63.tinypic.com/t66vsm.jpg',
+	    category: 'Painting'
 	  }, {
 	    id: '3',
 	    title: 'Art 3',
-	    src: 'http://i64.tinypic.com/5l2jgm.jpg',
-	    category: 'Acrylic'
+	    url: 'http://i64.tinypic.com/5l2jgm.jpg',
+	    category: 'Painting'
 	  }, {
 	    id: '4',
 	    title: 'Art 4',
-	    src: 'http://i64.tinypic.com/2qa45kg.jpg',
-	    category: 'Acrylic'
+	    url: 'http://i64.tinypic.com/2qa45kg.jpg',
+	    category: 'Painting'
 	  }, {
 	    id: '5',
 	    title: 'Art 5',
-	    src: 'http://i64.tinypic.com/fz3spy.jpg'
+	    url: 'http://i64.tinypic.com/fz3spy.jpg',
+	    category: 'Painting'
 	  }, {
 	    id: '6',
 	    title: 'Art 6',
-	    src: 'http://i64.tinypic.com/2j2g9kx.jpg'
+	    url: 'http://i64.tinypic.com/2j2g9kx.jpg',
+	    category: 'Painting'
 	  }, {
 	    id: '7',
 	    title: 'Art 7',
-	    src: 'http://i66.tinypic.com/2zftwfs.jpg'
+	    url: 'http://i66.tinypic.com/2zftwfs.jpg',
+	    category: 'Painting'
 	  }, {
 	    id: '8',
 	    title: 'Art 8',
-	    src: 'http://i65.tinypic.com/35l51yv.jpg'
+	    url: 'http://i65.tinypic.com/35l51yv.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '9',
 	    title: 'Art 9',
-	    src: 'http://i63.tinypic.com/14wpy6a.jpg'
+	    url: 'http://i63.tinypic.com/14wpy6a.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '10',
 	    title: 'Art 10',
-	    src: 'http://i63.tinypic.com/zmmv86.jpg'
+	    url: 'http://i63.tinypic.com/zmmv86.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '11',
 	    title: 'Art 11',
-	    src: 'http://i67.tinypic.com/2q2og7t.jpg'
+	    url: 'http://i67.tinypic.com/2q2og7t.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '12',
 	    title: 'Art 12',
-	    src: 'http://i63.tinypic.com/2zdt444.jpg'
+	    url: 'http://i63.tinypic.com/2zdt444.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '13',
 	    title: 'Art 13',
-	    src: 'http://i66.tinypic.com/15g5p9i.jpg'
+	    url: 'http://i66.tinypic.com/15g5p9i.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '14',
 	    title: 'Art 14',
-	    src: 'http://i67.tinypic.com/wve2oy.jpg'
+	    url: 'http://i67.tinypic.com/wve2oy.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '15',
 	    title: 'Art 15',
-	    src: 'http://i67.tinypic.com/10x51fb.jpg'
+	    url: 'http://i67.tinypic.com/10x51fb.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '16',
 	    title: 'Art 16',
-	    src: 'http://i66.tinypic.com/qso4n7.jpg'
+	    url: 'http://i66.tinypic.com/qso4n7.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '17',
 	    title: 'Art 17',
-	    src: 'http://i65.tinypic.com/ww128k.jpg'
+	    url: 'http://i65.tinypic.com/ww128k.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '18',
 	    title: 'Art 18',
-	    src: 'http://i65.tinypic.com/24mzzh4.jpg'
+	    url: 'http://i65.tinypic.com/24mzzh4.jpg',
+	    category: 'Drawing'
 	  }, {
 	    id: '19',
 	    title: 'Art 19',
-	    src: 'http://i64.tinypic.com/2d8ntx2.jpg'
+	    url: 'http://i64.tinypic.com/2d8ntx2.jpg',
+	    category: 'Drawing'
 	  }];
 	}
 
@@ -53525,7 +53651,7 @@
 /* 62 */
 /***/ function(module, exports) {
 
-	module.exports = "<section class=\"art-portfolio-container\">\n\n  <!-- Image Gallery -->\n  <!-- <div class=\"portfolio-container clearfix\">\n    <div class=\"portfolio-img-container\"\n     ng-repeat=\"item in artPortfolioCtrl.items\">\n      <div class=\"frame-square\"><div class=\"crop\">\n          <div class=\"hover-text\">\n            <h3>{{item.title}}</h3>\n            <h4>{{item.category}}</h4>\n            <i class=\"fa fa-plus-circle modal-icon\"\n            ng-click=\"artPortfolioCtrl.open(item)\"></i></span>\n          </div>\n          <img src=\"{{item.src}}\">\n        </div></div>\n    </div>\n  </div> -->\n\n  <div class=\"portfolio-container clearfix\">\n    <div class=\"portfolio-img-container\"\n     ng-repeat=\"item in artPortfolioCtrl.items\">\n      <div class=\"frame-square\"><div class=\"crop\">\n          <div class=\"hover-text\">\n            <h3>{{item.title}}</h3>\n            <h4>{{item.category}}</h4>\n            <i class=\"fa fa-plus-circle modal-icon\"\n            ng-click=\"artPortfolioCtrl.open(item)\"></i></span>\n          </div>\n          <img src=\"{{item.src}}\">\n        </div></div>\n    </div>\n  </div>\n\n</section>\n";
+	module.exports = "<section class=\"art-portfolio-container\">\n  <!-- Image Gallery -->\n  <div class=\"portfolio-container clearfix\">\n    <div class=\"portfolio-img-container\"\n     ng-repeat=\"item in artPortfolioCtrl.items\">\n      <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n          <div class=\"hover-text\">\n            <h3>{{item.title}}</h3>\n            <h4>{{item.category}}</h4>\n            <span class=\"icon modal-icon\">\n              <i class=\"icon-basic-magnifier-plus\" ng-click=\"artPortfolioCtrl.open(item)\"></i>\n            </span>\n          </div>\n        </div>\n    </div>\n  </div>\n</section>\n";
 
 /***/ },
 /* 63 */
