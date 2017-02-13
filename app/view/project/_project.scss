@@ -3,10 +3,11 @@
 
 .project-container {
   margin-top: 60px;
+  margin-bottom: 100px;
   h3{
     color: $app-white;
-    font-size: 300%;
-    margin-top: 30px;
+    margin-top: 60px;
+    font-size: 320%;
     padding: 2%;
     text-align: center;
   }
@@ -29,7 +30,6 @@
       @media only screen and (min-width: 900px){
       }
       .icon{
-        //background: linear-gradient(to bottom, #FAFFD1, #A1FFCE);
         font-size: 120px;
       }
     }
@@ -42,11 +42,24 @@
     width: 70%;
     margin: 3% 15%;
     padding: 1%;
+
     h4{
       font-size: 300%;
       padding: 1%;
-      // border-bottom: 1px solid $app-white;
-      text-align: center;
+      border-bottom: 1px solid $app-white;
+      span{
+        float: right;
+      }
+      .info-icon{
+        margin-left: 20px;
+        background: -webkit-linear-gradient(#FAFFD1, #A1FFCE);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-color: transparent;
+        transition: .2s;
+      }
+      .info-icon:hover{
+      }
     }
     h5{
       font-size: 200%;
@@ -54,7 +67,7 @@
     }
     p{
       font-size: 110%;
-      
+
     }
     .info-body-container{
       padding:1% 3%;
