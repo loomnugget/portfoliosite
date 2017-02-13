@@ -9,6 +9,7 @@
   left: 0;
   width: 100%;
   z-index: 100;
+
   .navbar-container{
     height: 100%;
     padding: 0;
@@ -17,7 +18,7 @@
   ul{
     margin: 0;
     padding: 0;
-  //  border-bottom: 2px solid $app-black;
+    border-bottom: 2px solid rgba(255,255,255,.3);
   }
 
   li {
@@ -25,7 +26,6 @@
     display:inline-block;
     text-decoration: none;
     float: right;
-    // border-left: 2px solid $app-black;
   }
   .navbar-brand {
     float: left;
@@ -49,13 +49,4 @@
   a:hover{
     color: $app-white;
   }
-
-  // li.active {
-  //   background: $nav-active;
-  // }
-  li:hover{
-    //background: rgba(255, 255, 255, .5);
-    font-weight: bold;
-  }
-
 }

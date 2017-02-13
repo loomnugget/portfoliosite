@@ -53197,7 +53197,7 @@
 /* 38 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"project-container\">\n  <div class=\"row\">\n    <h3>Selected Projects</h3>\n    <hr class=\"gradient\">\n  </div>\n\n  <div class=\"row\">\n    <div class=\"project-icon-container\">\n\n      <a class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-globe\"></i></span>\n        <h4>Pup Tracker</h4>\n        <h5>Full Stack App</h5>\n\n      </a>\n\n      <a class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-calculator\"></i></span>\n        <h4>3D Engine</h4>\n        <h5>Javascript and Canvas</h5>\n      </a>\n\n      <a class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-lightbulb\"></i></span>\n        <h4>[art-c]</h4>\n        <h5>Full Stack App</h5>\n      </a>\n\n    </div>\n  </div>\n\n</main>\n";
+	module.exports = "<main class=\"project-container\">\n  <div class=\"row\">\n    <h3>Selected Projects</h3>\n    <hr class=\"gradient\">\n  </div>\n\n  <div class=\"row\">\n    <div class=\"project-icon-container\">\n      <a ng-click=\"projectCtrl.selectItem(1)\" class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-globe\"></i></span>\n        <h4>Pup Tracker</h4>\n        <h5>Full Stack App</h5>\n      </a>\n\n      <a ng-click=\"projectCtrl.selectItem(2)\" class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-calculator\"></i></span>\n        <h4>3D Engine</h4>\n        <h5>Javascript and Canvas</h5>\n      </a>\n\n      <a ng-click=\"projectCtrl.selectItem(3)\" class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-lightbulb\"></i></span>\n        <h4>[art-c]</h4>\n        <h5>Full Stack App</h5>\n      </a>\n    </div>\n  </div>\n\n  <div class=\"row\" ng-if=\"projectCtrl.isVisible1\">\n    <div class=\"info-container\">\n    <h4>Pup Tracker</h4>\n    <hr class=\"gradient\">\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>Rest API used by research scientists to track mouse breeding patterns.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node.js, Angular, Webpack, Express, Angular ui Calendar</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible2\">\n  <h2>TESTING</h2>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible3\">\n  <h2>TESTING</h2>\n\n</div>\n\n\n</main>\n";
 
 /***/ },
 /* 39 */
@@ -53346,21 +53346,39 @@
 	function ProjectController($log) {
 	  $log.debug('init projectCtrl');
 
+	  this.isVisible1 = false;
+	  this.isVisible2 = false;
+	  this.isVisible3 = false;
+
 	  this.states = {};
 	  this.states.activeItem = 'item1';
 	  this.items = [{
 	    id: 'item1',
-	    title: 'Puptracker',
-	    url: ''
+	    title: 'Puptracker'
 	  }, {
 	    id: 'item2',
-	    title: '3D Engine',
-	    url: ''
+	    title: '3D Engine'
 	  }, {
 	    id: 'item3',
-	    title: 'Art-C',
-	    url: ''
+	    title: 'Art-C'
 	  }];
+	  this.selectItem = function (item) {
+	    if (item === 1) {
+	      this.isVisible1 = true;
+	      this.isVisible2 = false;
+	      this.isVisible3 = false;
+	    }
+	    if (item === 2) {
+	      this.isVisible2 = true;
+	      this.isVisible1 = false;
+	      this.isVisible3 = false;
+	    }
+	    if (item === 3) {
+	      this.isVisible3 = true;
+	      this.isVisible1 = false;
+	      this.isVisible2 = false;
+	    }
+	  };
 	}
 
 /***/ },

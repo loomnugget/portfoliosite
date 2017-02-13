@@ -6,27 +6,142 @@
 
   <div class="row">
     <div class="project-icon-container">
-
-      <a class="project-icon">
+      <a ng-click="projectCtrl.selectItem(1)" class="project-icon">
         <span class="icon"><i class="icon-basic-globe"></i></span>
         <h4>Pup Tracker</h4>
         <h5>Full Stack App</h5>
-
       </a>
 
-      <a class="project-icon">
+      <a ng-click="projectCtrl.selectItem(2)" class="project-icon">
         <span class="icon"><i class="icon-basic-calculator"></i></span>
         <h4>3D Engine</h4>
         <h5>Javascript and Canvas</h5>
       </a>
 
-      <a class="project-icon">
+      <a ng-click="projectCtrl.selectItem(3)" class="project-icon">
         <span class="icon"><i class="icon-basic-lightbulb"></i></span>
         <h4>[art-c]</h4>
         <h5>Full Stack App</h5>
       </a>
-
     </div>
   </div>
+
+  <div class="row" ng-if="projectCtrl.isVisible1">
+    <div class="info-container">
+    <h4>Pup Tracker</h4>
+    <hr class="gradient">
+      <div class="info-body-container">
+        <div class="row">
+          <div class="col span-1-of-2">
+            <h5>Summary</h5>
+            <p>Rest API used by research scientists to track mouse breeding patterns.</p>
+          </div>
+          <div class="col span-1-of-2">
+            <h5>Tools</h5>
+            <p>Node.js, Angular, Webpack, Express, Angular ui Calendar</p>
+          </div>
+        </div>
+      <div class="row">
+        <h5>Thoughts</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.
+          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.
+          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.
+          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.
+          Proin suscipit pellentesque purus et ornare.
+          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.
+          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>
+        <h5>Going Forward</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.
+          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.
+          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.
+          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.
+          Proin suscipit pellentesque purus et ornare.
+          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.
+          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" ng-if="projectCtrl.isVisible2">
+  <div class="info-container">
+    <h4>3D Engine</h4>
+    <hr class="gradient">
+      <div class="info-body-container">
+        <div class="row">
+          <div class="col span-1-of-2">
+            <h5>Summary</h5>
+            <p>3D physics engine</p>
+          </div>
+          <div class="col span-1-of-2">
+            <h5>Tools</h5>
+            <p>React, Node, HTML5 Canvas</p>
+          </div>
+        </div>
+      <div class="row">
+        <h5>Thoughts</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.
+          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.
+          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.
+          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.
+          Proin suscipit pellentesque purus et ornare.
+          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.
+          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>
+        <h5>Going Forward</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.
+          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.
+          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.
+          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.
+          Proin suscipit pellentesque purus et ornare.
+          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.
+          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" ng-if="projectCtrl.isVisible3">
+  <div class="info-container">
+    <h4>[art-c]</h4>
+    <hr class="gradient">
+      <div class="info-body-container">
+        <div class="row">
+          <div class="col span-1-of-2">
+            <h5>Summary</h5>
+            <p>Platform that allows artists to share and sell work in their community.</p>
+          </div>
+          <div class="col span-1-of-2">
+            <h5>Tools</h5>
+            <p>Node.js, Angular, Webpack, Express, AWS</p>
+          </div>
+        </div>
+      <div class="row">
+        <h5>Thoughts</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.
+          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.
+          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.
+          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.
+          Proin suscipit pellentesque purus et ornare.
+          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.
+          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>
+        <h5>Going Forward</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.
+          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.
+          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.
+          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.
+          Proin suscipit pellentesque purus et ornare.
+          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.
+          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 </main>
