@@ -19,15 +19,14 @@
   <div class="portfolio-container clearfix">
     <div class="portfolio-img-container"
      ng-repeat="item in artPortfolioCtrl.items">
-      <div class="frame-square"><div class="crop">
+      <div class="square" ng-style="{'background-image': 'url({{item.url}})'}">
           <div class="hover-text">
             <h3>{{item.title}}</h3>
             <h4>{{item.category}}</h4>
             <i class="fa fa-plus-circle modal-icon"
             ng-click="artPortfolioCtrl.open(item)"></i></span>
           </div>
-          <img src="{{item.src}}">
-        </div></div>
+        </div>
     </div>
   </div>
 
