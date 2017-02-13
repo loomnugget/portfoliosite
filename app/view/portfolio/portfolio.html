@@ -1,16 +1,17 @@
 <main class="portfolio">
-  <div class="shape-container clearfix">
-    <ul class="navigation">
-      <li ng-repeat="item in portfolioCtrl.items" class="item"
-        ng-style="{'background-image': 'url({{item.url}})'}"
-        ng-model="active"
-        ng-class="{'active': item.id == portfolioCtrl.states.activeItem}"
-        ng-click="portfolioCtrl.states.activeItem = item.id">
-        <h2>{{item.title}}</h2>
-      </li>
-  </ul>
+    <div class="navigation clearfix">
+      <div class="menu-item">
+        <h2>All</h2>
+      </div>
+      <div class="menu-item">
+        <h2>Drawing</h2>
+      </div>
+      <div class="menu-item">
+        <h2>Painting</h2>
+      </div>
   </div>
 
-   <!-- <code-portfolio ng-hide="portfolioCtrl.states.activeItem === 'item2'"></code-portfolio> -->
-   <art-portfolio ng-show="portfolioCtrl.states.activeItem === 'item2'"></art-portfolio>
+   <art-portfolio></art-portfolio>
 </main>
+
+<!-- ng-style="{'background-image': 'url({{item.url}})'}" -->

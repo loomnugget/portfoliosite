@@ -27,7 +27,7 @@
     margin: 0 auto;
     color: $app-black;
     border: 2px solid $app-black;
-    background: rgba(255, 255, 255, .5);
+    background: rgba(255, 255, 255, .9);
     padding: 25%;
     height: 100%;
     width: 100%;
@@ -35,8 +35,14 @@
     transition: all 0.5s;
 
     h3 {
-      text-transform: uppercase;
+      color: $app-black;
+      font-style: $app-font2;
+      font-size: 400%;
+    }
+    h4{
       font-size: 200%;
+      font-style: italic;
+      color: $app-black;
     }
     .modal-icon {
       height: 100%;
@@ -49,7 +55,7 @@
       cursor: pointer;
     }
     .modal-icon:hover{
-      color: $app-white;
+      color: $app-secondary;
     }
   }
 

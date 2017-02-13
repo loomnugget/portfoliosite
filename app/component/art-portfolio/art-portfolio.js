@@ -29,21 +29,25 @@ function ArtPortfolioController($log, $uibModal){
       id: '1',
       title: 'Art 1',
       src: 'http://i65.tinypic.com/1z5kqcx.jpg',
+      category: 'Acrylic',
     },
     {
       id: '2',
       title: 'Art 2',
       src: 'http://i63.tinypic.com/t66vsm.jpg',
+      category: 'Acrylic',
     },
     {
       id: '3',
       title: 'Art 3',
       src: 'http://i64.tinypic.com/5l2jgm.jpg',
+      category: 'Acrylic',
     },
     {
       id: '4',
       title: 'Art 4',
       src: 'http://i64.tinypic.com/2qa45kg.jpg',
+      category: 'Acrylic',
     },
     {
       id: '5',
@@ -120,7 +124,6 @@ function ArtPortfolioController($log, $uibModal){
       title: 'Art 19',
       src: 'http://i64.tinypic.com/2d8ntx2.jpg',
     },
-
 
   ];
 }

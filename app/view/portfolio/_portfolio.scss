@@ -2,19 +2,24 @@
 
 .portfolio {
   margin-top: 60px;
+  width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
   background-color: $app-black;
-  .shape-container{
-    color:$app-white;
-    padding: 0;
-    width: 100%;
 
-    ul.navigation li {
-      margin-top: 2px;
-      width: 50%;
+  .navigation{
+    width: 100%;
+    margin:0;
+    padding:0;
+    color:$app-white;
+
+    .menu-item {
+      width: 32%;
+      margin: 1% .66666667% 0 .66666667%;
       float: left;
       display:block;
       cursor: pointer;
-      border: 3px solid $app-black;
+      border: 3px solid rgba(255,255,255,.5);
 
       h2 {
         z-index: 12;
@@ -28,10 +33,10 @@
         }
       }
     }
-    li.active {
+    .menu-item:active {
       border: 3px solid $app-white;
     }
-    li:hover{
+    .menu-item:hover{
       z-index: 5;
       background: $app-tertiary;
       opacity: .9;
