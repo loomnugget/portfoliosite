@@ -1,5 +1,7 @@
 <nav class="navbar">
   <ul class="navbar-container">
+    <li class="navbar-brand"><a href="/landing">Home</a></li>
+
     <li ng-repeat="item in navbarCtrl.items"
     name="item"
     ng-class="{'active': item.id == navbarCtrl.states.activeItem}"

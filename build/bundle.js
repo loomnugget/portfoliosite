@@ -49,31 +49,31 @@
 	__webpack_require__(1);
 
 	// Require node modules
-	var path = __webpack_require__(10);
+	var path = __webpack_require__(19);
 
 	// Require npm modules
-	var angular = __webpack_require__(12);
-	var camelcase = __webpack_require__(14);
-	var pascalcase = __webpack_require__(15);
+	var angular = __webpack_require__(21);
+	var camelcase = __webpack_require__(23);
+	var pascalcase = __webpack_require__(24);
 
 	// Require angular modules
-	var ngTouch = __webpack_require__(16);
-	var ngAnimate = __webpack_require__(18);
-	var uiRouter = __webpack_require__(20);
-	var uiBootstrap = __webpack_require__(21);
-	var ngFileUpload = __webpack_require__(23);
+	var ngTouch = __webpack_require__(25);
+	var ngAnimate = __webpack_require__(27);
+	var uiRouter = __webpack_require__(29);
+	var uiBootstrap = __webpack_require__(30);
+	var ngFileUpload = __webpack_require__(32);
 
 	// Create angular module
 	var app = angular.module('app', [ngTouch, uiBootstrap, ngAnimate, uiRouter, ngFileUpload]);
 
 	// Load config
-	var context = __webpack_require__(25);
+	var context = __webpack_require__(34);
 	context.keys().forEach(function (path) {
 	  app.config(context(path));
 	});
 
 	// Load view controllers
-	context = __webpack_require__(31);
+	context = __webpack_require__(41);
 	context.keys().forEach(function (key) {
 	  var name = pascalcase(path.basename(key, '.js'));
 	  var module = context(key);
@@ -81,7 +81,7 @@
 	});
 
 	// Load components
-	context = __webpack_require__(44);
+	context = __webpack_require__(58);
 	context.keys().forEach(function (key) {
 	  var name = camelcase(path.basename(key, '.js'));
 	  var module = context(key);
@@ -103,7 +103,16 @@
 /* 7 */,
 /* 8 */,
 /* 9 */,
-/* 10 */
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -331,10 +340,10 @@
 	    }
 	;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ },
-/* 11 */
+/* 20 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -520,15 +529,15 @@
 
 
 /***/ },
-/* 12 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(13);
+	__webpack_require__(22);
 	module.exports = angular;
 
 
 /***/ },
-/* 13 */
+/* 22 */
 /***/ function(module, exports) {
 
 	/**
@@ -32917,7 +32926,7 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 14 */
+/* 23 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32979,7 +32988,7 @@
 
 
 /***/ },
-/* 15 */
+/* 24 */
 /***/ function(module, exports) {
 
 	/*!
@@ -33006,15 +33015,15 @@
 
 
 /***/ },
-/* 16 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(17);
+	__webpack_require__(26);
 	module.exports = 'ngTouch';
 
 
 /***/ },
-/* 17 */
+/* 26 */
 /***/ function(module, exports) {
 
 	/**
@@ -33768,15 +33777,15 @@
 
 
 /***/ },
-/* 18 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(19);
+	__webpack_require__(28);
 	module.exports = 'ngAnimate';
 
 
 /***/ },
-/* 19 */
+/* 28 */
 /***/ function(module, exports) {
 
 	/**
@@ -37934,7 +37943,7 @@
 
 
 /***/ },
-/* 20 */
+/* 29 */
 /***/ function(module, exports) {
 
 	/**
@@ -42548,16 +42557,16 @@
 	})(window, window.angular);
 
 /***/ },
-/* 21 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(22);
+	__webpack_require__(31);
 
 	module.exports = 'ui.bootstrap';
 
 
 /***/ },
-/* 22 */
+/* 31 */
 /***/ function(module, exports) {
 
 	/*
@@ -50192,14 +50201,14 @@
 	angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 23 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(24);
+	__webpack_require__(33);
 	module.exports = 'ngFileUpload';
 
 /***/ },
-/* 24 */
+/* 33 */
 /***/ function(module, exports) {
 
 	/**!
@@ -53103,11 +53112,11 @@
 
 
 /***/ },
-/* 25 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./router-config.js": 26
+		"./router-config.js": 35
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53120,11 +53129,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 25;
+	webpackContext.id = 34;
 
 
 /***/ },
-/* 26 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53136,29 +53145,35 @@
 	  $urlRouterProvider.when('/', '/landing');
 
 	  var states = [{
-	    name: 'welcome',
+	    name: 'Welcome',
 	    url: '/landing',
 	    controllerAs: 'landingCtrl',
 	    controller: 'LandingController',
-	    template: __webpack_require__(27)
+	    template: __webpack_require__(36)
 	  }, {
-	    name: 'portfolio',
+	    name: 'Art Portfolio',
 	    url: '/portfolio',
 	    controllerAs: 'portfolioCtrl',
 	    controller: 'PortfolioController',
-	    template: __webpack_require__(28)
+	    template: __webpack_require__(37)
 	  }, {
-	    name: 'about',
+	    name: 'Projects',
+	    url: '/projects',
+	    controllerAs: 'projectCtrl',
+	    controller: 'ProjectController',
+	    template: __webpack_require__(38)
+	  }, {
+	    name: 'About',
 	    url: '/about',
 	    controllerAs: 'aboutCtrl',
 	    controller: 'AboutController',
-	    template: __webpack_require__(29)
+	    template: __webpack_require__(39)
 	  }, {
-	    name: 'contact',
+	    name: 'Contact',
 	    url: '/contact',
 	    controllerAs: 'contactCtrl',
 	    controller: 'ContactController',
-	    template: __webpack_require__(30)
+	    template: __webpack_require__(40)
 	  }];
 
 	  states.forEach(function (state) {
@@ -53167,38 +53182,45 @@
 	}
 
 /***/ },
-/* 27 */
+/* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"landing\">\n  <header>\n\n    <div class=\"intro-box\">\n      <h1 class=\"bg-text\">Claudia<br>Cedfeldt</h1>\n      <h4> Developer / Artist </h4>\n      <a href=\"#/portfolio\"><button class=\"btn\">View Portfolio</button></a>\n    </div>\n\n  </header>\n</main>\n";
+	module.exports = "<main class=\"landing\">\n  <header>\n      <h2><strong>Lemon</strong>Candy</h2>\n      <!-- <a href=\"#/portfolio\"><button class=\"btn\">View Portfolio</button></a> -->\n  </header>\n\n          <span><i class=\"icon-basic-battery-full\"></i></span>\n\n\n</main>\n";
 
 /***/ },
-/* 28 */
+/* 37 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"portfolio\">\n  <div class=\"shape-container clearfix\">\n    <ul class=\"navigation\">\n      <li ng-repeat=\"item in portfolioCtrl.items\" class=\"item\"\n        ng-style=\"{'background-image': 'url({{item.url}})'}\"\n        ng-model=\"active\"\n        ng-class=\"{'active': item.id == portfolioCtrl.states.activeItem}\"\n        ng-click=\"portfolioCtrl.states.activeItem = item.id\">\n        <h2>{{item.title}}</h2>\n      </li>\n  </ul>\n  </div>\n\n   <code-portfolio ng-hide=\"portfolioCtrl.states.activeItem === 'item2'\"></code-portfolio>\n   <art-portfolio ng-show=\"portfolioCtrl.states.activeItem === 'item2'\"></art-portfolio>\n</main>\n";
+	module.exports = "<main class=\"portfolio\">\n  <div class=\"shape-container clearfix\">\n    <ul class=\"navigation\">\n      <li ng-repeat=\"item in portfolioCtrl.items\" class=\"item\"\n        ng-style=\"{'background-image': 'url({{item.url}})'}\"\n        ng-model=\"active\"\n        ng-class=\"{'active': item.id == portfolioCtrl.states.activeItem}\"\n        ng-click=\"portfolioCtrl.states.activeItem = item.id\">\n        <h2>{{item.title}}</h2>\n      </li>\n  </ul>\n  </div>\n\n   <!-- <code-portfolio ng-hide=\"portfolioCtrl.states.activeItem === 'item2'\"></code-portfolio> -->\n   <art-portfolio ng-show=\"portfolioCtrl.states.activeItem === 'item2'\"></art-portfolio>\n</main>\n";
 
 /***/ },
-/* 29 */
+/* 38 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"about\">\n\n  <!-- About-->\n<div class=\"about-container\">\n  <!-- Intro -->\n  <div class = \"intro-container\">\n    <div class=\"row bottom-space\">\n      <h2>About Me</h2>\n      <div class=\"span-container\">\n        <span><i class=\"fa fa-diamond\"></i><span>\n      </div>\n      <h4>I’m a software developer and artist who loves finding patterns, combining art and technology, and abstractions.\n      </h4>\n    </div>\n\n  <!-- Skills -->\n    <div class=\"text-container\">\n      <div class=\"bottom-space\">\n        <h3>Skills</h3>\n        <h4>Javascript/ES6, AngularJS, Node.js, Express, Webpack, Mocha,\n          Chai, HTML, CSS, Sass, Responsive Design, jQuery, Bootstrap, UX/UI, Git, AWS S3, OAuth</h4>\n      </div>\n\n      <div class=\"bottom-space\">\n        <h3>Interests</h3>\n          <h4>3D Programming, Data Visualization, VR/AR, Machine Learning, Creative Code, Data Structures/Algorithms</h4>\n      </div>\n\n      <div class=\"bottom-space\">\n        <h3>Education</h3>\n          <h4><span>Code Fellows | Seattle, WA | 2016</span></h4>\n          <h4>Advanced Javascript Software Development Certificate</h4>\n        </br>\n          <h4><span>SUNY Geneseo | Geneseo, NY | 2013</span></h4>\n          <h4>Bachelor’s of Science, Biology</h4>\n      </div>\n    </div>\n  </div>\n\n</div><!-- end about-->\n</main>\n";
+	module.exports = "<main class=\"project-container\">\n  <div class=\"row\">\n    <h3>Selected Projects</h3>\n    <hr class=\"gradient\">\n  </div>\n\n  <div class=\"row\">\n    <div class=\"project-icon-container\">\n\n      <a class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-globe\"></i></span>\n        <h4>Pup Tracker</h4>\n        <h5>Full Stack App</h5>\n\n      </a>\n\n      <a class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-calculator\"></i></span>\n        <h4>3D Engine</h4>\n        <h5>Javascript and Canvas</h5>\n      </a>\n\n      <a class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-lightbulb\"></i></span>\n        <h4>[art-c]</h4>\n        <h5>Full Stack App</h5>\n      </a>\n\n    </div>\n  </div>\n\n</main>\n";
 
 /***/ },
-/* 30 */
+/* 39 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"contact\">\n  <div class=\"textbox\">\n    <div class=\"row\">\n      <h2 class=\"bg-text\">Want to work with me?</h2>\n      <h3>Send me a message: <span> claudia.cedfeldt@gmail.com </span></h3>\n      <h3>Or find me on the interwebs:</h3>\n    </div>\n\n    <div class=\"row\">\n      <div class=\"span-container\">\n        <span><a href=\"https://github.com/loomnugget\">\n        <i class=\"fa fa-github contact-icon github\"></i></a></span>\n        <span><a href=\"http://codepen.io/ploom\">\n        <i class=\"fa fa-codepen contact-icon codepen\"></i></a></span>\n        <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n        <i class=\"fa fa-linkedin contact-icon\"></i></a></span>\n      </div>\n    </div>\n  </div>\n</main>\n";
+	module.exports = "<main class=\"about\">\n\n  <!-- About-->\n<div class=\"about-container\">\n  <!-- Intro -->\n  <div class = \"intro-container\">\n    <div class=\"row bottom-space\">\n      <h2>About Me</h2>\n      <div class=\"span-container\">\n        <span><i class=\"fa fa-diamond\"></i><span>\n      </div>\n      <!-- <h4>I’m a software developer and artist who loves finding patterns, combining art and technology, and abstractions. -->\n      </h4>\n    </div>\n\n  <!-- Skills -->\n    <div class=\"text-container\">\n      <div class=\"bottom-space\">\n        <!-- <h3>Skills</h3>\n        <h4>Javascript/ES6, AngularJS, Node.js, Express, Webpack, Mocha,\n          Chai, HTML, CSS, Sass, Responsive Design, jQuery, Bootstrap, UX/UI, Git, AWS S3, OAuth</h4> -->\n      </div>\n\n      <div class=\"bottom-space\">\n        <!-- <h3>Interests</h3>\n          <h4>3D Programming, Data Visualization, VR/AR, Machine Learning, Creative Code, Data Structures/Algorithms</h4> -->\n      </div>\n\n      <div class=\"bottom-space\">\n        <!-- <h3>Education</h3>\n          <h4><span>Code Fellows | Seattle, WA | 2016</span></h4>\n          <h4>Advanced Javascript Software Development Certificate</h4>\n        </br>\n          <h4><span>SUNY Geneseo | Geneseo, NY | 2013</span></h4>\n          <h4>Bachelor’s of Science, Biology</h4> -->\n      </div>\n    </div>\n  </div>\n\n</div><!-- end about-->\n</main>\n";
 
 /***/ },
-/* 31 */
+/* 40 */
+/***/ function(module, exports) {
+
+	module.exports = "<main class=\"contact\">\n\n</main>\n";
+
+/***/ },
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./about/about-controller.js": 32,
-		"./contact/contact-controller.js": 35,
-		"./landing/landing-controller.js": 38,
-		"./portfolio/portfolio-controller.js": 41
+		"./about/about-controller.js": 42,
+		"./contact/contact-controller.js": 45,
+		"./landing/landing-controller.js": 48,
+		"./portfolio/portfolio-controller.js": 52,
+		"./project/project-controller.js": 55
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53211,16 +53233,16 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 31;
+	webpackContext.id = 41;
 
 
 /***/ },
-/* 32 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(33);
+	__webpack_require__(43);
 
 	module.exports = ['$log', AboutController];
 
@@ -53229,19 +53251,19 @@
 	}
 
 /***/ },
-/* 33 */
+/* 43 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 34 */,
-/* 35 */
+/* 44 */,
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(36);
+	__webpack_require__(46);
 
 	module.exports = ['$log', ContactController];
 
@@ -53250,19 +53272,19 @@
 	}
 
 /***/ },
-/* 36 */
+/* 46 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 37 */,
-/* 38 */
+/* 47 */,
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(39);
+	__webpack_require__(49);
 
 	module.exports = ['$log', LandingController];
 
@@ -53271,19 +53293,20 @@
 	}
 
 /***/ },
-/* 39 */
+/* 49 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 40 */,
-/* 41 */
+/* 50 */,
+/* 51 */,
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(42);
+	__webpack_require__(53);
 
 	module.exports = ['$log', PortfolioController];
 
@@ -53294,32 +53317,69 @@
 	  this.states.activeItem = 'item1';
 	  this.items = [{
 	    id: 'item1',
-	    title: 'Code Projects',
+	    title: 'Painting',
 	    url: 'http://i64.tinypic.com/mjsiep.jpg'
 	  }, {
 	    id: 'item2',
-	    title: 'Art Projects',
+	    title: 'Drawing',
 	    url: 'http://i67.tinypic.com/wve2oy.jpg'
 	  }];
 	}
 
 /***/ },
-/* 42 */
+/* 53 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 43 */,
-/* 44 */
+/* 54 */,
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(56);
+
+	module.exports = ['$log', ProjectController];
+
+	function ProjectController($log) {
+	  $log.debug('init projectCtrl');
+
+	  this.states = {};
+	  this.states.activeItem = 'item1';
+	  this.items = [{
+	    id: 'item1',
+	    title: 'Puptracker',
+	    url: ''
+	  }, {
+	    id: 'item2',
+	    title: '3D Engine',
+	    url: ''
+	  }, {
+	    id: 'item3',
+	    title: 'Art-C',
+	    url: ''
+	  }];
+	}
+
+/***/ },
+/* 56 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 57 */,
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./art-portfolio/art-portfolio.js": 45,
-		"./code-portfolio/code-portfolio.js": 49,
-		"./footer/footer.js": 53,
-		"./modal/modal.js": 57,
-		"./navbar/navbar.js": 61
+		"./art-portfolio/art-portfolio.js": 59,
+		"./code-portfolio/code-portfolio.js": 63,
+		"./footer/footer.js": 67,
+		"./modal/modal.js": 71,
+		"./navbar/navbar.js": 75
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53332,19 +53392,19 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 44;
+	webpackContext.id = 58;
 
 
 /***/ },
-/* 45 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(46);
+	__webpack_require__(60);
 
 	module.exports = {
-	  template: __webpack_require__(48),
+	  template: __webpack_require__(62),
 	  controller: ['$log', '$uibModal', ArtPortfolioController],
 	  controllerAs: 'artPortfolioCtrl'
 	};
@@ -53445,28 +53505,28 @@
 	}
 
 /***/ },
-/* 46 */
+/* 60 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 47 */,
-/* 48 */
+/* 61 */,
+/* 62 */
 /***/ function(module, exports) {
 
 	module.exports = "<section class=\"art-portfolio-container\">\n\n  <!-- Image Gallery -->\n  <div class=\"portfolio-container clearfix\">\n    <div class=\"portfolio-img-container\"\n     ng-repeat=\"item in artPortfolioCtrl.items\">\n      <div class=\"frame-square\"><div class=\"crop\">\n          <div class=\"hover-text\">\n            <h3>{{item.title}}</h3>\n            <i class=\"fa fa-plus-circle modal-icon\"\n            ng-click=\"artPortfolioCtrl.open(item)\"></i></span>\n          </div>\n          <img src=\"{{item.src}}\">\n        </div></div>\n    </div>\n  </div>\n\n</section>\n";
 
 /***/ },
-/* 49 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(50);
+	__webpack_require__(64);
 
 	module.exports = {
-	  template: __webpack_require__(52),
+	  template: __webpack_require__(66),
 	  controller: ['$log', '$location', '$rootScope', CodePortfolioController],
 	  controllerAs: 'codePortfolioCtrl'
 	};
@@ -53476,28 +53536,28 @@
 	}
 
 /***/ },
-/* 50 */
+/* 64 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 51 */,
-/* 52 */
+/* 65 */,
+/* 66 */
 /***/ function(module, exports) {
 
 	module.exports = "<section class=\"code-portfolio-container\">\n\n  <!-- Project Container -->\n  <div class=\"project-container\">\n    <!-- 3D Project -->\n      <div class=\"project\">\n        <h2>3d Engine</h2>\n        <h3>\n          <p><span>Summary: </span>Generates rotating 3D polyhedra models using JavaScript and HTML5 Canvas</p>\n          <p><span>Tools: </span>React.js, Vanilla Javascript, Node.js, Webpack</p>\n        <h3>\n\n        <a href=\"https://github.com/loomnugget/js-3d-experiment\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n        <a href=\"http://codepen.io/ploom/pen/LRvzOk\">\n        <span><i class=\"fa fa-codepen project-icon codepen\"></i></span></a>\n      </div>\n      <hr>\n      <!-- Art-c Project -->\n      <div class=\"project\">\n        <h2>[art-c]</h2>\n        <h3>\n          <p><span>Summary: </span>Social media platform that allows local artists to display and share their work with others in their community.</p>\n          <p><span>Tools: </span>Node.js, AngularJS, Webpack, Gulp.js, MongoDB, Bootstrap, AWS S3</p>\n        <h3>\n        <a href=\"https://github.com/loomnugget/art-c\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n      </div>\n\n  </div>\n\n</section>\n";
 
 /***/ },
-/* 53 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(54);
+	__webpack_require__(68);
 
 	module.exports = {
-	  template: __webpack_require__(56),
+	  template: __webpack_require__(70),
 	  controller: ['$log', '$location', '$rootScope', FooterController],
 	  controllerAs: 'footerCtrl'
 	};
@@ -53507,28 +53567,28 @@
 	}
 
 /***/ },
-/* 54 */
+/* 68 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 55 */,
-/* 56 */
+/* 69 */,
+/* 70 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"footer\">\n  <p class=\"footer-text\">2016</p>\n\n  <span><a href=\"https://github.com/loomnugget\">\n  <i class=\"fa fa-github footer-icon github\"></i></a></span>\n  <span><a href=\"http://codepen.io/ploom\">\n  <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n  <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n  <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n</div>\n";
+	module.exports = "<div class=\"footer\">\n  <p class=\"footer-text\">2017</p>\n\n  <span><a href=\"https://github.com/loomnugget\">\n  <i class=\"fa fa-github footer-icon github\"></i></a></span>\n  <span><a href=\"http://codepen.io/ploom\">\n  <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n  <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n  <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n</div>\n";
 
 /***/ },
-/* 57 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(58);
+	__webpack_require__(72);
 
 	module.exports = {
-	  template: __webpack_require__(60),
+	  template: __webpack_require__(74),
 	  controller: ['$log', ModalController],
 	  controllerAs: 'modalCtrl',
 	  bindings: {
@@ -53547,37 +53607,35 @@
 	}
 
 /***/ },
-/* 58 */
+/* 72 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 59 */,
-/* 60 */
+/* 73 */,
+/* 74 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-container\">\n  <div class=\"modal-header\">\n    <h2>{{modalCtrl.modalData.title}}</h2>\n    <i class=\"fa fa-close modal-icon modal-close\"\n    ng-click=\"modalCtrl.handleClose()\"></i></span>\n  </div>\n\n  <div class=\"modal-body\" id=\"modal-body\">\n    <!-- Gallery image-->\n    <img src=\"{{modalCtrl.modalData.src}}\">\n    <!-- Arrow Icons -->\n    <!-- <div class=\"row center\">\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-left modal-icon modal-arrow\" ng-click=\"modalCtrl.nextImage()\"></i></span>\n      </div>\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-right modal-icon modal-arrow\" ng-click=\"modalCtrl.previousImage()\"></i></span>\n      </div>\n    </div> -->\n\n</div>\n";
 
 /***/ },
-/* 61 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(62);
+	__webpack_require__(76);
 
 	module.exports = {
-	  template: __webpack_require__(69),
+	  template: __webpack_require__(78),
 	  controller: ['$log', '$location', '$rootScope', NavbarController],
 	  controllerAs: 'navbarCtrl'
 	};
 
 	function NavbarController($log) {
 	  $log.debug('init navbarCtrl');
-
 	  this.states = {};
-	  // this.states.activeItem = 'item4';
 	  this.items = [{
 	    id: 'item1',
 	    title: 'Contact',
@@ -53588,32 +53646,27 @@
 	    url: '#/about'
 	  }, {
 	    id: 'item3',
-	    title: 'Portfolio',
+	    title: 'Art',
 	    url: '#/portfolio'
 	  }, {
 	    id: 'item4',
-	    title: 'Home',
-	    url: '#/landing'
+	    title: 'Projects',
+	    url: '#/projects'
 	  }];
 	}
 
 /***/ },
-/* 62 */
+/* 76 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */
+/* 77 */,
+/* 78 */
 /***/ function(module, exports) {
 
-	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <li ng-repeat=\"item in navbarCtrl.items\"\n    name=\"item\"\n    ng-class=\"{'active': item.id == navbarCtrl.states.activeItem}\"\n    ng-click=\"navbarCtrl.states.activeItem = item.id\">\n    <a href=\"{{item.url}}\">{{item.title}}</a></li>\n  </ul>\n</nav>\n";
+	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <li class=\"navbar-brand\"><a href=\"/landing\">Home</a></li>\n\n    <li ng-repeat=\"item in navbarCtrl.items\"\n    name=\"item\"\n    ng-class=\"{'active': item.id == navbarCtrl.states.activeItem}\"\n    ng-click=\"navbarCtrl.states.activeItem = item.id\">\n    <a href=\"{{item.url}}\">{{item.title}}</a></li>\n  </ul>\n</nav>\n";
 
 /***/ }
 /******/ ]);

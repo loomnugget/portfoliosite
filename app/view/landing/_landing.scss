@@ -5,57 +5,21 @@
     width: 100%;
     padding: .5%;
 
-    .img-container{
-      float: left;
-      width: 98%;
-      height: 300px;
-      margin: 1%;
-      color: $app-white;
-      background-color: $app-secondary2;
-      padding: 1%;
-      h3{
-        text-transform: uppercase;
-      }
-    }
-    // .img1{
-    //   background-image:
-    //     linear-gradient(to bottom,
-    //       #e96443,
-    //       #904e95
-    //     ),
-    //     url('http://i68.tinypic.com/dy0zd0.jpg');
-    // }
-    // .img2{
-    //   background-image:
-    //     linear-gradient(to bottom,
-    //       #FAFFD1,
-    //       #A1FFCE
-    //     ),
-    //     url('http://i68.tinypic.com/dy0zd0.jpg');
-    // }
-    // .img3{
-    //   background-image:
-    //     linear-gradient(to bottom,
-    //       rgba(255, 255, 255, 0.1),
-    //       rgba(255,255,255, .9)
-    //     ),
-    //     url('http://i68.tinypic.com/dy0zd0.jpg');
-    // }
   }
   header {
     padding: 5%;
     margin: 0;
     color: $app-black;
     background: #000;
-    // background-image:
-    //   linear-gradient(to bottom,
-    //     rgba(0,0,0, .5),
-    //     rgba(255,255,255, 1)
-    //   ),
-      // url('../scss/img/trees1.jpg');
+    background-image:
+      // linear-gradient(to bottom,
+      //   rgba(0,0,0, .1),
+      //   rgba(0,0,0, 1)
+      // ),
+      url('../scss/img/trees2.jpg');
     background-position: center;
     background-size: cover;
-    height: 300px;
+    height: 100vh;
   }
 
   h2{

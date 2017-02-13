@@ -7,10 +7,41 @@ html, body {
   height: 100%;
   min-height:100%;
   font-family: $app-font;
-  background-color: $app-white;
-  color: $app-black;
+  background-color: $app-black;
+  color: $app-white;
 }
 
+h3, h4 {
+  color: $app-white;
+  font-family: $app-font2;
+  text-transform: uppercase;
+}
+
+// Horizontal row styles
+hr.gradient {
+  width: 60%;
+  margin: 0 20%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to left, rgba(255,255,255,.3), #fff, rgba(255,255,255,.3));
+}
+
+// General List styles
+ul{
+  margin: 0;
+  padding: 0;
+}
+li {
+  height: 100%;
+  display:inline-block;
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+  color: $app-white;
+}
+
+// Keep the footer at the bottom each view
 .wrapper {
 	min-height: 100%;
 	margin-bottom: -80px; // the bottom margin is the negative value of the footer's height
@@ -19,12 +50,14 @@ html, body {
 	height: 80px; // same height has footer
 }
 
+// Background fill text
 .bg-text {
   background-image: url(http://i68.tinypic.com/nycl5y.jpg);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
 
+// General button styles
 .btn {
   background: transparent;
   text-transform: uppercase;

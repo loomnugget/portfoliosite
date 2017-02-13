@@ -8,28 +8,35 @@ function routerConfig($stateProvider, $urlRouterProvider){
 
   let states = [
     {
-      name: 'welcome',
+      name: 'Welcome',
       url: '/landing',
       controllerAs: 'landingCtrl',
       controller: 'LandingController',
       template: require('../view/landing/landing.html'),
     },
     {
-      name: 'portfolio',
+      name: 'Art Portfolio',
       url: '/portfolio',
       controllerAs: 'portfolioCtrl',
       controller: 'PortfolioController',
       template: require('../view/portfolio/portfolio.html'),
     },
     {
-      name: 'about',
+      name: 'Projects',
+      url: '/projects',
+      controllerAs: 'projectCtrl',
+      controller: 'ProjectController',
+      template: require('../view/project/project.html'),
+    },
+    {
+      name: 'About',
       url: '/about',
       controllerAs: 'aboutCtrl',
       controller: 'AboutController',
       template: require('../view/about/about.html'),
     },
     {
-      name: 'contact',
+      name: 'Contact',
       url: '/contact',
       controllerAs: 'contactCtrl',
       controller: 'ContactController',

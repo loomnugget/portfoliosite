@@ -1,0 +1,66 @@
+@import 'theme';
+@import 'vendor';
+
+.project-container {
+  margin-top: 60px;
+  h3{
+    color: $app-white;
+    font-size: 300%;
+    padding: 2%;
+    text-align: center;
+  }
+  .project-icon-container{
+      width: 70%;
+      margin: 3% 15%;
+      padding: 1%;
+      h4{
+        font-size: 120%;
+      }
+      h5{
+        font-size: 90%;
+        font-style: italic;
+      }
+    .project-icon{
+      float:left;
+      width: 31%;
+      margin: 1%;
+      text-align: center;
+      color: $app-white;
+      transition: .2s;
+      @media only screen and (min-width: 900px){
+      }
+      .icon{
+        //background: linear-gradient(to bottom, #FAFFD1, #A1FFCE);
+        font-size: 120px;
+      }
+    }
+    .project-icon:hover{
+      color: $app-secondary;
+    }
+  }
+    // .img1{
+    //   background-image:
+    //     linear-gradient(to bottom,
+    //       #e96443,
+    //       #904e95
+    //     ),
+    //     url('http://i68.tinypic.com/dy0zd0.jpg');
+    // }
+    // .img2{
+    //   background-image:
+    //     linear-gradient(to bottom,
+    //       #FAFFD1,
+    //       #A1FFCE
+    //     ),
+    //     url('http://i68.tinypic.com/dy0zd0.jpg');
+    // }
+    // .img3{
+    //   background-image:
+    //     linear-gradient(to bottom,
+    //       rgba(255, 255, 255, 0.1),
+    //       rgba(255,255,255, .9)
+    //     ),
+    //     url('http://i68.tinypic.com/dy0zd0.jpg');
+    // }
+
+}

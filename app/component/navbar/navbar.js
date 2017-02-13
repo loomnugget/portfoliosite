@@ -10,10 +10,13 @@ module.exports = {
 
 function NavbarController($log) {
   $log.debug('init navbarCtrl');
-
   this.states = {};
-  // this.states.activeItem = 'item4';
   this.items = [
+    {
+      id: 'item1',
+      title: 'Contact',
+      url: '#/contact',
+    },
     {
       id: 'item2',
       title: 'About',
@@ -21,8 +24,18 @@ function NavbarController($log) {
     },
     {
       id: 'item3',
-      title: 'Portfolio',
+      title: 'Art',
       url: '#/portfolio',
     },
+    {
+      id: 'item4',
+      title: 'Projects',
+      url: '#/projects',
+    },
+    // {
+    //   id: 'item5',
+    //   title: 'Home',
+    //   url: '#/landing',
+    // },
   ];
 }
