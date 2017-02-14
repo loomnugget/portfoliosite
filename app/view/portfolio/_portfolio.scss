@@ -8,15 +8,15 @@
   background-color: $app-black;
 
   .active{
-    background-color: $app-white;
-    color: $app-black;
+    background-color: rgba(255,255,255,.1);
+    color: $app-white;
   }
-
+  // Toggle Images Navigation
   .navigation{
     width: 100%;
     margin:0;
     padding:0;
-    color:$app-white;
+    color:rgba(255,255,255,.5);
 
     .menu-item {
       width: 32%;
@@ -25,26 +25,19 @@
       display:block;
       cursor: pointer;
       border: 3px solid rgba(255,255,255,.5);
-
+      // Title Menu Header
       h2 {
         z-index: 12;
         text-transform: uppercase;
         text-align: center;
         font-size: 160%;
+        margin-bottom: 15px;
         padding: 3%;
         cursor: pointer;
         @media only screen and (min-width: 900px){
           font-size: 250%;
         }
       }
-    }
-    .menu-item:active {
-      border: 3px solid $app-white;
-    }
-    .menu-item:hover{
-      z-index: 5;
-      background: $app-secondary;
-      opacity: .9;
     }
   }
 }
@@ -76,6 +69,7 @@
     border: 1px solid #fff;
     width: 100%;
     background-position: center;
+    background-size: cover;
   }
 
   .square:after {
@@ -84,43 +78,56 @@
     padding-bottom: 100%;
   }
 
-  .hover-text {
-    z-index: 20;
+  .img-hover {
+    display: flex;
     position: absolute;
     text-align: center;
-    margin: 0 auto;
-    color: $app-black;
-    border: 2px solid $app-black;
-    background: rgba(255, 255, 255, .9);
-    padding: 10%;
+    align-items: center;
+    padding: 1.5%;
     height: 100%;
     width: 100%;
     opacity: 0;
+    color: $app-black;
+    border: 2px solid $app-black;
+    background: rgba(255, 255, 255, .9);
     transition: all 0.5s;
+    z-index: 20;
 
-    h3 {
-      color: $app-black;
-      font-style: $app-font2;
-      font-size: 400%;
-    }
-    h4{
-      font-size: 200%;
-      font-style: italic;
-      color: $app-black;
-    }
-    .modal-icon {
-      font-size: 60px;
-      margin: 1% 0;
-      background-color: transparent;
-      color: $app-black;
-      transition: .2s;
-      cursor: pointer;
-    }
-    .modal-icon:hover{
-      color: $app-secondary;
+    // Vertically align content over image
+    .content-wrap{
+      width: 100%;
+
+      // Title font styles
+      h3 {
+        font-style: $app-font;
+        font-size: 400%;
+        color: $app-black;
+        @media only screen and (min-width: 600px){
+          font-size: 280%;
+        }
+      }
+      // Description font styles
+      h4 {
+        font-size: 200%;
+        font-style: italic;
+        color: $app-black;
+      }
+      // Modal open icon styls
+      .zoom-icon {
+        margin: 1% 0;
+        font-size: 60px;
+        background-color: transparent;
+        color: $app-black;
+        transition: .2s;
+        cursor: pointer;
+      }
+      .zoom-icon:hover{
+        color: $app-secondary;
+      }
     }
   }
-  .hover-text:hover{
+  // On hover, show title and description
+  .img-hover:hover{
     opacity: 1;
   }
 

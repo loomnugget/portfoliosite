@@ -6,7 +6,7 @@
   min-height: 100vh;
   margin-bottom: 100px;
   h3{
-    color: $app-white;
+    color: rgba(255,255,255,.5);
     margin-top: 40px;
     font-size: 320%;
     padding: 2%;
@@ -26,16 +26,8 @@
       width: 31%;
       margin: 1%;
       text-align: center;
-      color: $app-white;
-      transition: .2s;
       @media only screen and (min-width: 900px){
       }
-      .icon{
-        font-size: 120px;
-      }
-    }
-    .project-icon:hover{
-      color: $app-secondary;
     }
   }
 
@@ -53,13 +45,11 @@
       }
       .info-icon{
         margin-left: 20px;
-        background: -webkit-linear-gradient(#FAFFD1, #A1FFCE);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-color: transparent;
-        transition: .2s;
-      }
-      .info-icon:hover{
+        // background: -webkit-linear-gradient(#FAFFD1, #A1FFCE);
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
+        // background-color: transparent;
+        // transition: .2s;
       }
     }
     h5{

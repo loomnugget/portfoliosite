@@ -8,20 +8,15 @@
     float:right;
     font-size: 30px;
     padding: 25px 32px;
-    background-color: transparent;
-    color: $app-secondary;
     transition: .2s;
-  }
-  .footer-icon:hover{
-    color: $app-white;
   }
 
   .footer-text{
     float: left;
-    font-size: 20px;
+    font-size: 14px;
     padding-left: 28px;
     padding-top: 32px;
     margin: 0;
-    color: $app-secondary;
+    color: $app-offwhite;
   }
 }

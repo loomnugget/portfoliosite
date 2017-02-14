@@ -28,6 +28,24 @@ hr.gradient {
   background-image: linear-gradient(to left, rgba(255,255,255,.3), #fff, rgba(255,255,255,.3));
 }
 
+.icon{
+  font-size: 120px;
+  color: $app-white;
+  background: -webkit-linear-gradient(#FAFFD1, #A1FFCE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: transparent;
+  transition: .2s;
+}
+
+.icon:hover{
+  background: -webkit-linear-gradient(#A1FFCE, $app-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: transparent;
+  transition: .2s;
+}
+
 // General List styles
 ul{
   margin: 0;

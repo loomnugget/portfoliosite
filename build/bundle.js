@@ -49,31 +49,31 @@
 	__webpack_require__(1);
 
 	// Require node modules
-	var path = __webpack_require__(19);
+	var path = __webpack_require__(23);
 
 	// Require npm modules
-	var angular = __webpack_require__(21);
-	var camelcase = __webpack_require__(23);
-	var pascalcase = __webpack_require__(24);
+	var angular = __webpack_require__(25);
+	var camelcase = __webpack_require__(27);
+	var pascalcase = __webpack_require__(28);
 
 	// Require angular modules
-	var ngTouch = __webpack_require__(25);
-	var ngAnimate = __webpack_require__(27);
-	var uiRouter = __webpack_require__(29);
-	var uiBootstrap = __webpack_require__(30);
-	var ngFileUpload = __webpack_require__(32);
+	var ngTouch = __webpack_require__(29);
+	var ngAnimate = __webpack_require__(31);
+	var uiRouter = __webpack_require__(33);
+	var uiBootstrap = __webpack_require__(34);
+	var ngFileUpload = __webpack_require__(36);
 
 	// Create angular module
 	var app = angular.module('app', [ngTouch, uiBootstrap, ngAnimate, uiRouter, ngFileUpload]);
 
 	// Load config
-	var context = __webpack_require__(34);
+	var context = __webpack_require__(38);
 	context.keys().forEach(function (path) {
 	  app.config(context(path));
 	});
 
 	// Load view controllers
-	context = __webpack_require__(41);
+	context = __webpack_require__(45);
 	context.keys().forEach(function (key) {
 	  var name = pascalcase(path.basename(key, '.js'));
 	  var module = context(key);
@@ -81,19 +81,11 @@
 	});
 
 	// Load components
-	context = __webpack_require__(58);
+	context = __webpack_require__(62);
 	context.keys().forEach(function (key) {
 	  var name = camelcase(path.basename(key, '.js'));
 	  var module = context(key);
 	  app.component(name, module);
-	});
-
-	// Load filters
-	context = !(function webpackMissingModule() { var e = new Error("Cannot find module \"./filter/\""); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-	context.keys().forEach(function (key) {
-	  var name = camelcase(path.basename(key, '.js'));
-	  var module = context(key);
-	  app.filter(name, module);
 	});
 
 /***/ },
@@ -120,7 +112,11 @@
 /* 16 */,
 /* 17 */,
 /* 18 */,
-/* 19 */
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -348,10 +344,10 @@
 	    }
 	;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
 
 /***/ },
-/* 20 */
+/* 24 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -537,15 +533,15 @@
 
 
 /***/ },
-/* 21 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(22);
+	__webpack_require__(26);
 	module.exports = angular;
 
 
 /***/ },
-/* 22 */
+/* 26 */
 /***/ function(module, exports) {
 
 	/**
@@ -32934,7 +32930,7 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 23 */
+/* 27 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -32996,7 +32992,7 @@
 
 
 /***/ },
-/* 24 */
+/* 28 */
 /***/ function(module, exports) {
 
 	/*!
@@ -33023,15 +33019,15 @@
 
 
 /***/ },
-/* 25 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(26);
+	__webpack_require__(30);
 	module.exports = 'ngTouch';
 
 
 /***/ },
-/* 26 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/**
@@ -33785,15 +33781,15 @@
 
 
 /***/ },
-/* 27 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(28);
+	__webpack_require__(32);
 	module.exports = 'ngAnimate';
 
 
 /***/ },
-/* 28 */
+/* 32 */
 /***/ function(module, exports) {
 
 	/**
@@ -37951,7 +37947,7 @@
 
 
 /***/ },
-/* 29 */
+/* 33 */
 /***/ function(module, exports) {
 
 	/**
@@ -42565,16 +42561,16 @@
 	})(window, window.angular);
 
 /***/ },
-/* 30 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(31);
+	__webpack_require__(35);
 
 	module.exports = 'ui.bootstrap';
 
 
 /***/ },
-/* 31 */
+/* 35 */
 /***/ function(module, exports) {
 
 	/*
@@ -50209,14 +50205,14 @@
 	angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 32 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(33);
+	__webpack_require__(37);
 	module.exports = 'ngFileUpload';
 
 /***/ },
-/* 33 */
+/* 37 */
 /***/ function(module, exports) {
 
 	/**!
@@ -53120,11 +53116,11 @@
 
 
 /***/ },
-/* 34 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./router-config.js": 35
+		"./router-config.js": 39
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53137,11 +53133,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 34;
+	webpackContext.id = 38;
 
 
 /***/ },
-/* 35 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53157,31 +53153,31 @@
 	    url: '/landing',
 	    controllerAs: 'landingCtrl',
 	    controller: 'LandingController',
-	    template: __webpack_require__(36)
+	    template: __webpack_require__(40)
 	  }, {
 	    name: 'Art Portfolio',
 	    url: '/portfolio',
 	    controllerAs: 'portfolioCtrl',
 	    controller: 'PortfolioController',
-	    template: __webpack_require__(37)
+	    template: __webpack_require__(41)
 	  }, {
 	    name: 'Projects',
 	    url: '/projects',
 	    controllerAs: 'projectCtrl',
 	    controller: 'ProjectController',
-	    template: __webpack_require__(38)
+	    template: __webpack_require__(42)
 	  }, {
 	    name: 'About',
 	    url: '/about',
 	    controllerAs: 'aboutCtrl',
 	    controller: 'AboutController',
-	    template: __webpack_require__(39)
+	    template: __webpack_require__(43)
 	  }, {
 	    name: 'Contact',
 	    url: '/contact',
 	    controllerAs: 'contactCtrl',
 	    controller: 'ContactController',
-	    template: __webpack_require__(40)
+	    template: __webpack_require__(44)
 	  }];
 
 	  states.forEach(function (state) {
@@ -53190,45 +53186,45 @@
 	}
 
 /***/ },
-/* 36 */
+/* 40 */
 /***/ function(module, exports) {
 
 	module.exports = "<main class=\"landing\">\n  <header>\n      <h2><strong>Lemon</strong>Candy</h2>\n      <!-- <a href=\"#/portfolio\"><button class=\"btn\">View Portfolio</button></a> -->\n  </header>\n\n</main>\n";
 
 /***/ },
-/* 37 */
+/* 41 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"portfolio\">\n    <div class=\"navigation clearfix\">\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive1}\" ng-click=\"myFilter = category; portfolioCtrl.isActive(1)\">\n        <h2>All</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive2}\" ng-click=\"myFilter = {category: 'Drawing'}; portfolioCtrl.isActive(2)\">\n        <h2>Drawing</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive3}\" ng-click=\"myFilter = {category: 'Painting'}; portfolioCtrl.isActive(3)\">\n        <h2>Painting</h2>\n      </div>\n  </div>\n\n  <section class=\"art-portfolio-container\">\n    <!-- Image Gallery -->\n    <div class=\"portfolio-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in portfolioCtrl.items | filter:myFilter\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n            <div class=\"hover-text\">\n              <h3>{{item.title}}</h3>\n              <h4>{{item.category}}</h4>\n              <span class=\"icon modal-icon\">\n                <i class=\"icon-basic-magnifier-plus\" ng-click=\"portfolioCtrl.open(item)\"></i>\n              </span>\n            </div>\n          </div>\n      </div>\n    </div>\n  </section>\n</main>\n";
+	module.exports = "<main class=\"portfolio\">\n    <div class=\"navigation clearfix\">\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive1}\" ng-click=\"myFilter = category; portfolioCtrl.isActive(1)\">\n        <h2>All</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive2}\" ng-click=\"myFilter = {category: 'Drawing'}; portfolioCtrl.isActive(2)\">\n        <h2>Drawing</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive3}\" ng-click=\"myFilter = {category: 'Painting'}; portfolioCtrl.isActive(3)\">\n        <h2>Painting</h2>\n      </div>\n  </div>\n\n  <section class=\"art-portfolio-container\">\n    <!-- Image Gallery -->\n    <div class=\"portfolio-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in portfolioCtrl.items | filter:myFilter\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n            <div class=\"img-hover\">\n              <div class=\"content-wrap\">\n                <h3>{{item.title}}</h3>\n                <h4>{{item.category}}</h4>\n                <span class=\"zoom-icon\"><i class=\"icon-basic-magnifier-plus\" ng-click=\"portfolioCtrl.open(item)\"></i></span>\n              </div>\n            </div>\n          </div>\n      </div>\n    </div>\n  </section>\n</main>\n";
 
 /***/ },
-/* 38 */
+/* 42 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"project-container\">\n  <div class=\"row\">\n    <h3>Selected Projects</h3>\n    <hr class=\"gradient\">\n  </div>\n\n  <div class=\"row\">\n    <div class=\"project-icon-container clearfix\">\n      <a ng-click=\"projectCtrl.selectItem(1)\" class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-globe\"></i></span>\n        <h4>Pup Tracker</h4>\n        <h5>Full Stack App</h5>\n      </a>\n\n      <a ng-click=\"projectCtrl.selectItem(2)\" class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-calculator\"></i></span>\n        <h4>3D Engine</h4>\n        <h5>Javascript and Canvas</h5>\n      </a>\n\n      <a ng-click=\"projectCtrl.selectItem(3)\" class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-lightbulb\"></i></span>\n        <h4>[art-c]</h4>\n        <h5>Full Stack App</h5>\n      </a>\n    </div>\n  </div>\n\n  <div class=\"row\" ng-if=\"projectCtrl.isVisible1\">\n    <div class=\"info-container\">\n    <h4>Pup Tracker<span><i class=\"fa fa-github info-icon\"></i></i><span></h4>\n\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>Rest API used by research scientists to track mouse breeding patterns.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node.js, Angular, Webpack, Express, Angular ui Calendar</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible2\">\n  <div class=\"info-container\">\n    <h4>3D Engine<span><i class=\"fa fa-github info-icon\"></i></i><span></h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>3D physics engine</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>React, Node, HTML5 Canvas</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible3\">\n  <div class=\"info-container\">\n    <h4>[art-c]<span><i class=\"fa fa-github info-icon\"></i></i><span></h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>Platform that allows artists to share and sell work in their community.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node.js, Angular, Webpack, Express, AWS</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n</main>\n";
+	module.exports = "<main class=\"project-container\">\n  <div class=\"row\">\n    <h3>Selected Projects</h3>\n    <hr class=\"gradient\">\n  </div>\n\n  <div class=\"row\">\n    <div class=\"project-icon-container clearfix\">\n      <a ng-click=\"projectCtrl.selectItem(1)\" class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-globe\"></i></span>\n        <h4>Pup Tracker</h4>\n        <h5>Full Stack App</h5>\n      </a>\n\n      <a ng-click=\"projectCtrl.selectItem(2)\" class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-calculator\"></i></span>\n        <h4>3D Engine</h4>\n        <h5>Javascript and Canvas</h5>\n      </a>\n\n      <a ng-click=\"projectCtrl.selectItem(3)\" class=\"project-icon\">\n        <span class=\"icon\"><i class=\"icon-basic-lightbulb\"></i></span>\n        <h4>[art-c]</h4>\n        <h5>Full Stack App</h5>\n      </a>\n    </div>\n  </div>\n\n  <div class=\"row\" ng-if=\"projectCtrl.isVisible1\">\n    <div class=\"info-container\">\n    <h4>Pup Tracker<span><i class=\"fa fa-github icon\"></i></i><span></h4>\n\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>Rest API used by research scientists to track mouse breeding patterns.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node.js, Angular, Webpack, Express, Angular ui Calendar</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible2\">\n  <div class=\"info-container\">\n    <h4>3D Engine<span><i class=\"fa fa-github icon\"></i></i><span></h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>3D physics engine</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>React, Node, HTML5 Canvas</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible3\">\n  <div class=\"info-container\">\n    <h4>[art-c]<span><i class=\"fa fa-github icon\"></i></i><span></h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>Platform that allows artists to share and sell work in their community.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node.js, Angular, Webpack, Express, AWS</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n</main>\n";
 
 /***/ },
-/* 39 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = "<main class=\"about\">\n\n  <!-- About-->\n<div class=\"about-container\">\n  <!-- Intro -->\n  <div class = \"intro-container\">\n    <div class=\"row bottom-space\">\n      <h2>About Me</h2>\n      <div class=\"span-container\">\n        <span><i class=\"fa fa-diamond\"></i><span>\n      </div>\n      <!-- <h4>I’m a software developer and artist who loves finding patterns, combining art and technology, and abstractions. -->\n      </h4>\n    </div>\n\n  <!-- Skills -->\n    <div class=\"text-container\">\n      <div class=\"bottom-space\">\n        <!-- <h3>Skills</h3>\n        <h4>Javascript/ES6, AngularJS, Node.js, Express, Webpack, Mocha,\n          Chai, HTML, CSS, Sass, Responsive Design, jQuery, Bootstrap, UX/UI, Git, AWS S3, OAuth</h4> -->\n      </div>\n\n      <div class=\"bottom-space\">\n        <!-- <h3>Interests</h3>\n          <h4>3D Programming, Data Visualization, VR/AR, Machine Learning, Creative Code, Data Structures/Algorithms</h4> -->\n      </div>\n\n      <div class=\"bottom-space\">\n        <!-- <h3>Education</h3>\n          <h4><span>Code Fellows | Seattle, WA | 2016</span></h4>\n          <h4>Advanced Javascript Software Development Certificate</h4>\n        </br>\n          <h4><span>SUNY Geneseo | Geneseo, NY | 2013</span></h4>\n          <h4>Bachelor’s of Science, Biology</h4> -->\n      </div>\n    </div>\n  </div>\n\n</div><!-- end about-->\n</main>\n";
 
 /***/ },
-/* 40 */
+/* 44 */
 /***/ function(module, exports) {
 
 	module.exports = "<main class=\"contact\">\n\n</main>\n";
 
 /***/ },
-/* 41 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./about/about-controller.js": 42,
-		"./contact/contact-controller.js": 45,
-		"./landing/landing-controller.js": 48,
-		"./portfolio/portfolio-controller.js": 52,
-		"./project/project-controller.js": 55
+		"./about/about-controller.js": 46,
+		"./contact/contact-controller.js": 49,
+		"./landing/landing-controller.js": 52,
+		"./portfolio/portfolio-controller.js": 56,
+		"./project/project-controller.js": 59
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53241,16 +53237,16 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 41;
+	webpackContext.id = 45;
 
 
 /***/ },
-/* 42 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(43);
+	__webpack_require__(47);
 
 	module.exports = ['$log', AboutController];
 
@@ -53259,19 +53255,19 @@
 	}
 
 /***/ },
-/* 43 */
+/* 47 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 44 */,
-/* 45 */
+/* 48 */,
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(46);
+	__webpack_require__(50);
 
 	module.exports = ['$log', ContactController];
 
@@ -53280,19 +53276,19 @@
 	}
 
 /***/ },
-/* 46 */
+/* 50 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 47 */,
-/* 48 */
+/* 51 */,
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(49);
+	__webpack_require__(53);
 
 	module.exports = ['$log', LandingController];
 
@@ -53301,20 +53297,20 @@
 	}
 
 /***/ },
-/* 49 */
+/* 53 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 50 */,
-/* 51 */,
-/* 52 */
+/* 54 */,
+/* 55 */,
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(53);
+	__webpack_require__(57);
 
 	module.exports = ['$log', '$uibModal', PortfolioController];
 
@@ -53359,116 +53355,96 @@
 
 	  this.items = [{
 	    id: '1',
-	    title: 'Art 1',
+	    title: 'Ink Roses I',
 	    url: 'http://i65.tinypic.com/1z5kqcx.jpg',
-	    category: 'Painting'
+	    category: 'Drawing'
 	  }, {
 	    id: '2',
-	    title: 'Art 2',
-	    url: 'http://i63.tinypic.com/t66vsm.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '3',
-	    title: 'Art 3',
-	    url: 'http://i64.tinypic.com/5l2jgm.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '4',
-	    title: 'Art 4',
-	    url: 'http://i64.tinypic.com/2qa45kg.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '5',
-	    title: 'Art 5',
-	    url: 'http://i64.tinypic.com/fz3spy.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '6',
-	    title: 'Art 6',
-	    url: 'http://i64.tinypic.com/2j2g9kx.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '7',
-	    title: 'Art 7',
-	    url: 'http://i66.tinypic.com/2zftwfs.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '8',
-	    title: 'Art 8',
+	    title: 'Ink Roses II',
 	    url: 'http://i65.tinypic.com/35l51yv.jpg',
 	    category: 'Drawing'
 	  }, {
+	    id: '3',
+	    title: 'Abstract Flower',
+	    url: 'http://i63.tinypic.com/t66vsm.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '4',
+	    title: 'Ink Flowers',
+	    url: 'http://i63.tinypic.com/2zdt444.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '5',
+	    title: 'Abstract Wall I',
+	    url: 'http://i64.tinypic.com/2j2g9kx.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '6',
+	    title: 'Abstract Wall II',
+	    url: 'http://i64.tinypic.com/2qa45kg.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '7',
+	    title: 'Marbling I',
+	    url: 'http://i63.tinypic.com/zmmv86.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '8',
+	    title: 'Marbling II',
+	    url: 'http://i64.tinypic.com/fz3spy.jpg',
+	    category: 'Painting'
+	  }, {
 	    id: '9',
-	    title: 'Art 9',
+	    title: 'Abstract Ink',
 	    url: 'http://i63.tinypic.com/14wpy6a.jpg',
 	    category: 'Drawing'
 	  }, {
 	    id: '10',
-	    title: 'Art 10',
-	    url: 'http://i63.tinypic.com/zmmv86.jpg',
+	    title: 'Symmetry I',
+	    url: 'http://i64.tinypic.com/5l2jgm.jpg',
 	    category: 'Drawing'
 	  }, {
 	    id: '11',
-	    title: 'Art 11',
-	    url: 'http://i67.tinypic.com/2q2og7t.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '12',
-	    title: 'Art 12',
-	    url: 'http://i63.tinypic.com/2zdt444.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '13',
-	    title: 'Art 13',
-	    url: 'http://i66.tinypic.com/15g5p9i.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '14',
-	    title: 'Art 14',
-	    url: 'http://i67.tinypic.com/wve2oy.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '15',
-	    title: 'Art 15',
-	    url: 'http://i67.tinypic.com/10x51fb.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '16',
-	    title: 'Art 16',
-	    url: 'http://i66.tinypic.com/qso4n7.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '17',
-	    title: 'Art 17',
-	    url: 'http://i65.tinypic.com/ww128k.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '18',
-	    title: 'Art 18',
+	    title: 'Symmetry II',
 	    url: 'http://i65.tinypic.com/24mzzh4.jpg',
 	    category: 'Drawing'
 	  }, {
-	    id: '19',
-	    title: 'Art 19',
-	    url: 'http://i64.tinypic.com/2d8ntx2.jpg',
+	    id: '12',
+	    title: 'Symmetry III',
+	    url: 'http://i66.tinypic.com/15g5p9i.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '13',
+	    title: 'Symmetry IV',
+	    url: 'http://i67.tinypic.com/10x51fb.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '14',
+	    title: 'Symmetry V',
+	    url: 'http://i66.tinypic.com/qso4n7.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '15',
+	    title: 'Symmetry VI',
+	    url: 'http://i65.tinypic.com/ww128k.jpg',
 	    category: 'Drawing'
 	  }];
 	}
 
 /***/ },
-/* 53 */
+/* 57 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 54 */,
-/* 55 */
+/* 58 */,
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(56);
+	__webpack_require__(60);
 
 	module.exports = ['$log', ProjectController];
 
@@ -53511,21 +53487,21 @@
 	}
 
 /***/ },
-/* 56 */
+/* 60 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 57 */,
-/* 58 */
+/* 61 */,
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./code-portfolio/code-portfolio.js": 59,
-		"./footer/footer.js": 63,
-		"./modal/modal.js": 67,
-		"./navbar/navbar.js": 71
+		"./code-portfolio/code-portfolio.js": 63,
+		"./footer/footer.js": 67,
+		"./modal/modal.js": 71,
+		"./navbar/navbar.js": 75
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53538,39 +53514,8 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 58;
+	webpackContext.id = 62;
 
-
-/***/ },
-/* 59 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(60);
-
-	module.exports = {
-	  template: __webpack_require__(62),
-	  controller: ['$log', '$location', '$rootScope', CodePortfolioController],
-	  controllerAs: 'codePortfolioCtrl'
-	};
-
-	function CodePortfolioController($log) {
-	  $log.debug('init codePortfolioCtrl');
-	}
-
-/***/ },
-/* 60 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 61 */,
-/* 62 */
-/***/ function(module, exports) {
-
-	module.exports = "<section class=\"code-portfolio-container\">\n\n  <!-- Project Container -->\n  <div class=\"project-container\">\n    <!-- 3D Project -->\n      <div class=\"project\">\n        <h2>3d Engine</h2>\n        <h3>\n          <p><span>Summary: </span>Generates rotating 3D polyhedra models using JavaScript and HTML5 Canvas</p>\n          <p><span>Tools: </span>React.js, Vanilla Javascript, Node.js, Webpack</p>\n        <h3>\n\n        <a href=\"https://github.com/loomnugget/js-3d-experiment\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n        <a href=\"http://codepen.io/ploom/pen/LRvzOk\">\n        <span><i class=\"fa fa-codepen project-icon codepen\"></i></span></a>\n      </div>\n      <hr>\n      <!-- Art-c Project -->\n      <div class=\"project\">\n        <h2>[art-c]</h2>\n        <h3>\n          <p><span>Summary: </span>Social media platform that allows local artists to display and share their work with others in their community.</p>\n          <p><span>Tools: </span>Node.js, AngularJS, Webpack, Gulp.js, MongoDB, Bootstrap, AWS S3</p>\n        <h3>\n        <a href=\"https://github.com/loomnugget/art-c\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n      </div>\n\n  </div>\n\n</section>\n";
 
 /***/ },
 /* 63 */
@@ -53582,12 +53527,12 @@
 
 	module.exports = {
 	  template: __webpack_require__(66),
-	  controller: ['$log', '$location', '$rootScope', FooterController],
-	  controllerAs: 'footerCtrl'
+	  controller: ['$log', '$location', '$rootScope', CodePortfolioController],
+	  controllerAs: 'codePortfolioCtrl'
 	};
 
-	function FooterController($log) {
-	  $log.debug('init footerCtrl');
+	function CodePortfolioController($log) {
+	  $log.debug('init codePortfolioCtrl');
 	}
 
 /***/ },
@@ -53601,7 +53546,7 @@
 /* 66 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"footer\">\n  <p class=\"footer-text\">2017</p>\n\n  <span><a href=\"https://github.com/loomnugget\">\n  <i class=\"fa fa-github footer-icon github\"></i></a></span>\n  <span><a href=\"http://codepen.io/ploom\">\n  <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n  <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n  <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n</div>\n";
+	module.exports = "<section class=\"code-portfolio-container\">\n\n  <!-- Project Container -->\n  <div class=\"project-container\">\n    <!-- 3D Project -->\n      <div class=\"project\">\n        <h2>3d Engine</h2>\n        <h3>\n          <p><span>Summary: </span>Generates rotating 3D polyhedra models using JavaScript and HTML5 Canvas</p>\n          <p><span>Tools: </span>React.js, Vanilla Javascript, Node.js, Webpack</p>\n        <h3>\n\n        <a href=\"https://github.com/loomnugget/js-3d-experiment\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n        <a href=\"http://codepen.io/ploom/pen/LRvzOk\">\n        <span><i class=\"fa fa-codepen project-icon codepen\"></i></span></a>\n      </div>\n      <hr>\n      <!-- Art-c Project -->\n      <div class=\"project\">\n        <h2>[art-c]</h2>\n        <h3>\n          <p><span>Summary: </span>Social media platform that allows local artists to display and share their work with others in their community.</p>\n          <p><span>Tools: </span>Node.js, AngularJS, Webpack, Gulp.js, MongoDB, Bootstrap, AWS S3</p>\n        <h3>\n        <a href=\"https://github.com/loomnugget/art-c\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n      </div>\n\n  </div>\n\n</section>\n";
 
 /***/ },
 /* 67 */
@@ -53613,6 +53558,37 @@
 
 	module.exports = {
 	  template: __webpack_require__(70),
+	  controller: ['$log', '$location', '$rootScope', FooterController],
+	  controllerAs: 'footerCtrl'
+	};
+
+	function FooterController($log) {
+	  $log.debug('init footerCtrl');
+	}
+
+/***/ },
+/* 68 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 69 */,
+/* 70 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"footer\">\n  <p class=\"footer-text\"> lemoncandy 2017</p>\n\n  <span><a href=\"https://github.com/loomnugget\">\n  <i class=\"fa fa-github footer-icon icon github\"></i></a></span>\n  <span><a href=\"http://codepen.io/ploom\">\n  <i class=\"fa fa-codepen footer-icon icon codepen\"></i></a></span>\n  <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n  <i class=\"fa fa-linkedin footer-icon icon\"></i></a></span>\n</div>\n";
+
+/***/ },
+/* 71 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(72);
+
+	module.exports = {
+	  template: __webpack_require__(74),
 	  controller: ['$log', ModalController],
 	  controllerAs: 'modalCtrl',
 	  bindings: {
@@ -53631,55 +53607,6 @@
 	}
 
 /***/ },
-/* 68 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 69 */,
-/* 70 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"modal-container\">\n  <div class=\"modal-header\">\n    <h2>{{modalCtrl.modalData.title}}</h2>\n    <i class=\"fa fa-close modal-icon modal-close\"\n    ng-click=\"modalCtrl.handleClose()\"></i></span>\n  </div>\n\n  <div class=\"modal-body\" id=\"modal-body\">\n    <!-- Gallery image-->\n    <img src=\"{{modalCtrl.modalData.url}}\">\n    <!-- Arrow Icons -->\n    <!-- <div class=\"row center\">\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-left modal-icon modal-arrow\" ng-click=\"modalCtrl.nextImage()\"></i></span>\n      </div>\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-right modal-icon modal-arrow\" ng-click=\"modalCtrl.previousImage()\"></i></span>\n      </div>\n    </div> -->\n\n</div>\n";
-
-/***/ },
-/* 71 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(72);
-
-	module.exports = {
-	  template: __webpack_require__(74),
-	  controller: ['$log', '$location', '$rootScope', NavbarController],
-	  controllerAs: 'navbarCtrl'
-	};
-
-	function NavbarController($log) {
-	  $log.debug('init navbarCtrl');
-	  this.states = {};
-	  this.items = [{
-	    id: 'item1',
-	    title: 'Contact',
-	    url: '#/contact'
-	  }, {
-	    id: 'item2',
-	    title: 'About',
-	    url: '#/about'
-	  }, {
-	    id: 'item3',
-	    title: 'Art',
-	    url: '#/portfolio'
-	  }, {
-	    id: 'item4',
-	    title: 'Projects',
-	    url: '#/projects'
-	  }];
-	}
-
-/***/ },
 /* 72 */
 /***/ function(module, exports) {
 
@@ -53690,7 +53617,52 @@
 /* 74 */
 /***/ function(module, exports) {
 
-	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <li class=\"navbar-brand\"><a href=\"#/landing\">Home</a></li>\n\n    <li ng-repeat=\"item in navbarCtrl.items\"\n    name=\"item\"\n    ng-class=\"{'active': item.id == navbarCtrl.states.activeItem}\"\n    ng-click=\"navbarCtrl.states.activeItem = item.id\">\n    <a href=\"{{item.url}}\">{{item.title}}</a></li>\n  </ul>\n</nav>\n";
+	module.exports = "<div class=\"modal-container\">\n  <div class=\"modal-header\">\n    <span>\n      <i class=\"icon-arrows-remove modal-icon modal-close\"\n        ng-click=\"modalCtrl.handleClose()\"></i>\n    </span>\n  </div>\n\n  <div class=\"modal-body\" id=\"modal-body\">\n    <!-- Gallery image-->\n    <img src=\"{{modalCtrl.modalData.url}}\">\n    <!-- Arrow Icons -->\n    <!-- <div class=\"row center\">\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-left modal-icon modal-arrow\" ng-click=\"modalCtrl.nextImage()\"></i></span>\n      </div>\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-right modal-icon modal-arrow\" ng-click=\"modalCtrl.previousImage()\"></i></span>\n      </div>\n    </div> -->\n\n</div>\n";
+
+/***/ },
+/* 75 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(76);
+
+	module.exports = {
+	  template: __webpack_require__(78),
+	  controller: ['$log', '$location', '$rootScope', NavbarController],
+	  controllerAs: 'navbarCtrl'
+	};
+
+	function NavbarController($log) {
+	  $log.debug('init navbarCtrl');
+	  this.states = {};
+	  this.items = [{
+	    id: 'item1',
+	    title: 'About',
+	    url: '#/about'
+	  }, {
+	    id: 'item2',
+	    title: 'Art',
+	    url: '#/portfolio'
+	  }, {
+	    id: 'item3',
+	    title: 'Projects',
+	    url: '#/projects'
+	  }];
+	}
+
+/***/ },
+/* 76 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 77 */,
+/* 78 */
+/***/ function(module, exports) {
+
+	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <li class=\"navbar-brand\"><a href=\"#/landing\">Home</a></li>\n\n    <div class=\"menu-right\">\n      <li ng-repeat=\"item in navbarCtrl.items\"\n      name=\"item\"\n      ng-class=\"{'active': item.id == navbarCtrl.states.activeItem}\"\n      ng-click=\"navbarCtrl.states.activeItem = item.id\">\n      <a href=\"{{item.url}}\">{{item.title}}</a></li>\n      <li><span><i class=\"icon-basic-mail-open icon navbar-icon\"></i></span></li>\n    </div>\n\n  </ul>\n</nav>\n";
 
 /***/ }
 /******/ ]);

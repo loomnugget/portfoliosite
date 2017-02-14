@@ -17,12 +17,12 @@
       <div class="portfolio-img-container"
        ng-repeat="item in portfolioCtrl.items | filter:myFilter">
         <div class="square" ng-style="{'background-image': 'url({{item.url}})'}">
-            <div class="hover-text">
-              <h3>{{item.title}}</h3>
-              <h4>{{item.category}}</h4>
-              <span class="icon modal-icon">
-                <i class="icon-basic-magnifier-plus" ng-click="portfolioCtrl.open(item)"></i>
-              </span>
+            <div class="img-hover">
+              <div class="content-wrap">
+                <h3>{{item.title}}</h3>
+                <h4>{{item.category}}</h4>
+                <span class="zoom-icon"><i class="icon-basic-magnifier-plus" ng-click="portfolioCtrl.open(item)"></i></span>
+              </div>
             </div>
           </div>
       </div>

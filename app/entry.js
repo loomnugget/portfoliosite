@@ -41,11 +41,3 @@ context.keys().forEach( key => {
   let module = context(key);
   app.component(name, module);
 });
-
-// Load filters
-context = require.context('./filter/', true, /.js$/);
-context.keys().forEach( key => {
-  let name = camelcase(path.basename(key, '.js'));
-  let module = context(key);
-  app.filter(name, module);
-});
