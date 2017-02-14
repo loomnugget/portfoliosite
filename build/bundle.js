@@ -88,6 +88,14 @@
 	  app.component(name, module);
 	});
 
+	// Load filters
+	context = !(function webpackMissingModule() { var e = new Error("Cannot find module \"./filter/\""); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+	context.keys().forEach(function (key) {
+	  var name = camelcase(path.basename(key, '.js'));
+	  var module = context(key);
+	  app.filter(name, module);
+	});
+
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
@@ -53191,7 +53199,7 @@
 /* 37 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"portfolio\">\n    <div class=\"navigation clearfix\">\n      <div class=\"menu-item\">\n        <h2>All</h2>\n      </div>\n      <div class=\"menu-item\">\n        <h2>Drawing</h2>\n      </div>\n      <div class=\"menu-item\">\n        <h2>Painting</h2>\n      </div>\n  </div>\n\n  <section class=\"art-portfolio-container\">\n    <!-- Image Gallery -->\n    <div class=\"portfolio-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in portfolioCtrl.items\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n            <div class=\"hover-text\">\n              <h3>{{item.title}}</h3>\n              <h4>{{item.category}}</h4>\n              <span class=\"icon modal-icon\">\n                <i class=\"icon-basic-magnifier-plus\" ng-click=\"portfolioCtrl.open(item)\"></i>\n              </span>\n            </div>\n          </div>\n      </div>\n    </div>\n  </section>\n</main>\n";
+	module.exports = "<main class=\"portfolio\">\n    <div class=\"navigation clearfix\">\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive1}\" ng-click=\"myFilter = category; portfolioCtrl.isActive(1)\">\n        <h2>All</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive2}\" ng-click=\"myFilter = {category: 'Drawing'}; portfolioCtrl.isActive(2)\">\n        <h2>Drawing</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive3}\" ng-click=\"myFilter = {category: 'Painting'}; portfolioCtrl.isActive(3)\">\n        <h2>Painting</h2>\n      </div>\n  </div>\n\n  <section class=\"art-portfolio-container\">\n    <!-- Image Gallery -->\n    <div class=\"portfolio-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in portfolioCtrl.items | filter:myFilter\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n            <div class=\"hover-text\">\n              <h3>{{item.title}}</h3>\n              <h4>{{item.category}}</h4>\n              <span class=\"icon modal-icon\">\n                <i class=\"icon-basic-magnifier-plus\" ng-click=\"portfolioCtrl.open(item)\"></i>\n              </span>\n            </div>\n          </div>\n      </div>\n    </div>\n  </section>\n</main>\n";
 
 /***/ },
 /* 38 */
@@ -53312,6 +53320,28 @@
 
 	function PortfolioController($log, $uibModal) {
 	  $log.debug('init portfolioCtrl');
+
+	  this.isActive1 = true;
+	  this.isActive2 = false;
+	  this.isActive3 = false;
+
+	  this.isActive = function (item) {
+	    if (item === 1) {
+	      this.isActive1 = true;
+	      this.isActive2 = false;
+	      this.isActive3 = false;
+	    }
+	    if (item === 2) {
+	      this.isActive1 = false;
+	      this.isActive2 = true;
+	      this.isActive3 = false;
+	    }
+	    if (item === 3) {
+	      this.isActive1 = false;
+	      this.isActive2 = false;
+	      this.isActive3 = true;
+	    }
+	  };
 
 	  this.open = function (item) {
 	    var modalInstance = $uibModal.open({
@@ -53492,11 +53522,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./art-portfolio/art-portfolio.js": 59,
-		"./code-portfolio/code-portfolio.js": 63,
-		"./footer/footer.js": 67,
-		"./modal/modal.js": 71,
-		"./navbar/navbar.js": 75
+		"./code-portfolio/code-portfolio.js": 59,
+		"./footer/footer.js": 63,
+		"./modal/modal.js": 67,
+		"./navbar/navbar.js": 71
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53522,122 +53551,12 @@
 
 	module.exports = {
 	  template: __webpack_require__(62),
-	  controller: ['$log', '$uibModal', ArtPortfolioController],
-	  controllerAs: 'artPortfolioCtrl'
+	  controller: ['$log', '$location', '$rootScope', CodePortfolioController],
+	  controllerAs: 'codePortfolioCtrl'
 	};
-	function ArtPortfolioController($log, $uibModal) {
-	  $log.debug('init artPortfolioCtrl');
 
-	  this.open = function (item) {
-	    var modalInstance = $uibModal.open({
-	      component: 'modal',
-	      size: 'lg',
-	      resolve: {
-	        imageToggle: function imageToggle() {
-	          return item;
-	        }
-	      }
-	    });
-
-	    return modalInstance;
-	  };
-
-	  this.items = [{
-	    id: '1',
-	    title: 'Art 1',
-	    url: 'http://i65.tinypic.com/1z5kqcx.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '2',
-	    title: 'Art 2',
-	    url: 'http://i63.tinypic.com/t66vsm.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '3',
-	    title: 'Art 3',
-	    url: 'http://i64.tinypic.com/5l2jgm.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '4',
-	    title: 'Art 4',
-	    url: 'http://i64.tinypic.com/2qa45kg.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '5',
-	    title: 'Art 5',
-	    url: 'http://i64.tinypic.com/fz3spy.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '6',
-	    title: 'Art 6',
-	    url: 'http://i64.tinypic.com/2j2g9kx.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '7',
-	    title: 'Art 7',
-	    url: 'http://i66.tinypic.com/2zftwfs.jpg',
-	    category: 'Painting'
-	  }, {
-	    id: '8',
-	    title: 'Art 8',
-	    url: 'http://i65.tinypic.com/35l51yv.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '9',
-	    title: 'Art 9',
-	    url: 'http://i63.tinypic.com/14wpy6a.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '10',
-	    title: 'Art 10',
-	    url: 'http://i63.tinypic.com/zmmv86.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '11',
-	    title: 'Art 11',
-	    url: 'http://i67.tinypic.com/2q2og7t.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '12',
-	    title: 'Art 12',
-	    url: 'http://i63.tinypic.com/2zdt444.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '13',
-	    title: 'Art 13',
-	    url: 'http://i66.tinypic.com/15g5p9i.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '14',
-	    title: 'Art 14',
-	    url: 'http://i67.tinypic.com/wve2oy.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '15',
-	    title: 'Art 15',
-	    url: 'http://i67.tinypic.com/10x51fb.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '16',
-	    title: 'Art 16',
-	    url: 'http://i66.tinypic.com/qso4n7.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '17',
-	    title: 'Art 17',
-	    url: 'http://i65.tinypic.com/ww128k.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '18',
-	    title: 'Art 18',
-	    url: 'http://i65.tinypic.com/24mzzh4.jpg',
-	    category: 'Drawing'
-	  }, {
-	    id: '19',
-	    title: 'Art 19',
-	    url: 'http://i64.tinypic.com/2d8ntx2.jpg',
-	    category: 'Drawing'
-	  }];
+	function CodePortfolioController($log) {
+	  $log.debug('init codePortfolioCtrl');
 	}
 
 /***/ },
@@ -53651,7 +53570,7 @@
 /* 62 */
 /***/ function(module, exports) {
 
-	module.exports = "<section class=\"art-portfolio-container\">\n  <!-- Image Gallery -->\n  <div class=\"portfolio-container clearfix\">\n    <div class=\"portfolio-img-container\"\n     ng-repeat=\"item in artPortfolioCtrl.items\">\n      <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n          <div class=\"hover-text\">\n            <h3>{{item.title}}</h3>\n            <h4>{{item.category}}</h4>\n            <span class=\"icon modal-icon\">\n              <i class=\"icon-basic-magnifier-plus\" ng-click=\"artPortfolioCtrl.open(item)\"></i>\n            </span>\n          </div>\n        </div>\n    </div>\n  </div>\n</section>\n";
+	module.exports = "<section class=\"code-portfolio-container\">\n\n  <!-- Project Container -->\n  <div class=\"project-container\">\n    <!-- 3D Project -->\n      <div class=\"project\">\n        <h2>3d Engine</h2>\n        <h3>\n          <p><span>Summary: </span>Generates rotating 3D polyhedra models using JavaScript and HTML5 Canvas</p>\n          <p><span>Tools: </span>React.js, Vanilla Javascript, Node.js, Webpack</p>\n        <h3>\n\n        <a href=\"https://github.com/loomnugget/js-3d-experiment\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n        <a href=\"http://codepen.io/ploom/pen/LRvzOk\">\n        <span><i class=\"fa fa-codepen project-icon codepen\"></i></span></a>\n      </div>\n      <hr>\n      <!-- Art-c Project -->\n      <div class=\"project\">\n        <h2>[art-c]</h2>\n        <h3>\n          <p><span>Summary: </span>Social media platform that allows local artists to display and share their work with others in their community.</p>\n          <p><span>Tools: </span>Node.js, AngularJS, Webpack, Gulp.js, MongoDB, Bootstrap, AWS S3</p>\n        <h3>\n        <a href=\"https://github.com/loomnugget/art-c\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n      </div>\n\n  </div>\n\n</section>\n";
 
 /***/ },
 /* 63 */
@@ -53663,12 +53582,12 @@
 
 	module.exports = {
 	  template: __webpack_require__(66),
-	  controller: ['$log', '$location', '$rootScope', CodePortfolioController],
-	  controllerAs: 'codePortfolioCtrl'
+	  controller: ['$log', '$location', '$rootScope', FooterController],
+	  controllerAs: 'footerCtrl'
 	};
 
-	function CodePortfolioController($log) {
-	  $log.debug('init codePortfolioCtrl');
+	function FooterController($log) {
+	  $log.debug('init footerCtrl');
 	}
 
 /***/ },
@@ -53682,7 +53601,7 @@
 /* 66 */
 /***/ function(module, exports) {
 
-	module.exports = "<section class=\"code-portfolio-container\">\n\n  <!-- Project Container -->\n  <div class=\"project-container\">\n    <!-- 3D Project -->\n      <div class=\"project\">\n        <h2>3d Engine</h2>\n        <h3>\n          <p><span>Summary: </span>Generates rotating 3D polyhedra models using JavaScript and HTML5 Canvas</p>\n          <p><span>Tools: </span>React.js, Vanilla Javascript, Node.js, Webpack</p>\n        <h3>\n\n        <a href=\"https://github.com/loomnugget/js-3d-experiment\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n        <a href=\"http://codepen.io/ploom/pen/LRvzOk\">\n        <span><i class=\"fa fa-codepen project-icon codepen\"></i></span></a>\n      </div>\n      <hr>\n      <!-- Art-c Project -->\n      <div class=\"project\">\n        <h2>[art-c]</h2>\n        <h3>\n          <p><span>Summary: </span>Social media platform that allows local artists to display and share their work with others in their community.</p>\n          <p><span>Tools: </span>Node.js, AngularJS, Webpack, Gulp.js, MongoDB, Bootstrap, AWS S3</p>\n        <h3>\n        <a href=\"https://github.com/loomnugget/art-c\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n      </div>\n\n  </div>\n\n</section>\n";
+	module.exports = "<div class=\"footer\">\n  <p class=\"footer-text\">2017</p>\n\n  <span><a href=\"https://github.com/loomnugget\">\n  <i class=\"fa fa-github footer-icon github\"></i></a></span>\n  <span><a href=\"http://codepen.io/ploom\">\n  <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n  <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n  <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n</div>\n";
 
 /***/ },
 /* 67 */
@@ -53694,37 +53613,6 @@
 
 	module.exports = {
 	  template: __webpack_require__(70),
-	  controller: ['$log', '$location', '$rootScope', FooterController],
-	  controllerAs: 'footerCtrl'
-	};
-
-	function FooterController($log) {
-	  $log.debug('init footerCtrl');
-	}
-
-/***/ },
-/* 68 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 69 */,
-/* 70 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"footer\">\n  <p class=\"footer-text\">2017</p>\n\n  <span><a href=\"https://github.com/loomnugget\">\n  <i class=\"fa fa-github footer-icon github\"></i></a></span>\n  <span><a href=\"http://codepen.io/ploom\">\n  <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n  <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n  <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n</div>\n";
-
-/***/ },
-/* 71 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(72);
-
-	module.exports = {
-	  template: __webpack_require__(74),
 	  controller: ['$log', ModalController],
 	  controllerAs: 'modalCtrl',
 	  bindings: {
@@ -53743,28 +53631,28 @@
 	}
 
 /***/ },
-/* 72 */
+/* 68 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 73 */,
-/* 74 */
+/* 69 */,
+/* 70 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"modal-container\">\n  <div class=\"modal-header\">\n    <h2>{{modalCtrl.modalData.title}}</h2>\n    <i class=\"fa fa-close modal-icon modal-close\"\n    ng-click=\"modalCtrl.handleClose()\"></i></span>\n  </div>\n\n  <div class=\"modal-body\" id=\"modal-body\">\n    <!-- Gallery image-->\n    <img src=\"{{modalCtrl.modalData.src}}\">\n    <!-- Arrow Icons -->\n    <!-- <div class=\"row center\">\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-left modal-icon modal-arrow\" ng-click=\"modalCtrl.nextImage()\"></i></span>\n      </div>\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-right modal-icon modal-arrow\" ng-click=\"modalCtrl.previousImage()\"></i></span>\n      </div>\n    </div> -->\n\n</div>\n";
+	module.exports = "<div class=\"modal-container\">\n  <div class=\"modal-header\">\n    <h2>{{modalCtrl.modalData.title}}</h2>\n    <i class=\"fa fa-close modal-icon modal-close\"\n    ng-click=\"modalCtrl.handleClose()\"></i></span>\n  </div>\n\n  <div class=\"modal-body\" id=\"modal-body\">\n    <!-- Gallery image-->\n    <img src=\"{{modalCtrl.modalData.url}}\">\n    <!-- Arrow Icons -->\n    <!-- <div class=\"row center\">\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-left modal-icon modal-arrow\" ng-click=\"modalCtrl.nextImage()\"></i></span>\n      </div>\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-right modal-icon modal-arrow\" ng-click=\"modalCtrl.previousImage()\"></i></span>\n      </div>\n    </div> -->\n\n</div>\n";
 
 /***/ },
-/* 75 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(76);
+	__webpack_require__(72);
 
 	module.exports = {
-	  template: __webpack_require__(78),
+	  template: __webpack_require__(74),
 	  controller: ['$log', '$location', '$rootScope', NavbarController],
 	  controllerAs: 'navbarCtrl'
 	};
@@ -53792,14 +53680,14 @@
 	}
 
 /***/ },
-/* 76 */
+/* 72 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 77 */,
-/* 78 */
+/* 73 */,
+/* 74 */
 /***/ function(module, exports) {
 
 	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <li class=\"navbar-brand\"><a href=\"#/landing\">Home</a></li>\n\n    <li ng-repeat=\"item in navbarCtrl.items\"\n    name=\"item\"\n    ng-class=\"{'active': item.id == navbarCtrl.states.activeItem}\"\n    ng-click=\"navbarCtrl.states.activeItem = item.id\">\n    <a href=\"{{item.url}}\">{{item.title}}</a></li>\n  </ul>\n</nav>\n";

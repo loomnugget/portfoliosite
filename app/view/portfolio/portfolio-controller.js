@@ -7,6 +7,28 @@ module.exports = ['$log', '$uibModal', PortfolioController];
 function PortfolioController($log, $uibModal){
   $log.debug('init portfolioCtrl');
 
+  this.isActive1 = true;
+  this.isActive2 = false;
+  this.isActive3 = false;
+
+  this.isActive = function(item) {
+    if (item === 1) {
+      this.isActive1 = true;
+      this.isActive2 = false;
+      this.isActive3 = false;
+    }
+    if (item === 2) {
+      this.isActive1 = false;
+      this.isActive2 = true;
+      this.isActive3 = false;
+    }
+    if (item === 3) {
+      this.isActive1 = false;
+      this.isActive2 = false;
+      this.isActive3 = true;
+    }
+  };
+
   this.open = function(item) {
     let modalInstance = $uibModal.open({
       component: 'modal',

@@ -1,12 +1,12 @@
 <main class="portfolio">
     <div class="navigation clearfix">
-      <div class="menu-item">
+      <div class="menu-item" ng-class="{'active': portfolioCtrl.isActive1}" ng-click="myFilter = category; portfolioCtrl.isActive(1)">
         <h2>All</h2>
       </div>
-      <div class="menu-item">
+      <div class="menu-item" ng-class="{'active': portfolioCtrl.isActive2}" ng-click="myFilter = {category: 'Drawing'}; portfolioCtrl.isActive(2)">
         <h2>Drawing</h2>
       </div>
-      <div class="menu-item">
+      <div class="menu-item" ng-class="{'active': portfolioCtrl.isActive3}" ng-click="myFilter = {category: 'Painting'}; portfolioCtrl.isActive(3)">
         <h2>Painting</h2>
       </div>
   </div>
@@ -15,7 +15,7 @@
     <!-- Image Gallery -->
     <div class="portfolio-container clearfix">
       <div class="portfolio-img-container"
-       ng-repeat="item in portfolioCtrl.items">
+       ng-repeat="item in portfolioCtrl.items | filter:myFilter">
         <div class="square" ng-style="{'background-image': 'url({{item.url}})'}">
             <div class="hover-text">
               <h3>{{item.title}}</h3>
