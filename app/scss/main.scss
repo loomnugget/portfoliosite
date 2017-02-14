@@ -25,17 +25,18 @@ hr.gradient {
   margin: 0 20%;
   border: 0;
   height: 1px;
-  background-image: linear-gradient(to left, rgba(255,255,255,.3), #fff, rgba(255,255,255,.3));
+  background-image: linear-gradient(to left, rgba(255,255,255,.3), $app-white, rgba(255,255,255,.3));
 }
 
-.icon{
-  font-size: 120px;
+.icon {
+  //font-size: 120px;
   color: $app-white;
   background: -webkit-linear-gradient(#FAFFD1, #A1FFCE);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-color: transparent;
   transition: .2s;
+  cursor: pointer;
 }
 
 .icon:hover{

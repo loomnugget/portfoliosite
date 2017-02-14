@@ -6,27 +6,31 @@
   min-height: 100vh;
   margin-bottom: 100px;
   h3{
-    color: rgba(255,255,255,.5);
     margin-top: 40px;
     font-size: 320%;
     padding: 2%;
     text-align: center;
   }
-  .project-icon-container{
+  .project-menu-container{
       width: 90%;
       margin: 3% 5%;
       padding: 1%;
-      h4{ font-size: 120%;}
+      h4{ font-size: 130%;}
       h5{
         font-size: 90%;
         font-style: italic;
+        color: $app-offwhite;
+
       }
-    .project-icon{
+    .project-menu{
       float:left;
       width: 31%;
       margin: 1%;
       text-align: center;
       @media only screen and (min-width: 900px){
+      }
+      .project-icon{
+        font-size: 120px;
       }
     }
   }
@@ -39,55 +43,20 @@
     h4{
       font-size: 300%;
       padding: 1%;
-      border-bottom: 1px solid $app-white;
-      span{
-        float: right;
-      }
-      .info-icon{
-        margin-left: 20px;
-        // background: -webkit-linear-gradient(#FAFFD1, #A1FFCE);
-        // -webkit-background-clip: text;
-        // -webkit-text-fill-color: transparent;
-        // background-color: transparent;
-        // transition: .2s;
-      }
+      border-bottom: 1px solid $app-offwhite;
+      span{float: right;}
+      .info-icon{margin-left: 20px;}
     }
     h5{
       font-size: 200%;
       text-transform: uppercase;
     }
-    p{
-      font-size: 110%;
-
-    }
     .info-body-container{
       padding:1% 3%;
+      p{
+        font-size: 110%;
+        color: $app-offwhite;
+      }
     }
-
   }
-    // .img1{
-    //   background-image:
-    //     linear-gradient(to bottom,
-    //       #e96443,
-    //       #904e95
-    //     ),
-    //     url('http://i68.tinypic.com/dy0zd0.jpg');
-    // }
-    // .img2{
-    //   background-image:
-    //     linear-gradient(to bottom,
-    //       #FAFFD1,
-    //       #A1FFCE
-    //     ),
-    //     url('http://i68.tinypic.com/dy0zd0.jpg');
-    // }
-    // .img3{
-    //   background-image:
-    //     linear-gradient(to bottom,
-    //       rgba(255, 255, 255, 0.1),
-    //       rgba(255,255,255, .9)
-    //     ),
-    //     url('http://i68.tinypic.com/dy0zd0.jpg');
-    // }
-
 }
