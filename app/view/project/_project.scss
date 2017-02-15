@@ -34,6 +34,39 @@
       }
     }
   }
+  .active{
+    width: 100%;
+    border-bottom: 2px solid rgba(255,255,255,.3);
+    h3{
+      padding: 7%;
+      margin:0;
+      font-size: 200%;
+      color: $app-offwhite;
+    }
+    hr{display:none;}
+    .row{
+      float:left;
+      width: 48%;
+      margin:0 1%;
+    }
+    .project-menu-container{
+      margin:0;
+      padding: 0;
+      h4{
+        font-size: 90%;
+        margin:0;
+        color: $app-offwhite;
+      }
+      h5 {display:none;}
+    .project-menu{
+      padding: 4% 0%;
+      margin: 0;
+      .project-icon{
+        font-size: 45px;
+      }
+    }
+  }
+}
 
   .info-container{
     width: 70%;

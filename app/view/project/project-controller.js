@@ -11,6 +11,8 @@ function ProjectController($log) {
   this.isVisible2 = false;
   this.isVisible3 = false;
 
+  this.isActive = false;
+
   this.states = {};
   this.states.activeItem = 'item1';
   this.items = [
@@ -32,16 +34,19 @@ function ProjectController($log) {
       this.isVisible1 = true;
       this.isVisible2 = false;
       this.isVisible3 = false;
+      this.isActive = true;
     }
     if(item === 2) {
       this.isVisible2 = true;
       this.isVisible1 = false;
       this.isVisible3 = false;
+      this.isActive = true;
     }
     if(item === 3) {
       this.isVisible3 = true;
       this.isVisible1 = false;
       this.isVisible2 = false;
+      this.isActive = true;
     }
   };
 
