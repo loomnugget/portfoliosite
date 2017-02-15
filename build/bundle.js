@@ -53213,7 +53213,7 @@
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"contact\">\n  <form class=\"contactForm\" novalidate>\n\n    <h3 class=\"icon\">Contact Me</h3>\n\n    <label>Name</label>\n    <input\n      required\n      name=\"name\"\n      type=\"text\"\n      uib-tooltip=\"Name Required\"\n      tooltip-placement=\"bottom-right\"\n      tooltip-trigger=\"'focus'\">\n\n    <label>Email</label>\n    <input\n      required\n      name=\"email\"\n      type=\"text\"\n      uib-tooltip=\"Email Required\"\n      tooltip-placement=\"bottom-right\"\n      tooltip-trigger=\"'focus'\">\n\n    <label>Message</label>\n    <textarea\n      name=\"message\"\n      type=\"text\"></textarea>\n\n  <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n  </form>\n</main>\n";
+	module.exports = "<main class=\"contact\">\n  <form class=\"contactForm\" novalidate>\n\n    <h3 class=\"gradient-text\">Contact Me</h3>\n\n    <label>Name</label>\n    <input\n      required\n      name=\"name\"\n      type=\"text\"\n      uib-tooltip=\"Name Required\"\n      tooltip-placement=\"bottom-right\"\n      tooltip-trigger=\"'focus'\">\n\n    <label>Email</label>\n    <input\n      required\n      name=\"email\"\n      type=\"text\"\n      uib-tooltip=\"Email Required\"\n      tooltip-placement=\"bottom-right\"\n      tooltip-trigger=\"'focus'\">\n\n    <label>Message</label>\n    <textarea\n      name=\"message\"\n      type=\"text\"></textarea>\n\n  <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n  </form>\n</main>\n";
 
 /***/ },
 /* 45 */

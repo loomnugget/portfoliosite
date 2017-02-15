@@ -28,10 +28,9 @@ hr.gradient {
   background-image: linear-gradient(to left, rgba(255,255,255,.3), $app-white, rgba(255,255,255,.3));
 }
 
+// Gradient Icon I - Light Gradient
 .icon {
-  //font-size: 120px;
-  color: $app-white;
-  background: -webkit-linear-gradient(#FAFFD1, #A1FFCE);
+  background: -webkit-linear-gradient($app-gradient1, $app-gradient2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-color: transparent;
@@ -40,11 +39,32 @@ hr.gradient {
 }
 
 .icon:hover{
-  background: -webkit-linear-gradient(#A1FFCE, $app-secondary);
+  background: -webkit-linear-gradient($app-gradient2, $app-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: transparent;
+}
+// Gradient Icon II - Darker Gradient
+.icon2 {
+  background: -webkit-linear-gradient($app-secondary, #A1FFCE);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-color: transparent;
   transition: .2s;
+  cursor: pointer;
+}
+.icon2:hover{
+  background: -webkit-linear-gradient($app-secondary, $app-secondary-hover);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: transparent;
+}
+
+.gradient-text{
+  background: -webkit-linear-gradient($app-gradient2, $app-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: transparent;
 }
 
 // General List styles

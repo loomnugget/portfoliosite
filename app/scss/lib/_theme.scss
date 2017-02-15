@@ -6,20 +6,26 @@
 
 $app-primary: #b55bff;
 $app-secondary:#23bbe9;
-$app-secondary2: rgba(35,187,233, .5);
+$app-secondary-hover: #1882a3;
 $app-tertiary: #26A69A;
+//$app-purple: #b55bff;
+
+$app-gradient1: #FAFFD1;
+$app-gradient2: #A1FFCE;
 
 $app-disabled: #a2a2a2;
-$app-active: #fa7fa7;
+$app-active: #ff0040;
 
-$app-success: #00b500;
-$app-error: #b50000;
+$app-success: #26a65a;
+$app-error: #ff4c4c;
+$app-error-hover: #ff6f6f;
 
 $app-warn: #b55555;
 $app-info: #55b555;
 
-//$app-white: #fff;
+$app-bright-white: #fff;
 $app-white:#bababa;
+$app-white2: #d5d5d5;
 $app-offwhite: #777777;
 
 $app-black: #191919;

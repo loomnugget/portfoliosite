@@ -5,33 +5,37 @@
     margin: 10% 20%;
     padding: 3%;
     border: 2px solid $app-offwhite;
+    border-radius: 5px;
     h3{
       font-size: 300%;
+      margin-bottom: 20px;
     }
     .submit-btn {
       margin-top: 5px;
       color: $app-black;
+      border: 2px solid $app-black;
+      font-weight: bold;
       font-family: $app-font2;
       font-size: 14px;
-      background: linear-gradient(#FAFFD1, #A1FFCE);
+      background: linear-gradient($app-gradient2, $app-secondary);
       border-radius: 14px;
       transition: .5s;
       cursor: pointer;
     }
     .submit-btn:hover{
-      background: linear-gradient(#A1FFCE, $app-secondary);
+      background: linear-gradient($app-secondary, $app-secondary-hover);
     }
     .group {
       position:relative;
       margin-top:25px;
     }
     input, textarea{
-      font-size:12px;
+      font-size:14px;
       padding:10px 6px;
       display:block;
-      border-radius: 15px;
-      color: $app-white;
-      border: 2px solid $app-white;
+      border-radius: 5px;
+      color: $app-white2;
+      border: 2px solid $app-offwhite;
       background-color: $app-black;
       width: 100%;
       margin-bottom: 10px;
@@ -44,7 +48,7 @@
     }
 
     label{
-      color:$app-white;
+      color:$app-offwhite;
       pointer-events:none;
       font-size:16px;
       text-transform: uppercase;
