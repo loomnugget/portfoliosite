@@ -1,3 +1,31 @@
 <main class="contact">
+  <form class="contactForm" novalidate>
 
+    <h3 class="icon">Contact Me</h3>
+
+    <label>Name</label>
+    <input
+      required
+      name="name"
+      type="text"
+      uib-tooltip="Name Required"
+      tooltip-placement="bottom-right"
+      tooltip-trigger="'focus'">
+
+    <label>Email</label>
+    <input
+      required
+      name="email"
+      type="text"
+      uib-tooltip="Email Required"
+      tooltip-placement="bottom-right"
+      tooltip-trigger="'focus'">
+
+    <label>Message</label>
+    <textarea
+      name="message"
+      type="text"></textarea>
+
+  <button class="btn submit-btn" type="submit"> Submit </button>
+  </form>
 </main>

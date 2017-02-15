@@ -1,68 +1,59 @@
 @import "theme";
 .contact{
-  background-image:
-    linear-gradient(to left,
-      rgba(255, 255, 255, .8),
-      rgba(255,255,255, .3)
-    ),
-    url('http://i68.tinypic.com/2d9r8sy.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  .textbox {
-    position:absolute;
-    z-index: 20;
-    padding-top: 170px;
-    text-align: center;
-    color: $app-black;
-    background: transparent;
-    width: 100%;
-    @media only screen and (min-width: 1000px){
-      padding-top: 120px;
-    }
-    h2 {
-      text-transform: uppercase;
-      font-size: 350%;
-      font-family: $title-font;
-      padding: 2%;
-      text-align: center;
-    }
+  .contactForm {
+    width: 60%;
+    margin: 10% 20%;
+    padding: 3%;
+    border: 2px solid $app-offwhite;
     h3{
-      font-size: 180%;
-      margin-bottom: 3%;
-      span{
-        font-weight: bold;
-      }
+      font-size: 300%;
     }
-    .span-container{
-      width: 60%;
-      margin: 0 20%;
-      @media only screen and (min-width: 900px){
-        width: 40%;
-        margin: 0 30%;
-      }
-    }
-    .contact-icon{
-      float:left;
-      width: 33.333333%;
-      height: 100%;
-      font-size: 60px;
-      padding: 20px 24px;
-      margin: 1% 0;
-      background-color: transparent;
+    .submit-btn {
+      margin-top: 5px;
       color: $app-black;
-      transition: .2s;
-      @media only screen and (min-width: 900px){
-        font-size: 80px;
-      }
+      font-family: $app-font2;
+      font-size: 14px;
+      background: linear-gradient(#FAFFD1, #A1FFCE);
+      border-radius: 14px;
+      transition: .5s;
+      cursor: pointer;
     }
-    .codepen{
-      padding: 20px;
+    .submit-btn:hover{
+      background: linear-gradient(#A1FFCE, $app-secondary);
+    }
+    .group {
+      position:relative;
+      margin-top:25px;
+    }
+    input, textarea{
+      font-size:12px;
+      padding:10px 6px;
+      display:block;
+      border-radius: 15px;
+      color: $app-white;
+      border: 2px solid $app-white;
+      background-color: $app-black;
+      width: 100%;
+      margin-bottom: 10px;
+      }
+    input:focus, textarea:focus{ outline:none; }
+
+    .input-group{
+      padding:0;
+      margin:0;
     }
 
-    .contact-icon:hover{
-      color: $app-secondary;
+    label{
+      color:$app-white;
+      pointer-events:none;
+      font-size:16px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    //Changes Placeholder Color
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {
+      color: $app-white;
     }
   }
 }
