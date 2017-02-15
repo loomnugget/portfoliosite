@@ -81,7 +81,7 @@
 	});
 
 	// Load components
-	context = __webpack_require__(62);
+	context = __webpack_require__(61);
 	context.keys().forEach(function (key) {
 	  var name = camelcase(path.basename(key, '.js'));
 	  var module = context(key);
@@ -53207,13 +53207,13 @@
 /* 43 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"about\">\n\n  <!-- About-->\n<div class=\"about-container\">\n  <!-- Intro -->\n  <div class = \"intro-container\">\n    <div class=\"row bottom-space\">\n      <h2>About Me</h2>\n      <div class=\"span-container\">\n        <span><i class=\"fa fa-diamond\"></i><span>\n      </div>\n      <!-- <h4>I’m a software developer and artist who loves finding patterns, combining art and technology, and abstractions. -->\n      </h4>\n    </div>\n\n  <!-- Skills -->\n    <div class=\"text-container\">\n      <div class=\"bottom-space\">\n        <!-- <h3>Skills</h3>\n        <h4>Javascript/ES6, AngularJS, Node.js, Express, Webpack, Mocha,\n          Chai, HTML, CSS, Sass, Responsive Design, jQuery, Bootstrap, UX/UI, Git, AWS S3, OAuth</h4> -->\n      </div>\n\n      <div class=\"bottom-space\">\n        <!-- <h3>Interests</h3>\n          <h4>3D Programming, Data Visualization, VR/AR, Machine Learning, Creative Code, Data Structures/Algorithms</h4> -->\n      </div>\n\n      <div class=\"bottom-space\">\n        <!-- <h3>Education</h3>\n          <h4><span>Code Fellows | Seattle, WA | 2016</span></h4>\n          <h4>Advanced Javascript Software Development Certificate</h4>\n        </br>\n          <h4><span>SUNY Geneseo | Geneseo, NY | 2013</span></h4>\n          <h4>Bachelor’s of Science, Biology</h4> -->\n      </div>\n    </div>\n  </div>\n\n</div><!-- end about-->\n</main>\n";
+	module.exports = "<main class=\"about\">\n\n  <!-- About-->\n<div class=\"about-container\">\n  <!-- Intro -->\n  <!-- <div class = \"intro-container\">\n    <div class=\"row bottom-space\">\n      <h2>About Me</h2>\n      <div class=\"span-container\">\n        <span><i class=\"fa fa-diamond\"></i><span>\n      </div>\n      <h4>I’m a software developer and artist who loves finding patterns, combining art and technology, and abstractions.\n      </h4>\n    </div>\n\n      <div class=\"bottom-space\">\n        <h3>Interests</h3>\n          <h4>Creative Code, Abstract Art, Data Visualization</h4>\n      </div>\n  </div> -->\n\n</div><!-- end about-->\n</main>\n";
 
 /***/ },
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"contact\">\n  <form class=\"contactForm\" novalidate>\n\n    <h3 class=\"gradient-text\">Contact Me</h3>\n\n    <label>Name</label>\n    <input\n      required\n      name=\"name\"\n      type=\"text\"\n      uib-tooltip=\"Name Required\"\n      tooltip-placement=\"bottom-right\"\n      tooltip-trigger=\"'focus'\">\n\n    <label>Email</label>\n    <input\n      required\n      name=\"email\"\n      type=\"text\"\n      uib-tooltip=\"Email Required\"\n      tooltip-placement=\"bottom-right\"\n      tooltip-trigger=\"'focus'\">\n\n    <label>Message</label>\n    <textarea\n      name=\"message\"\n      type=\"text\"></textarea>\n\n  <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n  </form>\n</main>\n";
+	module.exports = "<main class=\"contact\">\n  <form class=\"contactForm\" novalidate>\n\n    <h3 class=\"gradient-text\">Contact Me</h3>\n\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input\n        required\n        name=\"name\"\n        type=\"text\"\n        uib-tooltip=\"Name Required\"\n        tooltip-placement=\"bottom-right\"\n        tooltip-trigger=\"'focus'\">\n      </div>\n\n    <div class=\"form-group\">\n      <label>Email</label>\n      <input\n        required\n        name=\"email\"\n        type=\"text\"\n        uib-tooltip=\"Email Required\"\n        tooltip-placement=\"bottom-right\"\n        tooltip-trigger=\"'focus'\">\n        <span class=\"label label-danger\" data-ng-show=\"submitted && helpForm.email.$error.required\">Required!</span>\n        <span class=\"label label-danger\" data-ng-show=\"submitted && helpForm.$error.email\">Invalid email!</span>\n      </div>\n\n    <div class=\"form-group\">\n      <label>Message</label>\n      <textarea name=\"message\" type=\"text\"></textarea>\n    </div>\n\n  <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n  </form>\n</main>\n";
 
 /***/ },
 /* 45 */
@@ -53223,8 +53223,8 @@
 		"./about/about-controller.js": 46,
 		"./contact/contact-controller.js": 49,
 		"./landing/landing-controller.js": 52,
-		"./portfolio/portfolio-controller.js": 56,
-		"./project/project-controller.js": 59
+		"./portfolio/portfolio-controller.js": 55,
+		"./project/project-controller.js": 58
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53304,13 +53304,12 @@
 
 /***/ },
 /* 54 */,
-/* 55 */,
-/* 56 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(57);
+	__webpack_require__(56);
 
 	module.exports = ['$log', '$uibModal', PortfolioController];
 
@@ -53432,19 +53431,19 @@
 	}
 
 /***/ },
-/* 57 */
+/* 56 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 58 */,
-/* 59 */
+/* 57 */,
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(60);
+	__webpack_require__(59);
 
 	module.exports = ['$log', ProjectController];
 
@@ -53492,21 +53491,21 @@
 	}
 
 /***/ },
-/* 60 */
+/* 59 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 61 */,
-/* 62 */
+/* 60 */,
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./code-portfolio/code-portfolio.js": 63,
-		"./footer/footer.js": 67,
-		"./modal/modal.js": 71,
-		"./navbar/navbar.js": 75
+		"./code-portfolio/code-portfolio.js": 62,
+		"./footer/footer.js": 66,
+		"./modal/modal.js": 70,
+		"./navbar/navbar.js": 74
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -53519,19 +53518,19 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 62;
+	webpackContext.id = 61;
 
 
 /***/ },
-/* 63 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(64);
+	__webpack_require__(63);
 
 	module.exports = {
-	  template: __webpack_require__(66),
+	  template: __webpack_require__(65),
 	  controller: ['$log', '$location', '$rootScope', CodePortfolioController],
 	  controllerAs: 'codePortfolioCtrl'
 	};
@@ -53541,28 +53540,28 @@
 	}
 
 /***/ },
-/* 64 */
+/* 63 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 65 */,
-/* 66 */
+/* 64 */,
+/* 65 */
 /***/ function(module, exports) {
 
 	module.exports = "<section class=\"code-portfolio-container\">\n\n  <!-- Project Container -->\n  <div class=\"project-container\">\n    <!-- 3D Project -->\n      <div class=\"project\">\n        <h2>3d Engine</h2>\n        <h3>\n          <p><span>Summary: </span>Generates rotating 3D polyhedra models using JavaScript and HTML5 Canvas</p>\n          <p><span>Tools: </span>React.js, Vanilla Javascript, Node.js, Webpack</p>\n        <h3>\n\n        <a href=\"https://github.com/loomnugget/js-3d-experiment\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n        <a href=\"http://codepen.io/ploom/pen/LRvzOk\">\n        <span><i class=\"fa fa-codepen project-icon codepen\"></i></span></a>\n      </div>\n      <hr>\n      <!-- Art-c Project -->\n      <div class=\"project\">\n        <h2>[art-c]</h2>\n        <h3>\n          <p><span>Summary: </span>Social media platform that allows local artists to display and share their work with others in their community.</p>\n          <p><span>Tools: </span>Node.js, AngularJS, Webpack, Gulp.js, MongoDB, Bootstrap, AWS S3</p>\n        <h3>\n        <a href=\"https://github.com/loomnugget/art-c\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n      </div>\n\n  </div>\n\n</section>\n";
 
 /***/ },
-/* 67 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(68);
+	__webpack_require__(67);
 
 	module.exports = {
-	  template: __webpack_require__(70),
+	  template: __webpack_require__(69),
 	  controller: ['$log', '$location', '$rootScope', FooterController],
 	  controllerAs: 'footerCtrl'
 	};
@@ -53572,28 +53571,28 @@
 	}
 
 /***/ },
-/* 68 */
+/* 67 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 69 */,
-/* 70 */
+/* 68 */,
+/* 69 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"footer\">\n  <p class=\"footer-text\"> lemoncandy 2017</p>\n\n  <span><a href=\"https://github.com/loomnugget\">\n  <i class=\"fa fa-github footer-icon icon github\"></i></a></span>\n  <span><a href=\"http://codepen.io/ploom\">\n  <i class=\"fa fa-codepen footer-icon icon codepen\"></i></a></span>\n  <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n  <i class=\"fa fa-linkedin footer-icon icon\"></i></a></span>\n</div>\n";
 
 /***/ },
-/* 71 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(72);
+	__webpack_require__(71);
 
 	module.exports = {
-	  template: __webpack_require__(74),
+	  template: __webpack_require__(73),
 	  controller: ['$log', ModalController],
 	  controllerAs: 'modalCtrl',
 	  bindings: {
@@ -53612,28 +53611,28 @@
 	}
 
 /***/ },
-/* 72 */
+/* 71 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 73 */,
-/* 74 */
+/* 72 */,
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-container\">\n  <div class=\"modal-header\">\n    <span>\n      <i class=\"icon-arrows-remove modal-icon modal-close\"\n        ng-click=\"modalCtrl.handleClose()\"></i>\n    </span>\n  </div>\n\n  <div class=\"modal-body\" id=\"modal-body\">\n    <!-- Gallery image-->\n    <img src=\"{{modalCtrl.modalData.url}}\">\n    <!-- Arrow Icons -->\n    <!-- <div class=\"row center\">\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-left modal-icon modal-arrow\" ng-click=\"modalCtrl.nextImage()\"></i></span>\n      </div>\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-right modal-icon modal-arrow\" ng-click=\"modalCtrl.previousImage()\"></i></span>\n      </div>\n    </div> -->\n\n</div>\n";
 
 /***/ },
-/* 75 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(76);
+	__webpack_require__(75);
 
 	module.exports = {
-	  template: __webpack_require__(78),
+	  template: __webpack_require__(77),
 	  controller: ['$log', '$location', '$rootScope', NavbarController],
 	  controllerAs: 'navbarCtrl'
 	};
@@ -53657,14 +53656,14 @@
 	}
 
 /***/ },
-/* 76 */
+/* 75 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 77 */,
-/* 78 */
+/* 76 */,
+/* 77 */
 /***/ function(module, exports) {
 
 	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <!-- logo/home button -->\n    <li class=\"navbar-brand\"><a href=\"#/landing\"><span><i class=\"icon-arrows-squares\"></i></span></a></li>\n    <!-- mail/contact button -->\n    <li class=\"navbar-item\"><a href=\"#/contact\"><span><i class=\"icon-basic-mail-open\"></i></span></a></li>\n    <!-- menu item links -->\n    <li class=\"navbar-item\"\n      ng-repeat=\"item in navbarCtrl.items\"\n      name=\"item\"\n      ng-class=\"{'active': item.id == navbarCtrl.states.activeItem}\"\n      ng-click=\"navbarCtrl.states.activeItem = item.id\">\n    <a href=\"{{item.url}}\">{{item.title}}</a></li>\n  </ul>\n</nav>\n";
