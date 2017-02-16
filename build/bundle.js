@@ -54107,7 +54107,7 @@
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"contact\">\n  <form\n    novalidate\n    class=\"contactForm\"\n    name=\"contactForm\"\n    data-ng-submit=\"contactCtrl.sendMail()\">\n\n    <h3 class=\"gradient-text\">Contact Me</h3>\n\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input\n        required\n        data-ng-model=\"contactCtrl.name\"\n        name=\"name\"\n        type=\"text\"\n        uib-tooltip=\"Name Required\"\n        tooltip-placement=\"bottom-right\"\n        tooltip-trigger=\"'focus'\">\n      </div>\n\n    <div class=\"form-group\">\n      <label>Email</label>\n      <input\n        required\n        data-ng-model=\"contactCtrl.email\"\n        name=\"email\"\n        type=\"text\"\n        uib-tooltip=\"Email Required\"\n        tooltip-placement=\"bottom-right\"\n        tooltip-trigger=\"'focus'\">\n        <span class=\"label label-danger\" data-ng-show=\"submitted && helpForm.email.$error.required\">Required!</span>\n        <span class=\"label label-danger\" data-ng-show=\"submitted && helpForm.$error.email\">Invalid email!</span>\n      </div>\n\n    <div class=\"form-group\">\n      <label>Message</label>\n      <textarea name=\"message\" data-ng-model=\"contactCtrl.message\" type=\"text\"></textarea>\n    </div>\n\n  <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n  </form>\n</main>\n";
+	module.exports = "<main class=\"contact\">\n  <form\n    novalidate\n    class=\"contactForm\"\n    name=\"contactForm\"\n    data-ng-submit=\"contactCtrl.sendMail()\">\n\n    <h3 class=\"gradient-text\">Contact Me</h3>\n\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input\n        required\n        data-ng-model=\"contactCtrl.data.name\"\n        name=\"name\"\n        type=\"text\"\n        uib-tooltip=\"Name Required\"\n        tooltip-placement=\"bottom-right\"\n        tooltip-trigger=\"'focus'\">\n      </div>\n\n    <div class=\"form-group\">\n      <label>Email</label>\n      <input\n        required\n        data-ng-model=\"contactCtrl.data.email\"\n        name=\"email\"\n        type=\"text\"\n        uib-tooltip=\"Email Required\"\n        tooltip-placement=\"bottom-right\"\n        tooltip-trigger=\"'focus'\">\n        <span class=\"label label-danger\" data-ng-show=\"submitted && helpForm.email.$error.required\">Required!</span>\n        <span class=\"label label-danger\" data-ng-show=\"submitted && helpForm.$error.email\">Invalid email!</span>\n      </div>\n\n    <div class=\"form-group\">\n      <label>Message</label>\n      <textarea name=\"message\" data-ng-model=\"contactCtrl.data.message\" type=\"text\"></textarea>\n    </div>\n\n  <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n  </form>\n</main>\n";
 
 /***/ },
 /* 45 */
@@ -54167,21 +54167,15 @@
 
 	function ContactController($log, $http) {
 	  $log.debug('init contactCtrl');
+
 	  //Create data object on the scope
 	  this.data = {};
 
 	  // function called on form submit
 	  this.sendMail = function () {
 	    $log.debug('contactCtrl.sendMail()');
-
-	    this.data = {
-	      name: this.name,
-	      email: this.email,
-	      message: this.message
-	    };
-
-	    // send form inputs to the endpoint '/contact-form' with the data
 	    $http.post('/contact', this.data);
+	    $log.debug('data', this.data);
 	    // .success(function(data) {
 	    //   $log.debug('success', data);
 	    // })

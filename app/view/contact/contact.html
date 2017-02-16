@@ -11,7 +11,7 @@
       <label>Name</label>
       <input
         required
-        data-ng-model="contactCtrl.name"
+        data-ng-model="contactCtrl.data.name"
         name="name"
         type="text"
         uib-tooltip="Name Required"
@@ -23,7 +23,7 @@
       <label>Email</label>
       <input
         required
-        data-ng-model="contactCtrl.email"
+        data-ng-model="contactCtrl.data.email"
         name="email"
         type="text"
         uib-tooltip="Email Required"
@@ -35,7 +35,7 @@
 
     <div class="form-group">
       <label>Message</label>
-      <textarea name="message" data-ng-model="contactCtrl.message" type="text"></textarea>
+      <textarea name="message" data-ng-model="contactCtrl.data.message" type="text"></textarea>
     </div>
 
   <button class="btn submit-btn" type="submit"> Submit </button>
