@@ -4,7 +4,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const debug = require('debug')('portfolio:server');
+const debug = require('debug')('devportfolio:server');
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({});
 
@@ -18,7 +18,9 @@ app.use(morgan('dev'));
 
 // app routes
 app.use(express.static(`${__dirname}/build`));
+
 app.post('/contact', function(req,res){
+  debug('hit post /contact');
   var data = req.body;
   // .sendMail(mailOptions, callback funtion)
   transporter.sendMail(
