@@ -54107,7 +54107,7 @@
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"contact\">\n  <form\n    novalidate\n    class=\"contactForm\"\n    name=\"contactForm\"\n    data-ng-submit=\"contactCtrl.sendMail()\">\n\n    <h3 class=\"gradient-text\">Contact Me</h3>\n\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input\n        required\n        data-ng-model=\"contactCtrl.data.name\"\n        name=\"name\"\n        type=\"text\"\n        uib-tooltip=\"Name Required\"\n        tooltip-placement=\"bottom-right\"\n        tooltip-trigger=\"'focus'\">\n      </div>\n\n    <div class=\"form-group\">\n      <label>Email</label>\n      <input\n        required\n        data-ng-model=\"contactCtrl.data.email\"\n        name=\"email\"\n        type=\"text\"\n        uib-tooltip=\"Email Required\"\n        tooltip-placement=\"bottom-right\"\n        tooltip-trigger=\"'focus'\">\n        <span class=\"label label-danger\" data-ng-show=\"submitted && helpForm.email.$error.required\">Required!</span>\n        <span class=\"label label-danger\" data-ng-show=\"submitted && helpForm.$error.email\">Invalid email!</span>\n      </div>\n\n    <div class=\"form-group\">\n      <label>Message</label>\n      <textarea name=\"message\" data-ng-model=\"contactCtrl.data.message\" type=\"text\"></textarea>\n    </div>\n\n  <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n  </form>\n</main>\n";
+	module.exports = "<main class=\"contact\">\n  <span class=\"success\" ng-if=\"contactCtrl.showSuccessMessage\">Thank you! Your form has been submitted! Refreshing page...</span>\n<!-- ng-if=\"contactCtrl.showSuccessMessage\" -->\n  <form\n    novalidate\n    class=\"contactForm\"\n    name=\"contactForm\"\n    data-ng-submit=\"contactCtrl.sendMail()\">\n\n    <h3 class=\"gradient-text\">Contact Me</h3>\n    <!-- <div class=\"success\"></div> -->\n\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input\n        required\n        data-ng-model=\"contactCtrl.data.name\"\n        name=\"name\"\n        type=\"text\">\n      <span class=\"error\" data-ng-show=\"contactForm.name.$dirty && contactForm.name.$error.required\">Name is Required</span>\n    </div>\n\n    <div class=\"form-group\">\n      <label>Email</label>\n      <input\n        required\n        data-ng-model=\"contactCtrl.data.email\"\n        name=\"email\"\n        type=\"text\">\n        <span class=\"error\" data-ng-show=\"contactForm.email.$dirty &&contactForm.email.$error.required\">Email is Required</span>\n        <!-- <span class=\"error\" data-ng-show=\"contactCtrl.submitted && contactForm.$error.email\">Invalid Email</span> -->\n      </div>\n\n    <div class=\"form-group\">\n      <label>Message</label>\n      <textarea required name=\"message\" data-ng-model=\"contactCtrl.data.message\" type=\"text\"></textarea>\n      <span class=\"error\" data-ng-show=\"contactForm.message.$dirty && contactForm.message.$error.required\">Message is Required</span>\n    </div>\n\n  <button class=\"btn submit-btn\" ng-disabled=\"contactForm.$invalid\" type=\"submit\"> Submit </button>\n\n  </form>\n</main>\n";
 
 /***/ },
 /* 45 */
@@ -54163,25 +54163,34 @@
 
 	__webpack_require__(50);
 
-	module.exports = ['$log', '$http', '$animate', ContactController];
+	module.exports = ['$log', '$http', '$window', '$timeout', '$animate', ContactController];
 
-	function ContactController($log, $http) {
+	function ContactController($log, $http, $window, $timeout) {
 	  $log.debug('init contactCtrl');
 
 	  //Create data object on the scope
 	  this.data = {};
+	  this.submitted = false;
+	  this.showSuccessMessage = false;
 
 	  // function called on form submit
 	  this.sendMail = function () {
+	    var _this = this;
+
 	    $log.debug('contactCtrl.sendMail()');
-	    $http.post('/contact', this.data);
-	    $log.debug('data', this.data);
-	    // .success(function(data) {
-	    //   $log.debug('success', data);
-	    // })
-	    // .error(function(data) {
-	    //   $log.debug('error', data);
-	    // });
+
+	    // Form submit check
+	    this.submitted = true;
+
+	    // Send mail data!
+	    $http.post('/contact', this.data).then(function onSuccess(response) {
+	      $log.debug(response.data, response.status);
+	    }).then(function () {
+	      $timeout($window.location.reload(), 5000);
+	      _this.showSuccessMessage = true;
+	    }).catch(function onError(response) {
+	      return 'error', response.data;
+	    });
 	  };
 	}
 

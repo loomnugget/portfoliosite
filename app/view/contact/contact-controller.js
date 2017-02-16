@@ -2,25 +2,34 @@
 
 require('./_contact.scss');
 
-module.exports = ['$log', '$http', '$animate', ContactController];
+module.exports = ['$log', '$http', '$window', '$timeout', '$animate', ContactController];
 
-function ContactController($log, $http) {
+function ContactController($log, $http, $window, $timeout) {
   $log.debug('init contactCtrl');
 
   //Create data object on the scope
   this.data = {};
+  this.submitted = false;
+  this.showSuccessMessage = false;
 
   // function called on form submit
   this.sendMail = function () {
     $log.debug('contactCtrl.sendMail()');
-    $http.post('/contact', this.data);
-    $log.debug('data', this.data);
-    // .success(function(data) {
-    //   $log.debug('success', data);
-    // })
-    // .error(function(data) {
-    //   $log.debug('error', data);
-    // });
 
+    // Form submit check
+    this.submitted = true;
+
+    // Send mail data!
+    $http.post('/contact', this.data)
+    .then(function onSuccess(response) {
+      $log.debug(response.data, response.status);
+    })
+    .then(() => {
+      $timeout($window.location.reload(), 5000);
+      this.showSuccessMessage = true;
+    })
+    .catch(function onError(response) {
+      return('error', response.data);
+    });
   };
 }
