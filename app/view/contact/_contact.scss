@@ -11,8 +11,11 @@
     color: $app-bright-white;
   }
   .contactForm {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
     width: 60%;
-    margin: 5% 20%;
+    margin: 0 20%;
     padding: 3%;
     border: 2px solid $app-offwhite;
     border-radius: 5px;

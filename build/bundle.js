@@ -54173,6 +54173,10 @@
 	  this.submitted = false;
 	  this.showSuccessMessage = false;
 
+	  this.reloadPage = function () {
+	    $window.location.reload();
+	  };
+
 	  // function called on form submit
 	  this.sendMail = function () {
 	    var _this = this;
@@ -54183,10 +54187,10 @@
 	    this.submitted = true;
 
 	    // Send mail data!
-	    $http.post('/contact', this.data).then(function onSuccess(response) {
+	    $http.post('/contact', this.data).then(function (response) {
 	      $log.debug(response.data, response.status);
 	    }).then(function () {
-	      $timeout($window.location.reload(), 5000);
+	      $timeout(_this.reloadPage(), 5000);
 	      _this.showSuccessMessage = true;
 	    }).catch(function onError(response) {
 	      return 'error', response.data;

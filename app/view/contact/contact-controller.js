@@ -12,6 +12,10 @@ function ContactController($log, $http, $window, $timeout) {
   this.submitted = false;
   this.showSuccessMessage = false;
 
+  this.reloadPage = function() {
+    $window.location.reload();
+  };
+
   // function called on form submit
   this.sendMail = function () {
     $log.debug('contactCtrl.sendMail()');
@@ -21,11 +25,11 @@ function ContactController($log, $http, $window, $timeout) {
 
     // Send mail data!
     $http.post('/contact', this.data)
-    .then(function onSuccess(response) {
+    .then(response => {
       $log.debug(response.data, response.status);
     })
     .then(() => {
-      $timeout($window.location.reload(), 5000);
+      $timeout(this.reloadPage(), 5000);
       this.showSuccessMessage = true;
     })
     .catch(function onError(response) {
