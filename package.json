@@ -10,10 +10,6 @@
   },
   "author": "claudia.cedfeldt@gmail.com",
   "license": "MIT",
-  "engines": {
-    "node": "4.4.7",
-    "npm": "3.10.7"
-  },
   "dependencies": {
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",

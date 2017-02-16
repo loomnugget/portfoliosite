@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const debug = require('debug')('portfolio:server');
 const nodemailer = require('nodemailer');
-const transporter = nodemailer.createTransport();
+const transporter = nodemailer.createTransport({});
 
 // Module constants
 const PORT = process.env.PORT || 3000;
@@ -18,25 +18,21 @@ app.use(morgan('dev'));
 
 // app routes
 app.use(express.static(`${__dirname}/build`));
-
-const router = express.Router();
-app.use('/contact-form', router); //route to connect front to back end
-router.post('/', sendMail);
-
-function sendMail(req, res) {
-  // Get request body
+app.post('/contact', function(req,res){
   var data = req.body;
-
-  // Set up mail options
-  transporter.sendMail({
-    from: data.email,
-    to: 'claudia.cedfeldt@gmail.com',
-    subject: 'Message from Portfolio Website',
-    text: data.message,
-    // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+  // .sendMail(mailOptions, callback funtion)
+  transporter.sendMail(
+    {
+      from: data.email,
+      to: 'claudia.cedfeldt@gmail.com',
+      subject: 'Message from Portfolio Website',
+      text: data.message,
+    },
+  function(err, data){
+    if (err) return err;
+    return res.json(201, data);
   });
-  res.json(data);
-}
+});
 
 // start server
 const server = module.exports = app.listen(PORT, function() {

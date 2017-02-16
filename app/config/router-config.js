@@ -1,10 +1,11 @@
 'use strict';
 
-module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
+module.exports = ['$stateProvider', '$urlRouterProvider', '$locationProvider', routerConfig];
 
-function routerConfig($stateProvider, $urlRouterProvider){
+function routerConfig($stateProvider, $urlRouterProvider, $locationProvider){
   $urlRouterProvider.when('' , '/landing');
   $urlRouterProvider.when('/' , '/landing');
+  $locationProvider.hashPrefix('');
 
   let states = [
     {

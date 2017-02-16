@@ -18,12 +18,13 @@ function ContactController($log, $http) {
     });
 
     // send form inputs to the endpoint '/contact-form' with the data
-    $http.post('/contact-form', data)
-    .success(function(data, status, headers, config){
-      $log.debug('success', data, status, headers, config);
-    })
-    .error(function(data, status, headers, config){
-      $log.debug('error', data, status, headers, config);
-    });
+    $http.post('/contact', data);
+    // .success(function(data) {
+    //   $log.debug('success', data);
+    // })
+    // .error(function(data) {
+    //   $log.debug('error', data);
+    // });
+
   };
 }
