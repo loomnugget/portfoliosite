@@ -28,6 +28,10 @@ describe('testing mail router', function() {
         .end((err, res) => {
           if (err) return done(err);
           expect(res.status).to.equal(200);
+          expect(res.body.to).to.equal('claufadayas@gmail.com');
+          expect(res.body.from).to.equal('Lemongrab - evil@lemon.com');
+          expect(res.body.text).to.equal('I ate my brother.');
+          expect(res.body.subject).to.equal('Message from Portfolio Website');
           done();
         });
       }); //end of it should return a project
