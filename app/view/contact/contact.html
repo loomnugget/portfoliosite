@@ -1,11 +1,11 @@
 <main class="contact">
-  <span class="success" ng-if="contactCtrl.showSuccessMessage">Thank you! Your form has been submitted! Refreshing page...</span>
+  <span class="success" ng-show="contactCtrl.showSuccessMessage">Thank you! Your form has been submitted! Refreshing page...</span>
 <!-- ng-if="contactCtrl.showSuccessMessage" -->
   <form
     novalidate
     class="contactForm"
     name="contactForm"
-    data-ng-submit="contactCtrl.sendMail()">
+    data-ng-submit="contactCtrl.onSubmit()">
 
     <h3 class="gradient-text">Contact Me</h3>
     <!-- <div class="success"></div> -->
@@ -16,8 +16,12 @@
         required
         data-ng-model="contactCtrl.data.name"
         name="name"
+        minlength="3"
         type="text">
-      <span class="error" data-ng-show="contactForm.name.$dirty && contactForm.name.$error.required">Name is Required</span>
+        <div class="error" ng-show="contactForm.$submitted || contactForm.name.$touched">
+          <span ng-show="contactForm.name.$error.required">Tell us your name.</span>
+        </div>
+
     </div>
 
     <div class="form-group">
@@ -26,18 +30,21 @@
         required
         data-ng-model="contactCtrl.data.email"
         name="email"
-        type="text">
-        <span class="error" data-ng-show="contactForm.email.$dirty &&contactForm.email.$error.required">Email is Required</span>
-        <!-- <span class="error" data-ng-show="contactCtrl.submitted && contactForm.$error.email">Invalid Email</span> -->
+        type="email">
+        <div class="error" ng-show="contactForm.$submitted || contactForm.email.$touched">
+          <span ng-show="contactForm.email.$error.required">Tell us your email.</span>
+          <span ng-show="contactForm.email.$error.email">This is not a valid email.</span>
+        </div>
       </div>
 
     <div class="form-group">
       <label>Message</label>
       <textarea required name="message" data-ng-model="contactCtrl.data.message" type="text"></textarea>
-      <span class="error" data-ng-show="contactForm.message.$dirty && contactForm.message.$error.required">Message is Required</span>
-    </div>
+      <div class="error" ng-show="contactForm.$submitted || contactForm.email.$touched">
+        <span ng-show="contactForm.message.$error.required">Message required.</span>
+      </div>
 
-  <button class="btn submit-btn" ng-disabled="contactForm.$invalid" type="submit"> Submit </button>
+  <button class="btn submit-btn" type="submit"> Submit </button>
 
   </form>
 </main>

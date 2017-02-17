@@ -12,25 +12,34 @@ function ContactController($log, $http, $window, $timeout) {
   this.submitted = false;
   this.showSuccessMessage = false;
 
+  // Called when submit button is pressed
+  // If there are errors, show, ngMessages
+  // if there are no errors, call sendMail() and show success message
+  this.onSubmit = function() {
+    $log.debug('contactCtrl.onSubmit()');
+
+  };
+
+  // Reload Contact Page after valid Submit
   this.reloadPage = function() {
+    $log.debug('contactCtrl.reloadPage()');
     $window.location.reload();
   };
 
-  // function called on form submit
-  this.sendMail = function () {
+
+  this.sendMail = function() {
     $log.debug('contactCtrl.sendMail()');
-
-    // Form submit check
-    this.submitted = true;
-
     // Send mail data!
     $http.post('/contact', this.data)
-    .then(response => {
-      $log.debug(response.data, response.status);
+    // return server response and status code
+    .then(function(response) {
+      $log.debug('data and status code', response.data, response.status);
+      return(response.data, response.status);
     })
+    // Show success message then reload page
     .then(() => {
-      $timeout(this.reloadPage(), 5000);
       this.showSuccessMessage = true;
+      $timeout(this.reloadPage(), 5000);
     })
     .catch(function onError(response) {
       return('error', response.data);
