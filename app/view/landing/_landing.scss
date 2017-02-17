@@ -1,20 +1,23 @@
 @import "theme";
 
 .landing {
-
   header {
-    padding: 5%;
+    padding: 0;
     margin: 0;
-    color: $app-black;
+    background: linear-gradient(135deg, $app-gradient2, $app-secondary);
     height: 100vh;
+    width: 100%;
+  }
+  #canvas{
+    background: linear-gradient(135deg, $app-gradient2, $app-secondary);
   }
 
   .landing-title{
     margin-top: 50px;
-    font-size: 400%;
+    font-size: 500%;
     text-transform: uppercase;
     font-family: $app-font;
-    color: $app-white;
+    color: $app-black;
   }
 
   .landing-btn{
