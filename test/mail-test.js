@@ -4,6 +4,10 @@ const expect = require('chai').expect;
 const request = require('superagent');
 const server = require('../server.js');
 
+// Mock Nodemailer
+const nodemailerMock = require('nodemailer-mock');
+const transport = nodemailerMock.createTransport();
+
 const serverControl = require('./lib/server-control.js');
 
 const url = `http://localhost:3000`;
@@ -14,14 +18,14 @@ const exampleMailData = {
   message: 'I ate my brother.',
 };
 
-describe('testing mail router', function() {
+describe('Testing mail router', function() {
   // Turn server on before tests and off after tests
   before(done => serverControl.serverUp(server, done));
   after(done => serverControl.serverDown(server, done));
 
-  describe('testing POST /contact', function() {
-    describe('with valid body', function() {
-
+  describe('testing POST /contact', () => {
+    
+    describe('with valid body', () => {
       it('should return a valid data object', done => {
         request.post(`${url}/contact`)
         .send(exampleMailData)
@@ -34,7 +38,31 @@ describe('testing mail router', function() {
           expect(res.body.subject).to.equal('Message from Portfolio Website');
           done();
         });
-      }); //end of it should return a project
+      }); //end of 'should return valid data object'
     }); //end of valid body
+
+    describe('with invalid body', () => {
+      it('should return a 400 bad request', done => {
+        request.post(`${url}/contact`)
+        .send('whatever')
+        .set('Content-Type', 'application/json')
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          done();
+        });
+      });
+    }); //end of 'with invalid body'
+
+    describe('with no body', () => {
+      it('should return a 400 bad request', done => {
+        request.post(`${url}/contact`)
+        .send({})
+        .set('Content-Type', 'application/json')
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          done();
+        });
+      });
+    }); //end of 'with no body'
   }); // end of POST/contact
 }); // end of testing mail router
