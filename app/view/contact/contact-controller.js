@@ -2,9 +2,9 @@
 
 require('./_contact.scss');
 
-module.exports = ['$log', '$http', '$window', '$timeout', ContactController];
+module.exports = ['$log', '$http',ContactController];
 
-function ContactController($log, $http, $window, $timeout) {
+function ContactController($log, $http) {
   $log.debug('init contactCtrl');
 
   //Create data object on the scope
@@ -18,6 +18,7 @@ function ContactController($log, $http, $window, $timeout) {
     if (form.$valid){
       $log.debug('Valid Form Submitted');
       this.sendMail();
+      this.showSuccessMessage = true;
     }
   };
 
@@ -27,13 +28,8 @@ function ContactController($log, $http, $window, $timeout) {
     $http.post('/contact', this.data)
     // return server response and status code
     .then(function(response) {
-      $log.debug('data and status code', response.data, response.status);
+      $log.debug('Data object and status code', response.data, response.status);
       return(response.data, response.status);
-    })
-    // Show success message then reload page
-    .then(() => {
-      this.showSuccessMessage = true;
-    //  $timeout(this.reloadPage(), 5000);
     })
     .catch(function onError(response) {
       return('error', response.data);

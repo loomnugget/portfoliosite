@@ -34,20 +34,16 @@ app.use(express.static(`${__dirname}/build`));
 app.post('/contact', bodyparser, function(req,res){
   debug('hit post /contact');
   debug('req.body', req.body);
-  // .sendMail(mailOptions, callback funtion)
   let message = {
-    from: req.body.email,
+    from: `${req.body.name} - ${req.body.email}`,
     to: 'claufadayas@gmail.com',
     subject: 'Message from Portfolio Website',
     text: req.body.message,
   };
 
-  transporter.sendMail(message, (error, data) => {
-    if (error) {
-      debug('Error occurred');
-      debug(error.message);
-      return;
-    }
+  transporter.sendMail(message, (error, data) => {  // .sendMail(mailOptions, callback funtion)
+    debug('message', message);
+    if (error) return error.message;
     debug('Message sent successfully!', data);
     transporter.close();
   });
