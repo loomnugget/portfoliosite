@@ -1,11 +1,28 @@
 @import "theme";
 .contact{
-  .contactForm {
+  margin-top: 60px;
+  .success{
+    position: absolute;
+    top: 30%;
+    transform: translate(0, -50%);
     width: 60%;
-    margin: 10% 20%;
+    margin: 0 20%;
+    display: inline-block;
+    h3{
+      font-size: 300%;
+      text-align: center;
+    }
+  }
+  .contactForm {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 60%;
+    margin: 0 20%;
     padding: 3%;
     border: 2px solid $app-offwhite;
     border-radius: 5px;
+
     h3{
       font-size: 300%;
       margin-bottom: 20px;
@@ -25,9 +42,9 @@
     .submit-btn:hover{
       background: linear-gradient($app-secondary, $app-secondary-hover);
     }
-    .group {
+    .form-group {
       position:relative;
-      margin-top:25px;
+
     }
     input, textarea{
       font-size:14px;
@@ -38,7 +55,7 @@
       border: 2px solid $app-offwhite;
       background-color: $app-black;
       width: 100%;
-      margin-bottom: 10px;
+      margin: 5px 0;
       }
     input:focus, textarea:focus{ outline:none; }
 
@@ -59,5 +76,15 @@
     textarea::-webkit-input-placeholder {
       color: $app-white;
     }
+    .error{
+      color: $app-error-hover;
+    }
+    span.error{
+      margin: 5px 0;
+      padding: .5% 1%;
+      background-color: $app-error;
+      color: $app-bright-white;
+    }
+
   }
 }
