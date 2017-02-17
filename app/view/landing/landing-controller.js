@@ -20,7 +20,7 @@ function LandingController($log, $document, $window) {
   canvas.height = $window.innerHeight;
   let centerX = canvas.width/2, centerY = canvas.height/2;
   let startX =0, particles = {}, particleSize = 50;
-  let radius = particleSize * Math.sin(45);
+  let radius = particleSize * (Math.sqrt(2)/2);
   let dy = 1, dx = 1;
   // circumscribed radius
   let C0 = (Math.sqrt(2) / 2)* particleSize;
