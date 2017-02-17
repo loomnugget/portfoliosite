@@ -54108,7 +54108,7 @@
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"contact\">\n  <span class=\"success\" ng-show=\"contactCtrl.showSuccessMessage\">Thank you! Your form has been submitted! Refreshing page...</span>\n<!-- ng-if=\"contactCtrl.showSuccessMessage\" -->\n  <form\n    novalidate\n    class=\"contactForm\"\n    name=\"contactForm\"\n    data-ng-submit=\"contactCtrl.onSubmit()\">\n\n    <h3 class=\"gradient-text\">Contact Me</h3>\n    <!-- <div class=\"success\"></div> -->\n\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input\n        required\n        data-ng-model=\"contactCtrl.data.name\"\n        name=\"name\"\n        minlength=\"3\"\n        type=\"text\">\n        <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.name.$touched\">\n          <span ng-show=\"contactForm.name.$error.required\">Tell us your name.</span>\n        </div>\n\n    </div>\n\n    <div class=\"form-group\">\n      <label>Email</label>\n      <input\n        required\n        data-ng-model=\"contactCtrl.data.email\"\n        name=\"email\"\n        type=\"email\">\n        <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.email.$touched\">\n          <span ng-show=\"contactForm.email.$error.required\">Tell us your email.</span>\n          <span ng-show=\"contactForm.email.$error.email\">This is not a valid email.</span>\n        </div>\n      </div>\n\n    <div class=\"form-group\">\n      <label>Message</label>\n      <textarea required name=\"message\" data-ng-model=\"contactCtrl.data.message\" type=\"text\"></textarea>\n      <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.email.$touched\">\n        <span ng-show=\"contactForm.message.$error.required\">Message required.</span>\n      </div>\n\n  <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n\n  </form>\n</main>\n";
+	module.exports = "<main class=\"contact\">\n  <!-- Success Message -shown if form is successfully submitted -->\n  <div class=\"success\" ng-if=\"contactCtrl.showSuccessMessage\">\n    <h3 class=\"gradient-text\">Thank you! Your form has been submitted!</h3>\n  </div>\n  <!-- Form container -->\n  <div class=\"form-container\" ng-if=\"!contactCtrl.showSuccessMessage\">\n    <form\n      novalidate\n      class=\"contactForm\"\n      name=\"contactForm\"\n      data-ng-submit=\"contactCtrl.onSubmit(contactForm)\">\n\n      <h3 class=\"gradient-text\">Contact Me</h3>\n\n      <div class=\"form-group\">\n        <label>Name</label>\n        <input\n          required\n          data-ng-model=\"contactCtrl.data.name\"\n          name=\"name\"\n          minlength=\"3\"\n          type=\"text\">\n          <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.name.$touched\">\n            <span ng-show=\"contactForm.name.$error.required\">Tell us your name.</span>\n          </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label>Email</label>\n        <input\n          required\n          data-ng-model=\"contactCtrl.data.email\"\n          name=\"email\"\n          type=\"email\">\n          <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.email.$touched\">\n            <span ng-show=\"contactForm.email.$error.required\">Tell us your email.</span>\n            <span ng-show=\"contactForm.email.$error.email\">This is not a valid email.</span>\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <label>Message</label>\n        <textarea required name=\"message\" data-ng-model=\"contactCtrl.data.message\" type=\"text\"></textarea>\n        <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.email.$touched\">\n          <span ng-show=\"contactForm.message.$error.required\">Message required.</span>\n        </div>\n\n    <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n    </form>\n  </div>\n</main>\n";
 
 /***/ },
 /* 45 */
@@ -54164,27 +54164,23 @@
 
 	__webpack_require__(50);
 
-	module.exports = ['$log', '$http', '$window', '$timeout', '$animate', ContactController];
+	module.exports = ['$log', '$http', '$window', '$timeout', ContactController];
 
 	function ContactController($log, $http, $window, $timeout) {
 	  $log.debug('init contactCtrl');
 
 	  //Create data object on the scope
 	  this.data = {};
-	  this.submitted = false;
 	  this.showSuccessMessage = false;
 
 	  // Called when submit button is pressed
 	  // If there are errors, show, ngMessages
 	  // if there are no errors, call sendMail() and show success message
-	  this.onSubmit = function () {
-	    $log.debug('contactCtrl.onSubmit()');
-	  };
-
-	  // Reload Contact Page after valid Submit
-	  this.reloadPage = function () {
-	    $log.debug('contactCtrl.reloadPage()');
-	    $window.location.reload();
+	  this.onSubmit = function (form) {
+	    if (form.$valid) {
+	      $log.debug('Valid Form Submitted');
+	      this.sendMail();
+	    }
 	  };
 
 	  this.sendMail = function () {
@@ -54201,7 +54197,7 @@
 	    // Show success message then reload page
 	    .then(function () {
 	      _this.showSuccessMessage = true;
-	      $timeout(_this.reloadPage(), 5000);
+	      //  $timeout(this.reloadPage(), 5000);
 	    }).catch(function onError(response) {
 	      return 'error', response.data;
 	    });

@@ -1,17 +1,17 @@
 @import "theme";
 .contact{
   margin-top: 60px;
-  span.success{
+  .success{
     position: absolute;
-    top: 10%;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 60%;
+    margin: 0 20%;
     display: inline-block;
-    text-align: center;
-    width: 90%;
-    padding: 1%;
-    margin: 1% 5%;
-    background-color: $app-success;
-    color: $app-bright-white;
-    z-index: 20;
+    h3{
+      font-size: 300%;
+      text-align: center;
+    }
   }
   .contactForm {
     position: absolute;

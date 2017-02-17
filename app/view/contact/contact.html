@@ -1,50 +1,52 @@
 <main class="contact">
-  <span class="success" ng-show="contactCtrl.showSuccessMessage">Thank you! Your form has been submitted! Refreshing page...</span>
-<!-- ng-if="contactCtrl.showSuccessMessage" -->
-  <form
-    novalidate
-    class="contactForm"
-    name="contactForm"
-    data-ng-submit="contactCtrl.onSubmit()">
+  <!-- Success Message -shown if form is successfully submitted -->
+  <div class="success" ng-if="contactCtrl.showSuccessMessage">
+    <h3 class="gradient-text">Thank you! Your form has been submitted!</h3>
+  </div>
+  <!-- Form container -->
+  <div class="form-container" ng-if="!contactCtrl.showSuccessMessage">
+    <form
+      novalidate
+      class="contactForm"
+      name="contactForm"
+      data-ng-submit="contactCtrl.onSubmit(contactForm)">
 
-    <h3 class="gradient-text">Contact Me</h3>
-    <!-- <div class="success"></div> -->
+      <h3 class="gradient-text">Contact Me</h3>
 
-    <div class="form-group">
-      <label>Name</label>
-      <input
-        required
-        data-ng-model="contactCtrl.data.name"
-        name="name"
-        minlength="3"
-        type="text">
-        <div class="error" ng-show="contactForm.$submitted || contactForm.name.$touched">
-          <span ng-show="contactForm.name.$error.required">Tell us your name.</span>
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          required
+          data-ng-model="contactCtrl.data.name"
+          name="name"
+          minlength="3"
+          type="text">
+          <div class="error" ng-show="contactForm.$submitted || contactForm.name.$touched">
+            <span ng-show="contactForm.name.$error.required">Tell us your name.</span>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          required
+          data-ng-model="contactCtrl.data.email"
+          name="email"
+          type="email">
+          <div class="error" ng-show="contactForm.$submitted || contactForm.email.$touched">
+            <span ng-show="contactForm.email.$error.required">Tell us your email.</span>
+            <span ng-show="contactForm.email.$error.email">This is not a valid email.</span>
+          </div>
         </div>
 
-    </div>
-
-    <div class="form-group">
-      <label>Email</label>
-      <input
-        required
-        data-ng-model="contactCtrl.data.email"
-        name="email"
-        type="email">
+      <div class="form-group">
+        <label>Message</label>
+        <textarea required name="message" data-ng-model="contactCtrl.data.message" type="text"></textarea>
         <div class="error" ng-show="contactForm.$submitted || contactForm.email.$touched">
-          <span ng-show="contactForm.email.$error.required">Tell us your email.</span>
-          <span ng-show="contactForm.email.$error.email">This is not a valid email.</span>
+          <span ng-show="contactForm.message.$error.required">Message required.</span>
         </div>
-      </div>
 
-    <div class="form-group">
-      <label>Message</label>
-      <textarea required name="message" data-ng-model="contactCtrl.data.message" type="text"></textarea>
-      <div class="error" ng-show="contactForm.$submitted || contactForm.email.$touched">
-        <span ng-show="contactForm.message.$error.required">Message required.</span>
-      </div>
-
-  <button class="btn submit-btn" type="submit"> Submit </button>
-
-  </form>
+    <button class="btn submit-btn" type="submit"> Submit </button>
+    </form>
+  </div>
 </main>
