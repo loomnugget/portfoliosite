@@ -1,5 +1,7 @@
 <main class="landing">
-  <header>
+  <header
+    ng-keydown="landingCtrl.onKeyDown()"
+    ng-keyup="landingCtrl.onKeyUp()">
     <canvas id="canvas">
       <h2 class="landing-title"><strong>Lemon</strong>Candy</h2>
     </canvas>
