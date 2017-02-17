@@ -12,13 +12,14 @@ const pascalcase = require('pascalcase');
 
 // Require angular modules
 const ngTouch = require('angular-touch');
+const ngMessages = require('angular-messages');
 const ngAnimate = require('angular-animate');
 const uiRouter = require('angular-ui-router');
 const uiBootstrap = require('angular-ui-bootstrap');
 const ngFileUpload = require('ng-file-upload');
 
 // Create angular module
-const app = angular.module('app', [ngTouch, uiBootstrap, ngAnimate, uiRouter, ngFileUpload]);
+const app = angular.module('app', [ngTouch, uiBootstrap, ngAnimate, ngMessages, uiRouter, ngFileUpload]);
 
 // Load config
 let context = require.context('./config/', true, /.js$/);
