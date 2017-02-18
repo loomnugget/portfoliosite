@@ -25,6 +25,7 @@ function LandingController($log, $document, $window) {
     toRadians = Math.PI/180, // convert angle from degrees to radians
     particles = {}, // star bucket object
     pSize = 50, // particle size
+    fov = .7, // field of view for projecting
     radius = pSize * (Math.sqrt(2)/2), // octahedron radius for bouncing
     cR = pSize *(Math.sqrt(2) / 2); // circumscribed radius
 
@@ -84,22 +85,34 @@ function LandingController($log, $document, $window) {
   };
   function move(star) {
     // Check bounds
-    if(star.position.x + star.velocity.x > canvas.width- radius || star.position.x  + star.velocity.x < radius) star.velocity.x = -star.velocity.x;
-    if(star.position.y + star.velocity.y > canvas.height- radius || star.position.y + star.velocity.y < radius) star.velocity.y = -star.velocity.y;
+    if(star.position.x + star.velocity.x > canvas.width - radius || star.position.x  + star.velocity.x < radius) star.velocity.x = -star.velocity.x;
+    if(star.position.y + star.velocity.y > canvas.height - radius || star.position.y + star.velocity.y < radius) star.velocity.y = -star.velocity.y;
     // Otherwise increase the position of x and y
     star.position.add(star.velocity);
   }
 
+  function project(point){
+    let scale = fov * (fov + point.z);
+    let x2D = point.x * scale;
+    let y2D = point.y * scale;
+    return new Vector3D(x2D, y2D, point.z);
+  }
+
   function draw(star){
     for(let i = 0; i < star.faces.length; i++) {
-      let face = star.faces[i];
-      let X = star.position.x;
-      let Y = star.position.y;
+      let face = star.faces[i], X = star.position.x, Y = star.position.y;
       // Create each triangular face using indexes from faces array
       let vertexA = star.vertices[face.A];
       let vertexB = star.vertices[face.B];
       let vertexC = star.vertices[face.C];
-      // Project here
+      // Rotate each point
+      vertexA.rotateX(.1);
+      vertexB.rotateX(.1);
+      vertexC.rotateX(.1);
+      vertexA.rotateY(.1);
+      vertexB.rotateY(.1);
+      vertexC.rotateY(.1);
+      // Draw Triangles
       ctx.beginPath();
       ctx.moveTo(vertexA.x + X, vertexA.y + Y);
       ctx.lineTo(vertexB.x + X, vertexB.y + Y);
@@ -109,6 +122,7 @@ function LandingController($log, $document, $window) {
     }
   }
 
+  // Generate desired number of particles
   function generate(numParticles){
     let startX = 0;
     for(var i = 0; i < numParticles; i++){
@@ -119,11 +133,13 @@ function LandingController($log, $document, $window) {
   }
   generate(9);
 
+  // Renders particle system
   function render() {
     for(var i in particles){
       let currentParticle = particles[i];
       draw(currentParticle);
-      move(currentParticle, 1, 1);
+      // Moves particles every frame based on their random velocity and initial position
+      move(currentParticle);
     }
   }
 
