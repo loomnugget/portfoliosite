@@ -85,7 +85,7 @@ function LandingController($log, $document, $window) {
   function move(star) {
     // Check bounds
     if(star.position.x + star.velocity.x > canvas.width- radius || star.position.x  + star.velocity.x < radius) star.velocity.x = -star.velocity.x;
-  // if(star.position.y + dy > canvas.height- radius || star.position.y + dy < radius) dy = -dy;
+    if(star.position.y + star.velocity.y > canvas.height- radius || star.position.y + star.velocity.y < radius) star.velocity.y = -star.velocity.y;
     // Otherwise increase the position of x and y
     star.position.add(star.velocity);
   }
