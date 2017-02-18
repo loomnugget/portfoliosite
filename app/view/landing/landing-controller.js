@@ -18,31 +18,58 @@ function LandingController($log, $document, $window) {
   var ctx = canvas.getContext('2d');
   canvas.width = $window.innerWidth;
   canvas.height = $window.innerHeight;
-  let centerX = canvas.width/2, centerY = canvas.height/2;
-  let startX =0, particles = {}, particleSize = 50;
-  let radius = particleSize * (Math.sqrt(2)/2);
-  let dy = 1, dx = 1;
-  // circumscribed radius
-  let C0 = (Math.sqrt(2) / 2)* particleSize;
   ctx.strokeStyle = '#ffffff';
 
+  // Variables
+  let centerY = canvas.height/2,
+    toRadians = Math.PI/180, // convert angle from degrees to radians
+    particles = {}, // star bucket object
+    pSize = 50, // particle size
+    radius = pSize * (Math.sqrt(2)/2), // octahedron radius for bouncing
+    cR = pSize *(Math.sqrt(2) / 2); // circumscribed radius
+
+  // Vector operations
   const Vector3D = function(x,y,z) {
     this.x = x || 0;
     this.y = y || 0;
     this.z = z || 0;
   };
+  Vector3D.prototype.add = function(v2) {
+    this.x = this.x + v2.x;
+    this.y = this.y + v2.y;
+    this.z = this.z + v2.z;
+  };
+  Vector3D.prototype.rotateY = function(angle){
+    let cosRY = Math.cos(angle * toRadians);
+    let sinRY = Math.sin(angle * toRadians);
+    let tempz = this.z, tempx = this.x;
+    this.x= (tempx*cosRY)+(tempz*sinRY);
+    this.z= (tempx*-sinRY)+(tempz*cosRY);
+  };
+  Vector3D.prototype.rotateX = function(angle){
+    let cosRY = Math.cos(angle * toRadians);
+    let sinRY = Math.sin(angle * toRadians);
+    var tempz = this.z, tempy = this.y;
+    this.y= (tempy*cosRY)+(tempz*sinRY);
+    this.z= (tempy*-sinRY)+(tempz*cosRY);
+  };
 
   // Star Particle Constructor
   const Particle = function(posx, posy, posz) {
+    // rotation refers to axis of rotation of individual shape
     this.rotation = new Vector3D(0,0,0);
+    // position refers to placement of shape on canvas
     this.position = new Vector3D(posx, posy, posz) || new Vector3D(0,0,0);
+    // Random velocity in X and Y direction between -2 and 2
+    this.velocity = new Vector3D(Math.random() * 4 -2, Math.random() *4-2, 0);
+    // origin is in reference to center of shape
     this.vertices = [
-      new Vector3D(0.0, 0.0, C0),
-      new Vector3D(0.0, 0.0, -C0),
-      new Vector3D( C0, 0.0, 0.0),
-      new Vector3D(-C0, 0.0, 0.0),
-      new Vector3D(0.0, C0, 0.0),
-      new Vector3D(0.0, -C0, 0.0),
+      new Vector3D(0, 0, cR),
+      new Vector3D(0, 0, -cR),
+      new Vector3D(cR, 0, 0),
+      new Vector3D(-cR, 0, 0),
+      new Vector3D(0, cR, 0),
+      new Vector3D(0, -cR, 0),
     ];
     this.faces = [
       { A:0, B:2, C:4 },
@@ -55,45 +82,55 @@ function LandingController($log, $document, $window) {
       { A:1, B:4, C:2 },
     ];
   };
-
-  function generate(numParticles){
-    for(var i = 0; i < numParticles; i++){
-      startX += 20;
-      particles[i] = new Particle(startX, centerY, 0);
-    }
-    return particles;
+  function move(star) {
+    // Check bounds
+    if(star.position.x + star.velocity.x > canvas.width- radius || star.position.x  + star.velocity.x < radius) star.velocity.x = -star.velocity.x;
+  // if(star.position.y + dy > canvas.height- radius || star.position.y + dy < radius) dy = -dy;
+    // Otherwise increase the position of x and y
+    star.position.add(star.velocity);
   }
-  generate(1);
 
   function draw(star){
     for(let i = 0; i < star.faces.length; i++) {
       let face = star.faces[i];
+      let X = star.position.x;
+      let Y = star.position.y;
       // Create each triangular face using indexes from faces array
       let vertexA = star.vertices[face.A];
       let vertexB = star.vertices[face.B];
       let vertexC = star.vertices[face.C];
       // Project here
       ctx.beginPath();
-      ctx.moveTo(vertexA.x + centerX, vertexA.y + centerY);
-      ctx.lineTo(vertexB.x + centerX, vertexB.y + centerY);
-      ctx.lineTo(vertexC.x + centerX, vertexC.y + centerY);
+      ctx.moveTo(vertexA.x + X, vertexA.y + Y);
+      ctx.lineTo(vertexB.x + X, vertexB.y + Y);
+      ctx.lineTo(vertexC.x + X, vertexC.y + Y);
       ctx.closePath();
       ctx.stroke();
     }
   }
 
+  function generate(numParticles){
+    let startX = 0;
+    for(var i = 0; i < numParticles; i++){
+      startX += canvas.width/10;
+      particles[i] = new Particle(startX, centerY, 0);
+    }
+    return particles;
+  }
+  generate(9);
+
+  function render() {
+    for(var i in particles){
+      let currentParticle = particles[i];
+      draw(currentParticle);
+      move(currentParticle, 1, 1);
+    }
+  }
 
   // Rendering loop handler
   function drawingLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if(centerX + dx > canvas.width-radius || centerX + dx < radius) dx = -dx;
-    if(centerY + dy > canvas.height-radius || centerY + dy < radius) dy = -dy;
-    centerX += dx;
-    centerY += dy;
-    for(var i in particles){
-      console.log(particles[i]);
-      draw(particles[i]);
-    }
+    render();
     $window.requestAnimationFrame(drawingLoop);
   }
   drawingLoop();
