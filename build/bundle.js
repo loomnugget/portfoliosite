@@ -58,22 +58,23 @@
 
 	// Require angular modules
 	var ngTouch = __webpack_require__(29);
-	var ngAnimate = __webpack_require__(31);
-	var uiRouter = __webpack_require__(33);
-	var uiBootstrap = __webpack_require__(34);
-	var ngFileUpload = __webpack_require__(36);
+	var ngMessages = __webpack_require__(31);
+	var ngAnimate = __webpack_require__(33);
+	var uiRouter = __webpack_require__(35);
+	var uiBootstrap = __webpack_require__(36);
+	var ngFileUpload = __webpack_require__(38);
 
 	// Create angular module
-	var app = angular.module('app', [ngTouch, uiBootstrap, ngAnimate, uiRouter, ngFileUpload]);
+	var app = angular.module('app', [ngTouch, uiBootstrap, ngAnimate, ngMessages, uiRouter, ngFileUpload]);
 
 	// Load config
-	var context = __webpack_require__(38);
+	var context = __webpack_require__(40);
 	context.keys().forEach(function (path) {
 	  app.config(context(path));
 	});
 
 	// Load view controllers
-	context = __webpack_require__(45);
+	context = __webpack_require__(47);
 	context.keys().forEach(function (key) {
 	  var name = pascalcase(path.basename(key, '.js'));
 	  var module = context(key);
@@ -81,7 +82,7 @@
 	});
 
 	// Load components
-	context = __webpack_require__(62);
+	context = __webpack_require__(63);
 	context.keys().forEach(function (key) {
 	  var name = camelcase(path.basename(key, '.js'));
 	  var module = context(key);
@@ -34534,11 +34535,764 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(32);
-	module.exports = 'ngAnimate';
+	module.exports = 'ngMessages';
 
 
 /***/ },
 /* 32 */
+/***/ function(module, exports) {
+
+	/**
+	 * @license AngularJS v1.6.2
+	 * (c) 2010-2017 Google, Inc. http://angularjs.org
+	 * License: MIT
+	 */
+	(function(window, angular) {'use strict';
+
+	var forEach;
+	var isArray;
+	var isString;
+	var jqLite;
+
+	/**
+	 * @ngdoc module
+	 * @name ngMessages
+	 * @description
+	 *
+	 * The `ngMessages` module provides enhanced support for displaying messages within templates
+	 * (typically within forms or when rendering message objects that return key/value data).
+	 * Instead of relying on JavaScript code and/or complex ng-if statements within your form template to
+	 * show and hide error messages specific to the state of an input field, the `ngMessages` and
+	 * `ngMessage` directives are designed to handle the complexity, inheritance and priority
+	 * sequencing based on the order of how the messages are defined in the template.
+	 *
+	 * Currently, the ngMessages module only contains the code for the `ngMessages`, `ngMessagesInclude`
+	 * `ngMessage` and `ngMessageExp` directives.
+	 *
+	 * # Usage
+	 * The `ngMessages` directive allows keys in a key/value collection to be associated with a child element
+	 * (or 'message') that will show or hide based on the truthiness of that key's value in the collection. A common use
+	 * case for `ngMessages` is to display error messages for inputs using the `$error` object exposed by the
+	 * {@link ngModel ngModel} directive.
+	 *
+	 * The child elements of the `ngMessages` directive are matched to the collection keys by a `ngMessage` or
+	 * `ngMessageExp` directive. The value of these attributes must match a key in the collection that is provided by
+	 * the `ngMessages` directive.
+	 *
+	 * Consider the following example, which illustrates a typical use case of `ngMessages`. Within the form `myForm` we
+	 * have a text input named `myField` which is bound to the scope variable `field` using the {@link ngModel ngModel}
+	 * directive.
+	 *
+	 * The `myField` field is a required input of type `email` with a maximum length of 15 characters.
+	 *
+	 * ```html
+	 * <form name="myForm">
+	 *   <label>
+	 *     Enter text:
+	 *     <input type="email" ng-model="field" name="myField" required maxlength="15" />
+	 *   </label>
+	 *   <div ng-messages="myForm.myField.$error" role="alert">
+	 *     <div ng-message="required">Please enter a value for this field.</div>
+	 *     <div ng-message="email">This field must be a valid email address.</div>
+	 *     <div ng-message="maxlength">This field can be at most 15 characters long.</div>
+	 *   </div>
+	 * </form>
+	 * ```
+	 *
+	 * In order to show error messages corresponding to `myField` we first create an element with an `ngMessages` attribute
+	 * set to the `$error` object owned by the `myField` input in our `myForm` form.
+	 *
+	 * Within this element we then create separate elements for each of the possible errors that `myField` could have.
+	 * The `ngMessage` attribute is used to declare which element(s) will appear for which error - for example,
+	 * setting `ng-message="required"` specifies that this particular element should be displayed when there
+	 * is no value present for the required field `myField` (because the key `required` will be `true` in the object
+	 * `myForm.myField.$error`).
+	 *
+	 * ### Message order
+	 *
+	 * By default, `ngMessages` will only display one message for a particular key/value collection at any time. If more
+	 * than one message (or error) key is currently true, then which message is shown is determined by the order of messages
+	 * in the HTML template code (messages declared first are prioritised). This mechanism means the developer does not have
+	 * to prioritize messages using custom JavaScript code.
+	 *
+	 * Given the following error object for our example (which informs us that the field `myField` currently has both the
+	 * `required` and `email` errors):
+	 *
+	 * ```javascript
+	 * <!-- keep in mind that ngModel automatically sets these error flags -->
+	 * myField.$error = { required : true, email: true, maxlength: false };
+	 * ```
+	 * The `required` message will be displayed to the user since it appears before the `email` message in the DOM.
+	 * Once the user types a single character, the `required` message will disappear (since the field now has a value)
+	 * but the `email` message will be visible because it is still applicable.
+	 *
+	 * ### Displaying multiple messages at the same time
+	 *
+	 * While `ngMessages` will by default only display one error element at a time, the `ng-messages-multiple` attribute can
+	 * be applied to the `ngMessages` container element to cause it to display all applicable error messages at once:
+	 *
+	 * ```html
+	 * <!-- attribute-style usage -->
+	 * <div ng-messages="myForm.myField.$error" ng-messages-multiple>...</div>
+	 *
+	 * <!-- element-style usage -->
+	 * <ng-messages for="myForm.myField.$error" multiple>...</ng-messages>
+	 * ```
+	 *
+	 * ## Reusing and Overriding Messages
+	 * In addition to prioritization, ngMessages also allows for including messages from a remote or an inline
+	 * template. This allows for generic collection of messages to be reused across multiple parts of an
+	 * application.
+	 *
+	 * ```html
+	 * <script type="text/ng-template" id="error-messages">
+	 *   <div ng-message="required">This field is required</div>
+	 *   <div ng-message="minlength">This field is too short</div>
+	 * </script>
+	 *
+	 * <div ng-messages="myForm.myField.$error" role="alert">
+	 *   <div ng-messages-include="error-messages"></div>
+	 * </div>
+	 * ```
+	 *
+	 * However, including generic messages may not be useful enough to match all input fields, therefore,
+	 * `ngMessages` provides the ability to override messages defined in the remote template by redefining
+	 * them within the directive container.
+	 *
+	 * ```html
+	 * <!-- a generic template of error messages known as "my-custom-messages" -->
+	 * <script type="text/ng-template" id="my-custom-messages">
+	 *   <div ng-message="required">This field is required</div>
+	 *   <div ng-message="minlength">This field is too short</div>
+	 * </script>
+	 *
+	 * <form name="myForm">
+	 *   <label>
+	 *     Email address
+	 *     <input type="email"
+	 *            id="email"
+	 *            name="myEmail"
+	 *            ng-model="email"
+	 *            minlength="5"
+	 *            required />
+	 *   </label>
+	 *   <!-- any ng-message elements that appear BEFORE the ng-messages-include will
+	 *        override the messages present in the ng-messages-include template -->
+	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *     <!-- this required message has overridden the template message -->
+	 *     <div ng-message="required">You did not enter your email address</div>
+	 *
+	 *     <!-- this is a brand new message and will appear last in the prioritization -->
+	 *     <div ng-message="email">Your email address is invalid</div>
+	 *
+	 *     <!-- and here are the generic error messages -->
+	 *     <div ng-messages-include="my-custom-messages"></div>
+	 *   </div>
+	 * </form>
+	 * ```
+	 *
+	 * In the example HTML code above the message that is set on required will override the corresponding
+	 * required message defined within the remote template. Therefore, with particular input fields (such
+	 * email addresses, date fields, autocomplete inputs, etc...), specialized error messages can be applied
+	 * while more generic messages can be used to handle other, more general input errors.
+	 *
+	 * ## Dynamic Messaging
+	 * ngMessages also supports using expressions to dynamically change key values. Using arrays and
+	 * repeaters to list messages is also supported. This means that the code below will be able to
+	 * fully adapt itself and display the appropriate message when any of the expression data changes:
+	 *
+	 * ```html
+	 * <form name="myForm">
+	 *   <label>
+	 *     Email address
+	 *     <input type="email"
+	 *            name="myEmail"
+	 *            ng-model="email"
+	 *            minlength="5"
+	 *            required />
+	 *   </label>
+	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *     <div ng-message="required">You did not enter your email address</div>
+	 *     <div ng-repeat="errorMessage in errorMessages">
+	 *       <!-- use ng-message-exp for a message whose key is given by an expression -->
+	 *       <div ng-message-exp="errorMessage.type">{{ errorMessage.text }}</div>
+	 *     </div>
+	 *   </div>
+	 * </form>
+	 * ```
+	 *
+	 * The `errorMessage.type` expression can be a string value or it can be an array so
+	 * that multiple errors can be associated with a single error message:
+	 *
+	 * ```html
+	 *   <label>
+	 *     Email address
+	 *     <input type="email"
+	 *            ng-model="data.email"
+	 *            name="myEmail"
+	 *            ng-minlength="5"
+	 *            ng-maxlength="100"
+	 *            required />
+	 *   </label>
+	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *     <div ng-message-exp="'required'">You did not enter your email address</div>
+	 *     <div ng-message-exp="['minlength', 'maxlength']">
+	 *       Your email must be between 5 and 100 characters long
+	 *     </div>
+	 *   </div>
+	 * ```
+	 *
+	 * Feel free to use other structural directives such as ng-if and ng-switch to further control
+	 * what messages are active and when. Be careful, if you place ng-message on the same element
+	 * as these structural directives, Angular may not be able to determine if a message is active
+	 * or not. Therefore it is best to place the ng-message on a child element of the structural
+	 * directive.
+	 *
+	 * ```html
+	 * <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *   <div ng-if="showRequiredError">
+	 *     <div ng-message="required">Please enter something</div>
+	 *   </div>
+	 * </div>
+	 * ```
+	 *
+	 * ## Animations
+	 * If the `ngAnimate` module is active within the application then the `ngMessages`, `ngMessage` and
+	 * `ngMessageExp` directives will trigger animations whenever any messages are added and removed from
+	 * the DOM by the `ngMessages` directive.
+	 *
+	 * Whenever the `ngMessages` directive contains one or more visible messages then the `.ng-active` CSS
+	 * class will be added to the element. The `.ng-inactive` CSS class will be applied when there are no
+	 * messages present. Therefore, CSS transitions and keyframes as well as JavaScript animations can
+	 * hook into the animations whenever these classes are added/removed.
+	 *
+	 * Let's say that our HTML code for our messages container looks like so:
+	 *
+	 * ```html
+	 * <div ng-messages="myMessages" class="my-messages" role="alert">
+	 *   <div ng-message="alert" class="some-message">...</div>
+	 *   <div ng-message="fail" class="some-message">...</div>
+	 * </div>
+	 * ```
+	 *
+	 * Then the CSS animation code for the message container looks like so:
+	 *
+	 * ```css
+	 * .my-messages {
+	 *   transition:1s linear all;
+	 * }
+	 * .my-messages.ng-active {
+	 *   // messages are visible
+	 * }
+	 * .my-messages.ng-inactive {
+	 *   // messages are hidden
+	 * }
+	 * ```
+	 *
+	 * Whenever an inner message is attached (becomes visible) or removed (becomes hidden) then the enter
+	 * and leave animation is triggered for each particular element bound to the `ngMessage` directive.
+	 *
+	 * Therefore, the CSS code for the inner messages looks like so:
+	 *
+	 * ```css
+	 * .some-message {
+	 *   transition:1s linear all;
+	 * }
+	 *
+	 * .some-message.ng-enter {}
+	 * .some-message.ng-enter.ng-enter-active {}
+	 *
+	 * .some-message.ng-leave {}
+	 * .some-message.ng-leave.ng-leave-active {}
+	 * ```
+	 *
+	 * {@link ngAnimate Click here} to learn how to use JavaScript animations or to learn more about ngAnimate.
+	 */
+	angular.module('ngMessages', [], function initAngularHelpers() {
+	  // Access helpers from angular core.
+	  // Do it inside a `config` block to ensure `window.angular` is available.
+	  forEach = angular.forEach;
+	  isArray = angular.isArray;
+	  isString = angular.isString;
+	  jqLite = angular.element;
+	})
+
+	  /**
+	   * @ngdoc directive
+	   * @module ngMessages
+	   * @name ngMessages
+	   * @restrict AE
+	   *
+	   * @description
+	   * `ngMessages` is a directive that is designed to show and hide messages based on the state
+	   * of a key/value object that it listens on. The directive itself complements error message
+	   * reporting with the `ngModel` $error object (which stores a key/value state of validation errors).
+	   *
+	   * `ngMessages` manages the state of internal messages within its container element. The internal
+	   * messages use the `ngMessage` directive and will be inserted/removed from the page depending
+	   * on if they're present within the key/value object. By default, only one message will be displayed
+	   * at a time and this depends on the prioritization of the messages within the template. (This can
+	   * be changed by using the `ng-messages-multiple` or `multiple` attribute on the directive container.)
+	   *
+	   * A remote template can also be used to promote message reusability and messages can also be
+	   * overridden.
+	   *
+	   * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+	   *
+	   * @usage
+	   * ```html
+	   * <!-- using attribute directives -->
+	   * <ANY ng-messages="expression" role="alert">
+	   *   <ANY ng-message="stringValue">...</ANY>
+	   *   <ANY ng-message="stringValue1, stringValue2, ...">...</ANY>
+	   *   <ANY ng-message-exp="expressionValue">...</ANY>
+	   * </ANY>
+	   *
+	   * <!-- or by using element directives -->
+	   * <ng-messages for="expression" role="alert">
+	   *   <ng-message when="stringValue">...</ng-message>
+	   *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
+	   *   <ng-message when-exp="expressionValue">...</ng-message>
+	   * </ng-messages>
+	   * ```
+	   *
+	   * @param {string} ngMessages an angular expression evaluating to a key/value object
+	   *                 (this is typically the $error object on an ngModel instance).
+	   * @param {string=} ngMessagesMultiple|multiple when set, all messages will be displayed with true
+	   *
+	   * @example
+	   * <example name="ngMessages-directive" module="ngMessagesExample"
+	   *          deps="angular-messages.js"
+	   *          animations="true" fixBase="true">
+	   *   <file name="index.html">
+	   *     <form name="myForm">
+	   *       <label>
+	   *         Enter your name:
+	   *         <input type="text"
+	   *                name="myName"
+	   *                ng-model="name"
+	   *                ng-minlength="5"
+	   *                ng-maxlength="20"
+	   *                required />
+	   *       </label>
+	   *       <pre>myForm.myName.$error = {{ myForm.myName.$error | json }}</pre>
+	   *
+	   *       <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
+	   *         <div ng-message="required">You did not enter a field</div>
+	   *         <div ng-message="minlength">Your field is too short</div>
+	   *         <div ng-message="maxlength">Your field is too long</div>
+	   *       </div>
+	   *     </form>
+	   *   </file>
+	   *   <file name="script.js">
+	   *     angular.module('ngMessagesExample', ['ngMessages']);
+	   *   </file>
+	   * </example>
+	   */
+	  .directive('ngMessages', ['$animate', function($animate) {
+	    var ACTIVE_CLASS = 'ng-active';
+	    var INACTIVE_CLASS = 'ng-inactive';
+
+	    return {
+	      require: 'ngMessages',
+	      restrict: 'AE',
+	      controller: ['$element', '$scope', '$attrs', function NgMessagesCtrl($element, $scope, $attrs) {
+	        var ctrl = this;
+	        var latestKey = 0;
+	        var nextAttachId = 0;
+
+	        this.getAttachId = function getAttachId() { return nextAttachId++; };
+
+	        var messages = this.messages = {};
+	        var renderLater, cachedCollection;
+
+	        this.render = function(collection) {
+	          collection = collection || {};
+
+	          renderLater = false;
+	          cachedCollection = collection;
+
+	          // this is true if the attribute is empty or if the attribute value is truthy
+	          var multiple = isAttrTruthy($scope, $attrs.ngMessagesMultiple) ||
+	                         isAttrTruthy($scope, $attrs.multiple);
+
+	          var unmatchedMessages = [];
+	          var matchedKeys = {};
+	          var messageItem = ctrl.head;
+	          var messageFound = false;
+	          var totalMessages = 0;
+
+	          // we use != instead of !== to allow for both undefined and null values
+	          while (messageItem != null) {
+	            totalMessages++;
+	            var messageCtrl = messageItem.message;
+
+	            var messageUsed = false;
+	            if (!messageFound) {
+	              forEach(collection, function(value, key) {
+	                if (!messageUsed && truthy(value) && messageCtrl.test(key)) {
+	                  // this is to prevent the same error name from showing up twice
+	                  if (matchedKeys[key]) return;
+	                  matchedKeys[key] = true;
+
+	                  messageUsed = true;
+	                  messageCtrl.attach();
+	                }
+	              });
+	            }
+
+	            if (messageUsed) {
+	              // unless we want to display multiple messages then we should
+	              // set a flag here to avoid displaying the next message in the list
+	              messageFound = !multiple;
+	            } else {
+	              unmatchedMessages.push(messageCtrl);
+	            }
+
+	            messageItem = messageItem.next;
+	          }
+
+	          forEach(unmatchedMessages, function(messageCtrl) {
+	            messageCtrl.detach();
+	          });
+
+	          if (unmatchedMessages.length !== totalMessages) {
+	            $animate.setClass($element, ACTIVE_CLASS, INACTIVE_CLASS);
+	          } else {
+	            $animate.setClass($element, INACTIVE_CLASS, ACTIVE_CLASS);
+	          }
+	        };
+
+	        $scope.$watchCollection($attrs.ngMessages || $attrs['for'], ctrl.render);
+
+	        // If the element is destroyed, proactively destroy all the currently visible messages
+	        $element.on('$destroy', function() {
+	          forEach(messages, function(item) {
+	            item.message.detach();
+	          });
+	        });
+
+	        this.reRender = function() {
+	          if (!renderLater) {
+	            renderLater = true;
+	            $scope.$evalAsync(function() {
+	              if (renderLater && cachedCollection) {
+	                ctrl.render(cachedCollection);
+	              }
+	            });
+	          }
+	        };
+
+	        this.register = function(comment, messageCtrl) {
+	          var nextKey = latestKey.toString();
+	          messages[nextKey] = {
+	            message: messageCtrl
+	          };
+	          insertMessageNode($element[0], comment, nextKey);
+	          comment.$$ngMessageNode = nextKey;
+	          latestKey++;
+
+	          ctrl.reRender();
+	        };
+
+	        this.deregister = function(comment) {
+	          var key = comment.$$ngMessageNode;
+	          delete comment.$$ngMessageNode;
+	          removeMessageNode($element[0], comment, key);
+	          delete messages[key];
+	          ctrl.reRender();
+	        };
+
+	        function findPreviousMessage(parent, comment) {
+	          var prevNode = comment;
+	          var parentLookup = [];
+
+	          while (prevNode && prevNode !== parent) {
+	            var prevKey = prevNode.$$ngMessageNode;
+	            if (prevKey && prevKey.length) {
+	              return messages[prevKey];
+	            }
+
+	            // dive deeper into the DOM and examine its children for any ngMessage
+	            // comments that may be in an element that appears deeper in the list
+	            if (prevNode.childNodes.length && parentLookup.indexOf(prevNode) === -1) {
+	              parentLookup.push(prevNode);
+	              prevNode = prevNode.childNodes[prevNode.childNodes.length - 1];
+	            } else if (prevNode.previousSibling) {
+	              prevNode = prevNode.previousSibling;
+	            } else {
+	              prevNode = prevNode.parentNode;
+	              parentLookup.push(prevNode);
+	            }
+	          }
+	        }
+
+	        function insertMessageNode(parent, comment, key) {
+	          var messageNode = messages[key];
+	          if (!ctrl.head) {
+	            ctrl.head = messageNode;
+	          } else {
+	            var match = findPreviousMessage(parent, comment);
+	            if (match) {
+	              messageNode.next = match.next;
+	              match.next = messageNode;
+	            } else {
+	              messageNode.next = ctrl.head;
+	              ctrl.head = messageNode;
+	            }
+	          }
+	        }
+
+	        function removeMessageNode(parent, comment, key) {
+	          var messageNode = messages[key];
+
+	          var match = findPreviousMessage(parent, comment);
+	          if (match) {
+	            match.next = messageNode.next;
+	          } else {
+	            ctrl.head = messageNode.next;
+	          }
+	        }
+	      }]
+	    };
+
+	    function isAttrTruthy(scope, attr) {
+	     return (isString(attr) && attr.length === 0) || //empty attribute
+	            truthy(scope.$eval(attr));
+	    }
+
+	    function truthy(val) {
+	      return isString(val) ? val.length : !!val;
+	    }
+	  }])
+
+	  /**
+	   * @ngdoc directive
+	   * @name ngMessagesInclude
+	   * @restrict AE
+	   * @scope
+	   *
+	   * @description
+	   * `ngMessagesInclude` is a directive with the purpose to import existing ngMessage template
+	   * code from a remote template and place the downloaded template code into the exact spot
+	   * that the ngMessagesInclude directive is placed within the ngMessages container. This allows
+	   * for a series of pre-defined messages to be reused and also allows for the developer to
+	   * determine what messages are overridden due to the placement of the ngMessagesInclude directive.
+	   *
+	   * @usage
+	   * ```html
+	   * <!-- using attribute directives -->
+	   * <ANY ng-messages="expression" role="alert">
+	   *   <ANY ng-messages-include="remoteTplString">...</ANY>
+	   * </ANY>
+	   *
+	   * <!-- or by using element directives -->
+	   * <ng-messages for="expression" role="alert">
+	   *   <ng-messages-include src="expressionValue1">...</ng-messages-include>
+	   * </ng-messages>
+	   * ```
+	   *
+	   * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+	   *
+	   * @param {string} ngMessagesInclude|src a string value corresponding to the remote template.
+	   */
+	  .directive('ngMessagesInclude',
+	    ['$templateRequest', '$document', '$compile', function($templateRequest, $document, $compile) {
+
+	    return {
+	      restrict: 'AE',
+	      require: '^^ngMessages', // we only require this for validation sake
+	      link: function($scope, element, attrs) {
+	        var src = attrs.ngMessagesInclude || attrs.src;
+	        $templateRequest(src).then(function(html) {
+	          if ($scope.$$destroyed) return;
+
+	          if (isString(html) && !html.trim()) {
+	            // Empty template - nothing to compile
+	            replaceElementWithMarker(element, src);
+	          } else {
+	            // Non-empty template - compile and link
+	            $compile(html)($scope, function(contents) {
+	              element.after(contents);
+	              replaceElementWithMarker(element, src);
+	            });
+	          }
+	        });
+	      }
+	    };
+
+	    // Helpers
+	    function replaceElementWithMarker(element, src) {
+	      // A comment marker is placed for debugging purposes
+	      var comment = $compile.$$createComment ?
+	          $compile.$$createComment('ngMessagesInclude', src) :
+	          $document[0].createComment(' ngMessagesInclude: ' + src + ' ');
+	      var marker = jqLite(comment);
+	      element.after(marker);
+
+	      // Don't pollute the DOM anymore by keeping an empty directive element
+	      element.remove();
+	    }
+	  }])
+
+	  /**
+	   * @ngdoc directive
+	   * @name ngMessage
+	   * @restrict AE
+	   * @scope
+	   *
+	   * @description
+	   * `ngMessage` is a directive with the purpose to show and hide a particular message.
+	   * For `ngMessage` to operate, a parent `ngMessages` directive on a parent DOM element
+	   * must be situated since it determines which messages are visible based on the state
+	   * of the provided key/value map that `ngMessages` listens on.
+	   *
+	   * More information about using `ngMessage` can be found in the
+	   * {@link module:ngMessages `ngMessages` module documentation}.
+	   *
+	   * @usage
+	   * ```html
+	   * <!-- using attribute directives -->
+	   * <ANY ng-messages="expression" role="alert">
+	   *   <ANY ng-message="stringValue">...</ANY>
+	   *   <ANY ng-message="stringValue1, stringValue2, ...">...</ANY>
+	   * </ANY>
+	   *
+	   * <!-- or by using element directives -->
+	   * <ng-messages for="expression" role="alert">
+	   *   <ng-message when="stringValue">...</ng-message>
+	   *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
+	   * </ng-messages>
+	   * ```
+	   *
+	   * @param {expression} ngMessage|when a string value corresponding to the message key.
+	   */
+	  .directive('ngMessage', ngMessageDirectiveFactory())
+
+
+	  /**
+	   * @ngdoc directive
+	   * @name ngMessageExp
+	   * @restrict AE
+	   * @priority 1
+	   * @scope
+	   *
+	   * @description
+	   * `ngMessageExp` is the same as {@link directive:ngMessage `ngMessage`}, but instead of a static
+	   * value, it accepts an expression to be evaluated for the message key.
+	   *
+	   * @usage
+	   * ```html
+	   * <!-- using attribute directives -->
+	   * <ANY ng-messages="expression">
+	   *   <ANY ng-message-exp="expressionValue">...</ANY>
+	   * </ANY>
+	   *
+	   * <!-- or by using element directives -->
+	   * <ng-messages for="expression">
+	   *   <ng-message when-exp="expressionValue">...</ng-message>
+	   * </ng-messages>
+	   * ```
+	   *
+	   * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+	   *
+	   * @param {expression} ngMessageExp|whenExp an expression value corresponding to the message key.
+	   */
+	  .directive('ngMessageExp', ngMessageDirectiveFactory());
+
+	function ngMessageDirectiveFactory() {
+	  return ['$animate', function($animate) {
+	    return {
+	      restrict: 'AE',
+	      transclude: 'element',
+	      priority: 1, // must run before ngBind, otherwise the text is set on the comment
+	      terminal: true,
+	      require: '^^ngMessages',
+	      link: function(scope, element, attrs, ngMessagesCtrl, $transclude) {
+	        var commentNode = element[0];
+
+	        var records;
+	        var staticExp = attrs.ngMessage || attrs.when;
+	        var dynamicExp = attrs.ngMessageExp || attrs.whenExp;
+	        var assignRecords = function(items) {
+	          records = items
+	              ? (isArray(items)
+	                  ? items
+	                  : items.split(/[\s,]+/))
+	              : null;
+	          ngMessagesCtrl.reRender();
+	        };
+
+	        if (dynamicExp) {
+	          assignRecords(scope.$eval(dynamicExp));
+	          scope.$watchCollection(dynamicExp, assignRecords);
+	        } else {
+	          assignRecords(staticExp);
+	        }
+
+	        var currentElement, messageCtrl;
+	        ngMessagesCtrl.register(commentNode, messageCtrl = {
+	          test: function(name) {
+	            return contains(records, name);
+	          },
+	          attach: function() {
+	            if (!currentElement) {
+	              $transclude(function(elm, newScope) {
+	                $animate.enter(elm, null, element);
+	                currentElement = elm;
+
+	                // Each time we attach this node to a message we get a new id that we can match
+	                // when we are destroying the node later.
+	                var $$attachId = currentElement.$$attachId = ngMessagesCtrl.getAttachId();
+
+	                // in the event that the element or a parent element is destroyed
+	                // by another structural directive then it's time
+	                // to deregister the message from the controller
+	                currentElement.on('$destroy', function() {
+	                  if (currentElement && currentElement.$$attachId === $$attachId) {
+	                    ngMessagesCtrl.deregister(commentNode);
+	                    messageCtrl.detach();
+	                  }
+	                  newScope.$destroy();
+	                });
+	              });
+	            }
+	          },
+	          detach: function() {
+	            if (currentElement) {
+	              var elm = currentElement;
+	              currentElement = null;
+	              $animate.leave(elm);
+	            }
+	          }
+	        });
+	      }
+	    };
+	  }];
+
+	  function contains(collection, key) {
+	    if (collection) {
+	      return isArray(collection)
+	          ? collection.indexOf(key) >= 0
+	          : collection.hasOwnProperty(key);
+	    }
+	  }
+	}
+
+
+	})(window, window.angular);
+
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(34);
+	module.exports = 'ngAnimate';
+
+
+/***/ },
+/* 34 */
 /***/ function(module, exports) {
 
 	/**
@@ -38694,7 +39448,7 @@
 
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports) {
 
 	/**
@@ -43308,16 +44062,16 @@
 	})(window, window.angular);
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(35);
+	__webpack_require__(37);
 
 	module.exports = 'ui.bootstrap';
 
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports) {
 
 	/*
@@ -51098,14 +51852,14 @@
 	angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(37);
+	__webpack_require__(39);
 	module.exports = 'ngFileUpload';
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports) {
 
 	/**!
@@ -54009,11 +54763,11 @@
 
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./router-config.js": 39
+		"./router-config.js": 41
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -54026,51 +54780,52 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 38;
+	webpackContext.id = 40;
 
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = ['$stateProvider', '$urlRouterProvider', routerConfig];
+	module.exports = ['$stateProvider', '$urlRouterProvider', '$locationProvider', routerConfig];
 
-	function routerConfig($stateProvider, $urlRouterProvider) {
+	function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 	  $urlRouterProvider.when('', '/landing');
 	  $urlRouterProvider.when('/', '/landing');
+	  $locationProvider.hashPrefix('');
 
 	  var states = [{
 	    name: 'Welcome',
 	    url: '/landing',
 	    controllerAs: 'landingCtrl',
 	    controller: 'LandingController',
-	    template: __webpack_require__(40)
+	    template: __webpack_require__(42)
 	  }, {
 	    name: 'Art Portfolio',
 	    url: '/portfolio',
 	    controllerAs: 'portfolioCtrl',
 	    controller: 'PortfolioController',
-	    template: __webpack_require__(41)
+	    template: __webpack_require__(43)
 	  }, {
 	    name: 'Projects',
 	    url: '/projects',
 	    controllerAs: 'projectCtrl',
 	    controller: 'ProjectController',
-	    template: __webpack_require__(42)
+	    template: __webpack_require__(44)
 	  }, {
 	    name: 'About',
 	    url: '/about',
 	    controllerAs: 'aboutCtrl',
 	    controller: 'AboutController',
-	    template: __webpack_require__(43)
+	    template: __webpack_require__(45)
 	  }, {
 	    name: 'Contact',
 	    url: '/contact',
 	    controllerAs: 'contactCtrl',
 	    controller: 'ContactController',
-	    template: __webpack_require__(44)
+	    template: __webpack_require__(46)
 	  }];
 
 	  states.forEach(function (state) {
@@ -54079,45 +54834,45 @@
 	}
 
 /***/ },
-/* 40 */
-/***/ function(module, exports) {
-
-	module.exports = "<main class=\"landing\">\n  <header>\n      <h2><strong>Lemon</strong>Candy</h2>\n      <!-- <a href=\"#/portfolio\"><button class=\"btn\">View Portfolio</button></a> -->\n  </header>\n\n</main>\n";
-
-/***/ },
-/* 41 */
-/***/ function(module, exports) {
-
-	module.exports = "<main class=\"portfolio\">\n    <div class=\"navigation clearfix\">\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive1}\" ng-click=\"myFilter = category; portfolioCtrl.isActive(1)\">\n        <h2>All</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive2}\" ng-click=\"myFilter = {category: 'Drawing'}; portfolioCtrl.isActive(2)\">\n        <h2>Drawing</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive3}\" ng-click=\"myFilter = {category: 'Painting'}; portfolioCtrl.isActive(3)\">\n        <h2>Painting</h2>\n      </div>\n  </div>\n\n  <section class=\"art-portfolio-container\">\n    <!-- Image Gallery -->\n    <div class=\"portfolio-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in portfolioCtrl.items | filter:myFilter\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n            <div class=\"img-hover\">\n              <div class=\"content-wrap\">\n                <h3><strong>{{item.title}}</strong></h3>\n                <h4>{{item.category}}</h4>\n                <span class=\"zoom-icon\"><i class=\"icon-basic-magnifier-plus\" ng-click=\"portfolioCtrl.open(item)\"></i></span>\n              </div>\n            </div>\n          </div>\n      </div>\n    </div>\n  </section>\n</main>\n";
-
-/***/ },
 /* 42 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"project-container\">\n  <div class=\"clearfix\" ng-class=\"{'active': projectCtrl.isActive}\">\n    <div class=\"row\">\n      <h3>Selected Projects</h3>\n      <hr class=\"gradient\">\n    </div>\n\n    <div class=\"row\">\n      <div class=\"project-menu-container clearfix\">\n        <a ng-click=\"projectCtrl.selectItem(1)\" class=\"project-menu\">\n          <span class=\"icon project-icon\"><i class=\"icon-basic-globe\"></i></span>\n          <h4>Pup Tracker</h4>\n          <h5>Full Stack App</h5>\n        </a>\n\n        <a ng-click=\"projectCtrl.selectItem(2)\" class=\"project-menu\">\n          <span class=\"icon project-icon\"><i class=\"icon-basic-calculator\"></i></span>\n          <h4>3D Engine</h4>\n          <h5>Javascript and Canvas</h5>\n        </a>\n\n        <a ng-click=\"projectCtrl.selectItem(3)\" class=\"project-menu\">\n          <span class=\"icon project-icon\"><i class=\"icon-basic-lightbulb\"></i></span>\n          <h4>[art-c]</h4>\n          <h5>Full Stack App</h5>\n        </a>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\" ng-if=\"projectCtrl.isVisible1\">\n    <div class=\"info-container\">\n    <h4>Pup Tracker<span><i class=\"fa fa-github icon\"></i></i><span></h4>\n\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>Rest API used by research scientists to track mouse breeding patterns.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node.js, Angular, Webpack, Express, Angular ui Calendar</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible2\">\n  <div class=\"info-container\">\n    <h4>3D Engine<span><i class=\"fa fa-github icon\"></i></i><span></h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>3D physics engine</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>React, Node, HTML5 Canvas</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible3\">\n  <div class=\"info-container\">\n    <h4>[art-c]<span><i class=\"fa fa-github icon\"></i></i><span></h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>Platform that allows artists to share and sell work in their community.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node.js, Angular, Webpack, Express, AWS</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n</main>\n";
+	module.exports = "<main class=\"landing\">\n  <header\n    ng-keydown=\"landingCtrl.onKeyDown()\"\n    ng-keyup=\"landingCtrl.onKeyUp()\">\n    <canvas id=\"canvas\">\n      <h2 class=\"landing-title\"><strong>Lemon</strong>Candy</h2>\n    </canvas>\n  </header>\n\n</main>\n";
 
 /***/ },
 /* 43 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"about\">\n\n  <!-- About-->\n<div class=\"about-container\">\n  <!-- Intro -->\n  <div class = \"intro-container\">\n    <div class=\"row bottom-space\">\n      <h2>About Me</h2>\n      <div class=\"span-container\">\n        <span><i class=\"fa fa-diamond\"></i><span>\n      </div>\n      <!-- <h4>I’m a software developer and artist who loves finding patterns, combining art and technology, and abstractions. -->\n      </h4>\n    </div>\n\n  <!-- Skills -->\n    <div class=\"text-container\">\n      <div class=\"bottom-space\">\n        <!-- <h3>Skills</h3>\n        <h4>Javascript/ES6, AngularJS, Node.js, Express, Webpack, Mocha,\n          Chai, HTML, CSS, Sass, Responsive Design, jQuery, Bootstrap, UX/UI, Git, AWS S3, OAuth</h4> -->\n      </div>\n\n      <div class=\"bottom-space\">\n        <!-- <h3>Interests</h3>\n          <h4>3D Programming, Data Visualization, VR/AR, Machine Learning, Creative Code, Data Structures/Algorithms</h4> -->\n      </div>\n\n      <div class=\"bottom-space\">\n        <!-- <h3>Education</h3>\n          <h4><span>Code Fellows | Seattle, WA | 2016</span></h4>\n          <h4>Advanced Javascript Software Development Certificate</h4>\n        </br>\n          <h4><span>SUNY Geneseo | Geneseo, NY | 2013</span></h4>\n          <h4>Bachelor’s of Science, Biology</h4> -->\n      </div>\n    </div>\n  </div>\n\n</div><!-- end about-->\n</main>\n";
+	module.exports = "<main class=\"portfolio\">\n    <div class=\"navigation clearfix\">\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive1}\" ng-click=\"myFilter = category; portfolioCtrl.isActive(1)\">\n        <h2>All</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive2}\" ng-click=\"myFilter = {category: 'Drawing'}; portfolioCtrl.isActive(2)\">\n        <h2>Drawing</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive3}\" ng-click=\"myFilter = {category: 'Painting'}; portfolioCtrl.isActive(3)\">\n        <h2>Painting</h2>\n      </div>\n  </div>\n\n  <section class=\"art-portfolio-container\">\n    <!-- Image Gallery -->\n    <div class=\"portfolio-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in portfolioCtrl.items | filter:myFilter\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n            <div class=\"img-hover\">\n              <div class=\"content-wrap\">\n                <h3><strong>{{item.title}}</strong></h3>\n                <h4>{{item.category}}</h4>\n                <span class=\"zoom-icon\"><i class=\"icon-basic-magnifier-plus\" ng-click=\"portfolioCtrl.open(item)\"></i></span>\n              </div>\n            </div>\n          </div>\n      </div>\n    </div>\n  </section>\n</main>\n";
 
 /***/ },
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"contact\">\n  <form class=\"contactForm\" novalidate>\n\n    <h3 class=\"gradient-text\">Contact Me</h3>\n\n    <label>Name</label>\n    <input\n      required\n      name=\"name\"\n      type=\"text\"\n      uib-tooltip=\"Name Required\"\n      tooltip-placement=\"bottom-right\"\n      tooltip-trigger=\"'focus'\">\n\n    <label>Email</label>\n    <input\n      required\n      name=\"email\"\n      type=\"text\"\n      uib-tooltip=\"Email Required\"\n      tooltip-placement=\"bottom-right\"\n      tooltip-trigger=\"'focus'\">\n\n    <label>Message</label>\n    <textarea\n      name=\"message\"\n      type=\"text\"></textarea>\n\n  <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n  </form>\n</main>\n";
+	module.exports = "<main class=\"project-container\">\n  <div class=\"clearfix\" ng-class=\"{'active': projectCtrl.isActive}\">\n    <div class=\"row\">\n      <h3>Selected Projects</h3>\n      <hr class=\"gradient\">\n    </div>\n\n    <div class=\"row\">\n      <div class=\"project-menu-container clearfix\">\n        <a ng-click=\"projectCtrl.selectItem(1)\" class=\"project-menu\">\n          <span class=\"icon project-icon\"><i class=\"icon-basic-globe\"></i></span>\n          <h4>Pup Tracker</h4>\n          <h5>Full Stack App</h5>\n        </a>\n\n        <a ng-click=\"projectCtrl.selectItem(2)\" class=\"project-menu\">\n          <span class=\"icon project-icon\"><i class=\"icon-basic-calculator\"></i></span>\n          <h4>3D Engine</h4>\n          <h5>Javascript and Canvas</h5>\n        </a>\n\n        <a ng-click=\"projectCtrl.selectItem(3)\" class=\"project-menu\">\n          <span class=\"icon project-icon\"><i class=\"icon-basic-lightbulb\"></i></span>\n          <h4>[art-c]</h4>\n          <h5>Full Stack App</h5>\n        </a>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\" ng-if=\"projectCtrl.isVisible1\">\n    <div class=\"info-container\">\n    <h4>Pup Tracker<span><i class=\"fa fa-github icon\"></i></i><span></h4>\n\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>Rest API used by research scientists to track mouse breeding patterns.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node.js, Angular, Webpack, Express, Angular ui Calendar</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible2\">\n  <div class=\"info-container\">\n    <h4>3D Engine<span><i class=\"fa fa-github icon\"></i></i><span></h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>3D physics engine</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>React, Node, HTML5 Canvas</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible3\">\n  <div class=\"info-container\">\n    <h4>[art-c]<span><i class=\"fa fa-github icon\"></i></i><span></h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p>Platform that allows artists to share and sell work in their community.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node.js, Angular, Webpack, Express, AWS</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>Thoughts</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n        <h5>Going Forward</h5>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n          Donec faucibus nibh erat, ut pellentesque neque tincidunt non.\n          In malesuada ornare elementum. Integer condimentum ligula sit amet blandit congue.\n          Morbi nec arcu interdum, scelerisque lorem a, ultrices erat.\n          Donec efficitur vulputate mauris, id tempus arcu malesuada sed.\n          Proin suscipit pellentesque purus et ornare.\n          Maecenas laoreet consequat justo sed pharetra.Donec tincidunt tellus ac tempus convallis.\n          Donec condimentum ex vitae elit varius, quis viverra ipsum pellentesque.</p><br>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n</main>\n";
 
 /***/ },
 /* 45 */
+/***/ function(module, exports) {
+
+	module.exports = "<main class=\"about\">\n\n  <!-- About-->\n<div class=\"about-container\">\n  <!-- Intro -->\n  <!-- <div class = \"intro-container\">\n    <div class=\"row bottom-space\">\n      <h2>About Me</h2>\n      <div class=\"span-container\">\n        <span><i class=\"fa fa-diamond\"></i><span>\n      </div>\n      <h4>I’m a software developer and artist who loves finding patterns, combining art and technology, and abstractions.\n      </h4>\n    </div>\n\n      <div class=\"bottom-space\">\n        <h3>Interests</h3>\n          <h4>Creative Code, Abstract Art, Data Visualization</h4>\n      </div>\n  </div> -->\n\n</div><!-- end about-->\n</main>\n";
+
+/***/ },
+/* 46 */
+/***/ function(module, exports) {
+
+	module.exports = "<main class=\"contact\">\n  <!-- Success Message -shown if form is successfully submitted -->\n  <div class=\"success\" ng-if=\"contactCtrl.showSuccessMessage\">\n    <h3 class=\"gradient-text\">Thank you! Your form has been submitted!</h3>\n  </div>\n  <!-- Form container -->\n  <div class=\"form-container\" ng-if=\"!contactCtrl.showSuccessMessage\">\n    <form\n      novalidate\n      class=\"contactForm\"\n      name=\"contactForm\"\n      data-ng-submit=\"contactCtrl.onSubmit(contactForm)\">\n\n      <h3 class=\"gradient-text\">Contact Me</h3>\n\n      <div class=\"form-group\">\n        <label>Name</label>\n        <input\n          required\n          data-ng-model=\"contactCtrl.data.name\"\n          name=\"name\"\n          minlength=\"3\"\n          type=\"text\">\n          <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.name.$touched\">\n            <span ng-show=\"contactForm.name.$error.required\">Tell us your name.</span>\n          </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label>Email</label>\n        <input\n          required\n          data-ng-model=\"contactCtrl.data.email\"\n          name=\"email\"\n          type=\"email\">\n          <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.email.$touched\">\n            <span ng-show=\"contactForm.email.$error.required\">Tell us your email.</span>\n            <span ng-show=\"contactForm.email.$error.email\">This is not a valid email.</span>\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <label>Message</label>\n        <textarea required name=\"message\" data-ng-model=\"contactCtrl.data.message\" type=\"text\"></textarea>\n        <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.email.$touched\">\n          <span ng-show=\"contactForm.message.$error.required\">Message required.</span>\n        </div>\n\n    <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n    </form>\n  </div>\n</main>\n";
+
+/***/ },
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./about/about-controller.js": 46,
-		"./contact/contact-controller.js": 49,
-		"./landing/landing-controller.js": 52,
-		"./portfolio/portfolio-controller.js": 56,
-		"./project/project-controller.js": 59
+		"./about/about-controller.js": 48,
+		"./contact/contact-controller.js": 51,
+		"./landing/landing-controller.js": 54,
+		"./portfolio/portfolio-controller.js": 57,
+		"./project/project-controller.js": 60
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -54130,16 +54885,16 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 45;
+	webpackContext.id = 47;
 
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(47);
+	__webpack_require__(49);
 
 	module.exports = ['$log', AboutController];
 
@@ -54148,62 +54903,231 @@
 	}
 
 /***/ },
-/* 47 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 48 */,
 /* 49 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 50 */,
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(50);
+	__webpack_require__(52);
 
-	module.exports = ['$log', ContactController];
+	module.exports = ['$log', '$http', ContactController];
 
-	function ContactController($log) {
+	function ContactController($log, $http) {
 	  $log.debug('init contactCtrl');
+
+	  //Create data object on the scope
+	  this.data = {};
+	  this.showSuccessMessage = false;
+
+	  // Called when submit button is pressed
+	  // If there are errors, show, ngMessages
+	  // if there are no errors, call sendMail() and show success message
+	  this.onSubmit = function (form) {
+	    if (form.$valid) {
+	      $log.debug('Valid Form Submitted');
+	      this.sendMail();
+	      this.showSuccessMessage = true;
+	    }
+	  };
+
+	  this.sendMail = function () {
+	    $log.debug('contactCtrl.sendMail()');
+	    // Send mail data!
+	    $http.post('/contact', this.data)
+	    // return server response and status code
+	    .then(function (response) {
+	      $log.debug('Data object and status code', response.data, response.status);
+	      return response.data, response.status;
+	    }).catch(function onError(response) {
+	      return 'error', response.data;
+	    });
+	  };
 	}
 
 /***/ },
-/* 50 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 51 */,
 /* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(53);
-
-	module.exports = ['$log', LandingController];
-
-	function LandingController($log) {
-	  $log.debug('init landingCtrl');
-	}
-
-/***/ },
-/* 53 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 54 */,
-/* 55 */,
-/* 56 */
+/* 53 */,
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(57);
+	__webpack_require__(55);
+
+	module.exports = ['$log', '$document', '$window', LandingController];
+
+	function LandingController($log, $document, $window) {
+	  $log.debug('init landingCtrl');
+
+	  this.onKeyDown = function () {};
+	  this.onKeyUp = function () {
+	    console.log('keyup');
+	  };
+
+	  // Set up canvas
+	  var canvas = $document.find('canvas')[0];
+	  var ctx = canvas.getContext('2d');
+	  canvas.width = $window.innerWidth;
+	  canvas.height = $window.innerHeight;
+	  ctx.strokeStyle = '#ffffff';
+
+	  // convert angle from degrees to radians
+	  var toRadians = Math.PI / 180,
+	      boundsXmin = 10,
+	      boundsXmax = canvas.width,
+	      boundsYmin = 10,
+	      boundsYmax = canvas.height;
+	  // Get random range of anything
+	  function randomRange(min, max) {
+	    return Math.random() * (max - min) + min;
+	  }
+	  var rotAmt = randomRange(.01, .1);
+
+	  // Vector operations
+	  var Vector3D = function Vector3D(x, y, z) {
+	    this.x = x || 0;
+	    this.y = y || 0;
+	    this.z = z || 0;
+	  };
+	  Vector3D.prototype.add = function (v2) {
+	    this.x = this.x + v2.x;
+	    this.y = this.y + v2.y;
+	    this.z = this.z + v2.z;
+	  };
+	  Vector3D.prototype.rotateY = function (angle) {
+	    var cosRY = Math.cos(angle * toRadians);
+	    var sinRY = Math.sin(angle * toRadians);
+	    var tempz = this.z,
+	        tempx = this.x;
+	    this.x = tempx * cosRY + tempz * sinRY;
+	    this.z = tempx * -sinRY + tempz * cosRY;
+	  };
+	  Vector3D.prototype.rotateX = function (angle) {
+	    var cosRY = Math.cos(angle * toRadians);
+	    var sinRY = Math.sin(angle * toRadians);
+	    var tempz = this.z,
+	        tempy = this.y;
+	    this.y = tempy * cosRY + tempz * sinRY;
+	    this.z = tempy * -sinRY + tempz * cosRY;
+	  };
+
+	  // Star Particle!
+	  var Particle = function Particle(posx, posy, posz, pSize) {
+	    // Circumscribed radius
+	    this.cR = pSize * (Math.sqrt(2) / 2);
+	    // position refers to placement of shape on canvas
+	    this.position = new Vector3D(posx, posy, posz) || new Vector3D(0, 0, 0);
+	    // Random velocity in X and Y direction between -2 and 2
+	    this.velocity = new Vector3D(Math.random() * 4 - 2, Math.random() * 4 - 2, 0);
+	    // origin is in reference to center of shape
+	    this.vertices = [new Vector3D(0, 0, this.cR), new Vector3D(0, 0, -this.cR), new Vector3D(this.cR, 0, 0), new Vector3D(-this.cR, 0, 0), new Vector3D(0, this.cR, 0), new Vector3D(0, -this.cR, 0)];
+	    this.faces = [{ A: 0, B: 2, C: 4 }, { A: 0, B: 4, C: 3 }, { A: 0, B: 3, C: 5 }, { A: 0, B: 5, C: 2 }, { A: 1, B: 2, C: 5 }, { A: 1, B: 5, C: 3 }, { A: 1, B: 3, C: 4 }, { A: 1, B: 4, C: 2 }];
+	  };
+	  Particle.prototype.move = function () {
+	    // Check bounds
+	    if (this.position.x + this.velocity.x > boundsXmax - this.cR || this.position.x + this.velocity.x < this.cR) this.velocity.x = -this.velocity.x;
+	    if (this.position.y + this.velocity.y > boundsYmax - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
+	    // Otherwise increase the position of x and y
+	    this.position.add(this.velocity);
+	  };
+	  Particle.prototype.draw = function () {
+	    for (var i = 0; i < this.faces.length; i++) {
+	      var face = this.faces[i],
+	          X = this.position.x,
+	          Y = this.position.y;
+	      // Create each triangular face using indexes from faces array
+	      var vertexA = this.vertices[face.A];
+	      var vertexB = this.vertices[face.B];
+	      var vertexC = this.vertices[face.C];
+	      // Rotate each point
+	      vertexA.rotateX(rotAmt);
+	      vertexB.rotateX(rotAmt);
+	      vertexC.rotateX(rotAmt);
+	      vertexA.rotateY(rotAmt);
+	      vertexB.rotateY(rotAmt);
+	      vertexC.rotateY(rotAmt);
+	      // Draw Triangles
+	      ctx.beginPath();
+	      ctx.moveTo(vertexA.x + X, vertexA.y + Y);
+	      ctx.lineTo(vertexB.x + X, vertexB.y + Y);
+	      ctx.lineTo(vertexC.x + X, vertexC.y + Y);
+	      ctx.closePath();
+	      ctx.stroke();
+	    }
+	  };
+
+	  var starSystem = function starSystem(numParticles, fov) {
+	    this.particles = {};
+	    this.fov = fov;
+	    this.center = new Vector3D(0, 0, 0);
+	    this.numParticles = numParticles;
+	  };
+
+	  starSystem.prototype.project = function (point) {
+	    var scale = this.fov * (this.fov + point.z);
+	    var x2D = point.x * scale;
+	    var y2D = point.y * scale;
+	    return new Vector3D(x2D, y2D, point.z);
+	  };
+
+	  starSystem.prototype.generate = function () {
+	    for (var i = 0; i < this.numParticles; i++) {
+	      this.particles[i] = new Particle(randomRange(boundsXmin, boundsXmax), randomRange(boundsYmin, boundsYmax), 0, randomRange(10, 70));
+	    }
+	    return this.particles;
+	  };
+
+	  // Create a new particle system with 5 stars and fov of .78
+	  var system = new starSystem(100, .78);
+	  system.generate();
+
+	  // Renders particle system
+	  function render() {
+	    for (var i in system.particles) {
+	      var currentParticle = system.particles[i];
+	      // Rotate and draw
+	      currentParticle.draw();
+	      // Moves particles every frame based on their random velocity and initial position
+	      currentParticle.move();
+	    }
+	  }
+
+	  // Rendering loop handler
+	  function drawingLoop() {
+	    ctx.clearRect(0, 0, canvas.width, canvas.height);
+	    // Every frame, particle bucket is looped through, rotated, drawn, and moved
+	    render();
+	    $window.requestAnimationFrame(drawingLoop);
+	  }
+	  drawingLoop();
+	}
+
+/***/ },
+/* 55 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 56 */,
+/* 57 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(58);
 
 	module.exports = ['$log', '$uibModal', PortfolioController];
 
@@ -54325,19 +55249,19 @@
 	}
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 58 */,
-/* 59 */
+/* 59 */,
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(60);
+	__webpack_require__(61);
 
 	module.exports = ['$log', ProjectController];
 
@@ -54385,21 +55309,21 @@
 	}
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 61 */,
-/* 62 */
+/* 62 */,
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./code-portfolio/code-portfolio.js": 63,
-		"./footer/footer.js": 67,
-		"./modal/modal.js": 71,
-		"./navbar/navbar.js": 75
+		"./code-portfolio/code-portfolio.js": 64,
+		"./footer/footer.js": 68,
+		"./modal/modal.js": 72,
+		"./navbar/navbar.js": 76
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -54412,19 +55336,19 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 62;
+	webpackContext.id = 63;
 
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(64);
+	__webpack_require__(65);
 
 	module.exports = {
-	  template: __webpack_require__(66),
+	  template: __webpack_require__(67),
 	  controller: ['$log', '$location', '$rootScope', CodePortfolioController],
 	  controllerAs: 'codePortfolioCtrl'
 	};
@@ -54434,28 +55358,28 @@
 	}
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 65 */,
-/* 66 */
+/* 66 */,
+/* 67 */
 /***/ function(module, exports) {
 
 	module.exports = "<section class=\"code-portfolio-container\">\n\n  <!-- Project Container -->\n  <div class=\"project-container\">\n    <!-- 3D Project -->\n      <div class=\"project\">\n        <h2>3d Engine</h2>\n        <h3>\n          <p><span>Summary: </span>Generates rotating 3D polyhedra models using JavaScript and HTML5 Canvas</p>\n          <p><span>Tools: </span>React.js, Vanilla Javascript, Node.js, Webpack</p>\n        <h3>\n\n        <a href=\"https://github.com/loomnugget/js-3d-experiment\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n        <a href=\"http://codepen.io/ploom/pen/LRvzOk\">\n        <span><i class=\"fa fa-codepen project-icon codepen\"></i></span></a>\n      </div>\n      <hr>\n      <!-- Art-c Project -->\n      <div class=\"project\">\n        <h2>[art-c]</h2>\n        <h3>\n          <p><span>Summary: </span>Social media platform that allows local artists to display and share their work with others in their community.</p>\n          <p><span>Tools: </span>Node.js, AngularJS, Webpack, Gulp.js, MongoDB, Bootstrap, AWS S3</p>\n        <h3>\n        <a href=\"https://github.com/loomnugget/art-c\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n      </div>\n\n  </div>\n\n</section>\n";
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(68);
+	__webpack_require__(69);
 
 	module.exports = {
-	  template: __webpack_require__(70),
+	  template: __webpack_require__(71),
 	  controller: ['$log', '$location', '$rootScope', FooterController],
 	  controllerAs: 'footerCtrl'
 	};
@@ -54465,28 +55389,28 @@
 	}
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 69 */,
-/* 70 */
+/* 70 */,
+/* 71 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"footer\">\n  <p class=\"footer-text\"> lemoncandy 2017</p>\n\n  <span><a href=\"https://github.com/loomnugget\">\n  <i class=\"fa fa-github footer-icon icon github\"></i></a></span>\n  <span><a href=\"http://codepen.io/ploom\">\n  <i class=\"fa fa-codepen footer-icon icon codepen\"></i></a></span>\n  <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n  <i class=\"fa fa-linkedin footer-icon icon\"></i></a></span>\n</div>\n";
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(72);
+	__webpack_require__(73);
 
 	module.exports = {
-	  template: __webpack_require__(74),
+	  template: __webpack_require__(75),
 	  controller: ['$log', ModalController],
 	  controllerAs: 'modalCtrl',
 	  bindings: {
@@ -54505,28 +55429,28 @@
 	}
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 73 */,
-/* 74 */
+/* 74 */,
+/* 75 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-container\">\n  <div class=\"modal-header\">\n    <span>\n      <i class=\"icon-arrows-remove modal-icon modal-close\"\n        ng-click=\"modalCtrl.handleClose()\"></i>\n    </span>\n  </div>\n\n  <div class=\"modal-body\" id=\"modal-body\">\n    <!-- Gallery image-->\n    <img src=\"{{modalCtrl.modalData.url}}\">\n    <!-- Arrow Icons -->\n    <!-- <div class=\"row center\">\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-left modal-icon modal-arrow\" ng-click=\"modalCtrl.nextImage()\"></i></span>\n      </div>\n      <div class=\"modal-arrow-container\">\n        <i class=\"fa fa-arrow-circle-right modal-icon modal-arrow\" ng-click=\"modalCtrl.previousImage()\"></i></span>\n      </div>\n    </div> -->\n\n</div>\n";
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(76);
+	__webpack_require__(77);
 
 	module.exports = {
-	  template: __webpack_require__(78),
+	  template: __webpack_require__(79),
 	  controller: ['$log', '$location', '$rootScope', NavbarController],
 	  controllerAs: 'navbarCtrl'
 	};
@@ -54550,14 +55474,14 @@
 	}
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 77 */,
-/* 78 */
+/* 78 */,
+/* 79 */
 /***/ function(module, exports) {
 
 	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <!-- logo/home button -->\n    <li class=\"navbar-brand\"><a href=\"#/landing\"><span><i class=\"icon-arrows-squares\"></i></span></a></li>\n    <!-- mail/contact button -->\n    <li class=\"navbar-item\"><a href=\"#/contact\"><span><i class=\"icon-basic-mail-open\"></i></span></a></li>\n    <!-- menu item links -->\n    <li class=\"navbar-item\"\n      ng-repeat=\"item in navbarCtrl.items\"\n      name=\"item\"\n      ng-class=\"{'active': item.id == navbarCtrl.states.activeItem}\"\n      ng-click=\"navbarCtrl.states.activeItem = item.id\">\n    <a href=\"{{item.url}}\">{{item.title}}</a></li>\n  </ul>\n</nav>\n";

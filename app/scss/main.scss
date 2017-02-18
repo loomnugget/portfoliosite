@@ -10,7 +10,6 @@ html, body {
   background-color: $app-black;
   color: $app-white;
 }
-
 h3, h4 {
   color: $app-white;
   text-transform: uppercase;
@@ -60,12 +59,20 @@ hr.gradient {
   background-color: transparent;
 }
 
+// Gradient Text
 .gradient-text{
   background: -webkit-linear-gradient($app-gradient2, $app-secondary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-color: transparent;
 }
+// Background fill text
+.bg-text {
+  background-image: url('http://i68.tinypic.com/nycl5y.jpg');
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
 
 // General List styles
 ul{
@@ -89,13 +96,6 @@ a{
 }
 .footer, .push {
 	height: 80px; // same height has footer
-}
-
-// Background fill text
-.bg-text {
-  background-image: url(http://i68.tinypic.com/nycl5y.jpg);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
 }
 
 // General button styles
@@ -199,7 +199,6 @@ a{
 
 
 /*  GRID OF THREE   ============================================================================= */
-
 
 .span-3-of-3 {
 	width: 100%;

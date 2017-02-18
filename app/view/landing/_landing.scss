@@ -1,36 +1,28 @@
 @import "theme";
 
 .landing {
-  .landing-container{
-    width: 100%;
-    padding: .5%;
-
-  }
   header {
-    padding: 5%;
+    padding: 0;
     margin: 0;
-    color: $app-black;
-    background: #000;
-    background-image:
-      // linear-gradient(to bottom,
-      //   rgba(0,0,0, .1),
-      //   rgba(0,0,0, 1)
-      // ),
-      url('../scss/img/trees2.jpg');
-    background-position: center;
-    background-size: cover;
+    background: linear-gradient(135deg, $app-gradient2, $app-secondary);
     height: 100vh;
+    width: 100%;
+  }
+  #canvas{
+    margin-top: 60px;
+    color: $app-bright-white;
+    background: linear-gradient(135deg, $app-gradient2, $app-secondary);
   }
 
-  h2{
+  .landing-title{
     margin-top: 50px;
-    font-size: 400%;
+    font-size: 500%;
     text-transform: uppercase;
     font-family: $app-font;
-    color: $app-white;
+    color: $app-black;
   }
 
-  .btn{
+  .landing-btn{
     border: 5px solid $app-black;
     font-size: 14px;
     font-weight: 300;
@@ -42,7 +34,7 @@
     margin-top: 10px;
   }
 
-  .btn:hover {
+  .landing-btn:hover {
     background:rgba(255,255,255,.5);
   }
 
