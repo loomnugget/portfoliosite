@@ -54987,11 +54987,11 @@
 	      centerX = canvas.width / 2;
 	  // Move origin to center of canvas
 	  ctx.translate(centerX, centerY);
-	  ctx.strokeStyle = 'rgba(255, 255, 255, .5)';
+	  ctx.strokeStyle = 'rgba(255, 255, 255, .7)';
 	  ctx.fillStyle = '#fff';
 	  // convert angle from degrees to radians
 	  var toRadians = Math.PI / 180;
-	  var fov = 170;
+	  var fov = 400;
 	  // Get random range of anything
 	  function randomRange(min, max) {
 	    return Math.random() * (max - min) + min;
@@ -55037,6 +55037,7 @@
 	    this.vertices = [new Vector3D(0, 0, this.cR), new Vector3D(0, 0, -this.cR), new Vector3D(this.cR, 0, 0), new Vector3D(-this.cR, 0, 0), new Vector3D(0, this.cR, 0), new Vector3D(0, -this.cR, 0)];
 	    this.faces = [{ A: 0, B: 2, C: 4 }, { A: 0, B: 4, C: 3 }, { A: 0, B: 3, C: 5 }, { A: 0, B: 5, C: 2 }, { A: 1, B: 2, C: 5 }, { A: 1, B: 5, C: 3 }, { A: 1, B: 3, C: 4 }, { A: 1, B: 4, C: 2 }];
 	  };
+
 	  Particle.prototype.move = function (boundsX, boundsY, boundsZ) {
 	    // Check bounds
 	    if (this.position.x + this.velocity.x > boundsX - this.cR || this.position.x + this.velocity.x < this.cR) this.velocity.x = -this.velocity.x;
@@ -55051,9 +55052,6 @@
 	    centerPoint.project();
 	    var posX2d = centerPoint.posX2d;
 	    var posY2d = centerPoint.posY2d;
-	    // ctx.beginPath();
-	    // ctx.arc(posX2d, posY2d, 1, 0, Math.PI * 2, true);
-	    // ctx.fill();
 
 	    for (var i = 0; i < particle.faces.length; i++) {
 	      var face = particle.faces[i];
@@ -55063,6 +55061,7 @@
 	      vertexA.rotateY(.1);
 	      vertexB.rotateY(.1);
 	      vertexC.rotateY(.1);
+
 	      vertexA.project();
 	      vertexB.project();
 	      vertexC.project();
@@ -55080,15 +55079,15 @@
 	  };
 	  starSystem.prototype.generate = function (numParticles) {
 	    for (var i = 0; i < numParticles; i++) {
-	      this.particles[i] = new Particle(randomRange(-100, 100), // x-position
-	      randomRange(-100, 100), // y-position
-	      randomRange(-100, 100), // z-position
-	      randomRange(10, 50)); //pSize - particle Size
+	      this.particles[i] = new Particle(randomRange(-500, 500), // x-position
+	      randomRange(-300, 300), // y-position
+	      randomRange(-300, 300), // z-position
+	      randomRange(5, 10)); //pSize - particle Size
 	    }
 	  };
 
 	  var system = new starSystem();
-	  system.generate(20);
+	  system.generate(150);
 
 	  // Rendering loop handler
 	  function drawingLoop() {
@@ -55096,7 +55095,8 @@
 
 	    for (var i in system.particles) {
 	      var currentParticle = system.particles[i];
-	      currentParticle.position.rotateY(.5);
+
+	      //currentParticle.position.rotateY(.5);
 	      render(currentParticle);
 	    }
 	    $window.requestAnimationFrame(drawingLoop);
