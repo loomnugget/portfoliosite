@@ -83,7 +83,7 @@ function LandingController($log, $document, $window) {
     ];
   };
 
-  Particle.prototype.move = function(boundsX, boundsY, boundsZ) {
+  Particle.prototype.move = function() {
     // Check bounds
     if(this.position.x + this.velocity.x > boundsX - this.cR || this.position.x  + this.velocity.x < this.cR) this.velocity.x = -this.velocity.x;
     if(this.position.y + this.velocity.y > boundsY - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
@@ -120,56 +120,57 @@ function LandingController($log, $document, $window) {
   }
 
   // Star Particle System
-  const starSystem = function(){
+  const starSystem = function(size){
     this.particles = {};
+    this.size = size;
+    this.plane = {
+      point1: new Vector3D(-this.size,this.size,this.size),
+      point2: new Vector3D(this.size,this.size,this.size),
+      point3: new Vector3D(this.size,this.size,-this.size),
+      point4: new Vector3D(-this.size,this.size,-this.size),
+    };
   };
   starSystem.prototype.generate = function(numParticles){
     for(var i = 0; i < numParticles; i++){
+      //generate particles within the square boundary
       this.particles[i] = new Particle(
-        randomRange(-100, 100), // x-position
-        randomRange(-100, 100),  // y-position
-        randomRange(-100, 100), // z-position
+        randomRange(-this.size, this.size), // x-position
+        randomRange(-this.size, this.size),  // y-position
+        randomRange(-this.size, this.size), // z-position
         randomRange(2, 20)); //pSize - particle Size
     }
   };
 
-  var system = new starSystem();
+  var system = new starSystem(200);
   system.generate(200);
 
-  var point1 = new Vector3D(100,-100,0);
-  var point2 = new Vector3D(100,100,0);
-  var point3 = new Vector3D(-100,100,0);
-  var point4 = new Vector3D(-100,-100,0);
-  function drawXZplane(){
-    point1.project();
-    point2.project();
-    point3.project();
-    point4.project();
+  function drawPlane(){
+    system.plane.point1.project();
+    system.plane.point2.project();
+    system.plane.point3.project();
+    system.plane.point4.project();
     ctx.beginPath();
-    ctx.moveTo(point1.posX2d, point1.posY2d);
-    ctx.lineTo(point2.posX2d, point2.posY2d);
-    ctx.lineTo(point3.posX2d, point3.posY2d);
-    ctx.lineTo(point4.posX2d, point4.posY2d);
+    ctx.moveTo(system.plane.point1.posX2d, system.plane.point1.posY2d);
+    ctx.lineTo(system.plane.point2.posX2d, system.plane.point2.posY2d);
+    ctx.lineTo(system.plane.point3.posX2d, system.plane.point3.posY2d);
+    ctx.lineTo(system.plane.point4.posX2d, system.plane.point4.posY2d);
     ctx.closePath();
     ctx.fill();
   }
-
-
-
   // Rendering loop handler
   function drawingLoop() {
     ctx.clearRect(-centerX, -centerY, canvas.width, canvas.height);
-    point1.rotateY(.3);
-    point2.rotateY(.3);
-    point3.rotateY(.3);
-    point4.rotateY(.3);
-    drawXZplane();
+    // point1.rotateY(.3);
+    // point2.rotateY(.3);
+    // point3.rotateY(.3);
+    // point4.rotateY(.3);
+    drawPlane();
     for(var i in system.particles){
       var currentParticle = system.particles[i];
-      currentParticle.position.rotateY(.3);
+      //currentParticle.position.rotateY(.3);
       render(currentParticle);
     }
-    $window.requestAnimationFrame(drawingLoop);
+    //$window.requestAnimationFrame(drawingLoop);
   }
   drawingLoop();
 }
