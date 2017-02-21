@@ -2,14 +2,20 @@
 @import "vendor";
 
 .modal-container{
-  // padding: 5% 5% 0 5%;
   padding: 5%;
   img{
     width: 100%;
   }
-  h2{
-    color: $app-black;
+  .modal-title-container{
     text-transform: uppercase;
+    h3{
+      color: $app-black;
+      margin-top: 0;
+      font-size: 200%;
+    }
+    h4{
+      font-style: italic;
+    }
   }
   .modal-icon {
     font-size: 50px;
@@ -18,7 +24,6 @@
     cursor: pointer;
     color: $app-black;
   }
-
   .modal-close{
     position: absolute;
     top: 0;

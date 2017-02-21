@@ -15,7 +15,8 @@
     <!-- Image Gallery -->
     <div class="portfolio-container clearfix">
       <div class="portfolio-img-container"
-       ng-repeat="item in portfolioCtrl.items | filter:myFilter">
+       ng-repeat="item in portfolioCtrl.items | filter:myFilter"
+       item="portfolioCtrl.currentItem">
         <div class="square" ng-style="{'background-image': 'url({{item.url}})'}">
             <div class="img-hover">
               <div class="content-wrap">

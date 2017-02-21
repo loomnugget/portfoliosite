@@ -32,7 +32,6 @@ function PortfolioController($log, $uibModal){
   this.open = function(item) {
     let modalInstance = $uibModal.open({
       component: 'modal',
-      size: 'lg',
       resolve: {
         imageToggle: function() {
           return item;

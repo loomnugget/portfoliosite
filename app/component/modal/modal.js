@@ -14,7 +14,13 @@ module.exports = {
 
 function ModalController($log){
   $log.debug('init modalCtrl');
-  this.modalData = this.resolve.imageToggle;
+
+  this.$onInit = function(){
+    this.modalData = this.resolve.imageToggle;
+    this.title = this.modalData.title;
+    this.category = this.modalData.category;
+    this.url = this.modalData.url;
+  };
 
   this.handleClose = function() {
     this.modalInstance.close();
