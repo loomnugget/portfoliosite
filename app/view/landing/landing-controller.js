@@ -90,18 +90,29 @@ function LandingController($log, $document, $window) {
     this.b2 = new Vector3D(this.size,this.size,this.size),
     this.b3 = new Vector3D(this.size,this.size,-this.size),
     this.b4 = new Vector3D(-this.size,this.size,-this.size),
+
+    this.b5 = new Vector3D(-this.size,-this.size,this.size);
+    this.b6 = new Vector3D(this.size,-this.size,this.size),
+    this.b7 = new Vector3D(this.size,-this.size,-this.size),
+    this.b8 = new Vector3D(-this.size,-this.size,-this.size),
     this.b1.project();
     this.b2.project();
     this.b3.project();
     this.b4.project();
-    // if(this.position.y + this.velocity.y > this.b1.posY2d - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
-    // if(this.position.y + this.velocity.y > this.b2.posY2d - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
-    // if(this.position.y + this.velocity.y > this.b3.posY2d - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
-    // if(this.position.y + this.velocity.y > this.b4.posY2d - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
+    this.b5.project();
+    this.b6.project();
+    this.b7.project();
+    this.b8.project();
+
     if(this.position.y + this.velocity.y > this.b1.posY2d - this.cR) this.velocity.y = -this.velocity.y;
     if(this.position.y + this.velocity.y > this.b2.posY2d - this.cR) this.velocity.y = -this.velocity.y;
     if(this.position.y + this.velocity.y > this.b3.posY2d - this.cR) this.velocity.y = -this.velocity.y;
     if(this.position.y + this.velocity.y > this.b4.posY2d - this.cR) this.velocity.y = -this.velocity.y;
+
+    if(this.position.y + this.velocity.y < this.b5.posY2d - this.cR) this.velocity.y = -this.velocity.y;
+    if(this.position.y + this.velocity.y < this.b6.posY2d - this.cR) this.velocity.y = -this.velocity.y;
+    if(this.position.y + this.velocity.y < this.b7.posY2d - this.cR) this.velocity.y = -this.velocity.y;
+    if(this.position.y + this.velocity.y < this.b8.posY2d - this.cR) this.velocity.y = -this.velocity.y;
     this.position.add(this.velocity);
   };
   // Project position
@@ -141,6 +152,11 @@ function LandingController($log, $document, $window) {
       point2: new Vector3D(this.size,this.size,this.size),
       point3: new Vector3D(this.size,this.size,-this.size),
       point4: new Vector3D(-this.size,this.size,-this.size),
+
+      point5: new Vector3D(-this.size,-this.size,this.size),
+      point6: new Vector3D(this.size,-this.size,this.size),
+      point7: new Vector3D(this.size,-this.size,-this.size),
+      point8: new Vector3D(-this.size,-this.size,-this.size),
     };
   };
   starSystem.prototype.generate = function(numParticles){
@@ -162,6 +178,10 @@ function LandingController($log, $document, $window) {
     system.plane.point2.project();
     system.plane.point3.project();
     system.plane.point4.project();
+    system.plane.point5.project();
+    system.plane.point6.project();
+    system.plane.point7.project();
+    system.plane.point8.project();
     ctx.beginPath();
     ctx.moveTo(system.plane.point1.posX2d, system.plane.point1.posY2d);
     ctx.lineTo(system.plane.point2.posX2d, system.plane.point2.posY2d);
@@ -169,11 +189,19 @@ function LandingController($log, $document, $window) {
     ctx.lineTo(system.plane.point4.posX2d, system.plane.point4.posY2d);
     ctx.closePath();
     ctx.fill();
+
+    ctx.beginPath();
+    ctx.moveTo(system.plane.point5.posX2d, system.plane.point5.posY2d);
+    ctx.lineTo(system.plane.point6.posX2d, system.plane.point6.posY2d);
+    ctx.lineTo(system.plane.point7.posX2d, system.plane.point7.posY2d);
+    ctx.lineTo(system.plane.point8.posX2d, system.plane.point8.posY2d);
+    ctx.closePath();
+    ctx.fill();
   }
   // Rendering loop handler
   function drawingLoop() {
     ctx.clearRect(-centerX, -centerY, canvas.width, canvas.height);
-    drawPlane();
+    //drawPlane();
     for(var i in system.particles){
       var currentParticle = system.particles[i];
       //currentParticle.position.rotateY(.3);
