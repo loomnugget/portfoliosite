@@ -14,16 +14,21 @@ function NavbarController($log) {
   this.items = [
     {
       id: 'item1',
+      title: 'Contact',
+      url: '#/contact',
+    },
+    {
+      id: 'item2',
       title: 'About',
       url: '#/about',
     },
     {
-      id: 'item2',
+      id: 'item3',
       title: 'Art',
       url: '#/portfolio',
     },
     {
-      id: 'item3',
+      id: 'item4',
       title: 'Projects',
       url: '#/projects',
     },

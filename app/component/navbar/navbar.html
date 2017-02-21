@@ -1,15 +1,18 @@
 <nav class="navbar">
   <ul class="navbar-container">
     <!-- logo/home button -->
-    <li class="navbar-brand"><a href="#/landing"><span><i class="icon-arrows-squares"></i></span></a></li>
+    <li class="navbar-brand">
+      <a href="#"><img class="logo" src="http://s32.postimg.org/q5rurwbl1/star.png"></a>
+      <!-- <a href="#/landing"><span><i class="icon-arrows-squares"></i></span></a> -->
+    </li>
     <!-- mail/contact button -->
-    <li class="navbar-item"><a href="#/contact"><span><i class="icon-basic-mail-open"></i></span></a></li>
+    <!-- <li class="navbar-item"><a href="#/contact" class="text"><span><i class="icon-basic-mail-open"></i></span></a></li> -->
     <!-- menu item links -->
     <li class="navbar-item"
       ng-repeat="item in navbarCtrl.items"
       name="item"
       ng-class="{'active': item.id == navbarCtrl.states.activeItem}"
       ng-click="navbarCtrl.states.activeItem = item.id">
-    <a href="{{item.url}}">{{item.title}}</a></li>
+    <a href="{{item.url}}" class="text">{{item.title}}</a></li>
   </ul>
 </nav>

@@ -27,29 +27,29 @@
     h4{
       color: $app-bright-white;
       background-color: $app-black;
+      font-size: 200%;
+      font-style: italic;
     }
   }
 
   #canvas{
     width: 100%;
-    //background: linear-gradient($app-black, $app-black);
   }
 
-
   .landing-btn{
-    border: 5px solid $app-black;
-    font-size: 14px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    font-color: $app-black;
-    background: transparent;
-    font-family: $app-font;
-    padding: 12px 15px;
+    width: 100px;
+    height: 100px;
     margin-top: 10px;
+    border-radius:50%;
+    border: 3px solid rgba(255, 255, 255, .7);
+    letter-spacing: 1px;
+    color: $app-bright-white;
+    background: $app-black;
+    font-family: $app-font;
   }
 
   .landing-btn:hover {
-    background:rgba(255,255,255,.5);
+    border: 3px solid $app-bright-white;
   }
 
   .contact-icon{
