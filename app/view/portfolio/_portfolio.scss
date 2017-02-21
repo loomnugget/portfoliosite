@@ -2,6 +2,7 @@
 
 .portfolio {
   margin-top: 60px;
+  padding: 0 3%;
   width: 98%;
   margin-left: 1%;
   margin-right: 1%;
@@ -20,7 +21,7 @@
 
     .menu-item {
       width: 32%;
-      margin: 1% .66666667% 0 .66666667%;
+      margin: 2.5% .66666667% 1.5% .66666667%;
       float: left;
       display:block;
       cursor: pointer;
@@ -33,9 +34,11 @@
         text-align: center;
         font-size: 160%;
         margin-bottom: 15px;
-        padding: 3%;
+        padding: 2%;
         cursor: pointer;
-        @media only screen and (min-width: 900px){
+      }
+      @media only screen and (min-width: 900px){
+        h2{
           font-size: 250%;
         }
       }
@@ -49,16 +52,15 @@
     width: 99%;
     margin: .5%;
   }
-
   .portfolio-img-container{
-    width: 98%;
-    margin: 1%;
+    width: 96%;
+    margin: 2%;
     float: left;
-    @media only screen and (min-width: 600px){
+    @media only screen and (min-width: 480px){
       width: 48%;
       margin: 1%;
     }
-    @media only screen and (min-width: 1100px){
+    @media only screen and (min-width: 1024px){
       width: 24%;
       margin: .5%;
     }
@@ -67,7 +69,7 @@
   // Responsive squares
   .square {
     position: relative;
-    border: 1px solid #fff;
+    border: 2px solid $app-black;
     width: 100%;
     background-position: center;
     background-size: cover;
@@ -89,7 +91,6 @@
     width: 100%;
     opacity: 0;
     color: $app-black;
-    border: 2px solid $app-black;
     background: rgba(255, 255, 255, .9);
     transition: all 0.5s;
     z-index: 20;
@@ -103,13 +104,13 @@
         font-style: $app-font;
         font-size: 400%;
         color: $app-black;
-        @media only screen and (min-width: 600px){
-          font-size: 280%;
+        @media only screen and (min-width: 768px){
+          font-size: 210%;
         }
       }
       // Description font styles
       h4 {
-        font-size: 200%;
+        font-size: 180%;
         font-style: italic;
         color: $app-black;
       }
@@ -118,7 +119,6 @@
         margin: 1% 0;
         font-size: 60px;
         background-color: transparent;
-        color: $app-black;
         transition: .2s;
         cursor: pointer;
       }

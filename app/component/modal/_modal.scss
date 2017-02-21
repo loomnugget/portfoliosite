@@ -5,6 +5,7 @@
   padding: 5%;
   img{
     width: 100%;
+    border: 5px solid $app-black;
   }
   .modal-title-container{
     text-transform: uppercase;
@@ -33,19 +34,5 @@
   }
   .center{
     padding: 0 30%;
-  }
-
-  .modal-arrow-container{
-    width: 50%;
-    display: inline-block;
-    text-align:center;
-    float: left;
-    .modal-arrow {
-      padding: 2%;
-    }
-  }
-
-  .modal-icon:hover{
-    color: $app-secondary;
   }
 }
