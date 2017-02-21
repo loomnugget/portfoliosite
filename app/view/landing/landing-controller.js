@@ -38,6 +38,7 @@ function LandingController($log, $document, $window) {
     this.y = this.y + v2.y;
     this.z = this.z + v2.z;
   };
+
   Vector3D.prototype.project = function(){
     this.scale = fov/(fov + this.z);
     this.posX2d = (this.x * this.scale);
@@ -62,7 +63,8 @@ function LandingController($log, $document, $window) {
   const Particle = function(posx, posy, posz, pSize) {
     this.cR = pSize *(Math.sqrt(2) / 2); // radius
     this.position = new Vector3D(posx, posy, posz);
-    //this.velocity = new Vector3D(randomRange(-1,1), randomRange(-1,1), randomRange(-1,1));
+  //  this.velocity = new Vector3D(randomRange(1,.5), randomRange(1,.5), randomRange(1,.5));
+    this.velocity = new Vector3D(0,1,0); // fall down!
     this.vertices = [
       new Vector3D(0, 0, this.cR),
       new Vector3D(0, 0, -this.cR),
@@ -82,13 +84,24 @@ function LandingController($log, $document, $window) {
       { A:1, B:4, C:2 },
     ];
   };
-
   Particle.prototype.move = function() {
-    // Check bounds
-    if(this.position.x + this.velocity.x > boundsX - this.cR || this.position.x  + this.velocity.x < this.cR) this.velocity.x = -this.velocity.x;
-    if(this.position.y + this.velocity.y > boundsY - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
-    if(this.position.z + this.velocity.z > boundsZ - this.cR || this.position.z + this.velocity.z < this.cR) this.velocity.z = -this.velocity.z;
-    // Otherwise increase the position of x and y
+    this.size = 200;
+    this.b1 = new Vector3D(-this.size,this.size,this.size);
+    this.b2 = new Vector3D(this.size,this.size,this.size),
+    this.b3 = new Vector3D(this.size,this.size,-this.size),
+    this.b4 = new Vector3D(-this.size,this.size,-this.size),
+    this.b1.project();
+    this.b2.project();
+    this.b3.project();
+    this.b4.project();
+    // if(this.position.y + this.velocity.y > this.b1.posY2d - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
+    // if(this.position.y + this.velocity.y > this.b2.posY2d - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
+    // if(this.position.y + this.velocity.y > this.b3.posY2d - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
+    // if(this.position.y + this.velocity.y > this.b4.posY2d - this.cR || this.position.y + this.velocity.y < this.cR) this.velocity.y = -this.velocity.y;
+    if(this.position.y + this.velocity.y > this.b1.posY2d - this.cR) this.velocity.y = -this.velocity.y;
+    if(this.position.y + this.velocity.y > this.b2.posY2d - this.cR) this.velocity.y = -this.velocity.y;
+    if(this.position.y + this.velocity.y > this.b3.posY2d - this.cR) this.velocity.y = -this.velocity.y;
+    if(this.position.y + this.velocity.y > this.b4.posY2d - this.cR) this.velocity.y = -this.velocity.y;
     this.position.add(this.velocity);
   };
   // Project position
@@ -160,17 +173,14 @@ function LandingController($log, $document, $window) {
   // Rendering loop handler
   function drawingLoop() {
     ctx.clearRect(-centerX, -centerY, canvas.width, canvas.height);
-    // point1.rotateY(.3);
-    // point2.rotateY(.3);
-    // point3.rotateY(.3);
-    // point4.rotateY(.3);
     drawPlane();
     for(var i in system.particles){
       var currentParticle = system.particles[i];
       //currentParticle.position.rotateY(.3);
+      currentParticle.move();
       render(currentParticle);
     }
-    //$window.requestAnimationFrame(drawingLoop);
+    $window.requestAnimationFrame(drawingLoop);
   }
   drawingLoop();
 }
