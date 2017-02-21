@@ -8,9 +8,14 @@
     background-position: fixed;
     height: 100vh;
   }
+  #container {
+  position: relative;
+}
+  #container canvas, #overlay {
+    position: absolute;
+  }
   #canvas{
-    margin:0;
-    padding: 0;
+    width: 100%;
     color: $app-bright-white;
     background: linear-gradient($app-gradient2, $app-secondary);
   }
