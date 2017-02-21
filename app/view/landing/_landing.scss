@@ -8,24 +8,33 @@
     height: 100vh;
   }
   #container {
-  position: relative;
-}
+    position: relative;
+  }
   #container canvas, #overlay {
     position: absolute;
-  }
-  #canvas{
     width: 100%;
-    color: $app-bright-white;
-    background: linear-gradient($app-secondary, $app-gradient2);
   }
-
   .landing-title{
     margin-top: 50px;
-    font-size: 500%;
-    text-transform: uppercase;
-    font-family: $app-font;
-    color: $app-black;
+    padding: 10% 5%;
+    text-align: center;
+    h2{
+      font-size: 600%;
+      text-transform: uppercase;
+      font-family: $title-font5;
+      color: rgba(255, 255, 255, .8);
+    }
+    h4{
+      color: $app-bright-white;
+      background-color: $app-black;
+    }
   }
+
+  #canvas{
+    width: 100%;
+    //background: linear-gradient($app-black, $app-black);
+  }
+
 
   .landing-btn{
     border: 5px solid $app-black;

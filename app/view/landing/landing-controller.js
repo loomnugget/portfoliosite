@@ -12,17 +12,15 @@ function LandingController($log, $document, $window) {
   var ctx = canvas.getContext('2d');
   canvas.width = $window.innerWidth;
   canvas.height = $window.innerHeight;
-  ctx.strokeStyle = '#ffffff';
   var centerY = canvas.height/2, centerX = canvas.width/2;
   // Move origin to center of canvas
   ctx.translate(centerX, centerY);
-  ctx.strokeStyle = 'rgba(255, 255, 255, .7)';
+  ctx.strokeStyle = 'rgba(255, 255, 255, .3)';
   ctx.fillStyle = 'rgba(255, 255, 255, .5)';
   // convert angle from degrees to radians
   var toRadians = Math.PI/180;
-  // Field of view - how much of the scene you can see
-  var fov = 400;
-
+  // Field of view
+  var fov = 800;
   // Get random range of anything
   function randomRange(min, max){
     return ((Math.random()*(max-min)) + min);
@@ -63,8 +61,8 @@ function LandingController($log, $document, $window) {
   const Particle = function(posx, posy, posz, pSize) {
     this.cR = pSize *(Math.sqrt(2) / 2); // radius
     this.position = new Vector3D(posx, posy, posz);
-  //  this.velocity = new Vector3D(randomRange(1,.5), randomRange(1,.5), randomRange(1,.5));
-    this.velocity = new Vector3D(0,1,0); // fall down!
+    // this.velocity = new Vector3D(randomRange(1,.5), randomRange(1,.5), randomRange(1,.5));
+    this.velocity = new Vector3D(0,randomRange(.5, 2),0); // fall down!
     this.vertices = [
       new Vector3D(0, 0, this.cR),
       new Vector3D(0, 0, -this.cR),
@@ -84,37 +82,7 @@ function LandingController($log, $document, $window) {
       { A:1, B:4, C:2 },
     ];
   };
-  Particle.prototype.move = function() {
-    this.size = 200;
-    this.b1 = new Vector3D(-this.size,this.size,this.size);
-    this.b2 = new Vector3D(this.size,this.size,this.size),
-    this.b3 = new Vector3D(this.size,this.size,-this.size),
-    this.b4 = new Vector3D(-this.size,this.size,-this.size),
 
-    this.b5 = new Vector3D(-this.size,-this.size,this.size);
-    this.b6 = new Vector3D(this.size,-this.size,this.size),
-    this.b7 = new Vector3D(this.size,-this.size,-this.size),
-    this.b8 = new Vector3D(-this.size,-this.size,-this.size),
-    this.b1.project();
-    this.b2.project();
-    this.b3.project();
-    this.b4.project();
-    this.b5.project();
-    this.b6.project();
-    this.b7.project();
-    this.b8.project();
-
-    if(this.position.y + this.velocity.y > this.b1.posY2d - this.cR) this.velocity.y = -this.velocity.y;
-    if(this.position.y + this.velocity.y > this.b2.posY2d - this.cR) this.velocity.y = -this.velocity.y;
-    if(this.position.y + this.velocity.y > this.b3.posY2d - this.cR) this.velocity.y = -this.velocity.y;
-    if(this.position.y + this.velocity.y > this.b4.posY2d - this.cR) this.velocity.y = -this.velocity.y;
-
-    if(this.position.y + this.velocity.y < this.b5.posY2d - this.cR) this.velocity.y = -this.velocity.y;
-    if(this.position.y + this.velocity.y < this.b6.posY2d - this.cR) this.velocity.y = -this.velocity.y;
-    if(this.position.y + this.velocity.y < this.b7.posY2d - this.cR) this.velocity.y = -this.velocity.y;
-    if(this.position.y + this.velocity.y < this.b8.posY2d - this.cR) this.velocity.y = -this.velocity.y;
-    this.position.add(this.velocity);
-  };
   // Project position
   function render(particle) {
     var centerPoint = particle.position;
@@ -166,46 +134,21 @@ function LandingController($log, $document, $window) {
         randomRange(-this.size, this.size), // x-position
         randomRange(-this.size, this.size),  // y-position
         randomRange(-this.size, this.size), // z-position
-        randomRange(2, 20)); //pSize - particle Size
+        randomRange(2, 10)); //pSize - particle Size
     }
   };
 
-  var system = new starSystem(200);
-  system.generate(200);
+  var system = new starSystem(400);
+  system.generate(160);
 
-  function drawPlane(){
-    system.plane.point1.project();
-    system.plane.point2.project();
-    system.plane.point3.project();
-    system.plane.point4.project();
-    system.plane.point5.project();
-    system.plane.point6.project();
-    system.plane.point7.project();
-    system.plane.point8.project();
-    ctx.beginPath();
-    ctx.moveTo(system.plane.point1.posX2d, system.plane.point1.posY2d);
-    ctx.lineTo(system.plane.point2.posX2d, system.plane.point2.posY2d);
-    ctx.lineTo(system.plane.point3.posX2d, system.plane.point3.posY2d);
-    ctx.lineTo(system.plane.point4.posX2d, system.plane.point4.posY2d);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.moveTo(system.plane.point5.posX2d, system.plane.point5.posY2d);
-    ctx.lineTo(system.plane.point6.posX2d, system.plane.point6.posY2d);
-    ctx.lineTo(system.plane.point7.posX2d, system.plane.point7.posY2d);
-    ctx.lineTo(system.plane.point8.posX2d, system.plane.point8.posY2d);
-    ctx.closePath();
-    ctx.fill();
-  }
   // Rendering loop handler
   function drawingLoop() {
     ctx.clearRect(-centerX, -centerY, canvas.width, canvas.height);
     //drawPlane();
     for(var i in system.particles){
       var currentParticle = system.particles[i];
-      //currentParticle.position.rotateY(.3);
-      currentParticle.move();
+      currentParticle.position.rotateY(.3);
+      //currentParticle.move();
       render(currentParticle);
     }
     $window.requestAnimationFrame(drawingLoop);
