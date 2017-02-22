@@ -47,6 +47,7 @@
     h4{
       color: $app-bright-white;
       background-color: $app-black;
+      font-family: $app-font3;
       font-size: 200%;
       font-style: italic;
     }
@@ -64,7 +65,8 @@
     letter-spacing: 1px;
     color: $app-bright-white;
     background: $app-black;
-    font-family: $app-font;
+    font-family: $app-font3;
+    font-weight: 700;
   }
 
   .landing-btn:hover {

@@ -7,63 +7,81 @@
   margin-bottom: 100px;
   h3{
     font-family: $title-font5;
+    color: $app-bright-white;
     margin-top: 40px;
-    font-size: 370%;
+    font-size: 270%;
     padding: 2%;
     text-align: center;
+    @media only screen and (min-width: 768px){
+      font-size: 330%;
+    }
+    @media only screen and (min-width: 1024px){
+      font-size: 370%;
+    }
   }
   .project-menu-container{
       width: 90%;
-      margin: 3% 5%;
+      margin: 0 5% 1% 5%;
       padding: 1%;
+      @media only screen and (min-width: 1024px){
+        width: 80%;
+        margin: 0 10% 1% 10%;
+      }
       h4{
-        font-size: 130%;
+        font-size: 120%;
+        font-family: $app-font3;
         color: $app-bright-white;
+        @media only screen and (min-width: 480px){
+          font-size: 150%;
+        }
+        @media only screen and (min-width: 768px){
+          font-size: 200%;
+        }
+        @media only screen and (min-width: 1042px){
+          font-size: 230%;
+        }
       }
       h5{
-        font-size: 90%;
+        font-size: 100%;
+        font-family: $app-font2;
         font-style: italic;
         color: $app-white;
+        @media only screen and (min-width: 768px){
+          font-size: 150%;
+        }
       }
     .project-menu{
       float:left;
       width: 31%;
       margin: 1%;
+      padding: 1% 3%;
       text-align: center;
-      .circle-image{
-        width: 250px;
-        height:250px;
+      // Responsive squares
+      .circle-image {
+        position: relative;
+        border: 2px solid $app-white;
+        width: 100%;
         border-radius: 50%;
-        border: 5px solid $app-white;
+        background-position: center;
+        background-size: cover;
       }
-      @media only screen and (min-width: 1024px){
-      }
-      .project-icon{
-        font-size: 120px;
+
+      .circle-image:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
       }
     }
   }
+  // Styles applied when nav image is clicked on
   .active{
+    // Make title and underline disappear
     width: 100%;
-    h3{
-      display:none;
-    }
-    hr{display:none;}
-  project-menu-container{
-      margin:0;
-      padding: 0;
+    h3{ display:none;}
+    hr{ display:none; }
+    // menu images get smaller and more centered
+  .project-menu-container{
 
-      h4{
-      display: none;
-      }
-      h5 {display:none;}
-    .project-menu{
-      padding: 4% 0%;
-      margin: 0;
-      .project-icon{
-        font-size: 45px;
-      }
-    }
   }
 }
 

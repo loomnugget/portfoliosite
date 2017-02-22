@@ -17,7 +17,7 @@
     width: 100%;
     margin:0;
     padding:0;
-    color:rgba(255,255,255,.7);
+    color:$app-bright-white;
 
     .menu-item {
       width: 32%;
@@ -25,7 +25,7 @@
       float: left;
       display:block;
       cursor: pointer;
-      border: 3px solid rgba(255,255,255,.7);
+      border: 3px solid $app-bright-white;
 
       // Title Menu Header
       h2 {
@@ -105,7 +105,7 @@
 
       // Title font styles
       h3 {
-        font-style: $app-font;
+        font-family: $app-font3;
         font-size: 400%;
         color: $app-black;
         @media only screen and (min-width: 768px){
