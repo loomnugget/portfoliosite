@@ -7,20 +7,28 @@ module.exports = ['$log', '$document', '$window', LandingController];
 function LandingController($log, $document, $window) {
   $log.debug('init landingCtrl');
 
+  var appWindow = angular.element($window);
+
+  // Detect resize and adjust canvas properties
+  appWindow.bind('resize', function () {
+    canvas.width = $window.innerWidth;
+    canvas.height = $window.innerHeight;
+    centerY = canvas.height/2, centerX = canvas.width/2;
+    ctx.translate(centerX, centerY);
+    ctx.strokeStyle = 'rgba(255, 255, 255, .3)';
+  });
+
   // Set up canvas
   var canvas = $document.find('canvas')[0];
   var ctx = canvas.getContext('2d');
   canvas.width = $window.innerWidth;
   canvas.height = $window.innerHeight;
   var centerY = canvas.height/2, centerX = canvas.width/2;
-  // Move origin to center of canvas
-  ctx.translate(centerX, centerY);
+  ctx.translate(centerX, centerY); // Move origin to center of canvas
   ctx.strokeStyle = 'rgba(255, 255, 255, .3)';
-  ctx.fillStyle = 'rgba(255, 255, 255, .5)';
-  // convert angle from degrees to radians
-  var toRadians = Math.PI/180;
-  // Field of view
-  var fov = 800;
+
+  // convert angle from degrees to radians, Field of view
+  var toRadians = Math.PI/180, fov = 800;
   // Get random range of anything
   function randomRange(min, max){
     return ((Math.random()*(max-min)) + min);
@@ -36,18 +44,10 @@ function LandingController($log, $document, $window) {
     this.y = this.y + v2.y;
     this.z = this.z + v2.z;
   };
-
   Vector3D.prototype.project = function(){
     this.scale = fov/(fov + this.z);
     this.posX2d = (this.x * this.scale);
     this.posY2d = (this.y * this.scale);
-  };
-  Vector3D.prototype.rotateX = function(angle){
-    var cosRY = Math.cos(angle * toRadians);
-    var sinRY = Math.sin(angle * toRadians);
-    var tempz = this.z, tempy = this.y;
-    this.y= (tempy*cosRY)+(tempz*sinRY);
-    this.z= (tempy*-sinRY)+(tempz*cosRY);
   };
   Vector3D.prototype.rotateY = function(angle){
     var cosRY = Math.cos(angle * toRadians);
@@ -61,7 +61,6 @@ function LandingController($log, $document, $window) {
   const Particle = function(posx, posy, posz, pSize) {
     this.cR = pSize *(Math.sqrt(2) / 2); // radius
     this.position = new Vector3D(posx, posy, posz);
-    // this.velocity = new Vector3D(randomRange(1,.5), randomRange(1,.5), randomRange(1,.5));
     this.velocity = new Vector3D(0,randomRange(.5, 2),0); // fall down!
     this.vertices = [
       new Vector3D(0, 0, this.cR),
@@ -115,21 +114,9 @@ function LandingController($log, $document, $window) {
   const starSystem = function(size){
     this.particles = {};
     this.size = size;
-    this.plane = {
-      point1: new Vector3D(-this.size,this.size,this.size),
-      point2: new Vector3D(this.size,this.size,this.size),
-      point3: new Vector3D(this.size,this.size,-this.size),
-      point4: new Vector3D(-this.size,this.size,-this.size),
-
-      point5: new Vector3D(-this.size,-this.size,this.size),
-      point6: new Vector3D(this.size,-this.size,this.size),
-      point7: new Vector3D(this.size,-this.size,-this.size),
-      point8: new Vector3D(-this.size,-this.size,-this.size),
-    };
   };
   starSystem.prototype.generate = function(numParticles){
     for(var i = 0; i < numParticles; i++){
-      //generate particles within the square boundary
       this.particles[i] = new Particle(
         randomRange(-this.size, this.size), // x-position
         randomRange(-this.size, this.size),  // y-position
@@ -141,14 +128,11 @@ function LandingController($log, $document, $window) {
   var system = new starSystem(400);
   system.generate(160);
 
-  // Rendering loop handler
   function drawingLoop() {
     ctx.clearRect(-centerX, -centerY, canvas.width, canvas.height);
-    //drawPlane();
     for(var i in system.particles){
       var currentParticle = system.particles[i];
       currentParticle.position.rotateY(.3);
-      //currentParticle.move();
       render(currentParticle);
     }
     $window.requestAnimationFrame(drawingLoop);
