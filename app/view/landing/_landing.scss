@@ -17,13 +17,32 @@
   }
   .landing-title{
     margin-top: 50px;
-    padding: 10% 5%;
+    padding: 25% 5%;
     text-align: center;
+    @media only screen and (min-width: 480px){
+      padding: 20% 5%;
+    }
+    @media only screen and (min-width: 768px){
+      padding: 15% 5%;
+    }
+    @media only screen and (min-width: 1024px){
+      padding: 10% 5%;
+    }
     h2{
-      font-size: 600%;
+      font-size: 300%;
+      padding-bottom: 1%;
       text-transform: uppercase;
       font-family: $title-font5;
       color: rgba(255, 255, 255, .8);
+      @media only screen and (min-width: 480px){
+        font-size: 400%;
+      }
+      @media only screen and (min-width: 768px){
+        font-size: 500%;
+      }
+      @media only screen and (min-width: 1024px){
+        font-size: 600%;
+      }
     }
     h4{
       color: $app-bright-white;
@@ -64,43 +83,5 @@
   }
   .contact-icon:hover{
     color: $app-white;
-  }
-
-  .intro-box {
-    width: 80%;
-    padding-top: 40%;
-    padding-left: 5%;
-    text-transform: uppercase;
-    font-family: $app-font2;
-    @media only screen and (min-width: 600px){
-      padding-top: 30%;
-    }
-    @media only screen and (min-width: 900px){
-      padding-top: 17%;
-    }
-    h1 {
-      color: $app-black;
-      font-size: 300%;
-      font-family: $title-font;
-      letter-spacing: 3px;
-
-      @media only screen and (min-width: 600px){
-        font-size: 400%;
-      }
-      @media only screen and (min-width: 700px){
-        font-size: 500%;
-      }
-      @media only screen and (min-width: 1000px){
-        font-size: 700%;
-      }
-    }
-
-    h4{
-      font-size: 150%;
-      margin-left: 2%;
-      @media only screen and (min-width: 600px){
-        font-size: 200%;
-      }
-    }
   }
 }
