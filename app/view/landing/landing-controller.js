@@ -8,8 +8,7 @@ function LandingController($log, $document, $window) {
   $log.debug('init landingCtrl');
 
   $document.on('mousemove', function (event) {
-    var color1 = event.screenX/5, color2 = event.screenY/5;
-    console.log(color1, color2);
+    var color1 = event.screenX/7, color2 = event.screenY/7;
     ctx.strokeStyle = `rgba(${color1}, ${color2}, 255, .7)`;
   });
 

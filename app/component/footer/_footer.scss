@@ -2,7 +2,7 @@
 
 .footer {
   width: 100%;
-  background-color: $app-nav;
+  background-color: $app-black;
 
   .footer-icon{
     float:right;
@@ -11,7 +11,8 @@
     transition: .2s;
   }
 
-  .footer-text{
+  p.footer-text{
+    display:none;
     float: left;
     margin: 0;
     padding-left: 28px;
@@ -20,6 +21,9 @@
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: .5px;
-    color: $app-black;
+    color: $app-nav;
+    @media only screen and (min-width: 768px){
+      display: block;
+    }
   }
 }

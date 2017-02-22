@@ -8,19 +8,22 @@
     <div class="row">
       <div class="project-menu-container clearfix">
         <a ng-click="projectCtrl.selectItem(1)" class="project-menu">
-          <span class="icon project-icon"><i class="icon-basic-globe"></i></span>
+          <!-- <span class="icon project-icon"><i class="icon-basic-globe"></i></span> -->
+          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/puptrack.png"></i></span>
           <h4>Pup Tracker</h4>
           <h5>Full Stack App</h5>
         </a>
 
         <a ng-click="projectCtrl.selectItem(2)" class="project-menu">
-          <span class="icon project-icon"><i class="icon-basic-calculator"></i></span>
+          <!-- <span class="icon project-icon"><i class="icon-basic-calculator"></i></span> -->
+          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/polyhedra.jpg"></i></span>
           <h4>3D Physics Engine</h4>
           <h5>Javascript and Canvas</h5>
         </a>
 
         <a ng-click="projectCtrl.selectItem(3)" class="project-menu">
-          <span class="icon project-icon"><i class="icon-basic-lightbulb"></i></span>
+          <!-- <span class="icon project-icon"><i class="icon-basic-lightbulb"></i></span> -->
+          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/artc.jpg"></i></span>
           <h4>[art-c]</h4>
           <h5>Full Stack App</h5>
         </a>
@@ -103,7 +106,11 @@
 
 <div class="row" ng-if="projectCtrl.isVisible3">
   <div class="info-container">
-    <h4>[art-c]<span><i class="fa fa-github icon"></i></i><span></h4>
+    <h4>[art-c]
+      <span><a href="https://art-c.herokuapp.com/"><i class="fa fa-external-link-square icon"></i></a></span>
+      <span><a href="https://github.com/loomnugget/art-c"><i class="fa fa-github icon"></i></a><span>
+    </h4>
+
       <div class="info-body-container">
         <div class="row">
           <div class="col span-1-of-2">

@@ -17,7 +17,7 @@
     width: 100%;
     margin:0;
     padding:0;
-    color:rgba(255,255,255,.5);
+    color:rgba(255,255,255,.7);
 
     .menu-item {
       width: 32%;
@@ -25,21 +25,25 @@
       float: left;
       display:block;
       cursor: pointer;
-      border: 3px solid $app-offwhite;
+      border: 3px solid rgba(255,255,255,.7);
 
       // Title Menu Header
       h2 {
         z-index: 12;
+        font-family: $app-font;
         text-transform: uppercase;
         text-align: center;
-        font-size: 160%;
+        font-size: 100%;
         margin-bottom: 15px;
-        padding: 2%;
+        padding: 1%;
         cursor: pointer;
-      }
-      @media only screen and (min-width: 900px){
-        h2{
-          font-size: 250%;
+        @media only screen and (min-width: 768px){
+          font-family: $title-font5;
+          font-size: 220%;
+        }
+        @media only screen and (min-width: 1024px){
+          font-family: $title-font5;
+          font-size: 280%;
         }
       }
     }

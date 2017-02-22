@@ -6,8 +6,9 @@
   min-height: 100vh;
   margin-bottom: 100px;
   h3{
+    font-family: $title-font5;
     margin-top: 40px;
-    font-size: 320%;
+    font-size: 370%;
     padding: 2%;
     text-align: center;
   }
@@ -15,19 +16,27 @@
       width: 90%;
       margin: 3% 5%;
       padding: 1%;
-      h4{ font-size: 130%;}
+      h4{
+        font-size: 130%;
+        color: $app-bright-white;
+      }
       h5{
         font-size: 90%;
         font-style: italic;
-        color: $app-offwhite;
-
+        color: $app-white;
       }
     .project-menu{
       float:left;
       width: 31%;
       margin: 1%;
       text-align: center;
-      @media only screen and (min-width: 900px){
+      .circle-image{
+        width: 250px;
+        height:250px;
+        border-radius: 50%;
+        border: 5px solid $app-white;
+      }
+      @media only screen and (min-width: 1024px){
       }
       .project-icon{
         font-size: 120px;
@@ -36,25 +45,16 @@
   }
   .active{
     width: 100%;
-    border-bottom: 2px solid rgba(255,255,255,.3);
     h3{
-      padding: 7%;
-      margin:0;
-      font-size: 200%;
+      display:none;
     }
     hr{display:none;}
-    .row{
-      float:left;
-      width: 48%;
-      margin:0 1%;
-    }
-    .project-menu-container{
+  project-menu-container{
       margin:0;
       padding: 0;
+
       h4{
-        font-size: 90%;
-        margin:0;
-        color: $app-offwhite;
+      display: none;
       }
       h5 {display:none;}
     .project-menu{
