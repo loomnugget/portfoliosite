@@ -7,10 +7,16 @@ module.exports = ['$log', '$document', '$window', LandingController];
 function LandingController($log, $document, $window) {
   $log.debug('init landingCtrl');
 
+  $document.on('mousemove', function (event) {
+    var color1 = event.screenX/5, color2 = event.screenY/5;
+    console.log(color1, color2);
+    ctx.strokeStyle = `rgba(${color1}, ${color2}, 255, .7)`;
+  });
+
   var appWindow = angular.element($window);
 
-  // Detect resize and adjust canvas properties
-  appWindow.bind('resize', function () {
+  // Detect resize and adjust canvas properties (or bind)
+  appWindow.on('resize', function () {
     canvas.width = $window.innerWidth;
     canvas.height = $window.innerHeight;
     centerY = canvas.height/2, centerX = canvas.width/2;
@@ -39,11 +45,6 @@ function LandingController($log, $document, $window) {
     this.y = y;
     this.z = z;
   };
-  Vector3D.prototype.add = function(v2) {
-    this.x = this.x + v2.x;
-    this.y = this.y + v2.y;
-    this.z = this.z + v2.z;
-  };
   Vector3D.prototype.project = function(){
     this.scale = fov/(fov + this.z);
     this.posX2d = (this.x * this.scale);
@@ -61,7 +62,7 @@ function LandingController($log, $document, $window) {
   const Particle = function(posx, posy, posz, pSize) {
     this.cR = pSize *(Math.sqrt(2) / 2); // radius
     this.position = new Vector3D(posx, posy, posz);
-    this.velocity = new Vector3D(0,randomRange(.5, 2),0); // fall down!
+    //this.velocity = new Vector3D(0,randomRange(.5, 2),0); // fall down!
     this.vertices = [
       new Vector3D(0, 0, this.cR),
       new Vector3D(0, 0, -this.cR),
@@ -97,7 +98,6 @@ function LandingController($log, $document, $window) {
       vertexA.rotateY(.1);
       vertexB.rotateY(.1);
       vertexC.rotateY(.1);
-
       vertexA.project();
       vertexB.project();
       vertexC.project();

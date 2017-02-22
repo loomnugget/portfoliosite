@@ -12,7 +12,7 @@
   "author": "claudia.cedfeldt@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.5.8",
+    "angular": "^1.6.2",
     "angular-animate": "^1.5.8",
     "angular-messages": "^1.6.2",
     "angular-route": "^1.5.8",
