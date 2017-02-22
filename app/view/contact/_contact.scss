@@ -17,11 +17,15 @@
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    width: 60%;
-    margin: 0 20%;
+    width: 90%;
+    margin: 0 5%;
     padding: 3%;
     border: 2px solid $app-offwhite;
     border-radius: 5px;
+    @media only screen and (min-width: 768px){
+      width: 60%;
+      margin: 0 20%;
+    }
 
     h3{
       font-size: 300%;

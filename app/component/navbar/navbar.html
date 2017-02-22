@@ -4,14 +4,13 @@
     <li class="navbar-brand">
       <a href="#"><img class="logo" src="http://s32.postimg.org/q5rurwbl1/star.png"></a>
     </li>
-    <!-- mail/contact button -->
-    <!-- <li class="navbar-item"><a href="#/contact" class="text"><span><i class="icon-basic-mail-open"></i></span></a></li> -->
+    <!--dropdown nav button -->
+    <!-- <li class="navbar-item"><i class="fa fa-bars dropdown-icon"></i></li> -->
+
     <!-- menu item links -->
     <li class="navbar-item"
       ng-repeat="item in navbarCtrl.items"
-      name="item"
-      ng-class="{'active': item.id == navbarCtrl.states.activeItem}"
-      ng-click="navbarCtrl.states.activeItem = item.id">
+      name="item">
     <a href="{{item.url}}" class="text">{{item.title}}</a></li>
   </ul>
 </nav>
