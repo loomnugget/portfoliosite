@@ -13,10 +13,13 @@
 
   .footer-text{
     float: left;
-    font-size: 14px;
+    margin: 0;
     padding-left: 28px;
     padding-top: 32px;
-    margin: 0;
-    color: $app-offwhite;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: $app-black;
   }
 }
