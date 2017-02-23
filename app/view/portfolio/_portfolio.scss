@@ -9,7 +9,7 @@
   background-color: $app-black;
 
   .active{
-    background-color: rgba(255,255,255,.2);
+    background-color: $app-nav;
     color: $app-bright-white;
   }
   // Toggle Images Navigation
@@ -17,7 +17,7 @@
     width: 100%;
     margin:0;
     padding:0;
-    color:$app-bright-white;
+    color:$app-white;
 
     .menu-item {
       width: 32%;
@@ -25,12 +25,12 @@
       float: left;
       display:block;
       cursor: pointer;
-      border: 3px solid $app-bright-white;
+      border: 3px solid $app-white;
 
       // Title Menu Header
       h2 {
         z-index: 12;
-        font-family: $app-font;
+        font-family: $app-font3;
         text-transform: uppercase;
         text-align: center;
         font-size: 100%;
@@ -106,7 +106,7 @@
       // Title font styles
       h3 {
         font-family: $app-font3;
-        font-size: 400%;
+        font-size: 150%;
         color: $app-black;
         @media only screen and (min-width: 768px){
           font-size: 210%;
@@ -114,9 +114,12 @@
       }
       // Description font styles
       h5 {
-        font-size: 180%;
+        font-size: 120%;
         font-style: italic;
         color: $app-black;
+        @media only screen and (min-width: 768px){
+          font-size: 180%;
+        }
       }
       // Modal open icon styls
       .zoom-icon {

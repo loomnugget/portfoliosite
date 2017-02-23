@@ -13,7 +13,7 @@
 .navbar-container{
   height: 100%;
   padding: 0 5px;  // move icons closer to the middle of navbar
-  border-bottom: 2px solid rgba(255,255,255,.3);
+  border-bottom: 2px solid $app-nav;
   .navbar-brand { float: left; }
   .navbar-item { float: right; }
 

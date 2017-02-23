@@ -1,26 +1,26 @@
 <main class="project-container">
   <div class="clearfix" ng-class="{'active': projectCtrl.isActive}">
     <div class="row">
-      <h3>Selected Projects</h3>
-      <hr class="gradient">
+      <h3 class="gradient-text">Selected Projects</h3>
+      <!-- <hr class="gradient"> -->
     </div>
 
     <div class="row">
       <div class="project-menu-container clearfix">
         <a ng-click="projectCtrl.selectItem(1)" class="project-menu">
-          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/puptrack.png"></i></span>
+          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/puptrack.png"></span>
           <h4>Pup Tracker</h4>
           <h5>Full Stack App</h5>
         </a>
 
         <a ng-click="projectCtrl.selectItem(2)" class="project-menu">
-          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/polyhedra.jpg"></i></span>
-          <h4>3D Physics Engine</h4>
+          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/polyhedra.jpg"></span>
+          <h4>3D Engine</h4>
           <h5>Javascript and Canvas</h5>
         </a>
 
         <a ng-click="projectCtrl.selectItem(3)" class="project-menu">
-          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/artc.jpg"></i></span>
+          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/artc.jpg"></span>
           <h4>[art-c]</h4>
           <h5>Full Stack App</h5>
         </a>
@@ -36,7 +36,7 @@
         <div class="row">
           <div class="col span-1-of-2">
             <h5>Summary</h5>
-            <p>Rest API used by research scientists to track mouse breeding patterns and plan experiments.</p>
+            <p class="extra-space">Rest API used by research scientists to track mouse breeding patterns and plan experiments.</p>
           </div>
           <div class="col span-1-of-2">
             <h5>Tools</h5>
@@ -69,7 +69,7 @@
 
 <div class="row" ng-if="projectCtrl.isVisible2">
   <div class="info-container">
-    <h4>3D Physics Engine
+    <h4>3D Engine
       <span class="info-icon"><a href="https://github.com/loomnugget/js-3d-experiment"><i class="fa fa-github icon2"></i></a><span>
       <span class="info-icon"><a href="http://codepen.io/ploom/pen/LRvzOk"><i class="fa fa-codepen icon2"></i></a><span>
     </h4>
@@ -77,7 +77,7 @@
         <div class="row">
           <div class="col span-1-of-2">
             <h5>Summary</h5>
-            <p>Interactive 3D physics engine using only Javascript and HTML5 Canvas</p>
+            <p class="extra-space">Interactive 3D physics engine using only Javascript and HTML5 Canvas</p>
           </div>
           <div class="col span-1-of-2">
             <h5>Tools</h5>
@@ -120,7 +120,7 @@
         <div class="row">
           <div class="col span-1-of-2">
             <h5>Summary</h5>
-            <p>REST API that allows artists to share and sell work in their community.</p>
+            <p class="extra-space">REST API that allows artists to share and sell work in their community.</p>
           </div>
           <div class="col span-1-of-2">
             <h5>Tools</h5>

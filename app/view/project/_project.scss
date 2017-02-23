@@ -57,10 +57,11 @@
       margin: 1%;
       padding: 1% 3%;
       text-align: center;
-      // Responsive squares
+      // Responsive circles
       .circle-image {
         position: relative;
         border: 5px solid $app-nav;
+        padding: 3%;
         width: 100%;
         border-radius: 50%;
         background-position: center;
@@ -71,6 +72,9 @@
         content: "";
         display: block;
         padding-bottom: 100%;
+      }
+      .circle-image:hover{
+          background: linear-gradient($app-gradient2, $app-secondary);
       }
     }
   }
@@ -86,17 +90,22 @@
     width: 100%;
     padding: 1%;
     a.project-menu{
-      border: 3px solid $app-secondary;
+      border: 3px solid $app-nav;
       cursor: pointer;
       h4{
-        font-size: 150%;
-        color: $app-gradient2;
+        font-size: 80%;
+        color: $app-white;
+        @media only screen and (min-width: 768px){
+          font-size: 120%;
+        }
+        @media only screen and (min-width: 1024px){
+          font-size: 150%;
+        }
       }
     }
     a.project-menu:hover{
-
       h4{
-        color: $app-white;
+        color: $app-bright-white;
       }
     }
     .circle-image{
@@ -107,24 +116,43 @@
 }
 
   .info-container{
-    width: 70%;
-    margin: 3% 15%;
+    width: 90%;
+    margin: 3% 5%;
     padding: 1%;
-
+    @media only screen and (min-width: 768px){
+      width: 70%;
+      margin: 3% 15%;
+    }
+    // adds extra space between columns in summary/tools
+    .extra-space{
+      margin-right: 30px;
+    }
     h4{
       padding: 1%;
-      font-size: 300%;
+      font-size: 180%;
       font-family: $app-font3;
       color: $app-bright-white;
-      border-bottom: 3px solid $app-white;
+      border-bottom: 3px solid $app-nav;
+      @media only screen and (min-width: 480px){
+        font-size: 220%;
+      }
+      @media only screen and (min-width: 768px){
+        font-size: 300%;
+      }
       span{float: right;}
       .info-icon{margin-left: 20px;}
     }
     h5{
-      font-size: 200%;
+      font-size: 130%;
       font-family: $app-font3;
       text-transform: uppercase;
       color: $app-bright-white;
+      @media only screen and (min-width: 480px){
+        font-size: 150%;
+      }
+      @media only screen and (min-width: 768px){
+        font-size: 200%;
+      }
     }
     .info-body-container{
       padding:1% 3%;
