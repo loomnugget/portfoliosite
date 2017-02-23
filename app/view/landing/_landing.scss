@@ -33,7 +33,6 @@
       padding-bottom: 1%;
       text-transform: uppercase;
       font-family: $title-font5;
-      color: rgba(255, 255, 255, .8);
       @media only screen and (min-width: 480px){
         font-size: 400%;
       }
@@ -49,7 +48,6 @@
       background-color: $app-black;
       font-family: $app-font3;
       font-size: 200%;
-      font-style: italic;
     }
   }
   #canvas{
@@ -61,7 +59,7 @@
     height: 100px;
     margin-top: 10px;
     border-radius:50%;
-    border: 3px solid rgba(255, 255, 255, .7);
+    border: 3px solid rgba(255, 255, 255, .5);
     letter-spacing: 1px;
     color: $app-bright-white;
     background: $app-black;

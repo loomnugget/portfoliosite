@@ -30,16 +30,17 @@
     h3{
       font-size: 300%;
       margin-bottom: 20px;
+      font-family: $app-font3;
     }
     .submit-btn {
       margin-top: 5px;
       color: $app-black;
       border: 2px solid $app-black;
-      font-weight: bold;
-      font-family: $app-font2;
-      font-size: 14px;
+      font-family: $app-font3;
+      font-size: 16px;
+      padding: 10px 20px;
       background: linear-gradient($app-gradient2, $app-secondary);
-      border-radius: 14px;
+      border-radius: 16px;
       transition: .5s;
       cursor: pointer;
     }

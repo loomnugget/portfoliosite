@@ -9,7 +9,7 @@
   background-color: $app-black;
 
   .active{
-    background-color: rgba(255,255,255,.1);
+    background-color: rgba(255,255,255,.2);
     color: $app-bright-white;
   }
   // Toggle Images Navigation
@@ -76,7 +76,7 @@
     border: 2px solid $app-black;
     width: 100%;
     background-position: center;
-    background-size: cover;
+    background-size: 250%;
   }
 
   .square:after {
@@ -113,7 +113,7 @@
         }
       }
       // Description font styles
-      h4 {
+      h5 {
         font-size: 180%;
         font-style: italic;
         color: $app-black;
@@ -121,7 +121,7 @@
       // Modal open icon styls
       .zoom-icon {
         margin: 1% 0;
-        font-size: 60px;
+        font-size: 50px;
         background-color: transparent;
         transition: .2s;
         cursor: pointer;

@@ -18,12 +18,30 @@ h3, h4 {
   text-align: center;
 }
 
+.border{
+  border:3px solid $app-black;
+  position:relative;
+  z-index:10;
+}
+
+.border:before{
+  content:"";
+  display:block;
+  position:absolute;
+  z-index:-1;
+  top:2px;
+  left:2px;
+  right:2px;
+  bottom:2px;
+  border:3px solid $app-black;
+}
+
 // Horizontal row styles
 hr.gradient {
   width: 60%;
   margin: 0 20%;
   border: 0;
-  height: 1px;
+  height: 2px;
   background-image: linear-gradient(to left, rgba(255,255,255,.3), $app-white, rgba(255,255,255,.3));
 }
 

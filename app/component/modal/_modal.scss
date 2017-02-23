@@ -11,10 +11,12 @@
     text-transform: uppercase;
     h3{
       color: $app-black;
+      font-family: $app-font3;
       margin-top: 0;
       font-size: 200%;
     }
     h4{
+      color: $app-nav;
       font-style: italic;
     }
   }
