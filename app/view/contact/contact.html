@@ -1,7 +1,8 @@
 <main class="contact">
   <!-- Success Message -shown if form is successfully submitted -->
+
   <div class="success" ng-if="contactCtrl.showSuccessMessage">
-    <h3 class="gradient-text">Thank you! Your form has been submitted!</h3>
+    <h3 class="gradient-text"><strong>Thank you!</strong><br><br> I'll get back to you as soon as I can. </h3>
   </div>
   <!-- Form container -->
   <div class="form-container" ng-if="!contactCtrl.showSuccessMessage">
@@ -22,7 +23,7 @@
           minlength="3"
           type="text">
           <div class="error" ng-show="contactForm.$submitted || contactForm.name.$touched">
-            <span ng-show="contactForm.name.$error.required">Tell us your name.</span>
+            <span ng-show="contactForm.name.$error.required">Name required.</span>
           </div>
       </div>
 
@@ -34,7 +35,7 @@
           name="email"
           type="email">
           <div class="error" ng-show="contactForm.$submitted || contactForm.email.$touched">
-            <span ng-show="contactForm.email.$error.required">Tell us your email.</span>
+            <span ng-show="contactForm.email.$error.required">Email required.</span>
             <span ng-show="contactForm.email.$error.email">This is not a valid email.</span>
           </div>
         </div>

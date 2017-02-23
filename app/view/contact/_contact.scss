@@ -2,16 +2,31 @@
 .contact{
   margin-top: 60px;
   .success{
-    position: absolute;
-    top: 30%;
-    transform: translate(0, -50%);
-    width: 60%;
-    margin: 0 20%;
-    display: inline-block;
+    width: 80%;
+    margin: 0 10%;
+    padding-top: 25%;
     h3{
-      font-size: 300%;
+      font-size: 180%;
       text-align: center;
+      font-family: $app-font3;
+      @media only screen and (min-width: 480px){
+        font-size: 250%;
+      }
+      @media only screen and (min-width: 768px){
+        font-size: 300%;
+      }
     }
+    @media only screen and (min-width: 480px){
+      width: 60%;
+      margin: 0 20%;
+      padding-top: 20%;
+    }
+    @media only screen and (min-width: 1024px){
+      width: 40%;
+      margin: 0 30%;
+      padding-top: 10%;
+    }
+
   }
   .contactForm {
     position: absolute;
@@ -33,12 +48,12 @@
       font-family: $app-font3;
     }
     .submit-btn {
-      margin-top: 5px;
+      margin-top: 10px;
       color: $app-black;
       border: 2px solid $app-black;
       font-family: $app-font3;
-      font-size: 16px;
-      padding: 10px 20px;
+      font-size: 18px;
+      padding: 7px 15px;
       background: linear-gradient($app-gradient2, $app-secondary);
       border-radius: 16px;
       transition: .5s;
@@ -58,6 +73,7 @@
       border-radius: 5px;
       color: $app-white2;
       border: 2px solid $app-offwhite;
+      font-family: $app-font3;
       background-color: $app-black;
       width: 100%;
       margin: 5px 0;
@@ -71,6 +87,7 @@
 
     label{
       color:$app-offwhite;
+      font-family: $app-font3;
       pointer-events:none;
       font-size:16px;
       text-transform: uppercase;
@@ -83,13 +100,7 @@
     }
     .error{
       color: $app-error-hover;
+      font-family: $app-font3;
     }
-    span.error{
-      margin: 5px 0;
-      padding: .5% 1%;
-      background-color: $app-error;
-      color: $app-bright-white;
-    }
-
   }
 }
