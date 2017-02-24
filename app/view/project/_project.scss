@@ -165,6 +165,17 @@
         text-decoration: underline;
         padding: 2px;
       }
+      .project-image-container{
+        .project-image{
+          width: 99%;
+          margin: 1%;
+        }
+        .project-image2{
+          float: left;
+          width: 48%;
+          margin: 1%;
+        }
+      }
     }
   }
 }

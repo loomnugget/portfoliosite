@@ -60,13 +60,12 @@
     .logo{
       border-radius:50%;
       background-color: transparent;
-      border: 1px solid rgba(255, 255, 255, .7);
+      border: 2px solid rgba(255, 255, 255, .7);
+      background-color: $app-nav;
       transition: all 0.3s;
       width: 50px;
       margin: 4px;
     }
-    .logo:hover{
-      background-color: rgba(255, 255, 255, .3);;
-    }
+
   }
 }
