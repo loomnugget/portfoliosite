@@ -1,7 +1,6 @@
 # Portfolio Gitignore
 db
 *.env
-build
 data/*
 coverage
 html-report
