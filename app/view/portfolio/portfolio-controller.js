@@ -67,12 +67,12 @@ function PortfolioController($log, $uibModal){
       url: 'http://i63.tinypic.com/2zdt444.jpg',
       category: 'Painting',
     },
-    {
-      id: '5',
-      title: 'Abstract Wall I',
-      url: 'http://i64.tinypic.com/2j2g9kx.jpg',
-      category: 'Painting',
-    },
+    // {
+    //   id: '5',
+    //   title: 'Abstract Wall I',
+    //   url: 'http://i64.tinypic.com/2j2g9kx.jpg',
+    //   category: 'Painting',
+    // },
     {
       id: '6',
       title: 'Abstract Wall II',
@@ -127,11 +127,11 @@ function PortfolioController($log, $uibModal){
       url: 'http://i66.tinypic.com/qso4n7.jpg',
       category: 'Drawing',
     },
-    {
-      id: '15',
-      title: 'Symmetry VI',
-      url: 'http://i65.tinypic.com/ww128k.jpg',
-      category: 'Drawing',
-    },
+    // {
+    //   id: '15',
+    //   title: 'Symmetry VI',
+    //   url: 'http://i65.tinypic.com/ww128k.jpg',
+    //   category: 'Drawing',
+    // },
   ];
 }
