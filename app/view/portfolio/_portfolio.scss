@@ -76,7 +76,10 @@
     border: 2px solid $app-black;
     width: 100%;
     background-position: center;
-    background-size: 250%;
+    background-size: cover;
+    @media only screen and (min-width: 480px){
+      background-size: 200%;
+    }
   }
 
   .square:after {

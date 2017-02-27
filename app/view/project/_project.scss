@@ -55,7 +55,7 @@
       float:left;
       width: 31%;
       margin: 1%;
-      padding: 1% 3%;
+      padding: 1%;
       text-align: center;
       // Responsive circles
       .circle-image {
@@ -140,7 +140,9 @@
         font-size: 300%;
       }
       span{float: right;}
-      .info-icon{margin-left: 20px;}
+      .info-icon{
+        margin-left: 40px;
+      }
     }
     h5{
       font-size: 130%;
