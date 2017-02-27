@@ -54903,7 +54903,7 @@
 /* 53 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"about\">\n\n  <div class = \"about-container\">\n    <div class=\"row\">\n      <h3 class=\"title gradient-text\">About</h3>\n      <p>I’m a software developer who loves combining art and technology. I enjoy creating\n      experiences that are unique and special while still functional and easy to use.</p>\n      <p>I'm interested in user experience design, functional art, data visualization and creative coding.</p>\n    </div>\n      <div class=\"row\">\n        <h5 class=\"gradient-text\">claudia.cedfeldt@gmail.com</h5>\n      </div>\n      <div class=\"row\">\n        <div class=\"about-icon-container\">\n          <span><a href=\"https://github.com/loomnugget\">\n          <i class=\"fa fa-github about-icon icon2 github\"></i></a></span>\n          <span><a href=\"http://codepen.io/ploom\">\n          <i class=\"fa fa-codepen about-icon icon2 codepen\"></i></a></span>\n          <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n          <i class=\"fa fa-linkedin about-icon icon2\"></i></a></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</main>\n";
+	module.exports = "<main class=\"about\">\n\n  <div class = \"about-container\">\n    <div class=\"row\">\n      <h3 class=\"title gradient-text\">About</h3>\n      <p>I’m a software developer who loves combining art and technology. I enjoy creating\n      experiences that are unique and special while still functional and easy to use.</p><br>\n      <p>I'm interested in front end web development, user experience design, functional art, data visualization and creative coding.</p>\n    </div>\n      <div class=\"row\">\n        <h6 class=\"gradient-text\">Contact me</h6>\n        <p>claudia.cedfeldt@gmail.com</p>\n      </div>\n      <div class=\"row\">\n        <div class=\"about-icon-container\">\n          <span><a href=\"https://github.com/loomnugget\">\n          <i class=\"fa fa-github about-icon icon2 github\"></i></a></span>\n          <span><a href=\"http://codepen.io/ploom\">\n          <i class=\"fa fa-codepen about-icon icon2 codepen\"></i></a></span>\n          <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n          <i class=\"fa fa-linkedin about-icon icon2\"></i></a></span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</main>\n";
 
 /***/ },
 /* 54 */
@@ -55422,7 +55422,7 @@
 /* 79 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"footer\" ng-if=\"!footerCtrl.isActive('/landing')\">\n  <p class=\"footer-text\"> claudia cedfeldt 2017</p>\n\n  <span><a href=\"https://github.com/loomnugget\">\n  <i class=\"fa fa-github footer-icon github\"></i></a></span>\n  <span><a href=\"http://codepen.io/ploom\">\n  <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n  <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n  <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n</div>\n";
+	module.exports = "<div class=\"footer\" ng-if=\"!footerCtrl.isActive('/landing')\">\n  <p class=\"footer-text\"> Claudia Cedfeldt 2017</p>\n  <div class=\"footer-icon-container\">\n    <span><a href=\"https://github.com/loomnugget\">\n    <i class=\"fa fa-github footer-icon github\"></i></a></span>\n    <span><a href=\"http://codepen.io/ploom\">\n    <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n    <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n    <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n  </div>\n</div>\n";
 
 /***/ },
 /* 80 */
