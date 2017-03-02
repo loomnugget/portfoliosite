@@ -55339,7 +55339,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./code-portfolio/code-portfolio.js": 72,
 		"./footer/footer.js": 76,
 		"./modal/modal.js": 80,
 		"./navbar/navbar.js": 84
@@ -55359,37 +55358,10 @@
 
 
 /***/ },
-/* 72 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(73);
-
-	module.exports = {
-	  template: __webpack_require__(75),
-	  controller: ['$log', '$location', '$rootScope', CodePortfolioController],
-	  controllerAs: 'codePortfolioCtrl'
-	};
-
-	function CodePortfolioController($log) {
-	  $log.debug('init codePortfolioCtrl');
-	}
-
-/***/ },
-/* 73 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
+/* 72 */,
+/* 73 */,
 /* 74 */,
-/* 75 */
-/***/ function(module, exports) {
-
-	module.exports = "<section class=\"code-portfolio-container\">\n\n  <!-- Project Container -->\n  <div class=\"project-container\">\n    <!-- 3D Project -->\n      <div class=\"project\">\n        <h2>3d Engine</h2>\n        <h3>\n          <p><span>Summary: </span>Generates rotating 3D polyhedra models using JavaScript and HTML5 Canvas</p>\n          <p><span>Tools: </span>React.js, Vanilla Javascript, Node.js, Webpack</p>\n        <h3>\n\n        <a href=\"https://github.com/loomnugget/js-3d-experiment\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n        <a href=\"http://codepen.io/ploom/pen/LRvzOk\">\n        <span><i class=\"fa fa-codepen project-icon codepen\"></i></span></a>\n      </div>\n      <hr>\n      <!-- Art-c Project -->\n      <div class=\"project\">\n        <h2>[art-c]</h2>\n        <h3>\n          <p><span>Summary: </span>Social media platform that allows local artists to display and share their work with others in their community.</p>\n          <p><span>Tools: </span>Node.js, AngularJS, Webpack, Gulp.js, MongoDB, Bootstrap, AWS S3</p>\n        <h3>\n        <a href=\"https://github.com/loomnugget/art-c\">\n        <span><i class=\"fa fa-github project-icon github\"></i></span></a>\n      </div>\n\n  </div>\n\n</section>\n";
-
-/***/ },
+/* 75 */,
 /* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -55422,7 +55394,7 @@
 /* 79 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"footer\" ng-if=\"!footerCtrl.isActive('/landing')\">\n  <p class=\"footer-text\"> Claudia Cedfeldt 2017</p>\n  <div class=\"footer-icon-container\">\n    <span><a href=\"https://github.com/loomnugget\">\n    <i class=\"fa fa-github footer-icon github\"></i></a></span>\n    <span><a href=\"http://codepen.io/ploom\">\n    <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n    <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n    <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n  </div>\n</div>\n";
+	module.exports = "<div class=\"footer\" ng-if=\"!footerCtrl.isActive('/landing')\">\n  <p class=\"footer-text\"> claudia cedfeldt 2017 <a href=\"https://icons8.com\">Icons from here!</a></p>\n  <div class=\"footer-icon-container\">\n    <span><a href=\"https://github.com/loomnugget\">\n    <i class=\"fa fa-github footer-icon github\"></i></a></span>\n    <span><a href=\"http://codepen.io/ploom\">\n    <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n    <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n    <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n  </div>\n</div>\n";
 
 /***/ },
 /* 80 */
