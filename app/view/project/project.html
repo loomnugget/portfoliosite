@@ -1,31 +1,31 @@
 <main class="project-container">
   <div class="clearfix" ng-class="{'active': projectCtrl.isActive}">
     <div class="row">
-      <h3 class="gradient-text">Selected Projects</h3>
-      <!-- <hr class="gradient"> -->
+      <h3>Selected Projects</h3>
+      <hr class="dark-line">
     </div>
 
-    <div class="row">
-      <div class="project-menu-container clearfix">
-        <a ng-click="projectCtrl.selectItem(1)" class="project-menu">
-          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/puptrack.png" alt="PupTracker"></span>
-          <h4>Pup Tracker</h4>
-          <h5>Full Stack App</h5>
-        </a>
-
-        <a ng-click="projectCtrl.selectItem(2)" class="project-menu">
-          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/polyhedra.jpg" alt="3D Engine"></span>
-          <h4>3D Engine</h4>
-          <h5>Javascript and Canvas</h5>
-        </a>
-
-        <a ng-click="projectCtrl.selectItem(3)" class="project-menu">
-          <span class="project-icon"><img class="circle-image" src="../../scss/lib/img/artc.jpg" alt="art-c"></span>
-          <h4>[art-c]</h4>
-          <h5>Full Stack App</h5>
-        </a>
+    <div class="project-menu-container clearfix">
+      <div class="portfolio-img-container"
+       ng-repeat="item in projectCtrl.items"
+       item="projectCtrl.currentItem">
+        <div class="square" ng-style="{'background-image': 'url({{item.url}})'}">
+            <div class="img-hover">
+              <div class="content-wrap">
+                <h3><strong>{{item.title}}</strong></h3>
+                <h5>{{item.category}}</h5>
+                <h6>{{item.summary}}</h6>
+                <span class="zoom-icon"><i class="icon-basic-magnifier-plus" ng-click="projectCtrl.selectItem(item.id)"></i></span>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
+
+    <div class="active-menu"
+     ng-repeat="item in projectCtrl.items"
+     item="projectCtrl.currentItem">
+     <h4>{{item.title}}</h4>
   </div>
 
   <div class="row" ng-if="projectCtrl.isVisible1">

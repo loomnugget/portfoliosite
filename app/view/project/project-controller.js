@@ -13,22 +13,30 @@ function ProjectController($log) {
 
   this.isActive = false;
 
-  this.states = {};
-  this.states.activeItem = 'item1';
   this.items = [
     {
-      id: 'item1',
-      title: 'Puptracker',
+      id: 1,
+      title: 'PupTracker',
+      category: 'JavaScript',
+      summary: 'App for research scientists to track mouse breeding',
+      url: 'http://i65.tinypic.com/24mzzh4.jpg',
     },
     {
-      id: 'item2',
+      id: 2,
       title: '3D Engine',
+      category: 'JavaScript',
+      summary: 'interactive 3D physics engine',
+      url: 'http://i65.tinypic.com/24mzzh4.jpg',
     },
     {
-      id: 'item3',
+      id: 3,
       title: 'Art-C',
+      category: 'JavaScript',
+      summary: 'Social media platform for artists',
+      url: 'http://i65.tinypic.com/24mzzh4.jpg',
     },
   ];
+
   this.selectItem = function(item) {
     if(item === 1) {
       this.isVisible1 = true;

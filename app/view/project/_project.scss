@@ -5,6 +5,7 @@
   margin-top: 60px;
   min-height: 100vh;
   margin-bottom: 100px;
+
   h3{
     font-family: $title-font5;
     color: $app-bright-white;
@@ -28,6 +29,93 @@
         margin: 0 10% 1% 10%;
         padding: 0 2%;
       }
+
+      .portfolio-img-container{
+        width: 96%;
+        margin: 2%;
+        float: left;
+        @media only screen and (min-width: 480px){
+          width: 48%;
+          margin: 1%;
+        }
+        @media only screen and (min-width: 1024px){
+          width: 32%;
+          margin: .66667%;
+        }
+      }
+
+      // Responsive squares
+      .square {
+        position: relative;
+        border: 2px solid $app-black;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+        @media only screen and (min-width: 480px){
+          background-size: 200%;
+        }
+      }
+
+      .square:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+
+      .img-hover {
+        display: flex;
+        position: absolute;
+        text-align: center;
+        align-items: center;
+        padding: 1.5%;
+        height: 100%;
+        width: 100%;
+        opacity: 1;
+        color: $app-black;
+        background: rgba(255, 255, 255, .9);
+        transition: all 0.5s;
+        z-index: 20;
+
+        // Vertically align content over image
+        .content-wrap{
+          width: 100%;
+
+          // Title font styles
+          h3 {
+            font-family: $app-font3;
+            font-size: 150%;
+            color: $app-black;
+            @media only screen and (min-width: 768px){
+              font-size: 210%;
+            }
+          }
+          // Description font styles
+          h5 {
+            font-size: 120%;
+            font-style: italic;
+            color: $app-black;
+            @media only screen and (min-width: 768px){
+              font-size: 180%;
+            }
+          }
+          .zoom-icon {
+            margin: 1% 0;
+            font-size: 50px;
+            background-color: transparent;
+            transition: .2s;
+            cursor: pointer;
+          }
+          .zoom-icon:hover{
+            color: $app-secondary;
+          }
+        }
+      }
+      // On hover, show title and description
+      .img-hover:hover{
+        opacity: 1;
+      }
+
+
       h4{
         font-size: 120%;
         font-family: $app-font3;
@@ -51,30 +139,26 @@
           font-size: 150%;
         }
       }
-    .project-menu{
-      float:left;
-      width: 31%;
-      margin: 1%;
-      padding: 1%;
+    }
+  } // end project menu container
+
+  .active-menu{
+    display:none;
+    width: 32%;
+    float: left;
+    border: 3px solid $app-nav;
+    padding: 1%;
+    margin: 0 .5% 2% .5%;
+    cursor: pointer;
+    h4{
       text-align: center;
-      // Responsive circles
-      .circle-image {
-        position: relative;
-        border: 5px solid $app-nav;
-        padding: 3%;
-        width: 100%;
-        border-radius: 50%;
-        background-position: center;
-        background-size: cover;
-        cursor: pointer;
+      font-size: 80%;
+      color: $app-nav;
+      @media only screen and (min-width: 768px){
+        font-size: 120%;
       }
-      .circle-image:after {
-        content: "";
-        display: block;
-        padding-bottom: 100%;
-      }
-      .circle-image:hover{
-          background: linear-gradient($app-gradient2, $app-secondary);
+      @media only screen and (min-width: 1024px){
+        font-size: 150%;
       }
     }
   }
@@ -83,37 +167,14 @@
     // Make title and underline disappear
     width: 100%;
     h3{ display:none;}
-    hr{ display:none; }
-    // menu images get smaller and more centered
-  .project-menu-container{
-    margin:0;
-    width: 100%;
-    padding: 1%;
-    a.project-menu{
-      border: 3px solid $app-nav;
-      cursor: pointer;
-      h4{
-        font-size: 80%;
-        color: $app-white;
-        @media only screen and (min-width: 768px){
-          font-size: 120%;
-        }
-        @media only screen and (min-width: 1024px){
-          font-size: 150%;
-        }
-      }
-    }
-    a.project-menu:hover{
-      h4{
-        color: $app-bright-white;
-      }
-    }
-    .circle-image{
+    hr{ display:none;}
+    .square{
       display:none;
     }
-    h5{ display:none; }
+    .active-menu{
+      display: block;
+    }
   }
-}
 
   .info-container{
     width: 90%;
@@ -178,6 +239,6 @@
           margin: 1%;
         }
       }
-    }
-  }
-}
+    } // end info-body-container
+
+  } // end info-container

@@ -12,11 +12,11 @@ function NavbarController($log) {
   $log.debug('init navbarCtrl');
   this.states = {};
   this.items = [
-    // {
-    //   id: 'item1',
-    //   title: 'Contact',
-    //   url: '#/contact',
-    // },
+    {
+      id: 'item1',
+      title: 'Contact',
+      url: '#/contact',
+    },
     {
       id: 'item2',
       title: 'About',

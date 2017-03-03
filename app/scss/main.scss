@@ -44,6 +44,12 @@ hr.gradient {
   height: 2px;
   background-image: linear-gradient(to left, rgba(255,255,255,.3), $app-white, rgba(255,255,255,.3));
 }
+hr.dark-line {
+  border: 0;
+  height: 2px;
+  background-color: $app-nav;
+  margin-bottom: 30px;
+}
 
 // Gradient Icon I - Light Gradient
 .icon {
