@@ -7,7 +7,7 @@
   margin-bottom: 100px;
 
   h3{
-    font-family: $title-font5;
+    font-family: $app-font3;
     color: $app-bright-white;
     margin-top: 40px;
     font-size: 270%;
@@ -21,12 +21,12 @@
     }
   }
   .project-menu-container{
-      width: 90%;
-      margin: 0 5% 1% 5%;
+      width: 98%;
+      margin: 0 1% 1% 1%;
       padding: 1%;
       @media only screen and (min-width: 1024px){
-        width: 80%;
-        margin: 0 10% 1% 10%;
+        width: 90%;
+        margin: 0 5% 1% 5%;
         padding: 0 2%;
       }
 
@@ -39,15 +39,15 @@
           margin: 1%;
         }
         @media only screen and (min-width: 1024px){
-          width: 32%;
-          margin: .66667%;
+          width: 29%;
+          margin: 2%;
         }
       }
 
       // Responsive squares
       .square {
         position: relative;
-        border: 2px solid $app-black;
+        border: 2px solid $app-nav;
         width: 100%;
         background-position: center;
         background-size: cover;
@@ -71,8 +71,8 @@
         height: 100%;
         width: 100%;
         opacity: 1;
-        color: $app-black;
-        background: rgba(255, 255, 255, .9);
+        color: $app-white;
+        background: $app-nav;
         transition: all 0.5s;
         z-index: 20;
 
@@ -84,7 +84,7 @@
           h3 {
             font-family: $app-font3;
             font-size: 150%;
-            color: $app-black;
+            color: $app-bright-white;
             @media only screen and (min-width: 768px){
               font-size: 210%;
             }
@@ -93,7 +93,7 @@
           h5 {
             font-size: 120%;
             font-style: italic;
-            color: $app-black;
+            color: $app-bright-white;
             @media only screen and (min-width: 768px){
               font-size: 180%;
             }

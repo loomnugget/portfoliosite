@@ -35,6 +35,20 @@ function ProjectController($log) {
       summary: 'Social media platform for artists',
       url: 'http://i65.tinypic.com/24mzzh4.jpg',
     },
+    {
+      id: 4,
+      title: 'Green Key Landscaping',
+      category: 'Responsive Web Design',
+      summary: 'Local business website redesign',
+      url: 'http://i65.tinypic.com/24mzzh4.jpg',
+    },
+    {
+      id: 5,
+      title: 'Portfolio Website',
+      category: 'Responsive Web Design',
+      summary: 'Portfolio Website Design',
+      url: 'http://i65.tinypic.com/24mzzh4.jpg',
+    },
   ];
 
   this.selectItem = function(item) {
