@@ -4,6 +4,10 @@
 .about{
   margin-top: 50px;
   margin-bottom: 100px;
+  .border{
+    padding: 3%;
+    border: 2px dotted $app-nav;
+  }
   .about-container{
     padding: 2%;
     width: 100%;
@@ -12,17 +16,7 @@
       width: 80%;
       margin: 1% 10%;
     }
-    .title{
-      text-align: center;
-      text-transform: uppercase;
-      font-family: $app-font3;
-      font-size: 320%;
-      padding: 1%;
-      margin-bottom: 30px;
-      @media only screen and (min-width: 480px){
-        font-size: 400%;
-      }
-    }
+    
     h6{
       text-align: center;
       font-size: 160%;

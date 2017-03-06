@@ -44,18 +44,6 @@ function PortfolioController($log, $uibModal){
 
   this.items = [
     {
-      id: '1',
-      title: 'Ink Roses I',
-      url: 'http://i65.tinypic.com/1z5kqcx.jpg',
-      category: 'Drawing',
-    },
-    {
-      id: '2',
-      title: 'Ink Roses II',
-      url: 'http://i65.tinypic.com/35l51yv.jpg',
-      category: 'Drawing',
-    },
-    {
       id: '3',
       title: 'Abstract Flower',
       url: 'http://i63.tinypic.com/t66vsm.jpg',

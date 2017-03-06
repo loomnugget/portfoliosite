@@ -8,6 +8,9 @@
     background-position: fixed;
     height: 100vh;
   }
+  // #canvas{
+  //   background-image: url('../scss/lib/img/texture2.jpg');
+  // }
   #container {
     position: relative;
   }
@@ -33,6 +36,7 @@
       padding-bottom: 1%;
       text-transform: uppercase;
       font-family: $title-font5;
+      color: $app-bright-white;
       @media only screen and (min-width: 480px){
         font-size: 400%;
       }

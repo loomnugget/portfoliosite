@@ -1,7 +1,7 @@
 <main class="project-container">
   <div class="clearfix" ng-class="{'active': projectCtrl.isActive}">
     <div class="row">
-      <h3>Selected Projects</h3>
+      <h3 class="title">Selected Projects</h3>
       <hr class="dark-line">
     </div>
 
@@ -13,6 +13,7 @@
             <div class="img-hover">
               <div class="content-wrap">
                 <h3><strong>{{item.title}}</strong></h3>
+                <hr>
                 <h5>{{item.category}}</h5>
                 <h6>{{item.summary}}</h6>
                 <span class="zoom-icon"><i class="icon-basic-magnifier-plus" ng-click="projectCtrl.selectItem(item.id)"></i></span>

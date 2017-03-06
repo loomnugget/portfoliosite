@@ -14,6 +14,19 @@ h3, h4 {
   color: $app-white;
   text-transform: uppercase;
 }
+
+.title{
+  text-align: center;
+  text-transform: uppercase;
+  font-family: $app-font3;
+  font-size: 320%;
+  padding: 1%;
+  margin-bottom: 30px;
+  @media only screen and (min-width: 480px){
+    font-size: 400%;
+  }
+}
+
 .center{
   text-align: center;
 }
