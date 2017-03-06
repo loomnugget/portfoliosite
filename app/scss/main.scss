@@ -13,6 +13,7 @@ html, body {
 h3, h4 {
   color: $app-white;
   text-transform: uppercase;
+  font-family: $app-font3;
 }
 
 .title{
@@ -25,6 +26,13 @@ h3, h4 {
   @media only screen and (min-width: 480px){
     font-size: 400%;
   }
+}
+.title2{
+  text-align: center;
+  text-transform: uppercase;
+  font-family: $app-font3;
+  font-size: 250%;
+  padding: 1%;
 }
 
 .center{

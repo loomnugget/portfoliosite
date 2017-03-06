@@ -2,6 +2,9 @@
 
 .landing {
   overflow: hidden;
+  section{
+    border-top: 2px solid $app-nav;
+  }
   header {
     padding: 0;
     margin: 0;
@@ -49,7 +52,6 @@
     }
     h4{
       color: $app-bright-white;
-      background-color: $app-black;
       font-family: $app-font3;
       font-size: 200%;
     }
@@ -87,5 +89,53 @@
   }
   .contact-icon:hover{
     color: $app-white;
+  }
+
+  .services-container{
+    width: 100%;
+    padding: 5%;
+    text-align: center;
+    .about-icon{
+      padding: 2%;
+      text-align: center;
+      border: 2px solid $app-white;
+      height: 300px;
+    }
+    .circle-icon {
+      color: $app-white;
+      font-size: 70px;
+      vertical-align: middle;
+    }
+    h4{
+      font-family: $app-font3;
+      font-size: 200%;
+      color: $app-white;
+    }
+    p{
+      font-family: $app-font3;
+      font-size: 140%;
+      color: $app-bright-white;
+    }
+  }
+  .skills-container, .work-container{
+    padding: 5%;
+  }
+  .work-container{
+  }
+  .skills-icon-container{
+    width: 100%;
+    margin: 1% 0;
+    text-align: center;
+    @media only screen and (min-width: 480px){
+      width: 90%;
+      margin: 1% 5%;
+    }
+    .skills-icon{
+      display: block;
+      float: left;
+      font-size: 50px;
+      padding: 10px;
+      color: $app-white;
+    }
   }
 }

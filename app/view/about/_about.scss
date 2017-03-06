@@ -4,6 +4,7 @@
 .about{
   margin-top: 50px;
   margin-bottom: 100px;
+  padding: 0 3%;
   .border{
     padding: 3%;
     border: 2px dotted $app-nav;
@@ -16,7 +17,7 @@
       width: 80%;
       margin: 1% 10%;
     }
-    
+
     h6{
       text-align: center;
       font-size: 160%;
@@ -38,43 +39,7 @@
       @media only screen and (min-width: 768px){
         width: 60%;
         margin: 1% 20%;
-        //padding-bottom: 2%;
         font-size: 160%;
-      }
-    }
-    .about-icon-container{
-      width: 100%;
-      margin: 1% 0;
-      @media only screen and (min-width: 1024px){
-        width: 90%;
-        margin: 1% 5%;
-      }
-      .about-icon{
-        padding: 2%;
-        width: 20%;
-        float: left;
-        text-align: center;
-      }
-      .circle-icon {
-        color: $app-bright-white;
-        font-size: 70px;
-        vertical-align: middle;
-      }
-    }
-    .skills-icon-container{
-      width: 100%;
-      margin: 1% 0;
-      text-align: center;
-      @media only screen and (min-width: 480px){
-        width: 90%;
-        margin: 1% 5%;
-      }
-      .skills-icon{
-        display: block;
-        float: left;
-        font-size: 50px;
-        padding: 10px;
-        color: $app-secondary;
       }
     }
   }
