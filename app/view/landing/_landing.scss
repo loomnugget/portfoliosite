@@ -61,16 +61,15 @@
   }
 
   .landing-btn{
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
+    width: 200px;
+    height: 200px;
     border-radius:50%;
     border: 3px solid rgba(255, 255, 255, .5);
     letter-spacing: 1px;
     color: $app-bright-white;
     background: $app-black;
     font-family: $app-font3;
-    font-weight: 700;
+    font-size: 160%;
   }
 
   .landing-btn:hover {
@@ -96,31 +95,40 @@
     padding: 5%;
     text-align: center;
     .about-icon{
-      padding: 2%;
+      padding: 1%;
       text-align: center;
       border: 2px solid $app-white;
-      height: 300px;
+      height: 310px;
     }
     .circle-icon {
       color: $app-white;
       font-size: 70px;
+      margin: 1% 0;
       vertical-align: middle;
     }
     h4{
       font-family: $app-font3;
       font-size: 200%;
       color: $app-white;
+      padding: 1%;
     }
     p{
       font-family: $app-font3;
-      font-size: 140%;
+      font-size: 120%;
       color: $app-bright-white;
+      padding: 2%;
     }
   }
-  .skills-container, .work-container{
-    padding: 5%;
+  .skills-container{
+    padding: 3%;
+    h3{
+      line-height: 70px;
+      vertical-align: center;
+    }
   }
   .work-container{
+    text-align: center;
+    padding: 5%;
   }
   .skills-icon-container{
     width: 100%;
@@ -133,8 +141,10 @@
     .skills-icon{
       display: block;
       float: left;
-      font-size: 50px;
-      padding: 10px;
+      font-size: 60px;
+      line-height: 70px;
+      vertical-align: center;
+      padding: 10px 15px;
       color: $app-white;
     }
   }
