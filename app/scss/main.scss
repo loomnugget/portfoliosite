@@ -15,11 +15,15 @@ h3, h4 {
   text-transform: uppercase;
   font-family: $app-font3;
 }
+.star-bg{
+  background-image: url('../scss/lib/img/stars.jpg');
+}
 
 .title{
   text-align: center;
   text-transform: uppercase;
   font-family: $app-font3;
+  color: $app-bright-white;
   font-size: 320%;
   padding: 1%;
   margin-bottom: 30px;

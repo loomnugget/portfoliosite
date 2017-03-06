@@ -40,6 +40,7 @@
       text-transform: uppercase;
       font-family: $title-font5;
       color: $app-bright-white;
+
       @media only screen and (min-width: 480px){
         font-size: 400%;
       }
@@ -70,6 +71,12 @@
     background: $app-black;
     font-family: $app-font3;
     font-size: 160%;
+  }
+  .landing-btn2{
+    width: 100px;
+    height: 100px;
+    color: $app-bright-white;
+    font-size: 70px;
   }
 
   .landing-btn:hover {
@@ -127,6 +134,7 @@
     }
   }
   .work-container{
+    background-image: url('../scss/lib/img/stars.jpg');
     text-align: center;
     padding: 5%;
   }
