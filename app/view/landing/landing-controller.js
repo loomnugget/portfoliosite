@@ -2,10 +2,15 @@
 
 require('./_landing.scss');
 
-module.exports = ['$log', '$document', '$window', LandingController];
+module.exports = ['$log', '$document', '$window', '$location', '$anchorScroll', LandingController];
 
-function LandingController($log, $document, $window) {
+function LandingController($log, $document, $window, $location, $anchorScroll) {
   $log.debug('init landingCtrl');
+
+  this.scrollDown = function() {
+    $location.hash('scrollpoint');
+    $anchorScroll();
+  };
 
   // $document.on('mousemove', function (event) {
   //   var color1 = event.screenX/7, color2 = event.screenY/7;

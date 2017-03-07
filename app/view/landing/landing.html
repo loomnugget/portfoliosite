@@ -5,12 +5,12 @@
       <div id="overlay" class="landing-title">
         <h2>Claudia<br>Cedfeldt</h2>
         <h4>Software Engineer | UI/UX</h4>
-        <a href="#"><button class="btn landing-btn2"><i class="fa fa-angle-down"></i></button></a>
+        <button ng-click="landingCtrl.scrollDown()" class="btn landing-btn2"><i class="fa fa-angle-down"></i></button>
       </div>
     </div>
   </header>
 
-  <section class="services-container">
+  <section class="services-container" id="scrollpoint">
     <div class="row">
       <div class="col span-1-of-3">
         <div class="about-icon">

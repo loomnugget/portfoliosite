@@ -141,11 +141,11 @@
 
   .active-menu{
     display:none;
-    width: 32%;
+    width: 20%;
     float: left;
     border: 3px solid $app-nav;
     padding: 1%;
-    margin: 0 .5% 2% .5%;
+    margin: 2% 0%;
     cursor: pointer;
     h4{
       text-align: center;
@@ -170,6 +170,9 @@
     }
     .active-menu{
       display: block;
+    }
+    .project-menu-container{
+      display: none;
     }
   }
 

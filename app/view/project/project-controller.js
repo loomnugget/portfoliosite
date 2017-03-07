@@ -37,7 +37,7 @@ function ProjectController($log) {
     },
     {
       id: 4,
-      title: 'Green Key Landscaping',
+      title: 'Green Key',
       category: 'Responsive Web Design',
       summary: 'Local landscaping business website redesign',
       url: 'http://i68.tinypic.com/2m61wm8.jpg',
