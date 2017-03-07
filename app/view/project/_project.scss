@@ -54,59 +54,56 @@
         position: absolute;
         text-align: center;
         align-items: center;
-        padding: 0 1.5%;
+        padding: 1.5%;
         height: 100%;
         width: 100%;
         opacity: 1;
-        color: $app-bright-white;
-        background: $app-nav;
-        //background: linear-gradient($app-gradient2, $app-secondary);
+        color: $app-nav;
+        background: rgba(255, 255, 255, .8);
         transition: all 0.5s;
         z-index: 20;
 
         // Vertically align content over image
         .content-wrap{
           width: 100%;
-          height: 100%;
-
-          hr{
-            margin-bottom: 20px;
-          }
 
           h3 {
             font-family: $app-font3;
+            border-bottom: 2px solid $app-nav;
+            padding-bottom: 20px;
             font-size: 120%;
-            color: $app-bright-white;
+            color: $app-nav;
             @media only screen and (min-width: 768px){
-              font-size: 180%;
+              font-size: 170%;
             }
           }
           // Description font styles
           h5 {
             font-size: 100%;
-            font-style: italic;
-            color: $app-bright-white;
+            font-family: $app-font3;
+            color: $app-nav;
             @media only screen and (min-width: 768px){
-              font-size: 160%;
+              font-size: 130%;
             }
           }
           h6 {
             font-size: 100%;
-            color: $app-bright-white;
+            font-family: $app-font3;
+            color: $app-nav;
             @media only screen and (min-width: 768px){
-              font-size: 160%;
+              font-size: 130%;
             }
           }
 
           .zoom-icon {
             margin: 1% 0;
-            font-size: 50px;
+            font-size: 40px;
             background-color: transparent;
             transition: .2s;
             cursor: pointer;
           }
           .zoom-icon:hover{
-            color: $app-secondary;
+            color: $app-white;
           }
         }
       }
@@ -132,9 +129,9 @@
       }
       h5{
         font-size: 100%;
-        font-family: $app-font2;
-        font-style: italic;
-        color: $app-white;
+        font-family: $app-font3;
+
+        color: $app-bright-white;
         @media only screen and (min-width: 768px){
           font-size: 150%;
         }

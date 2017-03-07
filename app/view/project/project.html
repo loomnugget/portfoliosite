@@ -9,14 +9,16 @@
       <div class="portfolio-img-container"
        ng-repeat="item in projectCtrl.items"
        item="projectCtrl.currentItem">
-        <div class="square" ng-style="{'background-image': 'url({{item.url}})'}">
+        <div class="square" ng-style="{'background-image': 'url({{item.url}})'}" >
             <div class="img-hover">
               <div class="content-wrap">
                 <h3><strong>{{item.title}}</strong></h3>
-                <hr>
+
                 <h5>{{item.category}}</h5>
                 <h6>{{item.summary}}</h6>
-                <span class="zoom-icon"><i class="icon-basic-magnifier-plus" ng-click="projectCtrl.selectItem(item.id)"></i></span>
+
+                <span class="zoom-icon"><i class="fa fa-plus" ng-click="projectCtrl.selectItem(item.id)"></i></span>
+
               </div>
             </div>
           </div>

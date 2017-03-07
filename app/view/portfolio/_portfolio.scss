@@ -21,11 +21,11 @@
 
     .menu-item {
       width: 32%;
-      margin: 2.5% .66666667% 1.5% .66666667%;
+      margin: 0 .66666667% 1.5% .66666667%;
       float: left;
       display:block;
       cursor: pointer;
-      border: 3px solid $app-nav;
+      border: 3px solid $app-white;
 
       // Title Menu Header
       h2 {

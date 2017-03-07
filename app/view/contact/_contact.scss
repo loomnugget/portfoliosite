@@ -37,7 +37,7 @@
     width: 90%;
     margin: 0 5%;
     padding: 3%;
-    border: 2px solid $app-offwhite;
+    border: 2px solid $app-white;
     border-radius: 5px;
     @media only screen and (min-width: 768px){
       width: 60%;
@@ -48,6 +48,10 @@
       font-size: 300%;
       margin-bottom: 20px;
       font-family: $app-font3;
+      color: $app-bright-white;
+    }
+    h4{
+      font-size: 130%;
     }
     .submit-btn {
       margin-top: 10px;
@@ -73,7 +77,7 @@
       padding:10px 6px;
       display:block;
       border-radius: 5px;
-      color: $app-white2;
+      color: $app-white;
       border: 2px solid $app-offwhite;
       font-family: $app-font3;
       background-color: $app-black;

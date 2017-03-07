@@ -49,32 +49,32 @@
 	__webpack_require__(1);
 
 	// Require node modules
-	var path = __webpack_require__(23);
+	var path = __webpack_require__(24);
 
 	// Require npm modules
-	var angular = __webpack_require__(25);
-	var camelcase = __webpack_require__(27);
-	var pascalcase = __webpack_require__(28);
+	var angular = __webpack_require__(26);
+	var camelcase = __webpack_require__(28);
+	var pascalcase = __webpack_require__(29);
 
 	// Require angular modules
-	var ngTouch = __webpack_require__(29);
-	var ngMessages = __webpack_require__(31);
-	var ngAnimate = __webpack_require__(33);
-	var uiRouter = __webpack_require__(35);
-	var uiBootstrap = __webpack_require__(36);
-	var ngFileUpload = __webpack_require__(38);
+	var ngTouch = __webpack_require__(30);
+	var ngMessages = __webpack_require__(32);
+	var ngAnimate = __webpack_require__(34);
+	var uiRouter = __webpack_require__(36);
+	var uiBootstrap = __webpack_require__(37);
+	var ngFileUpload = __webpack_require__(39);
 
 	// Create angular module
 	var app = angular.module('app', [ngTouch, uiBootstrap, ngAnimate, ngMessages, uiRouter, ngFileUpload]);
 
 	// Load config
-	var context = __webpack_require__(40);
+	var context = __webpack_require__(41);
 	context.keys().forEach(function (path) {
 	  app.config(context(path));
 	});
 
 	// Load view controllers
-	context = __webpack_require__(52);
+	context = __webpack_require__(53);
 	context.keys().forEach(function (key) {
 	  var name = pascalcase(path.basename(key, '.js'));
 	  var module = context(key);
@@ -82,7 +82,7 @@
 	});
 
 	// Load components
-	context = __webpack_require__(68);
+	context = __webpack_require__(69);
 	context.keys().forEach(function (key) {
 	  var name = camelcase(path.basename(key, '.js'));
 	  var module = context(key);
@@ -117,7 +117,8 @@
 /* 20 */,
 /* 21 */,
 /* 22 */,
-/* 23 */
+/* 23 */,
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -345,10 +346,10 @@
 	    }
 	;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(25)))
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -534,15 +535,15 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(26);
+	__webpack_require__(27);
 	module.exports = angular;
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	/**
@@ -33681,7 +33682,7 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33743,7 +33744,7 @@
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports) {
 
 	/*!
@@ -33770,15 +33771,15 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(30);
+	__webpack_require__(31);
 	module.exports = 'ngTouch';
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	/**
@@ -34531,15 +34532,15 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(32);
+	__webpack_require__(33);
 	module.exports = 'ngMessages';
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	/**
@@ -35284,15 +35285,15 @@
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(34);
+	__webpack_require__(35);
 	module.exports = 'ngAnimate';
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 	/**
@@ -39448,7 +39449,7 @@
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	/**
@@ -44062,16 +44063,16 @@
 	})(window, window.angular);
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(37);
+	__webpack_require__(38);
 
 	module.exports = 'ui.bootstrap';
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports) {
 
 	/*
@@ -51852,14 +51853,14 @@
 	angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(39);
+	__webpack_require__(40);
 	module.exports = 'ngFileUpload';
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
 	/**!
@@ -54763,11 +54764,11 @@
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./router-config.js": 41
+		"./router-config.js": 42
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -54780,11 +54781,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 40;
+	webpackContext.id = 41;
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54801,31 +54802,31 @@
 	    url: '/landing',
 	    controllerAs: 'landingCtrl',
 	    controller: 'LandingController',
-	    template: __webpack_require__(42)
+	    template: __webpack_require__(43)
 	  }, {
 	    name: 'Art Portfolio',
 	    url: '/portfolio',
 	    controllerAs: 'portfolioCtrl',
 	    controller: 'PortfolioController',
-	    template: __webpack_require__(43)
+	    template: __webpack_require__(44)
 	  }, {
 	    name: 'Projects',
 	    url: '/projects',
 	    controllerAs: 'projectCtrl',
 	    controller: 'ProjectController',
-	    template: __webpack_require__(44)
+	    template: __webpack_require__(45)
 	  }, {
 	    name: 'About',
 	    url: '/about',
 	    controllerAs: 'aboutCtrl',
 	    controller: 'AboutController',
-	    template: __webpack_require__(50)
+	    template: __webpack_require__(51)
 	  }, {
 	    name: 'Contact',
 	    url: '/contact',
 	    controllerAs: 'contactCtrl',
 	    controller: 'ContactController',
-	    template: __webpack_require__(51)
+	    template: __webpack_require__(52)
 	  }];
 
 	  states.forEach(function (state) {
@@ -54834,75 +54835,75 @@
 	}
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = "<main class=\"landing\">\n  <header>\n    <div id=\"container\">\n        <canvas id=\"canvas\"></canvas>\n      <div id=\"overlay\" class=\"landing-title\">\n        <h2>Claudia<br>Cedfeldt</h2>\n        <h4>Software Engineer | UI/UX</h4>\n        <a href=\"#\"><button class=\"btn landing-btn2\"><i class=\"fa fa-angle-down\"></i></button></a>\n      </div>\n    </div>\n  </header>\n\n  <section class=\"services-container\">\n    <div class=\"row\">\n      <div class=\"col span-1-of-3\">\n        <div class=\"about-icon\">\n          <i class=\"ion-code circle-icon\"></i>\n          <h4>Design Focused Development</h4>\n          <p>Building user experiences from beginning to end.</p>\n        </div>\n      </div>\n\n      <div class=\"col span-1-of-3\">\n        <div class=\"about-icon\">\n          <i class=\"ion-monitor circle-icon\"></i>\n          <h4>Responsive App Design</h4>\n          <p>Detail oriented design that translates easily to any device.</p>\n        </div>\n      </div>\n\n      <div class=\"col span-1-of-3\">\n        <div class=\"about-icon\">\n          <i class=\"ion-paintbrush circle-icon\"></i>\n          <h4>Functional Art</h4>\n          <p>Using abstraction/realism to decorate things.</p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"work-container\">\n    <a href=\"#/projects\"><button class=\"btn landing-btn\">View<br>Projects</button></a>\n  </section>\n\n  <section class=\"skills-container\">\n    <div class=\"row\">\n      <div class=\"col span-1-of-3\">\n        <h3 class=\"title2\">Technologies</h3>\n      </div>\n      <div class=\"col span-2-of-3\">\n        <div class=\"skills-icon-container clearfix\">\n          <span><i class=\"devicon-cplusplus-line skills-icon\"></i></span>\n          <span><i class=\"devicon-javascript-plain skills-icon\"></i></span>\n          <span><i class=\"devicon-angularjs-plain skills-icon\"></i></span>\n          <span><i class=\"devicon-react-original-wordmark skills-icon\"></i></span>\n          <span><i class=\"devicon-mongodb-plain-wordmark skills-icon\"></i></span>\n          <span><i class=\"devicon-nodejs-plain skills-icon\"></i></span>\n          <span><i class=\"devicon-ubuntu-plain skills-icon\"></i></span>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n";
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"portfolio\">\n\n  <div class=\"row\">\n    <h2 class=\"title\">Selected Art Experiments</h2>\n    <hr class=\"dark-line\">\n  </div>\n\n    <div class=\"navigation clearfix\">\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive1}\" ng-click=\"myFilter = category; portfolioCtrl.isActive(1)\">\n        <h2>All</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive2}\" ng-click=\"myFilter = {category: 'Drawing'}; portfolioCtrl.isActive(2)\">\n        <h2>Drawing</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive3}\" ng-click=\"myFilter = {category: 'Painting'}; portfolioCtrl.isActive(3)\">\n        <h2>Painting</h2>\n      </div>\n  </div>\n\n  <section class=\"art-portfolio-container\">\n    <!-- Image Gallery -->\n    <div class=\"portfolio-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in portfolioCtrl.items | filter:myFilter\"\n       item=\"portfolioCtrl.currentItem\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n            <div class=\"img-hover border\">\n              <div class=\"content-wrap\">\n                <h3><strong>{{item.title}}</strong></h3>\n                <h5>{{item.category}}</h5>\n                <span class=\"zoom-icon\"><i class=\"icon-basic-magnifier-plus\" ng-click=\"portfolioCtrl.open(item)\"></i></span>\n              </div>\n            </div>\n          </div>\n      </div>\n    </div>\n  </section>\n  <div class=\"push\"></div>\n</main>\n";
-
-/***/ },
-/* 44 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "<main class=\"project-container\">\n  <div class=\"clearfix\" ng-class=\"{'active': projectCtrl.isActive}\">\n    <div class=\"row\">\n      <h3 class=\"title star-bg\">Selected Projects</h3>\n      <hr class=\"dark-line\">\n    </div>\n\n    <div class=\"project-menu-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in projectCtrl.items\"\n       item=\"projectCtrl.currentItem\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n            <div class=\"img-hover\">\n              <div class=\"content-wrap\">\n                <h3><strong>{{item.title}}</strong></h3>\n                <hr>\n                <h5>{{item.category}}</h5>\n                <h6>{{item.summary}}</h6>\n                <span class=\"zoom-icon\"><i class=\"icon-basic-magnifier-plus\" ng-click=\"projectCtrl.selectItem(item.id)\"></i></span>\n              </div>\n            </div>\n          </div>\n      </div>\n    </div>\n\n    <!-- <div class=\"active-menu\"\n     ng-repeat=\"item in projectCtrl.items\"\n     item=\"projectCtrl.currentItem\">\n     <h4>{{item.title}}</h4>\n  </div> -->\n\n  <div class=\"row\" ng-if=\"projectCtrl.isVisible1\">\n    <div class=\"info-container\">\n    <h4>Pup Tracker<span class=\"info-icon\"><a href=\"https://github.com/prungy88/puptracker\"><i class=\"fa fa-github icon2\"></i></a><span></h4>\n\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">Rest API used by research scientists to track mouse breeding patterns, plan experiments, and communicate more\n              effectively with mouse breeders and project managers.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node, Angular, Webpack, Express, Angular UI Calendar, Bootstrap</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        </p><br>\n        <h5>About</h5>\n        <p>The research institute utilizes an SQL database to input information about mouse breeding cycles and their genetic makeup.\n          Breeders and lab managers need to be able to have this information readily available to relay to researchers planning projects.\n          The projects are large and have many lines of mice (mice of different genotypes). Each line of mice has a group of cages used to\n          produce offspring (pups) that have desired genotypes, each which contains one or two females and a male. Researchers need to know\n          a rough estimate of when mice of certain genotypes will be available and how many to expect per month.\n          <br><br>\n          They wanted to be able input information into the app and utilize dropdown menus that allow them to select the appropriate project,\n          line, and cage and create/update models of each. Models are updated as information is known to the research team and stored and organized in the app.\n          This updated information is used to calculate various properties that will be displayed when a line is selected.\n        </p><br>\n        <h5>Goals</h5>\n        <p> 1. Use a calendar to visualize when mice of certain genotypes are going to be born.<br><br>\n          2. Calculate expected number of usable offspring and breeding end dates based on user inputs.<br><br>\n          3. Be able to create, update and remove project information.</p><br>\n        <h5>Going Forward</h5>\n        <p>There is a huge amount of potential for this project. After the core goals are met, the plan is to have additional data visualizations and to automate more tasks.</p><br>\n      </div>\n      <div class=\"row\">\n        <h5>Preview</h5>\n          <div class=\"project-image-container\">\n            <img class=\"project-image\" src=\"" + __webpack_require__(45) + "\" alt=\"puptracker-image2\">\n          </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible2\">\n  <div class=\"info-container\">\n    <h4>3D Engine\n      <span class=\"info-icon\"><a href=\"https://github.com/loomnugget/js-3d-experiment\"><i class=\"fa fa-github icon2\"></i></a><span>\n      <span class=\"info-icon\"><a href=\"http://codepen.io/ploom/pen/LRvzOk\"><i class=\"fa fa-codepen icon2\"></i></a><span>\n    </h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">3D physics engine using Vanilla Javascript and HTML5 Canvas</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>React, Node, HTML5 Canvas</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>About / Goals</h5>\n        <p>I was initially inspired by the <a class=\"project-link\" href=\"https://www.chromeexperiments.com/\"> chrome canvas experiments</a> and wanted to make some quick animations for front end design.\n          I found that the logic behind the magic was pretty involved, and this quickly turned into a small 3D library project which\n          served as mostly a learning experience that significantly boosted my programming skills.</p><br>\n\n        <h5>Going Forward</h5>\n        <p>I had a lot of fun working on this project and I'd really like to keep learning about 3D math/programming, focusing on web, not game, development,\n           and continue working on shading, physics effects, folding algorithms and data structures visualizations and music visualizations.\n           The main improvement that needs to be made is incorporating interactivity so these concepts can be incorporated into user experiences.\n        </p><br>\n      </div>\n      <div class=\"row\">\n        <h5>Images</h5>\n          <div class=\"project-image-container\">\n            <img class=\"project-image2\" src=\"" + __webpack_require__(46) + "\" alt=\"3dengine-image1\">\n            <img class=\"project-image2\" src=\"" + __webpack_require__(47) + "\" alt=\"3dengine-image3\">\n          </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible3\">\n  <div class=\"info-container\">\n    <h4>[art-c]\n      <span class=\"info-icon\"><a href=\"https://art-c.herokuapp.com/\"><i class=\"fa fa-external-link-square icon2\"></i></a></span>\n      <span class=\"info-icon\"><a href=\"https://github.com/loomnugget/art-c\"><i class=\"fa fa-github icon2\"></i></a><span>\n    </h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">REST API that allows artists to share and sell work in their community.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node, Angular, Webpack, Express, AWS S3, Bootstrap</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>About</h5>\n        <p>This was a group project for a Code Fellows Javascript class.\n          Working with local artists inspired the idea, and the app is intended to be somewhat like a curated Etsy that\n          focuses on connecting local artists with each other and their community. We used AWS S3 to upload and store photos,\n          and Google and Facebook oAuth to have the option to sign up with pre-existing accounts.\n          Users can create, update and delete a profile, galleries, and listings as well as upload and delete photos for each.\n        </p><br>\n        <h5>Personal Contributions</h5>\n        <p>As project leader, I worked on much of the layout and idea itself. I contributed to creating a functioning back end, testing, and\n          front end functionality. I also did almost all of the styling and design.\n        </p><br>\n        <h5>Going Forward</h5>\n        <p>Since we only had less than five days to work on this project, there is much room for improvement. Future goals include curated\n          content, integrating the Stripe API to allow people to buy and sell, spotlighting artists, and favoriting items.\n          I'd also like to spend some actual time working on the user interface.</p><br>\n      </div>\n        <div class=\"row\">\n          <h5>Images</h5>\n            <div class=\"project-image-container\">\n              <img class=\"project-image\" src=\"" + __webpack_require__(48) + "\" alt=\"artc-image1\">\n              <img class=\"project-image\" src=\"" + __webpack_require__(49) + "\" alt=\"artc-image2\">\n            </div>\n        </div>\n    </div>\n  </div>\n</div>\n\n\n</main>\n";
+	module.exports = "<main class=\"portfolio\">\n\n  <div class=\"row\">\n    <h2 class=\"title\">Selected Art Experiments</h2>\n    <hr class=\"dark-line\">\n  </div>\n\n    <div class=\"navigation clearfix\">\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive1}\" ng-click=\"myFilter = category; portfolioCtrl.isActive(1)\">\n        <h2>All</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive2}\" ng-click=\"myFilter = {category: 'Drawing'}; portfolioCtrl.isActive(2)\">\n        <h2>Drawing</h2>\n      </div>\n      <div class=\"menu-item\" ng-class=\"{'active': portfolioCtrl.isActive3}\" ng-click=\"myFilter = {category: 'Painting'}; portfolioCtrl.isActive(3)\">\n        <h2>Painting</h2>\n      </div>\n  </div>\n\n  <section class=\"art-portfolio-container\">\n    <!-- Image Gallery -->\n    <div class=\"portfolio-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in portfolioCtrl.items | filter:myFilter\"\n       item=\"portfolioCtrl.currentItem\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\">\n            <div class=\"img-hover border\">\n              <div class=\"content-wrap\">\n                <h3><strong>{{item.title}}</strong></h3>\n                <h5>{{item.category}}</h5>\n                <span class=\"zoom-icon\"><i class=\"fa fa-plus\" ng-click=\"portfolioCtrl.open(item)\"></i></span>\n              </div>\n            </div>\n          </div>\n      </div>\n    </div>\n  </section>\n  <div class=\"push\"></div>\n</main>\n";
 
 /***/ },
 /* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "image/118d0aedafc6a1cbfc6347c4d0f1c4a6.jpg";
+	module.exports = "<main class=\"project-container\">\n  <div class=\"clearfix\" ng-class=\"{'active': projectCtrl.isActive}\">\n    <div class=\"row\">\n      <h3 class=\"title star-bg\">Selected Projects</h3>\n      <hr class=\"dark-line\">\n    </div>\n\n    <div class=\"project-menu-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in projectCtrl.items\"\n       item=\"projectCtrl.currentItem\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\" >\n            <div class=\"img-hover\">\n              <div class=\"content-wrap\">\n                <h3><strong>{{item.title}}</strong></h3>\n\n                <h5>{{item.category}}</h5>\n                <h6>{{item.summary}}</h6>\n\n                <span class=\"zoom-icon\"><i class=\"fa fa-plus\" ng-click=\"projectCtrl.selectItem(item.id)\"></i></span>\n\n              </div>\n            </div>\n          </div>\n      </div>\n    </div>\n\n    <!-- <div class=\"active-menu\"\n     ng-repeat=\"item in projectCtrl.items\"\n     item=\"projectCtrl.currentItem\">\n     <h4>{{item.title}}</h4>\n  </div> -->\n\n  <div class=\"row\" ng-if=\"projectCtrl.isVisible1\">\n    <div class=\"info-container\">\n    <h4>Pup Tracker<span class=\"info-icon\"><a href=\"https://github.com/prungy88/puptracker\"><i class=\"fa fa-github icon2\"></i></a><span></h4>\n\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">Rest API used by research scientists to track mouse breeding patterns, plan experiments, and communicate more\n              effectively with mouse breeders and project managers.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node, Angular, Webpack, Express, Angular UI Calendar, Bootstrap</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        </p><br>\n        <h5>About</h5>\n        <p>The research institute utilizes an SQL database to input information about mouse breeding cycles and their genetic makeup.\n          Breeders and lab managers need to be able to have this information readily available to relay to researchers planning projects.\n          The projects are large and have many lines of mice (mice of different genotypes). Each line of mice has a group of cages used to\n          produce offspring (pups) that have desired genotypes, each which contains one or two females and a male. Researchers need to know\n          a rough estimate of when mice of certain genotypes will be available and how many to expect per month.\n          <br><br>\n          They wanted to be able input information into the app and utilize dropdown menus that allow them to select the appropriate project,\n          line, and cage and create/update models of each. Models are updated as information is known to the research team and stored and organized in the app.\n          This updated information is used to calculate various properties that will be displayed when a line is selected.\n        </p><br>\n        <h5>Goals</h5>\n        <p> 1. Use a calendar to visualize when mice of certain genotypes are going to be born.<br><br>\n          2. Calculate expected number of usable offspring and breeding end dates based on user inputs.<br><br>\n          3. Be able to create, update and remove project information.</p><br>\n        <h5>Going Forward</h5>\n        <p>There is a huge amount of potential for this project. After the core goals are met, the plan is to have additional data visualizations and to automate more tasks.</p><br>\n      </div>\n      <div class=\"row\">\n        <h5>Preview</h5>\n          <div class=\"project-image-container\">\n            <img class=\"project-image\" src=\"" + __webpack_require__(46) + "\" alt=\"puptracker-image2\">\n          </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible2\">\n  <div class=\"info-container\">\n    <h4>3D Engine\n      <span class=\"info-icon\"><a href=\"https://github.com/loomnugget/js-3d-experiment\"><i class=\"fa fa-github icon2\"></i></a><span>\n      <span class=\"info-icon\"><a href=\"http://codepen.io/ploom/pen/LRvzOk\"><i class=\"fa fa-codepen icon2\"></i></a><span>\n    </h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">3D physics engine using Vanilla Javascript and HTML5 Canvas</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>React, Node, HTML5 Canvas</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>About / Goals</h5>\n        <p>I was initially inspired by the <a class=\"project-link\" href=\"https://www.chromeexperiments.com/\"> chrome canvas experiments</a> and wanted to make some quick animations for front end design.\n          I found that the logic behind the magic was pretty involved, and this quickly turned into a small 3D library project which\n          served as mostly a learning experience that significantly boosted my programming skills.</p><br>\n\n        <h5>Going Forward</h5>\n        <p>I had a lot of fun working on this project and I'd really like to keep learning about 3D math/programming, focusing on web, not game, development,\n           and continue working on shading, physics effects, folding algorithms and data structures visualizations and music visualizations.\n           The main improvement that needs to be made is incorporating interactivity so these concepts can be incorporated into user experiences.\n        </p><br>\n      </div>\n      <div class=\"row\">\n        <h5>Images</h5>\n          <div class=\"project-image-container\">\n            <img class=\"project-image2\" src=\"" + __webpack_require__(47) + "\" alt=\"3dengine-image1\">\n            <img class=\"project-image2\" src=\"" + __webpack_require__(48) + "\" alt=\"3dengine-image3\">\n          </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible3\">\n  <div class=\"info-container\">\n    <h4>[art-c]\n      <span class=\"info-icon\"><a href=\"https://art-c.herokuapp.com/\"><i class=\"fa fa-external-link-square icon2\"></i></a></span>\n      <span class=\"info-icon\"><a href=\"https://github.com/loomnugget/art-c\"><i class=\"fa fa-github icon2\"></i></a><span>\n    </h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">REST API that allows artists to share and sell work in their community.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node, Angular, Webpack, Express, AWS S3, Bootstrap</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>About</h5>\n        <p>This was a group project for a Code Fellows Javascript class.\n          Working with local artists inspired the idea, and the app is intended to be somewhat like a curated Etsy that\n          focuses on connecting local artists with each other and their community. We used AWS S3 to upload and store photos,\n          and Google and Facebook oAuth to have the option to sign up with pre-existing accounts.\n          Users can create, update and delete a profile, galleries, and listings as well as upload and delete photos for each.\n        </p><br>\n        <h5>Personal Contributions</h5>\n        <p>As project leader, I worked on much of the layout and idea itself. I contributed to creating a functioning back end, testing, and\n          front end functionality. I also did almost all of the styling and design.\n        </p><br>\n        <h5>Going Forward</h5>\n        <p>Since we only had less than five days to work on this project, there is much room for improvement. Future goals include curated\n          content, integrating the Stripe API to allow people to buy and sell, spotlighting artists, and favoriting items.\n          I'd also like to spend some actual time working on the user interface.</p><br>\n      </div>\n        <div class=\"row\">\n          <h5>Images</h5>\n            <div class=\"project-image-container\">\n              <img class=\"project-image\" src=\"" + __webpack_require__(49) + "\" alt=\"artc-image1\">\n              <img class=\"project-image\" src=\"" + __webpack_require__(50) + "\" alt=\"artc-image2\">\n            </div>\n        </div>\n    </div>\n  </div>\n</div>\n\n\n</main>\n";
 
 /***/ },
 /* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "image/ffebf7855dc1a629be9cc1117c057322.jpg";
+	module.exports = __webpack_require__.p + "image/118d0aedafc6a1cbfc6347c4d0f1c4a6.jpg";
 
 /***/ },
 /* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "image/f07b923be7fa0b03c95643f691692f24.jpg";
+	module.exports = __webpack_require__.p + "image/ffebf7855dc1a629be9cc1117c057322.jpg";
 
 /***/ },
 /* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "image/3c2f7046d50bb574ce05a4542d465bb3.jpg";
+	module.exports = __webpack_require__.p + "image/f07b923be7fa0b03c95643f691692f24.jpg";
 
 /***/ },
 /* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "image/372105721ef227e02aa353d4927b3692.jpg";
+	module.exports = __webpack_require__.p + "image/3c2f7046d50bb574ce05a4542d465bb3.jpg";
 
 /***/ },
 /* 50 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<main class=\"about\">\n\n  <div class = \"about-container\">\n    <!-- row 1 -->\n    <div class=\"row\">\n      <h3 class=\"title\">About</h3>\n      <hr class=\"dark-line\">\n    </div>\n\n    <div class=\"row\">\n      <p class=\"border\">I'm a Seattle based developer who loves the challenge of building\n        unique, effective user experiences and pushing the limits on design. I want to make the world a more beautiful place and believe\n      the intersection between technology and artistic principles can accomplish this.\n      <br><br>\n      I found a passion for software and web development while building a freelance design buisness, and have since aimed to\n      combine challenging technical principles with my previous background in the arts.\n      <br><br>\n      I draw inspiration from geometry and patterns found in nature and my artistic work ranges form drawing, jewelry design,\n      acrylic, paper sculpture, lighting design and of course web design. Combined with a technical background and aptitude for\n      programming, I am able to bring visions to life from start to finish.  \n    </p>\n    </div>\n\n    </div>\n  </div>\n</main>\n";
+	module.exports = __webpack_require__.p + "image/372105721ef227e02aa353d4927b3692.jpg";
 
 /***/ },
 /* 51 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"contact\">\n  <!-- Success Message -shown if form is successfully submitted -->\n\n  <div class=\"success\" ng-if=\"contactCtrl.showSuccessMessage\">\n    <h3 class=\"gradient-text\"><strong>Thank you!</strong><br><br> I'll get back to you as soon as I can. </h3>\n  </div>\n  <!-- Form container -->\n  <div class=\"form-container\" ng-if=\"!contactCtrl.showSuccessMessage\">\n    <form\n      novalidate\n      class=\"contactForm\"\n      name=\"contactForm\"\n      data-ng-submit=\"contactCtrl.onSubmit(contactForm)\">\n\n      <h3>Contact Me</h3>\n\n      <div class=\"form-group\">\n        <label>Name</label>\n        <input\n          required\n          data-ng-model=\"contactCtrl.data.name\"\n          name=\"name\"\n          minlength=\"3\"\n          type=\"text\">\n          <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.name.$touched\">\n            <span ng-show=\"contactForm.name.$error.required\">Name required.</span>\n          </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label>Email</label>\n        <input\n          required\n          data-ng-model=\"contactCtrl.data.email\"\n          name=\"email\"\n          type=\"email\">\n          <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.email.$touched\">\n            <span ng-show=\"contactForm.email.$error.required\">Email required.</span>\n            <span ng-show=\"contactForm.email.$error.email\">This is not a valid email.</span>\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <label>Message</label>\n        <textarea required name=\"message\" data-ng-model=\"contactCtrl.data.message\" type=\"text\"></textarea>\n        <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.email.$touched\">\n          <span ng-show=\"contactForm.message.$error.required\">Message required.</span>\n        </div>\n\n    <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n    </form>\n  </div>\n\n</main>\n";
+	module.exports = "<main class=\"about\">\n\n  <div class = \"about-container\">\n    <!-- row 1 -->\n    <div class=\"row\">\n      <h3 class=\"title\">About</h3>\n      <hr class=\"dark-line\">\n    </div>\n\n    <div class=\"row\">\n      <p class=\"border\">I'm a Seattle based developer who loves the challenge of building\n        unique, effective user experiences and pushing the limits on design. I want to make the world a more beautiful place and believe\n      the intersection between technology and artistic principles can accomplish this.\n      <br><br>\n      I found a passion for software and web development while building a freelance design buisness, and have since aimed to\n      combine challenging technical principles with my previous background in the arts.\n      <br><br>\n      I draw inspiration from geometry and patterns found in nature and my artistic work ranges form drawing, jewelry design,\n      acrylic, paper sculpture, lighting design and of course web design. Combined with a technical background and aptitude for\n      programming, I am able to bring visions to life from start to finish.  \n    </p>\n    </div>\n\n    </div>\n  </div>\n</main>\n";
 
 /***/ },
 /* 52 */
+/***/ function(module, exports) {
+
+	module.exports = "<main class=\"contact\">\n  <!-- Success Message -shown if form is successfully submitted -->\n\n  <div class=\"success\" ng-if=\"contactCtrl.showSuccessMessage\">\n    <h3 class=\"gradient-text\"><strong>Thank you!</strong><br><br> I'll get back to you as soon as I can. </h3>\n  </div>\n  <!-- Form container -->\n  <div class=\"form-container\" ng-if=\"!contactCtrl.showSuccessMessage\">\n    <form\n      novalidate\n      class=\"contactForm\"\n      name=\"contactForm\"\n      data-ng-submit=\"contactCtrl.onSubmit(contactForm)\">\n\n      <h3>Contact Me</h3>\n      <h4>Want to work with me? Send me a message!</h4>\n      <hr class=\"dark-line\">\n      <div class=\"form-group\">\n        <label>Name</label>\n        <input\n          required\n          data-ng-model=\"contactCtrl.data.name\"\n          name=\"name\"\n          minlength=\"3\"\n          type=\"text\">\n          <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.name.$touched\">\n            <span ng-show=\"contactForm.name.$error.required\">Name required.</span>\n          </div>\n      </div>\n\n      <div class=\"form-group\">\n        <label>Email</label>\n        <input\n          required\n          data-ng-model=\"contactCtrl.data.email\"\n          name=\"email\"\n          type=\"email\">\n          <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.email.$touched\">\n            <span ng-show=\"contactForm.email.$error.required\">Email required.</span>\n            <span ng-show=\"contactForm.email.$error.email\">This is not a valid email.</span>\n          </div>\n        </div>\n\n      <div class=\"form-group\">\n        <label>Message</label>\n        <textarea required name=\"message\" data-ng-model=\"contactCtrl.data.message\" type=\"text\"></textarea>\n        <div class=\"error\" ng-show=\"contactForm.$submitted || contactForm.email.$touched\">\n          <span ng-show=\"contactForm.message.$error.required\">Message required.</span>\n        </div>\n\n    <button class=\"btn submit-btn\" type=\"submit\"> Submit </button>\n    </form>\n  </div>\n\n</main>\n";
+
+/***/ },
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./about/about-controller.js": 53,
-		"./contact/contact-controller.js": 56,
-		"./landing/landing-controller.js": 59,
-		"./portfolio/portfolio-controller.js": 62,
-		"./project/project-controller.js": 65
+		"./about/about-controller.js": 54,
+		"./contact/contact-controller.js": 57,
+		"./landing/landing-controller.js": 60,
+		"./portfolio/portfolio-controller.js": 63,
+		"./project/project-controller.js": 66
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -54915,16 +54916,16 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 52;
+	webpackContext.id = 53;
 
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(54);
+	__webpack_require__(55);
 
 	module.exports = ['$log', AboutController];
 
@@ -54933,19 +54934,19 @@
 	}
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 55 */,
-/* 56 */
+/* 56 */,
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(57);
+	__webpack_require__(58);
 
 	module.exports = ['$log', '$http', ContactController];
 
@@ -54982,19 +54983,19 @@
 	}
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 58 */,
-/* 59 */
+/* 59 */,
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(60);
+	__webpack_require__(61);
 
 	module.exports = ['$log', '$document', '$window', LandingController];
 
@@ -55120,19 +55121,19 @@
 	}
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 61 */,
-/* 62 */
+/* 62 */,
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(63);
+	__webpack_require__(64);
 
 	module.exports = ['$log', '$uibModal', PortfolioController];
 
@@ -55233,19 +55234,19 @@
 	}
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 64 */,
-/* 65 */
+/* 65 */,
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(66);
+	__webpack_require__(67);
 
 	module.exports = ['$log', ProjectController];
 
@@ -55263,30 +55264,30 @@
 	    title: 'PupTracker',
 	    category: 'JavaScript',
 	    summary: 'App for research scientists to track mouse breeding',
-	    url: 'http://i65.tinypic.com/24mzzh4.jpg'
+	    url: 'http://i66.tinypic.com/23wjdk.jpg'
 	  }, {
 	    id: 2,
 	    title: '3D Engine',
 	    category: 'JavaScript',
-	    summary: 'interactive 3D physics engine',
-	    url: 'http://i65.tinypic.com/24mzzh4.jpg'
+	    summary: 'Interactive 3D physics engine',
+	    url: 'http://i66.tinypic.com/2lwok6v.jpg'
 	  }, {
 	    id: 3,
 	    title: 'Art-C',
 	    category: 'JavaScript',
 	    summary: 'Social media platform for artists',
-	    url: 'http://i65.tinypic.com/24mzzh4.jpg'
+	    url: 'http://i65.tinypic.com/14tqvxe.jpg'
 	  }, {
 	    id: 4,
 	    title: 'Green Key Landscaping',
 	    category: 'Responsive Web Design',
-	    summary: 'Local business website redesign',
-	    url: 'http://i65.tinypic.com/24mzzh4.jpg'
+	    summary: 'Local landscaping business website redesign',
+	    url: 'http://i68.tinypic.com/2m61wm8.jpg'
 	  }, {
 	    id: 5,
-	    title: 'Portfolio Website',
+	    title: 'Portfolio',
 	    category: 'Responsive Web Design',
-	    summary: 'Portfolio Website Design',
+	    summary: 'Series of Portfolio Website Designs',
 	    url: 'http://i65.tinypic.com/24mzzh4.jpg'
 	  }];
 
@@ -55313,20 +55314,20 @@
 	}
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 67 */,
-/* 68 */
+/* 68 */,
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./footer/footer.js": 69,
-		"./modal/modal.js": 73,
-		"./navbar/navbar.js": 77
+		"./footer/footer.js": 70,
+		"./modal/modal.js": 74,
+		"./navbar/navbar.js": 78
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -55339,19 +55340,19 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 68;
+	webpackContext.id = 69;
 
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(70);
+	__webpack_require__(71);
 
 	module.exports = {
-	  template: __webpack_require__(72),
+	  template: __webpack_require__(73),
 	  controller: ['$log', '$location', FooterController],
 	  controllerAs: 'footerCtrl'
 	};
@@ -55365,28 +55366,28 @@
 	}
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 71 */,
-/* 72 */
+/* 72 */,
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"footer\" ng-if=\"!footerCtrl.isActive('/landing')\">\n  <p class=\"footer-text\"> claudia cedfeldt 2017 </p>\n  <div class=\"footer-icon-container\">\n    <span><a href=\"https://github.com/loomnugget\">\n    <i class=\"fa fa-github footer-icon github\"></i></a></span>\n    <span><a href=\"http://codepen.io/ploom\">\n    <i class=\"fa fa-codepen footer-icon codepen\"></i></a></span>\n    <span><a href=\"http://linkedin.com/in/claudia-cedfeldt\">\n    <i class=\"fa fa-linkedin footer-icon\"></i></a></span>\n  </div>\n</div>\n";
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(74);
+	__webpack_require__(75);
 
 	module.exports = {
-	  template: __webpack_require__(76),
+	  template: __webpack_require__(77),
 	  controller: ['$log', ModalController],
 	  controllerAs: 'modalCtrl',
 	  bindings: {
@@ -55411,28 +55412,28 @@
 	}
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 75 */,
-/* 76 */
+/* 76 */,
+/* 77 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"modal-container\">\n  <div class=\"modal-header\">\n    <div class=\"modal-title-container\">\n      <h3>{{modalCtrl.title}}</h3>\n      <h4>{{modalCtrl.category}}</h4>\n      <!-- <h5>Description of the art goes here!</h5> -->\n    </div>\n    <span><i class=\"icon-arrows-remove modal-icon modal-close\" ng-click=\"modalCtrl.handleClose()\"></i></span>\n  </div>\n\n  <div class=\"modal-body\">\n    <!-- Gallery image-->\n    <img ng-src=\"{{modalCtrl.url}}\" alt=\"modal image\">\n  </div>\n</div>\n";
+	module.exports = "<div class=\"modal-container\">\n  <div class=\"modal-header\">\n    <div class=\"modal-title-container\">\n      <h3>{{modalCtrl.title}}</h3>\n      <h4>{{modalCtrl.category}}</h4>\n    </div>\n    <span><i class=\"fa fa-close modal-icon modal-close\" ng-click=\"modalCtrl.handleClose()\"></i></span>\n  </div>\n\n  <div class=\"modal-body\">\n    <!-- Gallery image-->\n    <img ng-src=\"{{modalCtrl.url}}\" alt=\"modal image\">\n  </div>\n</div>\n";
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(78);
+	__webpack_require__(79);
 
 	module.exports = {
-	  template: __webpack_require__(80),
+	  template: __webpack_require__(81),
 	  controller: ['$log', '$location', '$rootScope', NavbarController],
 	  controllerAs: 'navbarCtrl'
 	};
@@ -55460,14 +55461,14 @@
 	}
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 79 */,
-/* 80 */
+/* 80 */,
+/* 81 */
 /***/ function(module, exports) {
 
 	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <!-- logo/home button -->\n    <!-- <li class=\"navbar-brand\">\n      <a href=\"#\"><img class=\"logo\" src=\"http://s32.postimg.org/q5rurwbl1/star.png\"></a>\n    </li> -->\n    <li class=\"navbar-brand\"><a href=\"#\" class=\"text\">Claudia Cedfeldt</a></li>\n    <!-- menu item links -->\n    <li class=\"navbar-item\"\n      ng-repeat=\"item in navbarCtrl.items\"\n      name=\"item\">\n    <a href=\"{{item.url}}\" class=\"text\">{{item.title}}</a></li>\n  </ul>\n</nav>\n";
