@@ -2,12 +2,14 @@
 @import "vendor";
 
 .about{
+  height: 100vh;
   margin-top: 50px;
   margin-bottom: 100px;
   padding: 0 3%;
   .border{
-    padding: 3%;
+    padding: 3% 2%;
     border: 2px dotted $app-nav;
+    background-color: $app-black;
   }
   .about-container{
     padding: 3%;

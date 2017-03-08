@@ -50,8 +50,9 @@
       font-family: $app-font3;
       color: $app-bright-white;
     }
-    h4{
+    h5{
       font-size: 130%;
+      font-family: $app-font3;
     }
     .submit-btn {
       margin-top: 10px;
@@ -92,7 +93,7 @@
     }
 
     label{
-      color:$app-offwhite;
+      color:$app-white;
       font-family: $app-font3;
       pointer-events:none;
       font-size:16px;
