@@ -55184,6 +55184,7 @@
 	    id: '3',
 	    title: 'Abstract Flower',
 	    url: 'http://i63.tinypic.com/t66vsm.jpg',
+	    src: '../scss/lib/img/texture2.jpg',
 	    category: 'Drawing'
 	  }, {
 	    id: '4',
@@ -55196,19 +55197,25 @@
 	    url: 'http://i64.tinypic.com/2qa45kg.jpg',
 	    category: 'Painting'
 	  }, {
+	    id: '1',
+	    title: 'Abstract Circle',
+	    url: 'http://i66.tinypic.com/or54yq.jpg',
+	    category: 'Painting'
+	  }, {
 	    id: '7',
 	    title: 'Marbling I',
-	    url: 'http://i63.tinypic.com/zmmv86.jpg',
+	    url: 'http://i64.tinypic.com/315fpc5.jpg',
 	    category: 'Painting'
 	  }, {
 	    id: '8',
 	    title: 'Marbling II',
 	    url: 'http://i64.tinypic.com/fz3spy.jpg',
+	    // http://i66.tinypic.com/29o04fo.jpg
 	    category: 'Painting'
 	  }, {
 	    id: '9',
 	    title: 'Abstract Ink',
-	    url: 'http://i63.tinypic.com/14wpy6a.jpg',
+	    url: 'http://i64.tinypic.com/35mdqmu.jpg',
 	    category: 'Drawing'
 	  }, {
 	    id: '10',
@@ -55235,6 +55242,31 @@
 	    title: 'Symmetry V',
 	    url: 'http://i66.tinypic.com/qso4n7.jpg',
 	    category: 'Drawing'
+	  }, {
+	    id: '15',
+	    title: 'Leaves',
+	    url: 'http://i63.tinypic.com/15cf1ci.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '16',
+	    title: 'Lines',
+	    url: 'http://i67.tinypic.com/2zp4ob8.jpg',
+	    category: 'Drawing'
+	  }, {
+	    id: '17',
+	    title: 'Abstract',
+	    url: 'http://i64.tinypic.com/zv8zlj.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '18',
+	    title: 'More Flowers',
+	    url: 'http://i66.tinypic.com/2uzz5zt.jpg',
+	    category: 'Painting'
+	  }, {
+	    id: '19',
+	    title: 'More Roses',
+	    url: 'http://i68.tinypic.com/f50yn5.jpg',
+	    category: 'Painting'
 	  }];
 	}
 
