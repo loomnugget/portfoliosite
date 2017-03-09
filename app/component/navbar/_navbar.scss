@@ -12,26 +12,10 @@
 
 .navbar-container{
   height: 100%;
-  padding: 0 5px;  // move icons closer to the middle of navbar
+  padding: 0 5px;
   border-bottom: 2px solid $app-nav;
   .navbar-brand { float: left; }
   .navbar-item { float: right; }
-
-  .dropdown-icon{
-    float:right;
-    display: inline-block;
-    height: 100%;
-    padding: 10px;
-    font-size: 40px;
-    cursor: pointer;
-    transition: .3s;
-    @media only screen and (min-width: 480px){
-      display:none;
-    }
-  }
-  .dropdown-icon:hover{
-    color: $app-bright-white;
-  }
 
   // Contains styles for centering all nav items
   a.text {
@@ -56,16 +40,10 @@
     a.text:hover{
       color: $app-bright-white;
     }
-
-    .logo{
-      border-radius:50%;
-      background-color: transparent;
-      border: 2px solid rgba(255, 255, 255, .7);
-      background-color: $app-nav;
-      transition: all 0.3s;
-      width: 50px;
-      margin: 4px;
+    .navicon{
+      display: inline-block;
+      padding: 7px;
+      font-size: 2em;
     }
-
   }
 }

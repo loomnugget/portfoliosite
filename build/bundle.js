@@ -55015,11 +55015,10 @@
 	    $anchorScroll();
 	  };
 
-	  $document.on('mousemove', function (event) {
-	    var color1 = event.screenX / 10,
-	        color2 = event.screenY / 10;
-	    ctx.strokeStyle = 'rgba(' + color1 + ', ' + color2 + ', 255, .7)';
-	  });
+	  // $document.on('mousemove', function (event) {
+	  //   var color1 = event.screenX/10, color2 = event.screenY/10;
+	  //   ctx.strokeStyle = `rgba(${color1}, ${color2}, 255, .7)`;
+	  // });
 
 	  var appWindow = angular.element($window);
 
@@ -55511,7 +55510,7 @@
 /* 82 */
 /***/ function(module, exports) {
 
-	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <!-- logo/home button -->\n    <!-- <li class=\"navbar-brand\">\n      <a href=\"#\"><img class=\"logo\" src=\"http://s32.postimg.org/q5rurwbl1/star.png\"></a>\n    </li> -->\n    <li class=\"navbar-brand\"><a href=\"#\" class=\"text\">Claudia Cedfeldt</a></li>\n    <!-- menu item links -->\n    <li class=\"navbar-item\"\n      ng-repeat=\"item in navbarCtrl.items\"\n      name=\"item\">\n    <a href=\"{{item.url}}\" class=\"text\">{{item.title}}</a></li>\n  </ul>\n</nav>\n";
+	module.exports = "<nav class=\"navbar\">\n  <ul class=\"navbar-container\">\n    <li class=\"navbar-brand\"><a href=\"#\" class=\"navicon\"><i class=\"fa fa-diamond icon2\"></i></a></li>\n    <li class=\"navbar-item\"\n      ng-repeat=\"item in navbarCtrl.items\"\n      name=\"item\">\n    <a href=\"{{item.url}}\" class=\"text\">{{item.title}}</a></li>\n  </ul>\n</nav>\n";
 
 /***/ },
 /* 83 */,
