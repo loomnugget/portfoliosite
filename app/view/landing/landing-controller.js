@@ -25,7 +25,7 @@ function LandingController($log, $document, $window, $location, $anchorScroll) {
     canvas.height = $window.innerHeight;
     centerY = canvas.height/2, centerX = canvas.width/2;
     ctx.translate(centerX, centerY);
-    ctx.strokeStyle = 'rgba(255, 255, 255, .4)';
+    ctx.strokeStyle = 'rgba(35,187,233, 1)';
   });
 
   // Set up canvas
@@ -35,7 +35,7 @@ function LandingController($log, $document, $window, $location, $anchorScroll) {
   canvas.height = $window.innerHeight;
   var centerY = canvas.height/2, centerX = canvas.width/2;
   ctx.translate(centerX, centerY); // Move origin to center of canvas
-  ctx.strokeStyle = 'rgba(255, 255, 255, .4)';
+  ctx.strokeStyle = 'rgba(21,112,139, 1)';
 
   // convert angle from degrees to radians, Field of view
   var toRadians = Math.PI/180, fov = 800;
@@ -130,7 +130,7 @@ function LandingController($log, $document, $window, $location, $anchorScroll) {
   };
 
   var system = new starSystem(400);
-  system.generate(160);
+  system.generate(100);
 
   function drawingLoop() {
     ctx.clearRect(-centerX, -centerY, canvas.width, canvas.height);

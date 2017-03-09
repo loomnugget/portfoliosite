@@ -7,69 +7,41 @@ module.exports = ['$log', ProjectController];
 function ProjectController($log) {
   $log.debug('init projectCtrl');
 
-  this.isVisible1 = false;
-  this.isVisible2 = false;
-  this.isVisible3 = false;
-
-  this.isActive = false;
-
   this.items = [
     {
-      id: 'puptracker',
+      id: '#/projects/puptracker',
       title: 'Allen Brain Institute PupTracker',
       category: 'JavaScript',
       summary: 'App for research scientists to track mouse breeding',
       url: 'http://i66.tinypic.com/23wjdk.jpg',
     },
     {
-      id: 'engine',
+      id: '#/projects/engine',
       title: '3D Physics Engine',
       category: 'JavaScript',
       summary: 'Interactive 3D physics engine',
       url: 'http://i66.tinypic.com/2lwok6v.jpg',
     },
     {
-      id: 'artc',
+      id: '#/projects/artc',
       title: 'Art-C Social Media Platform',
       category: 'JavaScript',
       summary: 'Social media platform for artists',
       url: 'http://i65.tinypic.com/14tqvxe.jpg',
     },
-    {
-      id: 'greenkey',
-      title: 'Green Key Landscaping',
-      category: 'Responsive Web Design',
-      summary: 'Local landscaping business website redesign',
-      url: 'http://i68.tinypic.com/2m61wm8.jpg',
-    },
-    {
-      id: 'portfolioseries',
-      title: 'Portfolio Design Series',
-      category: 'Responsive Web Design',
-      summary: 'Series of Portfolio Website Designs',
-      url: 'http://i65.tinypic.com/24mzzh4.jpg',
-    },
+    // {
+    //   id: 'greenkey',
+    //   title: 'Green Key Landscaping',
+    //   category: 'Responsive Web Design',
+    //   summary: 'Local landscaping business website redesign',
+    //   url: 'http://i68.tinypic.com/2m61wm8.jpg',
+    // },
+    // {
+    //   id: 'portfolioseries',
+    //   title: 'Portfolio Design Series',
+    //   category: 'Responsive Web Design',
+    //   summary: 'Series of Portfolio Website Designs',
+    //   url: 'http://i65.tinypic.com/24mzzh4.jpg',
+    // },
   ];
-
-  this.selectItem = function(item) {
-    if(item === 1) {
-      this.isVisible1 = true;
-      this.isVisible2 = false;
-      this.isVisible3 = false;
-      this.isActive = true;
-    }
-    if(item === 2) {
-      this.isVisible2 = true;
-      this.isVisible1 = false;
-      this.isVisible3 = false;
-      this.isActive = true;
-    }
-    if(item === 3) {
-      this.isVisible3 = true;
-      this.isVisible1 = false;
-      this.isVisible2 = false;
-      this.isActive = true;
-    }
-  };
-
 }

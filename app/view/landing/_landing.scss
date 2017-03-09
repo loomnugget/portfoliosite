@@ -118,7 +118,7 @@
     h4{
       font-family: $app-font3;
       font-size: 150%;
-      color: $app-white;
+      color: $app-bright-white;
       padding: 1%;
       @media only screen and (min-width: 1024px){
         font-size: 200%;
@@ -127,7 +127,7 @@
     p{
       font-family: $app-font3;
       font-size: 120%;
-      color: $app-bright-white;
+      color: $app-white;
       padding: 2%;
     }
   }

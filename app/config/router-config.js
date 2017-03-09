@@ -30,14 +30,32 @@ function routerConfig($stateProvider, $urlRouterProvider, $locationProvider){
       controller: 'ProjectController',
       template: require('../view/project/project.html'),
     },
+    // {
+    //   name: 'Projects.detail',
+    //   url: '/:projectId',
+    //   controller: function($scope, $stateParams) {
+    //     $scope.id = $stateParams.projectId;
+    //   },
+    //   template: require('../view/project/project.detail.html'),
+    // },
     {
-      name: 'Projects.detail',
-      url: '/:projectId',
-      controller: function($scope, $stateParams) {
-        $scope.id = $stateParams.projectId;
-      },
-      template: require('../view/project/project.detail.html'),
+      name: 'Puptracker',
+      url: '/projects/puptracker',
+      controllerAs: 'projectCtrl',
+      controller: 'ProjectController',
+      template: require('../view/project/project.puptracker.html'),
     },
+    {
+      name: 'Engine',
+      url: '/projects/engine',
+      template: require('../view/project/project.engine.html'),
+    },
+    {
+      name: 'artc',
+      url: '/projects/artc',
+      template: require('../view/project/project.artc.html'),
+    },
+
     {
       name: 'About',
       url: '/about',

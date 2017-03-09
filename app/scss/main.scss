@@ -62,14 +62,6 @@ h3, h4 {
   border:3px solid $app-black;
 }
 
-// Horizontal row styles
-hr.gradient {
-  width: 60%;
-  margin: 0 20%;
-  border: 0;
-  height: 2px;
-  background-image: linear-gradient(to left, rgba(255,255,255,.3), $app-white, rgba(255,255,255,.3));
-}
 hr.dark-line {
   border: 0;
   height: 2px;
@@ -86,7 +78,6 @@ hr.dark-line {
   transition: .2s;
   cursor: pointer;
 }
-
 .icon:hover{
   background: -webkit-linear-gradient($app-gradient2, $app-secondary);
   -webkit-background-clip: text;
@@ -95,18 +86,11 @@ hr.dark-line {
 }
 // Gradient Icon II - Darker Gradient
 .icon2 {
-  background: -webkit-linear-gradient($app-secondary, #A1FFCE);
+  background: -webkit-linear-gradient($app-secondary, $app-bright-white);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-color: transparent;
   transition: .2s;
-  cursor: pointer;
-}
-.icon2:hover{
-  background: -webkit-linear-gradient($app-secondary, $app-secondary-hover);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-color: transparent;
 }
 
 // Gradient Text

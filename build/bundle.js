@@ -54815,13 +54815,29 @@
 	    controllerAs: 'projectCtrl',
 	    controller: 'ProjectController',
 	    template: __webpack_require__(45)
+	  },
+	  // {
+	  //   name: 'Projects.detail',
+	  //   url: '/:projectId',
+	  //   controller: function($scope, $stateParams) {
+	  //     $scope.id = $stateParams.projectId;
+	  //   },
+	  //   template: require('../view/project/project.detail.html'),
+	  // },
+	  {
+	    name: 'Puptracker',
+	    url: '/projects/puptracker',
+	    controllerAs: 'projectCtrl',
+	    controller: 'ProjectController',
+	    template: __webpack_require__(86)
 	  }, {
-	    name: 'Projects.detail',
-	    url: '/:projectId',
-	    controller: function controller($scope, $stateParams) {
-	      $scope.id = $stateParams.projectId;
-	    },
-	    template: __webpack_require__(84)
+	    name: 'Engine',
+	    url: '/projects/engine',
+	    template: __webpack_require__(87)
+	  }, {
+	    name: 'artc',
+	    url: '/projects/artc',
+	    template: __webpack_require__(88)
 	  }, {
 	    name: 'About',
 	    url: '/about',
@@ -54845,7 +54861,7 @@
 /* 43 */
 /***/ function(module, exports) {
 
-	module.exports = "<main class=\"landing\">\n  <header>\n    <div id=\"container\">\n        <canvas id=\"canvas\"></canvas>\n      <div id=\"overlay\" class=\"landing-title\">\n        <h2>Claudia<br>Cedfeldt</h2>\n        <h4>Software Engineer | UI/UX</h4>\n        <button ng-click=\"landingCtrl.scrollDown()\" class=\"btn landing-btn2\"><i class=\"fa fa-angle-down\"></i></button>\n      </div>\n    </div>\n  </header>\n\n  <section class=\"services-container\" id=\"scrollpoint\">\n    <div class=\"row\">\n      <div class=\"col span-1-of-3\">\n        <div class=\"about-icon\">\n          <i class=\"fa fa-mobile landing-icon \"></i>\n          <h4>Front-End Development</h4>\n          <p>Building fast, beautiful user experiences using design principles and the latest technologies.</p>\n        </div>\n      </div>\n\n      <div class=\"col span-1-of-3\">\n        <div class=\"about-icon\">\n          <i class=\"fa fa-code-fork landing-icon\"></i>\n          <h4>Functional Programming</h4>\n          <p>Using code to bring visions to life from back end data to front end interactions.</p>\n        </div>\n      </div>\n\n      <div class=\"col span-1-of-3\">\n        <div class=\"about-icon\">\n          <i class=\"fa fa-paint-brush landing-icon\"></i>\n          <h4>Responsive Design</h4>\n          <p>Detail oriented, mobile-first design that translates easily to any device and browser.</p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"work-container\">\n    <a href=\"#/projects\"><button class=\"btn landing-btn\">View<br>Projects</button></a>\n  </section>\n\n  <section class=\"skills-container\">\n    <div class=\"skills-icon-container clearfix\">\n      <i class=\"devicon-javascript-plain skills-icon\"></i>\n      <i class=\"devicon-angularjs-plain skills-icon\"></i>\n      <i class=\"devicon-react-original-wordmark skills-icon\"></i>\n      <i class=\"devicon-mongodb-plain-wordmark skills-icon\"></i>\n      <i class=\"devicon-nodejs-plain skills-icon\"></i>\n      <i class=\"devicon-ubuntu-plain skills-icon\"></i>\n    </div>\n  </section>\n</main>\n";
+	module.exports = "<main class=\"landing\">\n  <header>\n    <div id=\"container\">\n        <canvas id=\"canvas\"></canvas>\n      <div id=\"overlay\" class=\"landing-title\">\n        <h2>Claudia<br>Cedfeldt</h2>\n        <h4>Software Engineer | UI/UX</h4>\n        <button ng-click=\"landingCtrl.scrollDown()\" class=\"btn landing-btn2\"><i class=\"fa fa-angle-down\"></i></button>\n      </div>\n    </div>\n  </header>\n\n  <section class=\"services-container\" id=\"scrollpoint\">\n    <div class=\"row\">\n      <div class=\"col span-1-of-3\">\n        <div class=\"about-icon\">\n          <i class=\"fa fa-mobile landing-icon icon2\"></i>\n          <h4>Front-End Development</h4>\n          <p>Building fast, beautiful user experiences using design principles and the latest technologies.</p>\n        </div>\n      </div>\n\n      <div class=\"col span-1-of-3\">\n        <div class=\"about-icon\">\n          <i class=\"fa fa-code-fork landing-icon icon2\"></i>\n          <h4>Functional Programming</h4>\n          <p>Using code to bring visions to life from back end data to front end interactions.</p>\n        </div>\n      </div>\n\n      <div class=\"col span-1-of-3\">\n        <div class=\"about-icon\">\n          <i class=\"fa fa-paint-brush landing-icon icon2\"></i>\n          <h4>Responsive Design</h4>\n          <p>Detail oriented, mobile-first design that translates easily to any device and browser.</p>\n        </div>\n      </div>\n    </div>\n  </section>\n\n  <section class=\"work-container\">\n    <a href=\"#/projects\"><button class=\"btn landing-btn\">View<br>Projects</button></a>\n  </section>\n\n  <section class=\"skills-container\">\n    <div class=\"skills-icon-container clearfix\">\n      <i class=\"devicon-javascript-plain skills-icon icon2\"></i>\n      <i class=\"devicon-angularjs-plain skills-icon icon2\"></i>\n      <i class=\"devicon-react-original-wordmark skills-icon icon2\"></i>\n      <i class=\"devicon-mongodb-plain-wordmark skills-icon icon2\"></i>\n      <i class=\"devicon-nodejs-plain skills-icon icon2\"></i>\n      <i class=\"devicon-ubuntu-plain skills-icon icon2\"></i>\n    </div>\n  </section>\n</main>\n";
 
 /***/ },
 /* 44 */
@@ -54855,9 +54871,9 @@
 
 /***/ },
 /* 45 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = "<main class=\"project-container\">\n  <div class=\"clearfix\" ng-class=\"{'active': projectCtrl.isActive}\">\n    <div class=\"row star-bg\">\n      <h3 class=\"title\">Selected Projects</h3>\n      <hr class=\"dark-line\">\n    </div>\n\n    <div class=\"project-menu-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in projectCtrl.items\"\n       item=\"projectCtrl.currentItem\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\" >\n            <div class=\"img-hover\">\n              <div class=\"content-wrap\">\n                <h3><strong>{{item.title}}</strong></h3>\n                <h6>{{item.summary}}</h6>\n                <!-- <span class=\"zoom-icon\"><i class=\"fa fa-plus\" ng-click=\"projectCtrl.selectItem(item.id)\"></i></span> -->\n                <a ui-sref=\"Projects.detail({projectId: item.id})\">TESTING LINK</a>\n              </div>\n            </div>\n          </div>\n      </div>\n    </div>\n\n  <div ui-view=\"puptracker\"></div>\n\n\n<!-- <div class=\"row\">\n    <div class=\"active-menu\"\n     ng-repeat=\"item in projectCtrl.items\"\n     item=\"projectCtrl.currentItem\"\n     ng-click=\"projectCtrl.selectItem(item.id)\">\n     <h4>{{item.title}}</h4>\n  </div>\n</div>\n\n  <div class=\"row\">\n    <div class=\"info-container\">\n    <h4>Pup Tracker<span class=\"info-icon\"><a href=\"https://github.com/prungy88/puptracker\"><i class=\"fa fa-github icon2\"></i></a><span></h4>\n\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">Rest API used by research scientists to track mouse breeding patterns, plan experiments, and communicate more\n              effectively with mouse breeders and project managers.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node, Angular, Webpack, Express, Angular UI Calendar, Bootstrap</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        </p><br>\n        <h5>About</h5>\n        <p>The research institute utilizes an SQL database to input information about mouse breeding cycles and their genetic makeup.\n          Breeders and lab managers need to be able to have this information readily available to relay to researchers planning projects.\n          The projects are large and have many lines of mice (mice of different genotypes). Each line of mice has a group of cages used to\n          produce offspring (pups) that have desired genotypes, each which contains one or two females and a male. Researchers need to know\n          a rough estimate of when mice of certain genotypes will be available and how many to expect per month.\n          <br><br>\n          They wanted to be able input information into the app and utilize dropdown menus that allow them to select the appropriate project,\n          line, and cage and create/update models of each. Models are updated as information is known to the research team and stored and organized in the app.\n          This updated information is used to calculate various properties that will be displayed when a line is selected.\n        </p><br>\n        <h5>Goals</h5>\n        <p> 1. Use a calendar to visualize when mice of certain genotypes are going to be born.<br><br>\n          2. Calculate expected number of usable offspring and breeding end dates based on user inputs.<br><br>\n          3. Be able to create, update and remove project information.</p><br>\n        <h5>Going Forward</h5>\n        <p>There is a huge amount of potential for this project. After the core goals are met, the plan is to have additional data visualizations and to automate more tasks.</p><br>\n      </div>\n      <div class=\"row\">\n        <h5>Preview</h5>\n          <div class=\"project-image-container\">\n            <img class=\"project-image\" src=\"" + __webpack_require__(46) + "\" alt=\"puptracker-image2\">\n          </div>\n      </div>\n    </div>\n  </div>\n</div> -->\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible2\">\n  <div class=\"info-container\">\n    <h4>3D Engine\n      <span class=\"info-icon\"><a href=\"https://github.com/loomnugget/js-3d-experiment\"><i class=\"fa fa-github icon2\"></i></a><span>\n      <span class=\"info-icon\"><a href=\"http://codepen.io/ploom/pen/LRvzOk\"><i class=\"fa fa-codepen icon2\"></i></a><span>\n    </h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">3D physics engine using Vanilla Javascript and HTML5 Canvas</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>React, Node, HTML5 Canvas</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>About / Goals</h5>\n        <p>I was initially inspired by the <a class=\"project-link\" href=\"https://www.chromeexperiments.com/\"> chrome canvas experiments</a> and wanted to make some quick animations for front end design.\n          I found that the logic behind the magic was pretty involved, and this quickly turned into a small 3D library project which\n          served as mostly a learning experience that significantly boosted my programming skills.</p><br>\n\n        <h5>Going Forward</h5>\n        <p>I had a lot of fun working on this project and I'd really like to keep learning about 3D math/programming, focusing on web, not game, development,\n           and continue working on shading, physics effects, folding algorithms and data structures visualizations and music visualizations.\n           The main improvement that needs to be made is incorporating interactivity so these concepts can be incorporated into user experiences.\n        </p><br>\n      </div>\n      <div class=\"row\">\n        <h5>Images</h5>\n          <div class=\"project-image-container\">\n            <img class=\"project-image2\" src=\"" + __webpack_require__(47) + "\" alt=\"3dengine-image1\">\n            <img class=\"project-image2\" src=\"" + __webpack_require__(48) + "\" alt=\"3dengine-image3\">\n          </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\" ng-if=\"projectCtrl.isVisible3\">\n  <div class=\"info-container\">\n    <h4>[art-c]\n      <span class=\"info-icon\"><a href=\"https://art-c.herokuapp.com/\"><i class=\"fa fa-external-link-square icon2\"></i></a></span>\n      <span class=\"info-icon\"><a href=\"https://github.com/loomnugget/art-c\"><i class=\"fa fa-github icon2\"></i></a><span>\n    </h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">REST API that allows artists to share and sell work in their community.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node, Angular, Webpack, Express, AWS S3, Bootstrap</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>About</h5>\n        <p>This was a group project for a Code Fellows Javascript class.\n          Working with local artists inspired the idea, and the app is intended to be somewhat like a curated Etsy that\n          focuses on connecting local artists with each other and their community. We used AWS S3 to upload and store photos,\n          and Google and Facebook oAuth to have the option to sign up with pre-existing accounts.\n          Users can create, update and delete a profile, galleries, and listings as well as upload and delete photos for each.\n        </p><br>\n        <h5>Personal Contributions</h5>\n        <p>As project leader, I worked on much of the layout and idea itself. I contributed to creating a functioning back end, testing, and\n          front end functionality. I also did almost all of the styling and design.\n        </p><br>\n        <h5>Going Forward</h5>\n        <p>Since we only had less than five days to work on this project, there is much room for improvement. Future goals include curated\n          content, integrating the Stripe API to allow people to buy and sell, spotlighting artists, and favoriting items.\n          I'd also like to spend some actual time working on the user interface.</p><br>\n      </div>\n        <div class=\"row\">\n          <h5>Images</h5>\n            <div class=\"project-image-container\">\n              <img class=\"project-image\" src=\"" + __webpack_require__(49) + "\" alt=\"artc-image1\">\n              <img class=\"project-image\" src=\"" + __webpack_require__(50) + "\" alt=\"artc-image2\">\n            </div>\n        </div>\n    </div>\n  </div>\n</div>\n\n\n</main>\n";
+	module.exports = "<main class=\"project-container\">\n  <div class=\"clearfix\" ng-class=\"{'active': projectCtrl.isActive}\">\n    <div class=\"row star-bg\">\n      <h3 class=\"title\">Selected Projects</h3>\n      <hr class=\"dark-line\">\n    </div>\n\n    <div class=\"project-menu-container clearfix\">\n      <div class=\"portfolio-img-container\"\n       ng-repeat=\"item in projectCtrl.items\"\n       item=\"projectCtrl.currentItem\">\n        <div class=\"square\" ng-style=\"{'background-image': 'url({{item.url}})'}\" >\n            <div class=\"img-hover\">\n              <div class=\"content-wrap\">\n                <h3><strong>{{item.title}}</strong></h3>\n                <h6>{{item.summary}}</h6>\n                <a href=\"{{item.id}}\"><span class=\"zoom-icon\"><i class=\"fa fa-plus\"></i></span></a>\n              </div>\n            </div>\n          </div>\n      </div>\n    </div>\n</main>\n";
 
 /***/ },
 /* 46 */
@@ -55028,7 +55044,7 @@
 	    canvas.height = $window.innerHeight;
 	    centerY = canvas.height / 2, centerX = canvas.width / 2;
 	    ctx.translate(centerX, centerY);
-	    ctx.strokeStyle = 'rgba(255, 255, 255, .4)';
+	    ctx.strokeStyle = 'rgba(35,187,233, 1)';
 	  });
 
 	  // Set up canvas
@@ -55039,7 +55055,7 @@
 	  var centerY = canvas.height / 2,
 	      centerX = canvas.width / 2;
 	  ctx.translate(centerX, centerY); // Move origin to center of canvas
-	  ctx.strokeStyle = 'rgba(255, 255, 255, .4)';
+	  ctx.strokeStyle = 'rgba(21,112,139, 1)';
 
 	  // convert angle from degrees to radians, Field of view
 	  var toRadians = Math.PI / 180,
@@ -55119,7 +55135,7 @@
 	  };
 
 	  var system = new starSystem(400);
-	  system.generate(160);
+	  system.generate(100);
 
 	  function drawingLoop() {
 	    ctx.clearRect(-centerX, -centerY, canvas.width, canvas.height);
@@ -55292,64 +55308,25 @@
 	function ProjectController($log) {
 	  $log.debug('init projectCtrl');
 
-	  this.isVisible1 = false;
-	  this.isVisible2 = false;
-	  this.isVisible3 = false;
-
-	  this.isActive = false;
-
 	  this.items = [{
-	    id: 'puptracker',
+	    id: '#/projects/puptracker',
 	    title: 'Allen Brain Institute PupTracker',
 	    category: 'JavaScript',
 	    summary: 'App for research scientists to track mouse breeding',
 	    url: 'http://i66.tinypic.com/23wjdk.jpg'
 	  }, {
-	    id: 'engine',
+	    id: '#/projects/engine',
 	    title: '3D Physics Engine',
 	    category: 'JavaScript',
 	    summary: 'Interactive 3D physics engine',
 	    url: 'http://i66.tinypic.com/2lwok6v.jpg'
 	  }, {
-	    id: 'artc',
+	    id: '#/projects/artc',
 	    title: 'Art-C Social Media Platform',
 	    category: 'JavaScript',
 	    summary: 'Social media platform for artists',
 	    url: 'http://i65.tinypic.com/14tqvxe.jpg'
-	  }, {
-	    id: 'greenkey',
-	    title: 'Green Key Landscaping',
-	    category: 'Responsive Web Design',
-	    summary: 'Local landscaping business website redesign',
-	    url: 'http://i68.tinypic.com/2m61wm8.jpg'
-	  }, {
-	    id: 'portfolioseries',
-	    title: 'Portfolio Design Series',
-	    category: 'Responsive Web Design',
-	    summary: 'Series of Portfolio Website Designs',
-	    url: 'http://i65.tinypic.com/24mzzh4.jpg'
 	  }];
-
-	  this.selectItem = function (item) {
-	    if (item === 1) {
-	      this.isVisible1 = true;
-	      this.isVisible2 = false;
-	      this.isVisible3 = false;
-	      this.isActive = true;
-	    }
-	    if (item === 2) {
-	      this.isVisible2 = true;
-	      this.isVisible1 = false;
-	      this.isVisible3 = false;
-	      this.isActive = true;
-	    }
-	    if (item === 3) {
-	      this.isVisible3 = true;
-	      this.isVisible1 = false;
-	      this.isVisible2 = false;
-	      this.isActive = true;
-	    }
-	  };
 	}
 
 /***/ },
@@ -55514,10 +55491,24 @@
 
 /***/ },
 /* 83 */,
-/* 84 */
+/* 84 */,
+/* 85 */,
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "<div class=\"row\">\n  <div class=\"info-container\">\n  <h4>Pup Tracker<span class=\"info-icon\"><a href=\"https://github.com/prungy88/puptracker\"><i class=\"fa fa-github icon2\"></i></a><span></h4>\n\n    <div class=\"info-body-container\">\n      <div class=\"row\">\n        <div class=\"col span-1-of-2\">\n          <h5>Summary</h5>\n          <p class=\"extra-space\">Rest API used by research scientists to track mouse breeding patterns, plan experiments, and communicate more\n            effectively with mouse breeders and project managers.</p>\n        </div>\n        <div class=\"col span-1-of-2\">\n          <h5>Tools</h5>\n          <p>Node, Angular, Webpack, Express, Angular UI Calendar, Bootstrap</p>\n        </div>\n      </div>\n    <div class=\"row\">\n      </p><br>\n      <h5>About</h5>\n      <p>The research institute utilizes an SQL database to input information about mouse breeding cycles and their genetic makeup.\n        Breeders and lab managers need to be able to have this information readily available to relay to researchers planning projects.\n        The projects are large and have many lines of mice (mice of different genotypes). Each line of mice has a group of cages used to\n        produce offspring (pups) that have desired genotypes, each which contains one or two females and a male. Researchers need to know\n        a rough estimate of when mice of certain genotypes will be available and how many to expect per month.\n        <br><br>\n        They wanted to be able input information into the app and utilize dropdown menus that allow them to select the appropriate project,\n        line, and cage and create/update models of each. Models are updated as information is known to the research team and stored and organized in the app.\n        This updated information is used to calculate various properties that will be displayed when a line is selected.\n      </p><br>\n      <h5>Goals</h5>\n      <p> 1. Use a calendar to visualize when mice of certain genotypes are going to be born.<br><br>\n        2. Calculate expected number of usable offspring and breeding end dates based on user inputs.<br><br>\n        3. Be able to create, update and remove project information.</p><br>\n      <h5>Going Forward</h5>\n      <p>There is a huge amount of potential for this project. After the core goals are met, the plan is to have additional data visualizations and to automate more tasks.</p><br>\n    </div>\n    <div class=\"row\">\n      <h5>Preview</h5>\n        <div class=\"project-image-container\">\n          <img class=\"project-image\" src=\"" + __webpack_require__(46) + "\" alt=\"puptracker-image2\">\n        </div>\n    </div>\n  </div>\n</div>\n</div>\n";
+
+/***/ },
+/* 87 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "<div class=\"row\">\n  <div class=\"info-container\">\n    <h4>3D Engine\n      <span class=\"info-icon\"><a href=\"https://github.com/loomnugget/js-3d-experiment\"><i class=\"fa fa-github icon2\"></i></a><span>\n      <span class=\"info-icon\"><a href=\"http://codepen.io/ploom/pen/LRvzOk\"><i class=\"fa fa-codepen icon2\"></i></a><span>\n    </h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">3D physics engine using Vanilla Javascript and HTML5 Canvas</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>React, Node, HTML5 Canvas</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>About / Goals</h5>\n        <p>I was initially inspired by the <a class=\"project-link\" href=\"https://www.chromeexperiments.com/\"> chrome canvas experiments</a> and wanted to make some quick animations for front end design.\n          I found that the logic behind the magic was pretty involved, and this quickly turned into a small 3D library project which\n          served as mostly a learning experience that significantly boosted my programming skills.</p><br>\n\n        <h5>Going Forward</h5>\n        <p>I had a lot of fun working on this project and I'd really like to keep learning about 3D math/programming, focusing on web, not game, development,\n           and continue working on shading, physics effects, folding algorithms and data structures visualizations and music visualizations.\n           The main improvement that needs to be made is incorporating interactivity so these concepts can be incorporated into user experiences.\n        </p><br>\n      </div>\n      <div class=\"row\">\n        <h5>Images</h5>\n          <div class=\"project-image-container\">\n            <img class=\"project-image2\" src=\"" + __webpack_require__(47) + "\" alt=\"3dengine-image1\">\n            <img class=\"project-image2\" src=\"" + __webpack_require__(48) + "\" alt=\"3dengine-image3\">\n          </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
+
+/***/ },
+/* 88 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "<div class=\"row\">\n  <div class=\"info-container\">\n    <h4>[art-c]\n      <span class=\"info-icon\"><a href=\"https://art-c.herokuapp.com/\"><i class=\"fa fa-external-link-square icon2\"></i></a></span>\n      <span class=\"info-icon\"><a href=\"https://github.com/loomnugget/art-c\"><i class=\"fa fa-github icon2\"></i></a><span>\n    </h4>\n      <div class=\"info-body-container\">\n        <div class=\"row\">\n          <div class=\"col span-1-of-2\">\n            <h5>Summary</h5>\n            <p class=\"extra-space\">REST API that allows artists to share and sell work in their community.</p>\n          </div>\n          <div class=\"col span-1-of-2\">\n            <h5>Tools</h5>\n            <p>Node, Angular, Webpack, Express, AWS S3, Bootstrap</p>\n          </div>\n        </div>\n      <div class=\"row\">\n        <h5>About</h5>\n        <p>This was a group project for a Code Fellows Javascript class.\n          Working with local artists inspired the idea, and the app is intended to be somewhat like a curated Etsy that\n          focuses on connecting local artists with each other and their community. We used AWS S3 to upload and store photos,\n          and Google and Facebook oAuth to have the option to sign up with pre-existing accounts.\n          Users can create, update and delete a profile, galleries, and listings as well as upload and delete photos for each.\n        </p><br>\n        <h5>Personal Contributions</h5>\n        <p>As project leader, I worked on much of the layout and idea itself. I contributed to creating a functioning back end, testing, and\n          front end functionality. I also did almost all of the styling and design.\n        </p><br>\n        <h5>Going Forward</h5>\n        <p>Since we only had less than five days to work on this project, there is much room for improvement. Future goals include curated\n          content, integrating the Stripe API to allow people to buy and sell, spotlighting artists, and favoriting items.\n          I'd also like to spend some actual time working on the user interface.</p><br>\n      </div>\n        <div class=\"row\">\n          <h5>Images</h5>\n            <div class=\"project-image-container\">\n              <img class=\"project-image\" src=\"" + __webpack_require__(49) + "\" alt=\"artc-image1\">\n              <img class=\"project-image\" src=\"" + __webpack_require__(50) + "\" alt=\"artc-image2\">\n            </div>\n        </div>\n    </div>\n  </div>\n</div>\n";
 
 /***/ }
 /******/ ]);
