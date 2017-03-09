@@ -7,6 +7,9 @@
     width: 100%;
     border: 5px solid $app-black;
   }
+  .modal-header{
+    border: none;
+  }
   .modal-title-container{
     text-transform: uppercase;
     h3{
@@ -21,11 +24,11 @@
     }
   }
   .modal-icon {
-    font-size: 50px;
+    font-size: 30px;
     background-color: transparent;
     transition: .2s;
     cursor: pointer;
-    color: $app-black;
+    color: $app-bright-white;
   }
   .modal-close{
     position: absolute;

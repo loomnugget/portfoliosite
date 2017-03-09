@@ -78,7 +78,6 @@ function PortfolioController($log, $uibModal){
       id: '8',
       title: 'Marbling II',
       url: 'http://i64.tinypic.com/fz3spy.jpg',
-      // http://i66.tinypic.com/29o04fo.jpg
       category: 'Painting',
     },
     {
@@ -139,12 +138,6 @@ function PortfolioController($log, $uibModal){
       id: '18',
       title: 'More Flowers',
       url: 'http://i66.tinypic.com/2uzz5zt.jpg',
-      category: 'Painting',
-    },
-    {
-      id: '19',
-      title: 'More Roses',
-      url: 'http://i68.tinypic.com/f50yn5.jpg',
       category: 'Painting',
     },
   ];

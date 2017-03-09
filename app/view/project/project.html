@@ -13,11 +13,9 @@
             <div class="img-hover">
               <div class="content-wrap">
                 <h3><strong>{{item.title}}</strong></h3>
-
-                <h5>{{item.category}}</h5>
                 <h6>{{item.summary}}</h6>
-                <span class="zoom-icon"><i class="fa fa-plus" ng-click="projectCtrl.selectItem(item.id)"></i></span>
-
+                <!-- <span class="zoom-icon"><i class="fa fa-plus" ng-click="projectCtrl.selectItem(item.id)"></i></span> -->
+                <a ui-sref="Projects.detail({projectId: item.id})">TESTING LINK</a>
               </div>
             </div>
           </div>
