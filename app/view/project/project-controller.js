@@ -10,8 +10,9 @@ function ProjectController($log) {
   this.items = [
     {
       id: '#/projects/puptracker',
-      title: 'Allen Brain Institute PupTracker',
+      title: 'PupTracker',
       category: 'JavaScript',
+      tools: 'Node + Angular',
       summary: 'App for research scientists to track mouse breeding',
       url: 'http://i66.tinypic.com/23wjdk.jpg',
     },
@@ -19,13 +20,15 @@ function ProjectController($log) {
       id: '#/projects/engine',
       title: '3D Physics Engine',
       category: 'JavaScript',
+      tools: 'HTML5 Canvas',
       summary: 'Interactive 3D physics engine',
       url: 'http://i66.tinypic.com/2lwok6v.jpg',
     },
     {
       id: '#/projects/artc',
-      title: 'Art-C Social Media Platform',
+      title: 'Art-C',
       category: 'JavaScript',
+      tools: 'Node + Angular',
       summary: 'Social media platform for artists',
       url: 'http://i65.tinypic.com/14tqvxe.jpg',
     },
