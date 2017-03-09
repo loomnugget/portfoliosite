@@ -7,6 +7,7 @@ function routerConfig($stateProvider, $urlRouterProvider, $locationProvider){
   $urlRouterProvider.when('/' , '/landing');
   $locationProvider.hashPrefix('');
 
+
   let states = [
     {
       name: 'Welcome',
@@ -31,11 +32,11 @@ function routerConfig($stateProvider, $urlRouterProvider, $locationProvider){
     },
     {
       name: 'Projects.detail',
-      url: '/projects/:projectId',
+      url: '/:projectId',
       controller: function($scope, $stateParams) {
         $scope.id = $stateParams.projectId;
       },
-      template: require('../view/project/project1.project.html'),
+      template: require('../view/project/project.detail.html'),
     },
     {
       name: 'About',

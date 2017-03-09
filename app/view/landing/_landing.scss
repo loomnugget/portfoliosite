@@ -11,9 +11,6 @@
     background-position: fixed;
     height: 100vh;
   }
-  // #canvas{
-  //   background-image: url('../scss/lib/img/texture2.jpg');
-  // }
   #container {
     position: relative;
   }
@@ -42,19 +39,19 @@
       color: $app-bright-white;
 
       @media only screen and (min-width: 480px){
-        font-size: 400%;
-      }
-      @media only screen and (min-width: 768px){
         font-size: 500%;
       }
-      @media only screen and (min-width: 1024px){
+      @media only screen and (min-width: 768px){
         font-size: 600%;
+      }
+      @media only screen and (min-width: 1024px){
+        font-size: 700%;
       }
     }
     h4{
       color: $app-bright-white;
       font-family: $app-font3;
-      font-size: 200%;
+      font-size: 250%;
     }
   }
   #canvas{
@@ -103,22 +100,29 @@
     padding: 5%;
     text-align: center;
     .about-icon{
-      padding: 1%;
+      padding: 3%;
+      margin: 1%;
       text-align: center;
       border: 2px solid $app-white;
-      height: 310px;
+      height: 300px;
+      @media only screen and (min-width: 768px){
+        height: 350px;
+      }
     }
-    .circle-icon {
-      color: $app-white;
-      font-size: 70px;
+    .landing-icon {
+      font-size: 80px;
+      padding: 2%;
       margin: 1% 0;
       vertical-align: middle;
     }
     h4{
       font-family: $app-font3;
-      font-size: 200%;
+      font-size: 150%;
       color: $app-white;
       padding: 1%;
+      @media only screen and (min-width: 1024px){
+        font-size: 200%;
+      }
     }
     p{
       font-family: $app-font3;
@@ -127,17 +131,13 @@
       padding: 2%;
     }
   }
-  .skills-container{
-    padding: 3%;
-    h3{
-      line-height: 70px;
-      vertical-align: center;
-    }
-  }
   .work-container{
     background-image: url('../scss/lib/img/stars.jpg');
     text-align: center;
     padding: 5%;
+  }
+  .skills-container{
+    padding: 3%;
   }
   .skills-icon-container{
     width: 100%;
@@ -148,11 +148,9 @@
       margin: 1% 5%;
     }
     .skills-icon{
-      display: block;
       float: left;
+      width: 16.6666667%;
       font-size: 60px;
-      line-height: 70px;
-      vertical-align: center;
       padding: 10px 15px;
       color: $app-white;
     }

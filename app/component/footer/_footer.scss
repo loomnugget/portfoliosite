@@ -20,7 +20,7 @@
       transition: .2s;
       color: $app-nav;
       @media only screen and (min-width: 768px){
-        width: 94px;
+        width: auto;
       }
     }
   }
@@ -34,11 +34,7 @@
     font-size: 14px;
     font-weight: bold;
     letter-spacing: .5px;
-    color: $app-secondary;
-    a{
-      color: $app-white;
-      margin-left: 20px;
-    }
+    color: $app-nav;
     @media only screen and (min-width: 768px){
       display: block;
     }

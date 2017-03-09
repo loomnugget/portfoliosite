@@ -12,10 +12,10 @@ function LandingController($log, $document, $window, $location, $anchorScroll) {
     $anchorScroll();
   };
 
-  // $document.on('mousemove', function (event) {
-  //   var color1 = event.screenX/7, color2 = event.screenY/7;
-  //   ctx.strokeStyle = `rgba(${color1}, ${color2}, 255, .7)`;
-  // });
+  $document.on('mousemove', function (event) {
+    var color1 = event.screenX/10, color2 = event.screenY/10;
+    ctx.strokeStyle = `rgba(${color1}, ${color2}, 255, .7)`;
+  });
 
   var appWindow = angular.element($window);
 

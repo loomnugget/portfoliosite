@@ -19,6 +19,7 @@ h3, h4 {
   background-image: url('../scss/lib/img/stars.jpg');
 }
 
+// section titles
 .title{
   text-align: center;
   text-transform: uppercase;
@@ -121,25 +122,6 @@ hr.dark-line {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
-
-//Animations
-.fade2 {
-  transition: 1s linear all;
-  -webkit-transition: 1s linear all;
-}
-.fade2.ng-enter {
-  opacity: 0;
-}
-.fade2.ng-enter.ng-enter-active {
-  opacity: 1;
-}
-.fade2.ng-leave {
-  opacity: 1;
-}
-.fade2.ng-leave.ng-leave-active {
-  opacity: 0;
-}
-
 
 // General List styles
 ul{
@@ -283,17 +265,19 @@ a{
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
 @media only screen and (max-width: 480px) {
-	.span-3-of-3 {
-		width: 100%;
-	}
 	.span-2-of-3 {
 		width: 100%;
 	}
-	.span-1-of-3 {
+	.span-3-of-3 {
 		width: 100%;
 	}
 }
 
+@media only screen and (max-width: 768px) {
+  .span-1-of-3 {
+    width: 100%;
+  }
+}
 /*  GRID OF FOUR   ============================================================================= */
 
 
