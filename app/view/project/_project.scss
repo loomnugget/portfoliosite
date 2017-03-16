@@ -19,8 +19,8 @@
           margin: 1%;
         }
         @media only screen and (min-width: 1024px){
-          width: 32%;
-          margin: .666667%;
+          width: 30%;
+          margin: 1.666667%;
         }
       }
 
@@ -126,6 +126,25 @@
       }
     }
   } // end project menu container
+  .skills-container{
+    padding: .5%;
+  }
+  .skills-icon-container{
+    width: 100%;
+    margin: 1% 0;
+    text-align: center;
+    @media only screen and (min-width: 480px){
+      width: 90%;
+      margin: 1% 5%;
+    }
+    .skills-icon{
+      float: left;
+      width: 16.6666667%;
+      font-size: 60px;
+      padding: 10px 15px;
+      color: $app-white;
+    }
+  }
 
   .info-container{
     width: 96%;

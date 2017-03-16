@@ -42,11 +42,9 @@
         font-size: 500%;
       }
       @media only screen and (min-width: 768px){
-        font-size: 600%;
+        font-size: 550%;
       }
-      @media only screen and (min-width: 1024px){
-        font-size: 700%;
-      }
+
     }
     h4{
       color: $app-bright-white;
@@ -59,15 +57,15 @@
   }
 
   .landing-btn{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius:50%;
     border: 3px solid rgba(255, 255, 255, .5);
     letter-spacing: 1px;
     color: $app-bright-white;
     background: $app-black;
     font-family: $app-font3;
-    font-size: 160%;
+    font-size: 120%;
     cursor: pointer;
   }
   .landing-btn2{
@@ -97,7 +95,7 @@
 
   .services-container{
     width: 100%;
-    padding: 5%;
+    padding: 2%;
     text-align: center;
     .about-icon{
       padding: 3%;
@@ -127,7 +125,7 @@
     p{
       font-family: $app-font3;
       font-size: 120%;
-      color: $app-white;
+      color: $app-bright-white;
       padding: 2%;
     }
   }
@@ -136,23 +134,5 @@
     text-align: center;
     padding: 5%;
   }
-  .skills-container{
-    padding: 3%;
-  }
-  .skills-icon-container{
-    width: 100%;
-    margin: 1% 0;
-    text-align: center;
-    @media only screen and (min-width: 480px){
-      width: 90%;
-      margin: 1% 5%;
-    }
-    .skills-icon{
-      float: left;
-      width: 16.6666667%;
-      font-size: 60px;
-      padding: 10px 15px;
-      color: $app-white;
-    }
-  }
+  
 }
