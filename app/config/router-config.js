@@ -30,14 +30,6 @@ function routerConfig($stateProvider, $urlRouterProvider, $locationProvider){
       controller: 'ProjectController',
       template: require('../view/project/project.html'),
     },
-    // {
-    //   name: 'Projects.detail',
-    //   url: '/:projectId',
-    //   controller: function($scope, $stateParams) {
-    //     $scope.id = $stateParams.projectId;
-    //   },
-    //   template: require('../view/project/project.detail.html'),
-    // },
     {
       name: 'Puptracker',
       url: '/projects/puptracker',
